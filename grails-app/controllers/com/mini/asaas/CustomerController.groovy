@@ -1,11 +1,12 @@
 
 package com.mini.asaas
 
-import com.mini.asaas.Customer
+import com.mini.asaas.domain.Customer
+import com.mini.asaas.utils.CustomerAdapter
 
 class CustomerController {
     
-    def CustomerService
+    def customerService
 
     def index () {
 
@@ -13,14 +14,8 @@ class CustomerController {
 
     def save() {
         try {
-            String name = params.name
-            String email = params.email
-            String cpfOrCnpj = params.cpfOrCnpj
-            String cep = params.cep
-            String endereco = params.endereco
-            String cidade = params.cidade
-            String estado = params.estado
-            Customer customer = customerService.save(name, email, cpfOrCnpj, cep, endereco, cidade, estado)
+            CustomerAdapter adapter = new CustomerAdapter(params)
+            Customer customer = customerService.save(adapter)
             redirect(action: "show", id: customer.id)
         } catch (Exception e) {
             println(e)
@@ -40,5 +35,4 @@ class CustomerController {
        }
 
     }
-
 }

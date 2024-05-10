@@ -1,17 +1,16 @@
 package com.mini.asaas.utils
 
-import com.mini.asaas.utils.BaseDomain
+import com.mini.asaas.PersonType
 
-abstract class BasePerson extends BaseDomain {
+abstract class BasePerson {
 
-    String cpfOrCnpj
-    String cep
-    String endereco
-    String cidade
-    String estado
+    String cpfCnpj
+    String name
+    String email
+    String postalCode
+    String address
+    String city
+    String state
+    PersonType personType
 
-    static constraints = {
-        cpfOrCnpj size: 11..14, blank: false, unique:true
-        cep size: 8..8, blank: false
-    }
 }
