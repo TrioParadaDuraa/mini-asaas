@@ -1,6 +1,4 @@
-### Impacto
-
-### Release Note (Descrição que irá no forno)
+### Impacto (Descrever o que foi feito)
 
 ### PR Predecessora
 
@@ -14,8 +12,3 @@
 ### Link dos mockups
 
 ### Prints do desenvolvimento
-
-### Observabilidade
-
-- Monitor datadog:
-- Explain de consultas:
