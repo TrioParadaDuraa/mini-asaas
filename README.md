@@ -26,11 +26,6 @@ Na etapa de implementação do frontend, utilizamos a biblioteca Atlas que nos f
 - Grails 5.0.0
 - Java JVM 11.0.2
 - MySQL Database
-- Git
-- GitHub
-
-## 🎨 Layouts
-⚠️ _Em construção._ ⚠️
 
 ## 🛠️ Clonando e executando o repositório
 
