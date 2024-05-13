@@ -1,8 +1,7 @@
-
 package com.mini.asaas
 
-import com.mini.asaas.domain.Customer
-import com.mini.asaas.utils.CustomerAdapter
+import com.mini.asaas.Customer
+import utils.CustomerAdapter
 
 class CustomerController {
     

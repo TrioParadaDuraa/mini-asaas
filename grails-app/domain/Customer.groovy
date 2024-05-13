@@ -1,6 +1,6 @@
-package com.mini.asaas.domain
+package com.mini.asaas
 
-import com.mini.asaas.utils.BasePerson
+import utils.BasePerson
 
 class Customer extends BasePerson {
 
