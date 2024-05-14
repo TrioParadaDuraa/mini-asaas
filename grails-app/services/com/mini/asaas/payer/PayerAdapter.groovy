@@ -17,5 +17,4 @@ class PayerAdapter extends BasePersonAdapter {
         this.personType = PersonType.NATURAL
         this.customerId = params.long("customerId")
     }
-
 }

@@ -6,8 +6,7 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class PayerService {
 
-    public Payer save(Map params) {
-        PayerAdapter adapter = new PayerAdapter(params)
+    public Payer save(PayerAdapter adapter) {
         Payer payer = new Payer()
 
         payer.cpfCnpj = adapter.cpfCnpj
@@ -24,5 +23,4 @@ class PayerService {
         
         return payer
     }
-
 }

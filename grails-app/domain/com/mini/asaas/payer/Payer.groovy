@@ -6,5 +6,4 @@ import com.mini.asaas.utils.BasePerson
 class Payer extends BasePerson {
 
     Customer customer
-
 }
