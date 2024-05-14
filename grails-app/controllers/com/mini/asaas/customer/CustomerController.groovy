@@ -1,7 +1,4 @@
-package com.mini.asaas
-
-import com.mini.asaas.Customer
-import utils.CustomerAdapter
+package com.mini.asaas.customer
 
 class CustomerController {
     
@@ -19,8 +16,8 @@ class CustomerController {
         } catch (Exception e) {
             println(e)
             render "Não foi possível salvar"
-        }
-}
+         }
+    }
 
     def show() {
         try {
@@ -31,7 +28,6 @@ class CustomerController {
                 return [customer: customer]
        } catch (Exception e) {
            render "Cliente não encontrado"
-       }
-
+        }
     }
 }

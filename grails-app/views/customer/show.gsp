@@ -18,11 +18,6 @@
             <input type="text" id="email" name="email" value="${customer.email}" readonly>
         </div>
         <br>
-        <div>
-            <label for="personType">Tipo de pessoa</label>
-            <br>
-            <input type="text" name="personType" id="personType" value="${customer.personType.getLabel()}" readonly>
-        </div>
     </form>
 </body>
 </html>
