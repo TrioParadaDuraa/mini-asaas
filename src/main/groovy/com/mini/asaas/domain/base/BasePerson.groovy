@@ -35,8 +35,8 @@ abstract class BasePerson {
         phone blank: false, size: 10..11
         postalCode blank: false, size: 8..8
         address blank: false
-        addressNumber blank: true
-        addressComplement blank: true, nullable: true
+        addressNumber blank: false
+        addressComplement blank: false, nullable: true
         district blank: false
         city blank: false
         state blank: false, size: 2..2
