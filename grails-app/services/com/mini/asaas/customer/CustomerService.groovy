@@ -1,6 +1,5 @@
 package com.mini.asaas.customer
 
-
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -25,5 +24,9 @@ class CustomerService {
         customer.save(failOnError: true)
 
         return customer
+    }
+
+    public Customer softDelete(Customer customer){
+        customer.deleted = true
     }
 }
