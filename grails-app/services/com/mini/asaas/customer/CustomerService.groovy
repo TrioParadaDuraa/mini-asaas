@@ -25,8 +25,4 @@ class CustomerService {
 
         return customer
     }
-
-    public Customer softDelete(Customer customer){
-        customer.deleted = true
-    }
 }

@@ -2,7 +2,7 @@ package com.mini.asaas.domain.base
 
 import com.mini.asaas.utils.base.PersonType
 
-abstract class BasePerson {
+abstract class BasePerson extends BaseDomain{
 
     String cpfCnpj
 

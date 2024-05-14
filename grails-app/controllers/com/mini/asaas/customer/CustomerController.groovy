@@ -19,15 +19,6 @@ class CustomerController {
          }
     }
 
-    def softDelete() {
-        try {
-
-        }catch (Exception e){
-            println(e)
-            render "Não foi possível deletar"
-        }
-    }
-
     def show() {
         try {
             Customer customer = Customer.get(params.id)
