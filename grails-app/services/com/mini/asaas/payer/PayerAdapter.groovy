@@ -1,7 +1,7 @@
 package com.mini.asaas.payer
 
 import com.mini.asaas.domain.base.BasePersonAdapter
-import com.mini.asaas.PersonType
+import com.mini.asaas.utils.base.PersonType
 
 class PayerAdapter extends BasePersonAdapter {
 

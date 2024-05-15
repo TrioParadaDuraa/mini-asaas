@@ -1,6 +1,6 @@
 package com.mini.asaas.domain.base
 
-import com.mini.asaas.PersonType
+import com.mini.asaas.utils.base.PersonType
 
 abstract class BasePersonAdapter {
 
