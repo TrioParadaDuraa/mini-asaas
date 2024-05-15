@@ -1,6 +1,6 @@
 package com.mini.asaas.payer
 
-import com.mini.asaas.domain.Customer
+import com.mini.asaas.customer.Customer
 import grails.gorm.transactions.Transactional
 
 @Transactional
