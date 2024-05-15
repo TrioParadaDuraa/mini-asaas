@@ -10,13 +10,21 @@ abstract class BasePersonAdapter {
 
     String email
 
+    String phone
+
+    PersonType personType
+
     String postalCode
 
     String address
 
+    String addressNumber
+
+    String addressComplement
+
+    String district
+
     String city
 
     String state
-
-    PersonType personType
 }

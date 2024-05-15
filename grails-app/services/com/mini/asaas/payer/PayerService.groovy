@@ -9,15 +9,19 @@ class PayerService {
     public Payer save(PayerAdapter adapter) {
         Payer payer = new Payer()
 
+        payer.customer = Customer.get(adapter.customerId)
         payer.cpfCnpj = adapter.cpfCnpj
         payer.name = adapter.name
         payer.email = adapter.email
+        payer.phone = adapter.phone
+        payer.personType = adapter.personType
         payer.postalCode = adapter.postalCode
         payer.address = adapter.address
+        payer.addressNumber = adapter.addressNumber
+        payer.addressComplement = adapter.addressComplement
+        payer.district = adapter.district
         payer.city = adapter.city
         payer.state = adapter.state
-        payer.personType = adapter.personType
-        payer.customer = Customer.get(adapter.customerId)
 
         payer.save(failOnError: true)
         
