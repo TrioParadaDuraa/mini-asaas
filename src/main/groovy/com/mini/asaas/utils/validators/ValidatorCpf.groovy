@@ -14,4 +14,3 @@ class CpfValidator {
         return true
     }
 }
-// campos para criar validação dps: cnpj, email, cep 
