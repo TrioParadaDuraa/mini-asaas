@@ -1,6 +1,7 @@
 Thumbs.db
 .DS_Store
-.gradle
+.gradle/
+.vscode/
 build/
 out/
 .idea
@@ -10,4 +11,3 @@ out/
 .project
 .settings
 .classpath
-.vscode
