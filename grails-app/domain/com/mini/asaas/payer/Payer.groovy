@@ -6,8 +6,4 @@ import com.mini.asaas.domain.base.BasePerson
 class Payer extends BasePerson {
 
     Customer customer
-
-    static constraints = {
-        customer blank: false
-    }
 }
