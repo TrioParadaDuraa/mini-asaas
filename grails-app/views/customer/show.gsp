@@ -20,6 +20,12 @@
             </div>
             <br>
             <div>
+                <label>CPF/CNPJ</label>
+                <br>
+                <input type="text" name="cpfCnpj" value="${customer.cpfCnpj}" readonly>
+            </div>
+            <br>
+            <div>
                 <label>Telefone/Celular</label>
                 <br>
                 <input type="text" name="phone" value="${customer.phone}" readonly>
