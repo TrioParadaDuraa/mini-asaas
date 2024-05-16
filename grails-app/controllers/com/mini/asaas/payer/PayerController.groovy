@@ -14,8 +14,9 @@ class PayerController {
             Payer payer = payerService.save(adapter, customerId)
 
             redirect(action: "show", id: payer.id)
-        } catch (Exception e) {
-            println(e)
+        } catch (Exception exception) {
+            log.error("PayerController.save >> Erro ao cadastrar pagador", exception)
+            
             render "Não foi possível salvar"
         }
     }
@@ -29,7 +30,7 @@ class PayerController {
             }
 
             return [payer: payer]
-        } catch (Exception e) {
+        } catch (Exception exception) {
             render "Pagador não encontrado"
         }
     }
