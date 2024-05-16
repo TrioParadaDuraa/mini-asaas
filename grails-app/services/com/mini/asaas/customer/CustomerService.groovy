@@ -26,8 +26,21 @@ class CustomerService {
         return customer
     }
 
-    public Customer edit(Long customerId, params){
+    public Customer update(Long customerId, params){
         Customer customer = Customer.get(customerId)
+
+        println(customer.id)
+        customer.cpfCnpj = params.cpfCnpj
+        customer.name = params.name
+        customer.email = params.email
+        customer.phone = params.phone
+        customer.postalCode = params.postalCode
+        customer.address = params.address
+        customer.addressNumber = params.addressNumber
+        customer.addressComplement = params.addressComplement
+        customer.district = params.district
+        customer.city = params.city
+        customer.state = params.state
 
         customer.save(failOnError: true)
 
