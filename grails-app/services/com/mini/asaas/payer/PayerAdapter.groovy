@@ -5,8 +5,6 @@ import com.mini.asaas.utils.base.PersonType
 
 class PayerAdapter extends BasePersonAdapter {
 
-    Long customerId
-
     public PayerAdapter(Map params) {
         this.cpfCnpj = params.cpfCnpj
         this.name = params.name
