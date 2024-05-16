@@ -8,16 +8,21 @@
 <body>
     <form action="${createLink(controller: "customer", action: "save")}">
         <div>
-            <label for="name">Nome</label>
+            <label>Nome</label>
             <br>
-            <input type="text" id="name" name="name" value="${customer.name}" readonly>
+            <input type="text" name="name" value="${customer.name}" readonly>
         </div>
         <div>
-            <label for="name">Email</label>
+            <label>Email</label>
             <br>
-            <input type="text" id="email" name="email" value="${customer.email}" readonly>
+            <input type="email" name="email" value="${customer.email}" readonly>
         </div>
         <br>
+        <div>
+            <label>Tipo de pessoa</label>
+            <br>
+            <input type="text" name="personType" value="${customer.personType.getLabel()}" readonly>
+        </div>
     </form>
 </body>
 </html>

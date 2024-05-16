@@ -8,61 +8,68 @@
 <body>
     <form method="POST" action="${createLink(controller: "customer", action: "save")}">
         <div>
-            <label for="name">Nome</label>
+            <label>Nome</label>
             <br>
-            <input type="text" id="name" name="name" value="${params.name}">
+            <input type="text" name="name" value="${params.name}">
         </div>
         <div>
-            <label for="name">Email</label>
+            <label>Email</label>
             <br>
-            <input type="text" id="email" name="email" placeholder="email@email.com" value="${params.email}">
+            <input type="text" name="email" placeholder="email@email.com" value="${params.email}">
         </div>
         <div>
-            <label for="name">Telefone/Celular</label>
+            <label>Telefone/Celular</label>
             <br>
-            <input type="text" id="phone" name="phone" placeholder="(00) 1234-5678 / (00) 9 1234-5678" maxlength="11" value="${params.phone}">
+            <input type="text" name="phone" placeholder="(00) 1234-5678 / (00) 9 1234-5678" maxlength="11" value="${params.phone}">
         </div>
         <div>
-            <label for="cpfCnpj">CPF/CNPJ</label>
+            <label>CPF/CNPJ</label>
             <br>
-            <input type="text" name="cpfCnpj" id="cpfCnpj" placeholder="12345678900 ou 12345678900000" maxlength="14" value="${params.cpfCnpj}">
+            <input type="text" name="cpfCnpj" placeholder="12345678900 ou 12345678900000" maxlength="14" value="${params.cpfCnpj}">
         </div>
         <div>
-            <label for="postalCode">CEP</label>
+            <label>CEP</label>
             <br>
-            <input type="text" name="postalCode" id="postalCode" placeholder="12345678" maxlength="8" value="${params.postalCode}">
+            <input type="text" name="postalCode" placeholder="12345678" maxlength="8" value="${params.postalCode}">
         </div>
         <div>
-            <label for="address">Endereco</label>
+            <label>Endereco</label>
             <br>
-            <input type="text" name="address" id="address" value="${params.address}">
+            <input type="text" name="address" value="${params.address}">
         </div>
         <div>
-            <label for="address">Número</label>
+            <label>Número</label>
             <br>
-            <input type="text" name="addressNumber" id="addressNumber" value="${params.addressNumber}">
+            <input type="text" name="addressNumber" value="${params.addressNumber}">
         </div>
         <div>
-            <label for="address">Complemento</label>
+            <label>Complemento</label>
             <br>
-            <input type="text" name="addressComplement" id="addressComplement" value="${params.addressComplement}">
+            <input type="text" name="addressComplement" value="${params.addressComplement}">
         </div>
         <div>
-            <label for="address">Bairro</label>
+            <label>Bairro</label>
             <br>
-            <input type="text" name="district" id="district" value="${params.district}">
+            <input type="text" name="district" value="${params.district}">
         </div>
         <div>
-            <label for="city">Cidade</label>
+            <label>Cidade</label>
             <br>
-            <input type="text" name="city" id="city" value="${params.city}">
+            <input type="text" name="city" value="${params.city}">
         </div>
         <div>
-            <label for="state">Estado</label>
+            <label>Estado</label>
             <br>
             <input type="text" name="state" placeholder="MG" maxlength="2" id="state" value="${params.state}">
         </div>
         <button type="submit">Salvar</button>
+        <g:if test="${flash.message}">
+            <section>
+                <div>
+                    <p>${flash.message}</p>
+                </div>
+            </section>
+        </g:if>
     </form>
 </body>
 </html>
