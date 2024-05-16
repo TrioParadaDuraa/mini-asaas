@@ -35,4 +35,15 @@ class CustomerController {
            render "Cliente não encontrado"
         }
     }
+
+    def edit() {
+        try {
+
+        } catch (Exception exception){
+            log.error("CustomerController.edit >> Não foi possível realizar a edição", exception)
+            flash.message = 'Edição não realizada, tente novamente'
+
+            redirect(action: "show")
+        }
+    }
 }

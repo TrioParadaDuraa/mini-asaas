@@ -25,4 +25,12 @@ class CustomerService {
 
         return customer
     }
+
+    public Customer edit(Long customerId, params){
+        Customer customer = Customer.get(customerId)
+
+        customer.save(failOnError: true)
+
+        return customer
+    }
 }
