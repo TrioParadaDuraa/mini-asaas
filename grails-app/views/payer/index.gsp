@@ -13,6 +13,15 @@
             <input name="cpfCnpj" value="${params.cpfCnpj}" id="cpfCnpj" type="text" maxlength="14">
         </div>
         <div>
+            <label for="personType">Tipo de pessoa</label>
+            <br>
+            <select name="personType" id="personType">
+                <g:each var="value" in="${personTypes}">
+                    <option value="${value}">${value.getLabel()}</option>
+                </g:each>
+            </select>
+        </div>
+        <div>
             <label for="name">Nome</label>
             <br>
             <input name="name" value="${params.name}" id="name" type="text">
@@ -20,12 +29,12 @@
         <div>
             <label for="email">Email</label>
             <br>
-            <input name="email" value="${params.email}" id="email" type="text">
+            <input name="email" value="${params.email}" id="email" type="email">
         </div>
         <div>
             <label for="phone">Telefone</label>
             <br>
-            <input name="phone" value="${params.phone}" id="phone" type="text" maxlength="14">
+            <input name="phone" value="${params.phone}" id="phone" type="tel" maxlength="10">
         </div>
         <div>
             <label for="postalCode">CEP</label>

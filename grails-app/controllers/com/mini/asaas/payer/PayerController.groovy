@@ -1,10 +1,14 @@
 package com.mini.asaas.payer
 
+import com.mini.asaas.utils.base.PersonType
+
 class PayerController {
 
     def payerService
 
-    def index() {}
+    def index() {
+        return [personTypes: PersonType.values()]
+    }
 
     def save() {
         try {
@@ -16,7 +20,7 @@ class PayerController {
             redirect(action: "show", id: payer.id)
         } catch (Exception exception) {
             log.error("PayerController.save >> Erro ao cadastrar pagador", exception)
-            
+
             render "Não foi possível salvar"
         }
     }

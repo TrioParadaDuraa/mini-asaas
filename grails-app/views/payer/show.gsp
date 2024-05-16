@@ -15,18 +15,13 @@
         <div>
             <label for="email">Email</label>
             <br>
-            <input name="email" value="${payer.email}" id="email" type="text" readonly>
+            <input name="email" value="${payer.email}" id="email" type="email" readonly>
         </div>
         <br>
         <div>
             <label for="personType">Tipo de pessoa</label>
             <br>
             <input name="personType" value="${payer.personType.getLabel()}" id="personType" type="text" readonly>
-        </div>
-        <div>
-            <label for="customerName">Cliente</label>
-            <br>
-            <input name="customerName" value="${payer.customer.name}" id="customerName" type="text" disabled>
         </div>
     </form>
 </body>
