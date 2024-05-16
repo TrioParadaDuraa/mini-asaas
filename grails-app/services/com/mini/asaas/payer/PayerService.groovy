@@ -10,7 +10,7 @@ class PayerService {
     public Payer save(PayerAdapter adapter, Long customerId) {
         Payer payer = new Payer()
 
-        payer.customer = Customer.get(customerId)
+        payer.customer = Customer.read(customerId)
         payer.cpfCnpj = adapter.cpfCnpj
         payer.name = adapter.name
         payer.email = adapter.email

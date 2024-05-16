@@ -22,7 +22,7 @@ class PayerController {
 
     def show() {
         try{
-            Payer payer = Payer.get(params.id)
+            Payer payer = Payer.read(params.id)
 
             if (!payer) {
                 render "Pagador não encontrado"
