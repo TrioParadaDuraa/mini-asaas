@@ -8,8 +8,12 @@ class PayerController {
 
     def save() {
         try {
+            // Modificar para usar id do customer associado ao usuário logado
+            // ex.: Long customerId = currentUser.customer.id
+            Long customerId = 1
+
             PayerAdapter adapter = new PayerAdapter(params)
-            Payer payer = payerService.save(adapter)
+            Payer payer = payerService.save(adapter, customerId)
 
             redirect(action: "show", id: payer.id)
         } catch (Exception e) {

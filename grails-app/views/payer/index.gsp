@@ -8,9 +8,6 @@
 <body>
     <form method="POST" action="${createLink(controller: "payer", action: "save")}">
         <div>
-            <input type="hidden" name="customerId" value="1">
-        </div>
-        <div>
             <label for="cpfCnpj">CPF/CNPJ</label>
             <br>
             <input name="cpfCnpj" value="${params.cpfCnpj}" id="cpfCnpj" type="text" maxlength="14">

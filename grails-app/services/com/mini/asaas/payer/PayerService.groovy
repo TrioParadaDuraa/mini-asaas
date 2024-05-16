@@ -6,10 +6,10 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class PayerService {
 
-    public Payer save(PayerAdapter adapter) {
+    public Payer save(PayerAdapter adapter, Long customerId) {
         Payer payer = new Payer()
 
-        payer.customer = Customer.get(adapter.customerId)
+        payer.customer = Customer.get(customerId)
         payer.cpfCnpj = adapter.cpfCnpj
         payer.name = adapter.name
         payer.email = adapter.email

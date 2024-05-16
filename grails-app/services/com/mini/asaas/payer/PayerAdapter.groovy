@@ -8,7 +8,6 @@ class PayerAdapter extends BasePersonAdapter {
     Long customerId
 
     public PayerAdapter(Map params) {
-        this.customerId = params.long("customerId")
         this.cpfCnpj = params.cpfCnpj
         this.name = params.name
         this.email = params.email
