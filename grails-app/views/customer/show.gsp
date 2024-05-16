@@ -1,28 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="${createLink(controller: "customer", action: "save")}">
-        <div>
-            <label>Nome</label>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Informações do customer</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label>Nome</label>
+                <br>
+                <input type="text" name="name" value="${customer.name}" readonly>
+            </div>
             <br>
-            <input type="text" name="name" value="${customer.name}" readonly>
-        </div>
-        <div>
-            <label>Email</label>
+            <div>
+                <label>Email</label>
+                <br>
+                <input type="email" name="email" value="${customer.email}" readonly>
+            </div>
             <br>
-            <input type="email" name="email" value="${customer.email}" readonly>
-        </div>
-        <br>
-        <div>
-            <label>Tipo de pessoa</label>
+            <div>
+                <label>Telefone/Celular</label>
+                <br>
+                <input type="text" name="phone" value="${customer.phone}" readonly>
+            </div>
             <br>
-            <input type="text" name="personType" value="${customer.personType.getLabel()}" readonly>
-        </div>
-    </form>
-</body>
+            <div>
+                <label>Tipo de pessoa</label>
+                <br>
+                <input type="text" name="personType" value="${customer.personType.getLabel()}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>CEP</label>
+                <br>
+                <input type="text" name="postalCode" value="${customer.postalCode}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Endereço</label>
+                <br>
+                <input type="text" name="address" value="${customer.address}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Número do endereço</label>
+                <br>
+                <input type="text" name="addressNumber" value="${customer.addressNumber}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Complemento</label>
+                <br>
+                <input type="text" name="addressComplement" value="${customer.addressComplement}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Bairro</label>
+                <br>
+                <input type="text" name="district" value="${customer.district}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Cidade</label>
+                <br>
+                <input type="text" name="city" value="${customer.city}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Estado</label>
+                <br>
+                <input type="text" name="state" value="${customer.state}" readonly>
+            </div>
+        </form>
+    </body>
 </html>
