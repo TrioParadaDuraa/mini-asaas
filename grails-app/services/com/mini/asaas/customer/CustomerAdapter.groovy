@@ -12,6 +12,8 @@ class CustomerAdapter {
 
     String phone
 
+    String mobilePhone
+
     PersonType personType
 
     String postalCode
@@ -33,6 +35,7 @@ class CustomerAdapter {
         this.name = params.name
         this.email = params.email
         this.phone = params.phone
+        this.mobilePhone = params.mobilePhone
         this.personType = PersonType.NATURAL
         this.postalCode = params.postalCode
         this.address = params.address
