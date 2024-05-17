@@ -41,9 +41,6 @@ class CustomerService {
         customer.city = params.city
         customer.state = params.state
 
-        println(customer.addressNumber)
-        println(params.addressNumber)
-
         customer.save(failOnError: true)
 
         return customer
