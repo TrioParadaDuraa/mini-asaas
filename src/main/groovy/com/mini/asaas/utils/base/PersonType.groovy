@@ -16,6 +16,6 @@ enum PersonType {
     }
 
     public String getLabel() {
-        Utils.GetMessageProperty("PersonType.${this}.label", null)
+        Utils.getMessageProperty("PersonType.${this}.label", null)
     }
 }
