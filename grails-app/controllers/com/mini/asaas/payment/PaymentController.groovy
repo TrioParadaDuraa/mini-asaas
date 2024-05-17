@@ -10,6 +10,10 @@ class PaymentController {
 
     }
 
+    def show() {
+
+    }
+
     def update() {
 
     }
