@@ -1,5 +1,7 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.utils.message.MessageType
+
 class CustomerController {
     
     def customerService
@@ -16,6 +18,7 @@ class CustomerController {
             redirect(action: "show", id: customer.id)
         } catch (Exception exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
+            flash.type = MessageType.ERROR
             flash.message = 'Erro ao salvar os dados, verifique todos os campos e tente novamente.'
 
             redirect(action: "index")
