@@ -43,4 +43,17 @@ class PayerController {
             render "Pagador não encontrado"
         }
     }
+
+    def list() {
+        try {
+            Long customerId = 1
+
+            List<Payer> payers = payerService.findAllByCustomer(customerId)
+
+            return [payers: payers]
+        } catch (Exception exception) {
+            log.error("PayerController.list >> Erro ao listar pagadores", exception)
+            render "Não foi possível carregar pagadores"
+        }
+    }
 }

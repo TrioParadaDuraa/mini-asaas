@@ -28,4 +28,10 @@ class PayerService {
         
         return payer
     }
+
+    public List<Payer> findAllByCustomer(Long customerId) {
+        Customer customer = Customer.read(customerId)
+
+        return Payer.findAllByCustomer(customer)
+    }
 }
