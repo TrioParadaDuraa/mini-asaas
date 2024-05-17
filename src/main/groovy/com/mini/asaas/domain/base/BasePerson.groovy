@@ -12,6 +12,8 @@ abstract class BasePerson extends BaseDomain {
 
     String phone
 
+    String mobilePhone
+
     PersonType personType
 
     String postalCode
@@ -32,7 +34,8 @@ abstract class BasePerson extends BaseDomain {
         cpfCnpj size: 11..14, blank: false
         name blank: false
         email email: true, blank: false
-        phone blank: false, size: 10..11
+        phone blank: false, nullable: true, size: 10..10
+        mobilePhone blank: false, size:11..11
         postalCode blank: false, size: 8..8
         address blank: false
         addressNumber blank: false

@@ -12,6 +12,7 @@ class CustomerService {
         customer.name = adapter.name
         customer.email = adapter.email
         customer.phone = adapter.phone
+        customer.mobilePhone = adapter.mobilePhone
         customer.personType = adapter.personType
         customer.postalCode = adapter.postalCode
         customer.address = adapter.address

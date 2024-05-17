@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Informações do customer</title>
     </head>
     <body>
         <form>
@@ -26,9 +26,15 @@
             </div>
             <br>
             <div>
-                <label>Telefone/Celular</label>
+                <label>Telefone</label>
                 <br>
                 <input type="text" name="phone" value="${customer.phone}" readonly>
+            </div>
+            <br>
+            <div>
+                <label>Celular</label>
+                <br>
+                <input type="text" name="mobilePhone" value="${customer.mobilePhone}" readonly>
             </div>
             <br>
             <div>
@@ -78,10 +84,6 @@
                 <br>
                 <input type="text" name="state" value="${customer.state}" readonly>
             </div>
-            <br>
-            <g:link controller="customer" action="update" params="[id: customer.id]">
-            <button type="button">Editar dados</button>
-            </g:link>
         </form>
     </body>
 </html>

@@ -18,9 +18,14 @@
             <input type="text" name="email" placeholder="email@email.com" value="${params.email}">
         </div>
         <div>
-            <label>Telefone/Celular</label>
+            <label>Telefone</label>
             <br>
-            <input type="text" name="phone" placeholder="(00) 1234-5678 / (00) 9 1234-5678" maxlength="11" value="${params.phone}">
+            <input type="text" name="phone" placeholder="(00) 1234-5678" maxlength="10" value="${params.phone}">
+        </div>
+        <div>
+            <label>Celular</label>
+            <br>
+            <input type="text" name="mobilePhone" placeholder="(00) 9 1234-5678" maxlength="11" value="${params.mobilePhone}">
         </div>
         <div>
             <label>CPF/CNPJ</label>
