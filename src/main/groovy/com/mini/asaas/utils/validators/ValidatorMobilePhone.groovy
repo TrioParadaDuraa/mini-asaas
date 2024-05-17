@@ -10,6 +10,10 @@ class ValidatorMobilePhone {
             return false
         }
 
+        if (mobilePhone.replaceAll("(.)\\1*", "").length() == 1) {
+            return false
+        }
+
         return true
     }
 }
