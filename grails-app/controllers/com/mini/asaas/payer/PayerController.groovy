@@ -2,6 +2,8 @@ package com.mini.asaas.payer
 
 import com.mini.asaas.utils.base.PersonType
 
+import grails.validation.ValidationException
+
 class PayerController {
 
     def payerService
@@ -18,9 +20,12 @@ class PayerController {
             Payer payer = payerService.save(adapter, customerId)
 
             redirect(action: "show", id: payer.id)
+        } catch (ValidationException validationException) {
+            flash.errors = validationException.errors
+            
+            redirect(action: "index")
         } catch (Exception exception) {
             log.error("PayerController.save >> Erro ao cadastrar pagador", exception)
-
             render "Não foi possível salvar"
         }
     }
