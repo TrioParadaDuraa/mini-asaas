@@ -1,16 +1,12 @@
 package com.mini.asaas.payer
 
-import com.mini.asaas.utils.base.PersonType
-
 import grails.validation.ValidationException
 
 class PayerController {
 
     def payerService
 
-    def index() {
-        return [personTypes: PersonType.values()]
-    }
+    def index() {}
 
     def save() {
         try {

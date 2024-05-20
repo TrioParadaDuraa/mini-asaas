@@ -1,3 +1,4 @@
+<%@ page import="com.mini.asaas.utils.base.PersonType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,7 +21,7 @@
             <label for="personType">Tipo de pessoa</label>
             <br>
             <select name="personType" id="personType">
-                <g:each var="value" in="${personTypes}">
+                <g:each var="value" in="${PersonType.values()}">
                     <option value="${value}">${value.getLabel()}</option>
                 </g:each>
             </select>
