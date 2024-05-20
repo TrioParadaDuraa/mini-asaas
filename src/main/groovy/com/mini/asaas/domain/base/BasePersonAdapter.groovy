@@ -12,6 +12,8 @@ abstract class BasePersonAdapter {
 
     String phone
 
+    String mobilePhone
+
     PersonType personType
 
     String postalCode

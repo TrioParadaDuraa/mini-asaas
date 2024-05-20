@@ -10,6 +10,7 @@ class PayerAdapter extends BasePersonAdapter {
         this.name = params.name
         this.email = params.email
         this.phone = params.phone
+        this.mobilePhone = params.mobilePhone
         this.personType = PersonType.convert(params.personType.toUpperCase())
         this.postalCode = params.postalCode
         this.address = params.address
