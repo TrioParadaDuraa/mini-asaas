@@ -6,7 +6,7 @@ import grails.validation.ValidationException
 
 class PayerController {
 
-    def payerService
+    PayerService payerService
 
     def index() {}
 

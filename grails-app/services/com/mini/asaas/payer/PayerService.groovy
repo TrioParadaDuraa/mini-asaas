@@ -33,7 +33,7 @@ class PayerService {
     public List<Payer> findAllByCustomer(Long customerId) {
         Customer customer = Customer.read(customerId)
 
-        return Payer.findAllByCustomer(customer)
+        return Payer.findAllNotDeletedByCustomer(customer)
     }
 
     public Payer update(Payer payer, PayerAdapter adapter) {
