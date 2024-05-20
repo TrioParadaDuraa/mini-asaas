@@ -1,6 +1,6 @@
 package com.mini.asaas.utils.enums
 
-enum States {
+enum BrazilianStates {
     ACRE("Acre", "AC"),
     ALAGOAS("Alagoas", "AL"),
     AMAZONAS("Amazonas", "AM"),
@@ -31,29 +31,17 @@ enum States {
 
     final String fullName
     
-    final String uf
+    final String abbreviation
 
-    States(String fullName, String uf) {
+    BrazilianStates(String fullName, String abbreviation) {
         this.fullName = fullName
-        this.uf = uf
+        this.abbreviation = abbreviation
     }
 
-    String getFullName() {
-        fullName
-    }
-
-    String getUf() {
-        uf
-    }
-
-    String toString() {
-        uf
-    }
-
-    static States fromName(String name) {
-        for (state in values()) {
-            if (state.fullName.equalsIgnoreCase(name) || state.uf.equalsIgnoreCase(name)) {
-                return state
+    static BrazilianStates fromName(String name) {
+        for (brazilianState in values()) {
+            if (brazilianState.fullName.equalsIgnoreCase(name) || brazilianState.abbreviation.equalsIgnoreCase(name)) {
+                return brazilianState
             }
         }
         
