@@ -53,4 +53,19 @@ class PayerController {
             render "Não foi possível carregar pagadores"
         }
     }
+
+    def edit() {
+        try {
+            Payer payer = Payer.read(params.long("id"))
+
+            if (!payer) {
+                throw new Exception("Pagador não encontrado")
+            }
+
+            return [payer: payer]
+        } catch (Exception exception) {
+            log.error("PayerController.edit >> Erro ao carregar pagador para edição", exception)
+            render "Pagador não encontrado"
+        }
+    }
 }

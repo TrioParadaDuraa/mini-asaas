@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Pagadores</title>
 </head>
 <body>
     <main>
@@ -21,6 +21,7 @@
                         <tr>
                             <td>${payer.name}</td>
                             <td>${payer.cpfCnpj}</td>
+                            <td><a href="${createLink(controller: 'payer', action: 'show', id: payer.id)}">Visualizar</a></td>
                         </tr>
                     </g:each>
                 </tbody>

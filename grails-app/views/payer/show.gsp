@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Visualizar pagador</title>
 </head>
 <body>
-    <form action="${createLink(controller: "payer", action: "save")}">
+    <form>
         <div>
             <label for="name">Nome</label>
             <br>
@@ -17,12 +17,14 @@
             <br>
             <input name="email" value="${payer.email}" id="email" type="email" readonly>
         </div>
-        <br>
         <div>
             <label for="personType">Tipo de pessoa</label>
             <br>
             <input name="personType" value="${payer.personType.getLabel()}" id="personType" type="text" readonly>
         </div>
     </form>
+    <div>
+        <a href="${createLink(controller: 'payer', action: 'edit', id: payer.id)}">Editar</a>
+    </div>
 </body>
 </html>
