@@ -1,5 +1,7 @@
 package com.mini.asaas.payer
 
+import com.mini.asaas.customer.Customer
+
 import grails.validation.ValidationException
 
 class PayerController {
@@ -66,6 +68,29 @@ class PayerController {
         } catch (Exception exception) {
             log.error("PayerController.edit >> Erro ao carregar pagador para edição", exception)
             render "Pagador não encontrado"
+        }
+    }
+
+    def update() {
+        try {
+            Payer payer = Payer.get(params.long("id"))
+
+            if (!payer) {
+                throw new Exception("Pagador não encontrado")
+            }
+
+            PayerAdapter adapter = new PayerAdapter(params)
+
+            payer = payerService.update(payer, adapter)
+
+            redirect(action: "show", id: payer.id)
+        } catch (ValidationException validationException) {
+            flash.errors = validationException.errors
+        
+            redirect(action: "edit", id: params.id)
+        } catch (Exception exception) {
+            log.error("PayerController.update >> Erro ao atualizar dados de pagador", exception)
+            render "Não foi possível atualizar dados do pagador"
         }
     }
 }
