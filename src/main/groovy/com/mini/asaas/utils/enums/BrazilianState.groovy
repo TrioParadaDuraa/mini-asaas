@@ -1,6 +1,6 @@
 package com.mini.asaas.utils.enums
 
-enum BrazilianStates {
+enum BrazilianState {
     ACRE("Acre", "AC"),
     ALAGOAS("Alagoas", "AL"),
     AMAZONAS("Amazonas", "AM"),
@@ -33,18 +33,8 @@ enum BrazilianStates {
     
     final String abbreviation
 
-    BrazilianStates(String fullName, String abbreviation) {
+    BrazilianState(String fullName, String abbreviation) {
         this.fullName = fullName
         this.abbreviation = abbreviation
-    }
-
-    static BrazilianStates fromName(String name) {
-        for (brazilianState in values()) {
-            if (brazilianState.fullName.equalsIgnoreCase(name) || brazilianState.abbreviation.equalsIgnoreCase(name)) {
-                return brazilianState
-            }
-        }
-        
-        throw new IllegalArgumentException("Estado não encontrado: $name")
     }
 }
