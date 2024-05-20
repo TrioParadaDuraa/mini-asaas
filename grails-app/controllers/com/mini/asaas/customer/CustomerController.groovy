@@ -48,7 +48,7 @@ class CustomerController {
             flash.message = 'Não encontrado cliente para edição'
             def customer = Customer.read(params.id)
 
-            redirect(action: "show", id: customer.id)
+            render "Não foi possível editar, tente novamente"
         }
     }
 
