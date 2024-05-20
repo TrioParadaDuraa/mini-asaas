@@ -1,16 +1,12 @@
 package com.mini.asaas.payer
 
-import com.mini.asaas.utils.base.PersonType
-
 import grails.validation.ValidationException
 
 class PayerController {
 
     def payerService
 
-    def index() {
-        return [personTypes: PersonType.values()]
-    }
+    def index() {}
 
     def save() {
         try {
@@ -35,11 +31,12 @@ class PayerController {
             Payer payer = Payer.read(params.id)
 
             if (!payer) {
-                render "Pagador não encontrado"
+                throw new Exception("Pagador não encontrado")
             }
 
             return [payer: payer]
         } catch (Exception exception) {
+            log.error("PayerController.show >> Erro ao tentar apresentar dados de pagador", exception)
             render "Pagador não encontrado"
         }
     }
