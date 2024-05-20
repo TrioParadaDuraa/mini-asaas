@@ -35,7 +35,7 @@ abstract class BasePerson extends BaseDomain {
         name blank: false
         email email: true, blank: false
         phone blank: false, nullable: true, size: 10..10
-        mobilePhone blank: false, size:11..11
+        mobilePhone blank: false, size: 11..11
         postalCode blank: false, size: 8..8
         address blank: false
         addressNumber blank: false
