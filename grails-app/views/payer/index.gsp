@@ -55,6 +55,15 @@
         </g:if>
 
         <div>
+            <label for="mobilePhone">Celular</label>
+            <br>
+            <input name="mobilePhone" value="${params.mobilePhone}" id="mobilePhone" type="tel" maxlength="11">
+        </div>
+        <g:if test="${flash.errors?.hasFieldErrors('mobilePhone')}">
+            <div>Celular inválido</div>
+        </g:if>
+
+        <div>
             <label for="postalCode">CEP</label>
             <br>
             <input name="postalCode" value="${params.postalCode}" id="postalCode" type="text" maxlength="8">

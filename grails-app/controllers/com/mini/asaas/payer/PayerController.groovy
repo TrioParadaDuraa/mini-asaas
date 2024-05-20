@@ -18,6 +18,8 @@ class PayerController {
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
+
+            log.error(validationException)
             
             redirect(action: "index")
         } catch (Exception exception) {
