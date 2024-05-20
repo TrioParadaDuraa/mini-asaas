@@ -82,7 +82,6 @@ class PayerController {
             }
 
             PayerAdapter adapter = new PayerAdapter(params)
-
             payer = payerService.update(payer, adapter)
 
             redirect(action: "show", id: payer.id)
@@ -93,6 +92,23 @@ class PayerController {
         } catch (Exception exception) {
             log.error("PayerController.update >> Erro ao atualizar dados de pagador", exception)
             render "Não foi possível atualizar dados do pagador"
+        }
+    }
+
+    def delete() {
+        try {
+            Payer payer = Payer.get(params.long("id"))
+            
+            if (!payer) {
+                throw new Exception("Pagador não encontrado")
+            }
+
+            payerService.delete(payer)
+
+            redirect(action: "list")
+        } catch (Exception exception) {
+            log.error("PayerController.delete >> Erro ao excluir pagador", exception)
+            render "Não foi possível excluir pagador"
         }
     }
 }

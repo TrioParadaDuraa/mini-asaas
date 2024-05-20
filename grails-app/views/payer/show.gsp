@@ -25,6 +25,9 @@
     </form>
     <div>
         <a href="${createLink(controller: 'payer', action: 'edit', id: payer.id)}">Editar</a>
+        <form action="${createLink(controller: 'payer', action: 'delete', id: payer.id)}" method="POST">
+            <button type="submit">Excluir</button>
+        </form>
     </div>
 </body>
 </html>

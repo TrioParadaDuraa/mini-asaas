@@ -54,4 +54,10 @@ class PayerService {
         
         return payer
     }
+
+    public void delete(Payer payer) {
+        payer.deleted = true
+
+        payer.save(failOnError: true)
+    }
 }
