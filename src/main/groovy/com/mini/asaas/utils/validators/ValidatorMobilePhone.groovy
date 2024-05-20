@@ -2,18 +2,10 @@ package com.mini.asaas.utils.validators
 
 class ValidatorMobilePhone {
     public static boolean isValidMobilePhone(String mobilePhone) {
-        if (mobilePhone.length() != 11) {
-            return false
+        if (mobilePhone.matches("[0-9]{11}") && mobilePhone[2] == '9') {
+            return true
         }
 
-        if (mobilePhone[2] != '9') {
-            return false
-        }
-
-        if (mobilePhone.replaceAll("(.)\\1*", "").length() == 1) {
-            return false
-        }
-
-        return true
+        return false
     }
 }
