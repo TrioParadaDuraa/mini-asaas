@@ -30,6 +30,7 @@ enum States {
     TOCANTINS("Tocantins", "TO")
 
     final String fullName
+    
     final String uf
 
     States(String fullName, String uf) {
@@ -55,6 +56,7 @@ enum States {
                 return state
             }
         }
+        
         throw new IllegalArgumentException("Estado não encontrado: $name")
     }
 }
