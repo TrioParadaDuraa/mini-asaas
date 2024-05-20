@@ -30,7 +30,6 @@ class CustomerService {
     public Customer update(Long customerId, params){
         Customer customer = Customer.get(customerId)
 
-        customer.cpfCnpj = params.cpfCnpj
         customer.name = params.name
         customer.email = params.email
         customer.phone = params.phone

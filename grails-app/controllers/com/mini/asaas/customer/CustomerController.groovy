@@ -42,7 +42,7 @@ class CustomerController {
     def update() {
         try {
             def customer = Customer.read(params.id)
-            [customer: customer]
+            return [customer: customer]
         } catch (Exception exception){
             log.error("CustomerController.update >> Não foi possível realizar a edição", exception)
             flash.message = 'Não encontrado cliente para edição'

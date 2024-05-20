@@ -85,5 +85,7 @@
                 <input type="text" name="state" value="${customer.state}" readonly>
             </div>
         </form>
+        <br>
+        <g:link controller="customer" action="update" params="[id: customer.id]"><button>Editar dados</button></g:link>
     </body>
 </html>

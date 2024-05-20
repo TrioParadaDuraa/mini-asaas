@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar dados</title>
   </head>
   <body>
-    <form METHOD="post" action="${createLink(controller: "customer", action: "sendUpdate")}">
+    <form method="POST" action="${createLink(controller: "customer", action: "sendUpdate")}">
       <input type="hidden" name="id" value="${customer.id}">
       <div>
         <label>Nome</label>
@@ -23,7 +23,7 @@
       <div>
         <label>CPF/CNPJ</label>
         <br>
-        <input type="text" name="cpfCnpj" value="${customer.cpfCnpj}">
+        <input type="text" name="cpfCnpj" value="${customer.cpfCnpj}" readonly>
       </div>
       <br>
       <div>
