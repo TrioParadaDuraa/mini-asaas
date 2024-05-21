@@ -38,7 +38,7 @@
             <input type="text" name="postalCode" placeholder="12345678" maxlength="8" value="${params.postalCode}">
         </div>
         <div>
-            <label>Endereco</label>
+            <label>Endereço</label>
             <br>
             <input type="text" name="address" value="${params.address}">
         </div>

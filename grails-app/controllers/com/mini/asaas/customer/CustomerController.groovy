@@ -4,7 +4,7 @@ import com.mini.asaas.utils.message.MessageType
 
 class CustomerController {
     
-    def customerService
+    CustomerService customerService
 
     def index() {
 
@@ -28,14 +28,15 @@ class CustomerController {
     def show() {
         try {
             Customer customer = Customer.read(params.id)
+
             if (!customer) {
-                render "Cliente não encontrado"
+                throw new Exception("Cliente não encontrado")
             }
 
             return [customer: customer]
        } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
-           render "Cliente não encontrado"
+            render "Cliente não encontrado"
         }
     }
 }
