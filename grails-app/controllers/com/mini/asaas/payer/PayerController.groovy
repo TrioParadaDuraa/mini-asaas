@@ -58,21 +58,6 @@ class PayerController {
         }
     }
 
-    def edit() {
-        try {
-            Payer payer = Payer.read(params.long("id"))
-
-            if (!payer) {
-                throw new Exception("Pagador não encontrado")
-            }
-
-            return [payer: payer]
-        } catch (Exception exception) {
-            log.error("PayerController.edit >> Erro ao carregar pagador para edição", exception)
-            render "Pagador não encontrado"
-        }
-    }
-
     def update() {
         try {
             Payer payer = Payer.get(params.long("id"))
@@ -88,7 +73,7 @@ class PayerController {
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
         
-            redirect(action: "edit", id: params.id)
+            redirect(action: "show", id: params.id)
         } catch (Exception exception) {
             log.error("PayerController.update >> Erro ao atualizar dados de pagador", exception)
             render "Não foi possível atualizar dados do pagador"
