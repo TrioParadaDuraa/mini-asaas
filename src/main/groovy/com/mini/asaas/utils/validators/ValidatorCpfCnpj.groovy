@@ -3,6 +3,8 @@ package com.mini.asaas.utils.validators
 class ValidatorCpfCnpj {
 
     static boolean isValidCpfCnpj(String cpfCnpj) {
+        cpfCnpj = cpfCnpj.replaceAll("[^0-9]", "")
+        
         if (!cpfCnpj.matches("\\d{11}") && !cpfCnpj.matches("\\d{14}")) {
             return false
         }
@@ -17,69 +19,61 @@ class ValidatorCpfCnpj {
     }
 
     private static boolean isValidCpf(String cpf) {
-        if (cpf.replaceAll("(.)\\1*", "").length() == 1) {
+        if (cpf.matches("(\\d)\\1{10}")) {
             return false
         }
 
-        def sum = 0
-        (0..8).each { i ->
-            sum += Integer.parseInt(cpf[i]) * (10 - i)
+        int[] digits = cpf.collect { it as int - '0' as int }
+        
+        int sum = 0
+        
+        for (int i = 0; i < 9; i++) {
+            sum += digits[i] * (10 - i)
         }
         
-        def digit1 = (sum * 10) % 11
+        int remainder = sum % 11
+        int digit1 = (remainder < 2) ? 0 : (11 - remainder)
         
-        if (digit1 == 10) digit1 = 0
-
-        if (digit1 != Integer.parseInt(cpf[9])) {
-            return false
-        }
-
         sum = 0
-        (0..9).each { i ->
-            sum += Integer.parseInt(cpf[i]) * (11 - i)
+        
+        for (int i = 0; i < 10; i++) {
+            sum += digits[i] * (11 - i)
         }
         
-        def digit2 = (sum * 10) % 11
+        remainder = sum % 11
+        int digit2 = (remainder < 2) ? 0 : (11 - remainder)
         
-        if (digit2 == 10) digit2 = 0
-
-        if (digit2 != Integer.parseInt(cpf[10])) {
-            return false
-        }
-
-        return true
+        return digit1 == digits[9] && digit2 == digits[10]
     }
 
     private static boolean isValidCnpj(String cnpj) {
-        if (cnpj.replaceAll("(.)\\1*", "").length() == 1) {
+        if (cnpj.matches("(\\d)\\1{13}")) {
             return false
         }
 
-        def sum = 0
+        int[] digits = cnpj.collect { it as int - '0' as int }
         
-        def weights = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-        (0..11).each { i ->
-            sum += Integer.parseInt(cnpj[i]) * weights[i]
+        int sum = 0
+        
+        int[] weights = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+        
+        for (int i = 0; i < 12; i++) {
+            sum += digits[i] * weights[i]
         }
         
-        def digit1 = (sum % 11 < 2) ? 0 : (11 - sum % 11)
-
-        if (digit1 != Integer.parseInt(cnpj[12])) {
-            return false
-        }
-
+        int remainder = sum % 11
+        int digit1 = (remainder < 2) ? 0 : (11 - remainder)
+        
         sum = 0
         weights = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-        (0..12).each { i ->
-            sum += Integer.parseInt(cnpj[i]) * weights[i]
+        
+        for (int i = 0; i < 13; i++) {
+            sum += digits[i] * weights[i]
         }
         
-        def digit2 = (sum % 11 < 2) ? 0 : (11 - sum % 11)
-
-        if (digit2 != Integer.parseInt(cnpj[13])) {
-            return false
-        }
-
-        return true
+        remainder = sum % 11
+        int digit2 = (remainder < 2) ? 0 : (11 - remainder)
+        
+        return digit1 == digits[12] && digit2 == digits[13]
     }
 }
