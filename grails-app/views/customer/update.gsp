@@ -27,9 +27,15 @@
       </div>
       <br>
       <div>
-        <label>Telefone/Celular</label>
+        <label>Telefone</label>
         <br>
         <input type="text" name="phone" value="${customer.phone}">
+      </div>
+      <br>
+      <div>
+        <label>Celular</label>
+        <br>
+        <input type="text" name="mobilePhone" value="${customer.mobilePhone}">
       </div>
       <br>
       <div>
