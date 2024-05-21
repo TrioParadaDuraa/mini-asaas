@@ -62,7 +62,7 @@ class PayerController {
         try {
             Payer payer = Payer.get(params.long("id"))
 
-            if (!payer) {
+            if (!payer | payer.deleted) {
                 throw new Exception("Pagador não encontrado")
             }
 
@@ -84,7 +84,7 @@ class PayerController {
         try {
             Payer payer = Payer.get(params.long("id"))
             
-            if (!payer) {
+            if (!payer | payer.deleted) {
                 throw new Exception("Pagador não encontrado")
             }
 
