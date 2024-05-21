@@ -27,7 +27,7 @@ class CustomerController {
 
     def show() {
         try {
-            Customer customer = Customer.read(params.id)
+            Customer customer = Customer.read(params.long('id'))
 
             if (!customer) {
                 throw new Exception("Cliente não encontrado")
@@ -40,31 +40,15 @@ class CustomerController {
         }
     }
 
-    def update() {
-        try {
-            def customer = Customer.read(params.id)
-
-            return [customer: customer]
-        } catch (Exception exception){
-            log.error("CustomerController.update >> Não foi possível realizar a edição", exception)
-            flash.message = 'Não encontrado cliente para edição'
-            def customer = Customer.read(params.id)
-
-            render "Não foi possível editar, tente novamente"
-        }
-    }
-
     def sendUpdate() {
         try {
-            customerService.update(params.long('id'), params)
+            CustomerAdapter adapterUpdate = new CustomerAdapter(params)
+            customerService.update(params.long('id'), adapterUpdate)
 
-            render"Atualização salva com sucesso"
+            redirect(action: "show", id: params.long('id'))
         } catch (Exception exception){
             log.error("CustomerController.sendUpdate >> Não foi possivel salvar as atualizações", exception)
-            flash.message = 'Não foi possivel atualizar os dados'
-            def customer = Customer.read(params.id)
-
-            redirect(action: "update", id: customer.id)
+            render "Não foi possível atualizar os dados"
         }
     }
 }
