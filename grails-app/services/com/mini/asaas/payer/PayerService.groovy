@@ -41,6 +41,7 @@ class PayerService {
         payer.name = adapter.name
         payer.email = adapter.email
         payer.phone = adapter.phone
+        payer.mobilePhone = adapter.mobilePhone
         payer.personType = adapter.personType
         payer.postalCode = adapter.postalCode
         payer.address = adapter.address
