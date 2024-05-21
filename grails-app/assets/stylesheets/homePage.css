@@ -1,0 +1,26 @@
+body {
+    background-color: #0030B9
+}
+
+.card-buttons {
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.button-homepage {
+    background-color: #0030B9;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    width: 150px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
