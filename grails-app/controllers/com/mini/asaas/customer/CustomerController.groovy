@@ -27,7 +27,7 @@ class CustomerController {
 
     def show() {
         try {
-            Customer customer = Customer.read(params.id)
+            Customer customer = Customer.read(params.long('id'))
 
             if (!customer) {
                 throw new Exception("Cliente não encontrado")
@@ -37,6 +37,18 @@ class CustomerController {
        } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
             render "Cliente não encontrado"
+        }
+    }
+
+    def sendUpdate() {
+        try {
+            CustomerAdapter adapterUpdate = new CustomerAdapter(params)
+            customerService.update(params.long('id'), adapterUpdate)
+
+            redirect(action: "show", id: params.long('id'))
+        } catch (Exception exception){
+            log.error("CustomerController.sendUpdate >> Não foi possivel salvar as atualizações", exception)
+            render "Não foi possível atualizar os dados"
         }
     }
 }
