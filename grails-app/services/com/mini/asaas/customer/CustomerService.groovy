@@ -8,7 +8,7 @@ class CustomerService {
     public Customer save(CustomerAdapter adapter){
         Customer customer = new Customer()
 
-        buildCustomerPropertiers(customer, adapter)
+        buildCustomerProperties(customer, adapter)
 
         customer.save(failOnError: true)
 
@@ -18,14 +18,14 @@ class CustomerService {
     public Customer update(Long customerId, CustomerAdapter adapterUpdate){
         Customer customer = Customer.get(customerId)
 
-        buildCustomerPropertiers(customer, adapterUpdate)
+        buildCustomerProperties(customer, adapterUpdate)
 
         customer.save(failOnError: true)
 
         return customer
     }
 
-    private Customer buildCustomerPropertiers(Customer customer, CustomerAdapter adapter) {
+    private Customer buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
 
         customer.cpfCnpj = adapter.cpfCnpj
         customer.name = adapter.name
