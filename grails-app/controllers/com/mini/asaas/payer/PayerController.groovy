@@ -51,7 +51,13 @@ class PayerController {
             Long customerId = 1
             Customer customer = Customer.read(customerId)
 
-            List<Payer> payers = payerService.list(customer)
+            List<Payer> payers
+
+            if (params.deleted) {
+                payers = payerService.listDeleted(customer)
+            } else {
+                payers = payerService.list(customer)
+            }
 
             return [payers: payers]
         } catch (Exception exception) {
@@ -64,8 +70,10 @@ class PayerController {
         try {
             Payer payer = Payer.get(params.long("id"))
 
-            if (!payer | payer.deleted) {
+            if (!payer) {
                 throw new Exception("Pagador não encontrado")
+            } else if (payer.deleted) {
+                throw new Exception("Pagador está inativo")
             }
 
             PayerAdapter adapter = new PayerAdapter(params)
@@ -86,8 +94,10 @@ class PayerController {
         try {
             Payer payer = Payer.get(params.long("id"))
             
-            if (!payer | payer.deleted) {
+            if (!payer) {
                 throw new Exception("Pagador não encontrado")
+            } else if (payer.deleted) {
+                throw new Exception("Pagador já está inativo")
             }
 
             payerService.delete(payer)

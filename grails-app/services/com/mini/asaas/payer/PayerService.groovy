@@ -34,6 +34,10 @@ class PayerService {
         return Payer.findAllNotDeletedByCustomer(customer)
     }
 
+    public List<Payer> listDeleted(Customer customer) {
+        return Payer.findAllDeletedByCustomer(customer)
+    }
+
     public Payer update(Payer payer, PayerAdapter adapter) {
         payer.cpfCnpj = adapter.cpfCnpj
         payer.name = adapter.name

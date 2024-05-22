@@ -9,6 +9,15 @@
     <main>
         <h1>Lista de pagadores</h1>        
         <div>
+            <form action="${createLink(controller: 'payer', action: 'list')}" method="GET">
+                <div>Filtros</div>
+                <div>
+                    <input type="checkbox" name="deleted" id="deleted">
+                    <label for="deleted">Excluídos</label>
+                </div>
+                <button type="submit">Aplicar</button>
+            </form>
+            
             <table>
                 <thead>
                     <tr>
