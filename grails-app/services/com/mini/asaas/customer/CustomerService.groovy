@@ -5,7 +5,7 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class CustomerService {
 
-    public Customer save(CustomerAdapter adapter){
+    public Customer save(CustomerAdapter adapter) {
         Customer customer = new Customer()
 
         buildCustomerProperties(customer, adapter)
@@ -15,7 +15,7 @@ class CustomerService {
         return customer
     }
 
-    public update(Long customerId, CustomerAdapter adapter){
+    public update(Long customerId, CustomerAdapter adapter) {
         Customer customer = Customer.get(customerId)
 
         buildCustomerProperties(customer, adapter)
