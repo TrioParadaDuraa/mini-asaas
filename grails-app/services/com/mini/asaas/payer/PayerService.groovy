@@ -63,4 +63,10 @@ class PayerService {
 
         payer.save(failOnError: true)
     }
+
+    public void restore(Payer payer) {
+        payer.deleted = false
+
+        payer.save(failOnError: true)
+    }
 }

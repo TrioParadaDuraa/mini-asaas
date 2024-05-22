@@ -108,4 +108,23 @@ class PayerController {
             render "Não foi possível excluir pagador"
         }
     }
+
+    def restore() {
+        try {
+            Payer payer = Payer.get(params.long("id"))
+
+            if (!payer) {
+                throw new Exception("Pagador não encontrado")
+            } else if (!payer.deleted) {
+                throw new Exception("Pagador não está inativo")
+            }
+
+            payerService.restore(payer)
+
+            redirect(action: "list")
+        } catch (Exception exception) {
+            log.error("PayerController.restore >> Erro ao restaurar pagador", exception)
+            render "Não foi possível restaurar pagador"
+        }
+    }
 }

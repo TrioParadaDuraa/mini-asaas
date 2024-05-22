@@ -7,7 +7,7 @@
     <title>Visualizar pagador</title>
 </head>
 <body>
-    <form action="${createLink(controller: 'payer', action: 'update', id: payer.id)}" method="POST">
+    <form action="${createLink(controller: 'payer', action: 'update', id: payer.id)}" method="POST" ${payer.deleted ? raw("inert") : null}>
         <div>
             <label for="name">Nome</label>
             <br>
@@ -123,10 +123,20 @@
             <div>Estado inválido</div>
         </g:if>
 
-        <button type="submit">Salvar</button>
+        <g:if test="${!payer.deleted}">
+            <button type="submit">Salvar</button>
+        </g:if>
     </form>
-    <form action="${createLink(controller: 'payer', action: 'delete', id: payer.id)}" method="POST">
-        <button type="submit">Excluir</button>
-    </form>
+
+    <g:if test="${payer.deleted}">
+        <form action="${createLink(controller: 'payer', action: 'restore', id: payer.id)}">
+            <button type="submit">Restaurar</button>
+        </form>
+    </g:if>
+    <g:else>
+        <form action="${createLink(controller: 'payer', action: 'delete', id: payer.id)}" method="POST">
+            <button type="submit">Excluir</button>
+        </form>
+    </g:else>
 </body>
 </html>
