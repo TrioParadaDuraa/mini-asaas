@@ -23,8 +23,8 @@
                     <button class="button-homepage">Criar conta</button>
                 </div>
                 <div class="bottom-text">
-                    <a>Termos de uso</a>
-                    <a>Politicas de Privacidade</a>
+                    <a href="https://ajuda.asaas.com/pt-BR/articles/102021-termos-e-condicoes-de-uso">Termos de uso</a>
+                    <a href="https://ajuda.asaas.com/pt-BR/articles/102029-politica-de-privacidade">Politicas de Privacidade</a>
                 </div>
             </div>
         </div>
