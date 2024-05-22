@@ -3,12 +3,6 @@ package com.mini.asaas.utils.validators
 class ValidatorCpfCnpj {
 
     static boolean isValidCpfCnpj(String cpfCnpj) {
-        cpfCnpj = cpfCnpj.replaceAll("[^0-9]", "")
-        
-        if (!cpfCnpj.matches("\\d{11}") && !cpfCnpj.matches("\\d{14}")) {
-            return false
-        }
-    
         if (cpfCnpj.length() == 11) {
             return isValidCpf(cpfCnpj)
         } else if (cpfCnpj.length() == 14) {
@@ -19,7 +13,7 @@ class ValidatorCpfCnpj {
     }
 
     private static boolean isValidCpf(String cpf) {
-        if (cpf.matches("(\\d)\\1{10}")) {
+        if (!cpf.matches("\\d{11}") || cpf.matches("(\\d)\\1{10}")) {
             return false
         }
 
@@ -47,7 +41,7 @@ class ValidatorCpfCnpj {
     }
 
     private static boolean isValidCnpj(String cnpj) {
-        if (cnpj.matches("(\\d)\\1{13}")) {
+        if (!cnpj.matches("\\d{14}") || cnpj.matches("(\\d)\\1{13}")) {
             return false
         }
 
