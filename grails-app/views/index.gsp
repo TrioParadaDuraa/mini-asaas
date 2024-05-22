@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Mini Asaas</title>
-    <asset:stylesheet src="homePage.css"/>
+    <asset:stylesheet src="homepage.css"/>
     <asset:link rel="icon" href="asaas-icon.png" type="image/x-icon"/>
 </head>
 <body>
     <div class="page-container">
         <div class="left-bar">
-            <asset:image src="/homePage/asaas-logo.png" class="asaas-logo"/>
-            <asset:image src="/homePage/cell-phone.png" class="cellphone"/>
+            <asset:image src="/homepage/asaas-logo.png" class="asaas-logo"/>
+            <asset:image src="/homepage/cell-phone.png" class="cellphone"/>
         </div>
         <div class="center">
             <div class="top-text">
@@ -29,9 +29,9 @@
             </div>
         </div>
         <div class="right-bar">
-            <asset:image src="/homePage/blue-detail.png" class="blue-detail"/>
-            <asset:image src="/homePage/asaas-paper.png" class="asaas-paper"/>
-            <asset:image src="/homePage/asaas-girl.png" class="asaas-girl"/>
+            <asset:image src="/homepage/blue-detail.png" class="blue-detail"/>
+            <asset:image src="/homepage/asaas-paper.png" class="asaas-paper"/>
+            <asset:image src="/homepage/asaas-girl.png" class="asaas-girl"/>
         </div>
     </div>
 </body>
