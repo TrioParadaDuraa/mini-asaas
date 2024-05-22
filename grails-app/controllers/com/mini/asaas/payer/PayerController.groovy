@@ -1,5 +1,7 @@
 package com.mini.asaas.payer
 
+import com.mini.asaas.customer.Customer
+
 import grails.validation.ValidationException
 
 class PayerController {
@@ -11,9 +13,10 @@ class PayerController {
     def save() {
         try {
             Long customerId = 1
+            Customer customer = Customer.read(customerId)
 
             PayerAdapter adapter = new PayerAdapter(params)
-            Payer payer = payerService.save(adapter, customerId)
+            Payer payer = payerService.save(adapter, customer)
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
@@ -46,8 +49,9 @@ class PayerController {
     def list() {
         try {
             Long customerId = 1
+            Customer customer = Customer.read(customerId)
 
-            List<Payer> payers = payerService.findAllByCustomer(customerId)
+            List<Payer> payers = payerService.list(customer)
 
             return [payers: payers]
         } catch (Exception exception) {
