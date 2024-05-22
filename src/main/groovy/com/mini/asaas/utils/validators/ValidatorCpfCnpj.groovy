@@ -3,13 +3,7 @@ package com.mini.asaas.utils.validators
 class ValidatorCpfCnpj {
 
     static boolean isValidCpfCnpj(String cpfCnpj) {
-        if (cpfCnpj.length() == 11) {
-            return isValidCpf(cpfCnpj)
-        } else if (cpfCnpj.length() == 14) {
-            return isValidCnpj(cpfCnpj)
-        } else {
-            return false
-        }
+        return isValidCpf(cpfCnpj) || isValidCnpj(cpfCnpj)
     }
 
     private static boolean isValidCpf(String cpf) {
