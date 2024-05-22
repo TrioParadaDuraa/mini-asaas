@@ -1,5 +1,7 @@
 package com.mini.asaas.utils.base
 
+import com.mini.asaas.utils.enums.PaymentType
+
 enum PaymentStatus {
 
     AWAITING_PAYMENT,

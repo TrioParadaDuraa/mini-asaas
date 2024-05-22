@@ -1,4 +1,4 @@
-package com.mini.asaas.utils.base
+package com.mini.asaas.utils.enums
 
 enum PaymentType {
 

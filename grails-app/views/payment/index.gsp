@@ -20,7 +20,7 @@
       <div>
         <label>Valor da cobrança: </label>
         <br>
-        <input type="number" name="value" value="${params.value}">
+        <input type="number" name="value" step= "any" value="${params.value}">
       </div>
       <br>
       <div>

@@ -5,7 +5,15 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class PaymentService {
 
-    def serviceMethod() {
+    public Payment save() {
+        Payment payment = new Payment()
 
+        return payment
+    }
+
+    private Payment paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
+
+
+        return payment
     }
 }
