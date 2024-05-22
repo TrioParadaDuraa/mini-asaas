@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="${createLink(controller: "customer", action: "save")}">
+    <form method="POST" action="${createLink(controller: 'customer', action: 'save')}">
         <div>
             <label>Nome</label>
             <br>

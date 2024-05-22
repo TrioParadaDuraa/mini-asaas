@@ -6,7 +6,7 @@
         <title>Informações do customer</title>
     </head>
     <body>
-        <form method="POST" action="${createLink(controller: "customer", action: "sendUpdate")}">
+        <form method="POST" action="${createLink(controller: 'customer', action: 'update')}">
             <input type="hidden" name="id" value="${customer.id}">
             <div>
                 <label>Nome</label>
@@ -47,7 +47,7 @@
             <div>
                 <label>CEP</label>
                 <br>
-                <input type="text" class="update-input"  name="postalCode" value="${customer.postalCode}" readonly>
+                <input type="text" class="update-input" name="postalCode" value="${customer.postalCode}" readonly>
             </div>
             <br>
             <div>
@@ -57,7 +57,7 @@
             </div>
             <br>
             <div>
-                <label>Número do endereço</label>
+                <label>Número</label>
                 <br>
                 <input type="text" class="update-input" name="addressNumber" value="${customer.addressNumber}" readonly>
             </div>
@@ -86,8 +86,8 @@
                 <input type="text" class="update-input" name="state" value="${customer.state}" readonly>
             </div>
             <br>
-                <button id="editButton" type="button">Habilitar edição</button>
-                <button type="submit">Salvar</button>
+            <button id="edit-button" type="button">Habilitar edição</button>
+            <button type="submit">Salvar</button>
         </form>
         <asset:javascript src="editScript.js"/>
     </body>
