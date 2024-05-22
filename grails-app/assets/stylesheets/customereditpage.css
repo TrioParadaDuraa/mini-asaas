@@ -1,0 +1,7 @@
+.save-button-hidden {
+    display: none;
+}
+
+.save-button-visible {
+    display: inline-block;
+}
