@@ -51,15 +51,15 @@ class PayerController {
             Long customerId = 1
             Customer customer = Customer.read(customerId)
 
-            List<Payer> payers
+            List<Payer> payerList
 
             if (params.deleted) {
-                payers = payerService.listDeleted(customer)
+                payerList = payerService.listDeleted(customer)
             } else {
-                payers = payerService.list(customer)
+                payerList = payerService.list(customer)
             }
 
-            return [payers: payers]
+            return [payerList: payerList]
         } catch (Exception exception) {
             log.error("PayerController.list >> Erro ao listar pagadores", exception)
             render "Não foi possível carregar pagadores"

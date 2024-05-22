@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <g:each var="payer" in="${payers}">
+                    <g:each var="payer" in="${payerList}">
                         <tr>
                             <td>${payer.name}</td>
                             <td>${payer.cpfCnpj}</td>
