@@ -1,6 +1,6 @@
 package com.mini.asaas.utils.validators
 
-class ValidatorCpfCnpj {
+class CpfCnpjValidator {
 
     static boolean isValidCpfCnpj(String cpfCnpj) {
         return isValidCpf(cpfCnpj) || isValidCnpj(cpfCnpj)
@@ -11,7 +11,7 @@ class ValidatorCpfCnpj {
             return false
         }
 
-        int[] digits = cpf.collect { it as int - '0' as int }
+        int[] digits = cpf.collect { it as int }
         
         int sum = 0
         
@@ -39,7 +39,7 @@ class ValidatorCpfCnpj {
             return false
         }
 
-        int[] digits = cnpj.collect { it as int - '0' as int }
+        int[] digits = cnpj.collect { it as int }
         
         int sum = 0
         
