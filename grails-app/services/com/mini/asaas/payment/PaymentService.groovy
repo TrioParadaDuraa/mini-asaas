@@ -18,14 +18,12 @@ class PaymentService {
         return payment
     }
 
-    private Payment paymentBuildProperties(Payment payment, PaymentAdapter adapter, Long payerId, Long customerId) {
+    private paymentBuildProperties(Payment payment, PaymentAdapter adapter, Long payerId, Long customerId) {
         payment.customer = Customer.read(customerId)
         payment.payer = Payer.read(payerId)
         payment.paymentType = adapter.paymentType
         payment.value = adapter.value
         payment.status = adapter.status
         payment.dueDate = adapter.dueDate
-
-        return payment
     }
 }
