@@ -23,7 +23,7 @@ class CustomerService {
         customer.save(failOnError: true)
     }
 
-    private Customer buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
+    private buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
         customer.cpfCnpj = adapter.cpfCnpj
         customer.name = adapter.name
         customer.email = adapter.email
@@ -37,7 +37,5 @@ class CustomerService {
         customer.district = adapter.district
         customer.city = adapter.city
         customer.state = adapter.state
-
-        return customer
     }
 }
