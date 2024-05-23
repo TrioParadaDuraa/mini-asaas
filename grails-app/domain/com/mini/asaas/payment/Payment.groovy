@@ -14,12 +14,13 @@ class Payment extends BaseDomain {
 
     PaymentType paymentType
 
-    String value
+    BigDecimal value
 
     PaymentStatus status
 
     Date dueDate
 
     static constraints = {
+        value nullable: false, scale: 2
     }
 }

@@ -7,7 +7,7 @@ class PaymentAdapter {
 
     PaymentType paymentType
 
-    String value
+    BigDecimal value
 
     PaymentStatus status
 
