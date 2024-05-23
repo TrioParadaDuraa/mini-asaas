@@ -5,20 +5,6 @@ import java.text.SimpleDateFormat
 
 class FormatUtils {
 
-    public static BigDecimal toBigDecimal(String value) {
-        if (value == null || value.trim().isEmpty()) {
-
-            return  null
-        }
-
-        try {
-
-            return new BigDecimal(value.replace(',', '.'))
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("O valor fornecido não é um número válido: ${value}", exception)
-        }
-    }
-
     public static Date toDate(String date, String inputFormat = "yyyy-MM-dd") {
         if (date == null || date.trim().isEmpty()) {
             return null
