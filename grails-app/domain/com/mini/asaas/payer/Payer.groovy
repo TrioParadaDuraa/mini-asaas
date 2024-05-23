@@ -6,4 +6,16 @@ import com.mini.asaas.domain.base.BasePerson
 class Payer extends BasePerson {
 
     Customer customer
+
+    static namedQueries = {
+        query { Customer customer, Map filterList ->
+            if (Boolean.valueOf(filterList.deleted)) {
+                eq "deleted", true
+            } else {
+                eq "deleted", false
+            }
+
+            eq "customer", customer
+        }
+    }
 }

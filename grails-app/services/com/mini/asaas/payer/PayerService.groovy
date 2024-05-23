@@ -30,12 +30,8 @@ class PayerService {
         return payer
     }
 
-    public List<Payer> list(Customer customer) {
-        return Payer.findAllNotDeletedByCustomer(customer)
-    }
-
-    public List<Payer> listDeleted(Customer customer) {
-        return Payer.findAllDeletedByCustomer(customer)
+    public List<Payer> list(Customer customer, Map filterList) {
+        return Payer.query(customer, filterList).list()
     }
 
     public Payer update(Payer payer, PayerAdapter adapter) {

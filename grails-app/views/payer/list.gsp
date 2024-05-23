@@ -12,7 +12,7 @@
             <form action="${createLink(controller: 'payer', action: 'list')}" method="GET">
                 <div>Filtros</div>
                 <div>
-                    <input type="checkbox" name="deleted" id="deleted">
+                    <input type="checkbox" name="deleted" value="true" id="deleted" ${Boolean.valueOf(params.deleted) == true ? raw("checked") : null}>
                     <label for="deleted">Excluídos</label>
                 </div>
                 <button type="submit">Aplicar</button>

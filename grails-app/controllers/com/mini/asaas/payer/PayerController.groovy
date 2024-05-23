@@ -1,6 +1,7 @@
 package com.mini.asaas.payer
 
 import com.mini.asaas.customer.Customer
+import com.mini.asaas.utils.Utils
 
 import grails.validation.ValidationException
 
@@ -51,13 +52,9 @@ class PayerController {
             Long customerId = 1
             Customer customer = Customer.read(customerId)
 
-            List<Payer> payerList
+            Map filterList = Utils.getFilterListFromParams(params)
 
-            if (params.deleted) {
-                payerList = payerService.listDeleted(customer)
-            } else {
-                payerList = payerService.list(customer)
-            }
+            List<Payer> payerList = payerService.list(customer, filterList)
 
             return [payerList: payerList]
         } catch (Exception exception) {
