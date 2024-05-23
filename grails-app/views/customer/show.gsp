@@ -11,13 +11,13 @@
             <div>
                 <label>Nome</label>
                 <br>
-                <input type="text" class="js-update-input" name="name" value="${customer.name}">
+                <input type="text" name="name" value="${customer.name}">
             </div>
             <br>
             <div>
                 <label>Email</label>
                 <br>
-                <input type="email" class="js-update-input" name="email" value="${customer.email}">
+                <input type="email" name="email" value="${customer.email}">
             </div>
             <br>
             <div>
@@ -29,13 +29,13 @@
             <div>
                 <label>Telefone</label>
                 <br>
-                <input type="text" class="js-update-input" name="phone" value="${customer.phone}">
+                <input type="text" name="phone" value="${customer.phone}">
             </div>
             <br>
             <div>
                 <label>Celular</label>
                 <br>
-                <input type="text" class="js-update-input" name="mobilePhone" value="${customer.mobilePhone}">
+                <input type="text" name="mobilePhone" value="${customer.mobilePhone}">
             </div>
             <br>
             <div>
@@ -47,43 +47,43 @@
             <div>
                 <label>CEP</label>
                 <br>
-                <input type="text" class="js-update-input" name="postalCode" value="${customer.postalCode}">
+                <input type="text" name="postalCode" value="${customer.postalCode}">
             </div>
             <br>
             <div>
                 <label>Endereço</label>
                 <br>
-                <input type="text" class="js-update-input" name="address" value="${customer.address}">
+                <input type="text" name="address" value="${customer.address}">
             </div>
             <br>
             <div>
                 <label>Número</label>
                 <br>
-                <input type="text" class="js-update-input" name="addressNumber" value="${customer.addressNumber}">
+                <input type="text" name="addressNumber" value="${customer.addressNumber}">
             </div>
             <br>
             <div>
                 <label>Complemento</label>
                 <br>
-                <input type="text" class="js-update-input" name="addressComplement" value="${customer.addressComplement}">
+                <input type="text" name="addressComplement" value="${customer.addressComplement}">
             </div>
             <br>
             <div>
                 <label>Bairro</label>
                 <br>
-                <input type="text" class="js-update-input" name="district" value="${customer.district}">
+                <input type="text" name="district" value="${customer.district}">
             </div>
             <br>
             <div>
                 <label>Cidade</label>
                 <br>
-                <input type="text" class="js-update-input" name="city" value="${customer.city}">
+                <input type="text" name="city" value="${customer.city}">
             </div>
             <br>
             <div>
                 <label>Estado</label>
                 <br>
-                <input type="text" class="js-update-input" name="state" value="${customer.state}">
+                <input type="text" name="state" value="${customer.state}">
             </div>
             <br>
             <button type="submit">Salvar</button>
