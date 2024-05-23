@@ -1,7 +1,7 @@
-.save-button-hidden {
+.hidden {
     display: none;
 }
 
-.save-button-visible {
+.visible {
     display: inline-block;
 }

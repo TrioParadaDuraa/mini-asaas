@@ -88,7 +88,7 @@
             </div>
             <br>
             <button id="edit-button" type="button">Habilitar edição</button>
-            <button id="save-button" class="save-button-hidden" type="submit">Salvar</button>
+            <button id="save-button" class="hidden" type="submit">Salvar</button>
         </form>
         <asset:javascript src="editScript.js"/>
     </body>

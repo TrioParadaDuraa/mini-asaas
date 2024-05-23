@@ -21,11 +21,11 @@ document.getElementById('edit-button').addEventListener('click', function () {
                 }
             });
             if (hasChanges) {
-                saveButton.classList.remove('save-button-hidden');
-                saveButton.classList.add('save-button-visible');
+                saveButton.classList.remove('hidden');
+                saveButton.classList.add('visible');
             } else {
-                saveButton.classList.remove('save-button-visible');
-                saveButton.classList.add('save-button-hidden');
+                saveButton.classList.remove('visible');
+                saveButton.classList.add('hidden');
             }
         });
     });
