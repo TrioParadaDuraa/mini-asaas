@@ -32,9 +32,9 @@
       </div>
       <br>
       <div>
-        <label for="status">Status</label>
-        <br>
-        <input name="status" value="${payment.status.getLabel()}" id="status" readonly>
+          <label for="status">Status</label>
+          <br>
+          <input name="status" value="${payment.status.getLabel()}" id="status" readonly>
       </div>
       <br>
       <div>
