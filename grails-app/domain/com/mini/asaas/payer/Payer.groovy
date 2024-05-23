@@ -11,7 +11,7 @@ class Payer extends BasePerson {
         query { Customer customer, Map filterList ->
             if (Boolean.valueOf(filterList.deleted)) {
                 eq "deleted", true
-            } else if (!Boolean.valueOf(filterList.deleted)) {
+            } else {
                 eq "deleted", false
             }
 
