@@ -1,6 +1,6 @@
-package com.mini.asaas.utils.base
+package com.mini.asaas.utils.enums
 
-import com.mini.asaas.utils.enums.PaymentType
+import com.mini.asaas.utils.Utils
 
 enum PaymentStatus {
 
@@ -15,5 +15,9 @@ enum PaymentStatus {
         } catch (Exception exception) {
             return null
         }
+    }
+
+    public String getLabel() {
+        Utils.getMessageProperty("PaymentStatus.${this}.label", null)
     }
 }

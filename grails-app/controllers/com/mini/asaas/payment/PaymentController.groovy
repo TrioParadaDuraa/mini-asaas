@@ -1,5 +1,6 @@
 package com.mini.asaas.payment
 
+import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.message.MessageType
 
 class PaymentController {
@@ -12,10 +13,13 @@ class PaymentController {
 
     def save() {
         try {
-            PaymentAdapter adapter = new PaymentAdapter(params)
-            Payment payment = paymentService.save(adapter)
+            Long customerId = 1
+            Long payerId = 1
 
-            render "Cobrança criada com sucesso"
+            PaymentAdapter adapter = new PaymentAdapter(params)
+            Payment payment = paymentService.save(adapter, payerId, customerId)
+
+            redirect (action: "show", id: payment.id)
         } catch (Exception exception) {
             log.error("PaymentController.save >> Erro ao cadastrar cobrança", exception)
             flash.type = MessageType.ERROR
@@ -26,14 +30,17 @@ class PaymentController {
     }
 
     def show() {
+        try {
+            Payment payment = Payment.read(params.long('id'))
 
-    }
+            if (!payment) {
+                throw new Exception("Cobrança não encontrada")
+            }
 
-    def update() {
-
-    }
-
-    def delete() {
-
+            return [payment: payment]
+        } catch (Exception exception) {
+            log.error("PaymentController.show >> Erro ao exibir cobrança", exception)
+            render "Cobrança não encontrada"
+        }
     }
 }

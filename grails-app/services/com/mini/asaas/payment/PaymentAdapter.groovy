@@ -1,31 +1,22 @@
 package com.mini.asaas.payment
 
-import com.mini.asaas.customer.Customer
-import com.mini.asaas.domain.base.BaseDomain
-import com.mini.asaas.payer.Payer
-import com.mini.asaas.utils.base.PaymentStatus
+import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.enums.PaymentType
 
-class PaymentAdapter extends BaseDomain{
-
-    Customer customer
-
-    Payer payer
+class PaymentAdapter {
 
     PaymentType paymentType
 
-    BigDecimal value
+    String value
 
     PaymentStatus status
 
     Date dueDate
 
     public PaymentAdapter(Map params) {
-        this.customer = params.customer
-        this.payer = params.payer
-        this.paymentType = PaymentType.convert(params.paymentType.toUpperCase())
+        this.paymentType = params.paymentType
         this.value = params.value
-        this.status = params.status
+        this.status = PaymentStatus.AWAITING_PAYMENT
         this.dueDate = params.dueDate
     }
 }
