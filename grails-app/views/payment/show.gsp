@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.Utils" %>
+<%@ page import="com.mini.asaas.utils.FormatUtils" %>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -40,7 +40,7 @@
       <div>
           <label for="dueDate">Data de vencimento</label>
           <br>
-          <input name="dueDate" value="${Utils.formatDateToString(payment.dueDate)}" id="dueDate" readonly>
+          <input name="dueDate" value="${FormatUtils.formatDateToString(payment.dueDate)}" id="dueDate" readonly>
       </div>
   </body>
 </html>
