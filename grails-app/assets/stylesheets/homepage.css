@@ -92,8 +92,17 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+a {
     color: #FFFFFF;
+    text-decoration: none;
     font-family: sans-serif;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .right-bar {

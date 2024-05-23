@@ -14,7 +14,7 @@
         </div>
         <div class="center">
             <div class="top-text">
-                <h1>Pensou em controle de recebíveis? <br> Pensou em mini-Asaas! 🪽</h1>
+                <h1>Pensou em controle de recebíveis?<br>Pensou em mini-Asaas! 🪽</h1>
             </div>
             <div class="card-and-text">
                 <div class="card-buttons">
@@ -22,10 +22,10 @@
                     <br>
                     <button class="button-homepage">Criar conta</button>
                 </div>
-                <div class="bottom-text">
+                <footer class="bottom-text">
                     <a href="https://ajuda.asaas.com/pt-BR/articles/102021-termos-e-condicoes-de-uso">Termos de uso</a>
                     <a href="https://ajuda.asaas.com/pt-BR/articles/102029-politica-de-privacidade">Politicas de Privacidade</a>
-                </div>
+                </footer>
             </div>
         </div>
         <div class="right-bar">
