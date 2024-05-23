@@ -6,7 +6,7 @@ document.getElementById('edit-button').addEventListener('click', function () {
     inputs.forEach(function(input) {
         if (input.hasAttribute('readonly')){
             input.removeAttribute('readonly');
-        }else {
+        } else {
             input.setAttribute('readonly', 'readonly')
         }
     });
