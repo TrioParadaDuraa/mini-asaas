@@ -7,10 +7,10 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class PayerService {
 
-    public Payer save(PayerAdapter adapter, Long customerId) {
+    public Payer save(PayerAdapter adapter, Customer customer) {
         Payer payer = new Payer()
 
-        payer.customer = Customer.read(customerId)
+        payer.customer = customer
         payer.cpfCnpj = adapter.cpfCnpj
         payer.name = adapter.name
         payer.email = adapter.email
@@ -28,5 +28,9 @@ class PayerService {
         payer.save(failOnError: true)
         
         return payer
+    }
+
+    public List<Payer> list(Customer customer) {
+        return Payer.findAllByCustomer(customer)
     }
 }
