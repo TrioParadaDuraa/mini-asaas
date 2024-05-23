@@ -34,7 +34,7 @@ class PayerController {
 
     def show() {
         try{
-            Payer payer = Payer.read(params.id)
+            Payer payer = Payer.read(params.long("id"))
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
