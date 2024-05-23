@@ -16,17 +16,15 @@
             <div class="top-text">
                 <h1>Pensou em controle de recebíveis?<br>Pensou em mini-Asaas! 🪽</h1>
             </div>
-            <div class="card-and-text">
-                <div class="card-buttons">
-                    <button class="button-homepage">Acessar conta</button>
-                    <br>
-                    <button class="button-homepage">Criar conta</button>
-                </div>
-                <footer class="bottom-text">
-                    <a href="https://ajuda.asaas.com/pt-BR/articles/102021-termos-e-condicoes-de-uso">Termos de uso</a>
-                    <a href="https://ajuda.asaas.com/pt-BR/articles/102029-politica-de-privacidade">Politicas de Privacidade</a>
-                </footer>
+            <div class="card-buttons">
+                <a class="button-homepage">Acessar conta</a>
+                <br>
+                <a class="button-homepage">Criar conta</a>
             </div>
+            <footer class="bottom-text">
+                <a href="https://ajuda.asaas.com/pt-BR/articles/102021-termos-e-condicoes-de-uso">Termos de uso</a>
+                <a href="https://ajuda.asaas.com/pt-BR/articles/102029-politica-de-privacidade">Politicas de Privacidade</a>
+            </footer>
         </div>
         <div class="right-bar">
             <asset:image src="/homepage/blue-detail.png" class="blue-detail"/>
