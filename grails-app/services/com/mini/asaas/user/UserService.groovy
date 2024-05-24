@@ -13,6 +13,7 @@ class UserService {
         user.customer = Customer.read(customerId)
         user.username = adapter.username
         user.password = adapter.password
+        user.passwordConfirm = adapter.passwordConfirm
 
         user.save(failOnError: true)
 

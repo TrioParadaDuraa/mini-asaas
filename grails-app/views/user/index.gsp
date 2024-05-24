@@ -12,7 +12,7 @@
             <br>
             <input name="email" value="${params.email}" id="email" type="email">
         </div>
-        <g:if test="${flash.errors?.hasFieldErrors('email')}">
+        <g:if test="${flash.errors?.hasFieldErrors('username')}">
             <div>Email inválido</div>
         </g:if>
 
@@ -20,6 +20,12 @@
             <label for="password">Senha</label>
             <br>
             <input name="password" id="password" type="password">
+        </div>
+
+        <div>
+            <label for="passwordConfirm">Confirmar senha</label>
+            <br>
+            <input name="passwordConfirm" id="passwordConfirm" type="password">
         </div>
         <g:if test="${flash.errors?.hasFieldErrors('password')}">
             <div>Por favor, preencha a senha corretamente</div>
