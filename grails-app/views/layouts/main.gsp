@@ -9,17 +9,16 @@
       </title>
       <link rel="stylesheet" href="https://atlas.asaas.com/v17.6.2/atlas.min.css" crossorigin="anonymous">
       <script defer src="https://atlas.asaas.com/v17.6.2/atlas.min.js" crossorigin="anonymous"></script>
-      <style>
-          atlas-navbar {
-              background-color: #0030B9;
-          }
-      </style>
+      <asset:stylesheet src="application.css"/>
     <g:layoutHead/>
   </head>
   <body>
       <atlas-screen>
-          <div>
-
+          <div class="navbar-layout">
+              <a href="/">
+              <atlas-icon size="6x" white="" name="chevron-left"></atlas-icon>
+              </a>
+              <asset:image src="/homepage/asaas-logo.png" class="asaas-logo"/>
           </div>
           <atlas-page>
               <atlas-page-header slot="header" page-name="${pageProperty(name: 'body.title')}">

@@ -1,0 +1,16 @@
+body, html {
+    height: 100%;
+}
+
+.navbar-layout {
+    display: flex;
+    align-items: center;
+    background-color: #0030B9;
+    width: 100%;
+    height: 60px;
+}
+
+.asaas-logo {
+    width: 10.9375rem;
+    margin-inline: auto;
+}

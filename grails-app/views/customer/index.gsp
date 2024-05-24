@@ -5,19 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de cliente</title>
-    <style>
-        .customer-create-buttons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        atlas-button {
-            margin-right: 10px;
-        }
-        atlas-grid {
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
 <body title="Cadastro de cliente">
     <atlas-panel>
@@ -44,10 +31,11 @@
                 </atlas-row>
             </atlas-grid>
             <div class="radio-container-horizontal">
-                <input type="radio">
-                <label name="personType">pessoa fisica</label>
-                <input type="radio">
-                <label name="personType">pessoa juridica</label>
+                <p>Tipo de pessoa:</p>
+                <atlas-toggle>
+                    <atlas-toggle-item label="Pessoa física"></atlas-toggle-item>
+                    <atlas-toggle-item value="toggle2" label="Pessoa juridica"></atlas-toggle-item>
+                </atlas-toggle>
             </div>
             <atlas-grid>
                 <atlas-row>
@@ -91,6 +79,7 @@
                 <atlas-button submit description="Criar conta" slot="actions"></atlas-button>
             </div>
         </atlas-form>
+        <a>Já tem uma conta ?</a>
     </atlas-panel>
 </body>
 </html>
