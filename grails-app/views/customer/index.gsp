@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body page-title="Cadastro de cliente">
+<body title="Cadastro de cliente">
     <atlas-panel>
         <atlas-form action="${createLink(controller: 'customer', action: 'save')}">
             <atlas-grid>
@@ -88,7 +88,7 @@
             </atlas-grid>
             <div class="customer-create-buttons">
                 <atlas-button description="Cancelar" slot="actions"></atlas-button>
-                <atlas-button description="Criar conta" slot="actions"></atlas-button>
+                <atlas-button submit description="Criar conta" slot="actions"></atlas-button>
             </div>
         </atlas-form>
     </atlas-panel>
