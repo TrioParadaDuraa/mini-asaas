@@ -10,12 +10,10 @@ class Utils {
 
     public static BigDecimal toBigDecimal(String value) {
         if (value == null || value.trim().isEmpty()) {
-
             return  null
         }
 
         try {
-
             return new BigDecimal(value.replace(',', '.'))
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("O valor fornecido não é um número válido: ${value}", exception)

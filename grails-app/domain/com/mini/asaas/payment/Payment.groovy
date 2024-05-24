@@ -21,6 +21,7 @@ class Payment extends BaseDomain {
     Date dueDate
 
     static constraints = {
-        value nullable: false, scale: 2
+        value blank: false, nullable: false, scale: 2
+        dueDate blank: false, date: true
     }
 }

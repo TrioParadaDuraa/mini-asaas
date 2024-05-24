@@ -13,7 +13,6 @@ class FormatUtils {
         SimpleDateFormat inputSdf = new SimpleDateFormat(inputFormat)
 
         try {
-
             return inputSdf.parse(date)
         } catch (ParseException exception) {
             throw new IllegalArgumentException("A data fornecida não é válida: ${date}", exception)
