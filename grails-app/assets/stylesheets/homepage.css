@@ -1,0 +1,109 @@
+body {
+    background-color: #0030B9;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+.page-container {
+    display: flex;
+}
+
+.left-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 33%;
+}
+
+.asaas-logo {
+    width: 10.9375rem;
+    margin-left: 1.25rem;
+    margin-top: 0.9375rem;
+}
+
+.cellphone {
+    width: 25rem;
+    margin-left: 1.875rem;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 33%;
+}
+
+.top-text {
+    margin-block: 8.125rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: .004rem;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 31.25rem;
+    height: 12.5rem;
+    border-radius: 0.3125rem;
+    background-color: #FFFFFF;
+    box-shadow: 0.625rem -0.625rem 0rem #FFFFFF80;
+}
+
+.button-homepage {
+    background-color: #0030B9;
+    border: none;
+    border-radius: 1.25rem;
+    padding: 0.9375rem 1.25rem;
+    width: 12.5rem;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: bold;
+    letter-spacing: .001rem;
+}
+
+.bottom-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.right-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100vh;
+    width: 33%;
+}
+
+.blue-detail {
+    width: 10.9375rem;
+}
+
+.asaas-paper {
+    width: 18.75rem;
+    margin-right: 6.875rem;
+}
+
+.asaas-girl {
+    width: 15.625rem;
+    margin-right: 3.125rem;
+}
+
