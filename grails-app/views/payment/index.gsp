@@ -32,5 +32,12 @@
         <br>
         <button type="submit">Salvar</button>
       </form>
+      <g:if test="${flash.message}">
+          <section>
+              <div>
+                  <p>${flash.message}</p>
+              </div>
+          </section>
+      </g:if>
   </body>
 </html>
