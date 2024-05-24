@@ -26,6 +26,6 @@ class FormatUtils {
 
         SimpleDateFormat outputSdf = new SimpleDateFormat(outputFormat)
 
-        return  outputSdf.format(date)
+        return outputSdf.format(date)
     }
 }

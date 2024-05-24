@@ -8,12 +8,6 @@
   </head>
   <body>
       <div>
-          <label for="customerName">Cliente</label>
-          <br>
-          <input name="customerName" value="${payment.customer.name}" id="customerName" type="text" readonly>
-      </div>
-      <br>
-      <div>
           <label for="payerName">Pagador</label>
           <br>
           <input name="payerName" value="${payment.payer.name}" id="payerName" type="text" readonly>

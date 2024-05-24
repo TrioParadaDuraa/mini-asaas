@@ -16,7 +16,7 @@ class PaymentAdapter {
     Date dueDate
 
     public PaymentAdapter(Map params) {
-        this.paymentType = params.paymentType
+        this.paymentType = PaymentType.convert(params.paymentType.toUpperCase())
         this.value = Utils.toBigDecimal(params.value)
         this.status = PaymentStatus.AWAITING_PAYMENT
         this.dueDate = FormatUtils.toDate(params.dueDate, "yyyy-MM-dd")
