@@ -48,11 +48,13 @@ class PayerController {
     }
 
     def list() {
+        List allowedFilters = ["deleted"]
+
         try {
             Long customerId = 1
             Customer customer = Customer.read(customerId)
 
-            Map filterList = Utils.getFilterListFromParams(params)
+            Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
 
             List<Payer> payerList = payerService.list(customer, filterList)
 

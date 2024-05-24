@@ -8,10 +8,10 @@ class Utils {
         return Holders.applicationContext.getBean("messageSource").getMessage(messageCode, arguments as Object[],"", new Locale("pt","BR"))
     }
 
-    public static Map getFilterListFromParams(Map params) {
+    public static Map getFilterListFromParams(Map params, List allowedFilters) {
         Map filterList = params.clone()
-        filterList.remove("controller")
-        filterList.remove("action")
+        
+        filterList.retainAll{it -> it.key in allowedFilters}
 
         return filterList
     }
