@@ -8,14 +8,16 @@ class Payer extends BasePerson {
     Customer customer
 
     static namedQueries = {
-        query { Customer customer, Map filterList ->
+        query { Map filterList ->
             if (Boolean.valueOf(filterList.deleted)) {
-                eq "deleted", true
+                eq("deleted", true)
             } else {
-                eq "deleted", false
+                eq("deleted", false)
             }
 
-            eq "customer", customer
+            if (filterList.containsKey("customerId")) {
+                eq("customer.id", filterList.customerId)
+            }
         }
     }
 }

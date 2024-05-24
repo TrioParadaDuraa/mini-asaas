@@ -30,8 +30,10 @@ class PayerService {
         return payer
     }
 
-    public List<Payer> list(Customer customer, Map filterList) {
-        return Payer.query(customer, filterList).list()
+    public List<Payer> list(Long customerId, Map filterList) {
+        filterList.customerId = customerId
+
+        return Payer.query(filterList).list()
     }
 
     public Payer update(Payer payer, PayerAdapter adapter) {
