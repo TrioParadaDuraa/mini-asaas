@@ -11,7 +11,7 @@ class CustomerAdapter extends BasePersonAdapter {
         this.email = params.email
         this.phone = params.phone
         this.mobilePhone = params.mobilePhone
-        this.personType = PersonType.NATURAL
+        this.personType = PersonType.convert(params.personType.toUpperCase())
         this.postalCode = params.postalCode
         this.address = params.address
         this.addressNumber = params.addressNumber

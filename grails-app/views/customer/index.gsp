@@ -1,3 +1,4 @@
+<%@ page import="com.mini.asaas.utils.base.PersonType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,9 +33,9 @@
             </atlas-grid>
             <div class="radio-container-horizontal">
                 <p>Tipo de pessoa:</p>
-                <atlas-toggle>
-                    <atlas-toggle-item label="Pessoa física"></atlas-toggle-item>
-                    <atlas-toggle-item value="toggle2" label="Pessoa juridica"></atlas-toggle-item>
+                <atlas-toggle name="personType">
+                    <atlas-toggle-item value="${PersonType.NATURAL}" label="Pessoa física"></atlas-toggle-item>
+                    <atlas-toggle-item value="${PersonType.LEGAL}" label="Pessoa juridica"></atlas-toggle-item>
                 </atlas-toggle>
             </div>
             <atlas-grid>
@@ -67,10 +68,10 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="6" md="3">
-                        <atlas-password-input required="" label="Senha"></atlas-password-input>
+                        <atlas-password-input label="Senha"></atlas-password-input>
                     </atlas-col>
                     <atlas-col lg="6" md="3">
-                        <atlas-password-input required="" label="Confirme sua senha"></atlas-password-input>
+                        <atlas-password-input label="Confirme sua senha"></atlas-password-input>
                     </atlas-col>
                 </atlas-row>
                 <div class="password-note">
@@ -88,7 +89,7 @@
                 </div>
             </div>
             <footer>
-                <a>Já tem uma conta ?</a>
+                <a href="/">Já tem uma conta ?</a>
             </footer>
         </atlas-form>
     </atlas-panel>
