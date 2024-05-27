@@ -68,10 +68,10 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="6" md="3">
-                        <atlas-password-input label="Senha"></atlas-password-input>
+                        <atlas-password-input label="Senha" required=""></atlas-password-input>
                     </atlas-col>
                     <atlas-col lg="6" md="3">
-                        <atlas-password-input label="Confirme sua senha"></atlas-password-input>
+                        <atlas-password-input label="Confirme sua senha" required=""></atlas-password-input>
                     </atlas-col>
                 </atlas-row>
                 <div class="password-note">
