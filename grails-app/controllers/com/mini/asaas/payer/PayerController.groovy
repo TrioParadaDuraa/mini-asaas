@@ -32,7 +32,10 @@ class PayerController {
 
     def show() {
         try{
-            Payer payer = Payer.read(params.long("id"))
+            Long customerId = 1
+            Long id = params.long("id")
+
+            Payer payer = Payer.query([customerId: customerId, id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -53,6 +56,10 @@ class PayerController {
 
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
 
+            if (!filterList.containsKey("deleted")) {
+                filterList.deleted = false
+            }
+
             List<Payer> payerList = payerService.list(customerId, filterList)
 
             return [payerList: payerList]
@@ -64,7 +71,10 @@ class PayerController {
 
     def update() {
         try {
-            Payer payer = Payer.get(params.long("id"))
+            Long customerId = 1
+            Long id = params.long("id")
+
+            Payer payer = Payer.query([customerId: customerId, id: id, deleted: false]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -88,7 +98,10 @@ class PayerController {
 
     def delete() {
         try {
-            Payer payer = Payer.get(params.long("id"))
+            Long customerId = 1
+            Long id = params.long("id")
+
+            Payer payer = Payer.query([customerId: customerId, id: id, deleted: false]).get()
             
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -107,7 +120,10 @@ class PayerController {
 
     def restore() {
         try {
-            Payer payer = Payer.get(params.long("id"))
+            Long customerId = 1
+            Long id = params.long("id")
+
+            Payer payer = Payer.query([customerId: customerId, id: id, deleted: true]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
