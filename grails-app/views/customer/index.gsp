@@ -68,10 +68,10 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="6" md="3">
-                        <atlas-password-input label="Senha" required=""></atlas-password-input>
+                        <atlas-password-input label="Senha" required="" name="password"></atlas-password-input>
                     </atlas-col>
                     <atlas-col lg="6" md="3">
-                        <atlas-password-input label="Confirme sua senha" required=""></atlas-password-input>
+                        <atlas-password-input label="Confirme sua senha" required="" name="passwordConfirm"></atlas-password-input>
                     </atlas-col>
                 </atlas-row>
                 <div class="password-note">
@@ -82,15 +82,13 @@
                     </ul>
                 </div>
             </atlas-grid>
-            <div class="footer-buttons">
-                <div class="customer-create-buttons">
+            <div class="bottom-buttons">
                     <atlas-button description="Cancelar" slot="actions" theme="danger"></atlas-button>
                     <atlas-button submit description="Criar conta" slot="actions" theme="success"></atlas-button>
-                </div>
             </div>
-            <footer>
+            <div class="bottom-text">
                 <a href="/">Já tem uma conta ?</a>
-            </footer>
+            </div>
         </atlas-form>
     </atlas-panel>
 </body>

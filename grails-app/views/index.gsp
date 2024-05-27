@@ -19,7 +19,7 @@
             <div class="card-buttons">
                 <a class="button-homepage">Acessar conta</a>
                 <br>
-                <a class="button-homepage" href="/customer/">Criar conta</a>
+                <a class="button-homepage" href="${createLink(controller: 'customer', action: 'index')}">Criar conta</a>
             </div>
             <footer class="bottom-text">
                 <a href="https://ajuda.asaas.com/pt-BR/articles/102021-termos-e-condicoes-de-uso">Termos de uso</a>

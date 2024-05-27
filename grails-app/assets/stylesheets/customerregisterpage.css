@@ -1,15 +1,10 @@
-.footer-buttons {
+.bottom-buttons {
     display: flex;
     justify-content: center;
+    gap: 2.5rem;
 }
 
-.customer-create-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 15.625rem;
-}
-
-footer {
+.bottom-text {
     display: flex;
     justify-content: center;
 }
