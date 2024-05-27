@@ -1,8 +1,11 @@
 package com.mini.asaas.utils
 
+import grails.compiler.GrailsCompileStatic
+
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
+@GrailsCompileStatic
 class FormatUtils {
 
     public static Date toDate(String date, String inputFormat = "yyyy-MM-dd") {

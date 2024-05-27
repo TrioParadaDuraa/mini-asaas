@@ -5,6 +5,9 @@ import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.enums.PaymentType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class PaymentAdapter {
 
     PaymentType paymentType

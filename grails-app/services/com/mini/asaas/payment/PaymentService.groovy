@@ -3,8 +3,10 @@ package com.mini.asaas.payment
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.payer.Payer
 
+import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 
+@GrailsCompileStatic
 @Transactional
 class PaymentService {
 
