@@ -3,6 +3,7 @@ package com.mini.asaas.domain.base
 import com.mini.asaas.utils.base.PersonType
 import com.mini.asaas.utils.validators.CpfCnpjValidator
 import com.mini.asaas.utils.validators.MobilePhoneValidator
+import com.mini.asaas.utils.validators.PostalCodeValidator
 
 abstract class BasePerson extends BaseDomain {
 
@@ -48,7 +49,9 @@ abstract class BasePerson extends BaseDomain {
         mobilePhone blank: false, size: 11..11, validator: { String mobilePhone ->
             return MobilePhoneValidator.isValidMobilePhone(mobilePhone)
         }
-        postalCode blank: false, size: 8..8
+        postalCode blank: false, size: 8..8, validator: { String postalCode ->
+            return PostalCodeValidator.isValidPostalCode(postalCode)
+        }
         address blank: false
         addressNumber blank: false
         addressComplement blank: false, nullable: true
