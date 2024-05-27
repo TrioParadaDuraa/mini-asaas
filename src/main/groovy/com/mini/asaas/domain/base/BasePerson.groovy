@@ -1,6 +1,7 @@
 package com.mini.asaas.domain.base
 
 import com.mini.asaas.utils.base.PersonType
+import com.mini.asaas.utils.validators.CpfCnpjValidator
 
 abstract class BasePerson extends BaseDomain {
 
@@ -31,7 +32,15 @@ abstract class BasePerson extends BaseDomain {
     String state
 
     static constraints = {
-        cpfCnpj size: 11..14, blank: false
+        cpfCnpj size: 11..14, blank: false, validator: { String cpfCnpj, def person ->
+            if (person.PersonType == PersonType.NATURAL) {
+                return CpfCnpjValidator.isValidCpf(cpfCnpj)
+            } else if (person.PersonType == PersonType.LEGAL) {
+                return CpfCnpjValidator.isValidCnpj(cpfCnpj)
+            }
+
+            return false
+        }
         name blank: false
         email email: true, blank: false
         phone blank: false, nullable: true, size: 10..10
