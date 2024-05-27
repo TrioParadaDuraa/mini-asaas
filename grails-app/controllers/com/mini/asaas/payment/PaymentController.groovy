@@ -1,8 +1,10 @@
 package com.mini.asaas.payment
 
-import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.message.MessageType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class PaymentController {
 
     PaymentService paymentService
