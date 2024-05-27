@@ -2,6 +2,9 @@ package com.mini.asaas.customer
 
 import com.mini.asaas.utils.message.MessageType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class CustomerController {
     
     CustomerService customerService
