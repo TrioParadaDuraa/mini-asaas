@@ -10,13 +10,14 @@
       <link rel="stylesheet" href="https://atlas.asaas.com/v17.6.2/atlas.min.css" crossorigin="anonymous">
       <script defer src="https://atlas.asaas.com/v17.6.2/atlas.min.js" crossorigin="anonymous"></script>
       <asset:stylesheet src="application.css"/>
+      <asset:link rel="icon" href="asaas-icon.png" type="image/x-icon"/>
     <g:layoutHead/>
   </head>
   <body>
       <atlas-screen>
           <div class="navbar-layout">
               <a href="/">
-              <atlas-icon size="6x" white="" name="chevron-left"></atlas-icon>
+                  <atlas-icon size="6x" white="" name="chevron-left"></atlas-icon>
               </a>
               <asset:image src="/homepage/asaas-logo.png" class="asaas-logo"/>
           </div>

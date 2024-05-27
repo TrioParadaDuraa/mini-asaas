@@ -1,5 +1,23 @@
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+}
+
 .customer-create-buttons {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    width: 15.625rem;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+.password-note {
+    margin-top: -1.5625rem;
+    margin-left: -1.4375rem;
+    font-family: sans-serif;
+    font-size: 0.875rem;
+    color: gray;
 }

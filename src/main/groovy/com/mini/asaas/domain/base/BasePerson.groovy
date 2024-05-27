@@ -34,9 +34,9 @@ abstract class BasePerson extends BaseDomain {
         cpfCnpj size: 11..14, blank: false
         name blank: false
         email email: true, blank: false
-        phone blank: false, nullable: true, size: 10..10
-        mobilePhone blank: false, size: 11..11
-        postalCode blank: false, size: 8..8
+        phone blank: false, nullable: true, size: 10..14
+        mobilePhone blank: false, size: 11..15
+        postalCode blank: false, size: 8..9
         address blank: false
         addressNumber blank: false
         addressComplement blank: false, nullable: true
