@@ -6,8 +6,7 @@ enum PaymentType {
 
     BANK_SLIP,
     CREDIT_CARD,
-    PIX,
-    MONEY
+    PIX
 
     public static PaymentType convert(paymentType) {
         try {

@@ -7,7 +7,8 @@ enum PaymentStatus {
     AWAITING_PAYMENT,
     RECEIVED,
     OVERDUE,
-    CANCELED
+    CANCELED,
+    MONEY
 
     public static PaymentType convert(paymentType) {
         try {
