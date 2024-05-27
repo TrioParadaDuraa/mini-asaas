@@ -43,15 +43,18 @@ abstract class BasePerson extends BaseDomain {
 
             return false
         }
+
         name blank: false
         email email: true, blank: false
         phone blank: false, nullable: true, size: 10..10
         mobilePhone blank: false, size: 11..11, validator: { String mobilePhone ->
             return MobilePhoneValidator.isValidMobilePhone(mobilePhone)
         }
+
         postalCode blank: false, size: 8..8, validator: { String postalCode ->
             return PostalCodeValidator.isValidPostalCode(postalCode)
         }
+        
         address blank: false
         addressNumber blank: false
         addressComplement blank: false, nullable: true
