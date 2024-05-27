@@ -23,8 +23,6 @@ class PayerController {
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
 
-            log.error(validationException)
-            
             redirect(action: "index")
         } catch (Exception exception) {
             log.error("PayerController.save >> Erro ao cadastrar pagador", exception)
