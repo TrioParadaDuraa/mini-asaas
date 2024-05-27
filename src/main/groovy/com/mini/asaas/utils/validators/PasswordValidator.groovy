@@ -2,6 +2,9 @@ package com.mini.asaas.utils.validators
 
 import com.mini.asaas.user.User
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class PasswordValidator {
     
     static int MIN_PASSWORD_SIZE = 8

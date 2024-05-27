@@ -1,5 +1,8 @@
 package com.mini.asaas.user
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class UserAdapter {
 
     String username

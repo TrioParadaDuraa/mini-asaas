@@ -1,5 +1,3 @@
-
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.mini.asaas.user.User'
 
@@ -28,4 +26,3 @@ grails.plugin.springsecurity.filterChain.chainMap = [
     [pattern: '/**/favicon.ico', filters: 'none'],
     [pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
-

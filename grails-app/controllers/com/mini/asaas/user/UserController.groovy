@@ -2,6 +2,9 @@ package com.mini.asaas.user
 
 import grails.validation.ValidationException
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class UserController {
 
     UserService userService
