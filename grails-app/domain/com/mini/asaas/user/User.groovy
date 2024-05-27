@@ -2,6 +2,7 @@ package com.mini.asaas.user
 
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.domain.base.BaseDomain
+import com.mini.asaas.utils.validators.PasswordValidator
 
 import grails.compiler.GrailsCompileStatic
 
@@ -37,15 +38,13 @@ class User extends BaseDomain implements Serializable {
 
     static constraints = {
         username nullable: false, blank: false, email: true
-        password nullable: false, blank: false, password: true, validator: { String password, User user ->
-            return password == user.passwordConfirm
-        }
+        password nullable: false, blank: false, password: true, validator: PasswordValidator.validate()
     }
 
     static mapping = {
-        table '`user`'
+        table "`user`"
         username unique: true
-        password column: '`password`'
+        password column: "`password`"
     }
 
     static transients = ["passwordConfirm"]

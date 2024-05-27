@@ -28,8 +28,17 @@
             <input name="passwordConfirm" id="passwordConfirm" type="password">
         </div>
         <g:if test="${flash.errors?.hasFieldErrors('password')}">
-            <div>Por favor, preencha a senha corretamente</div>
+            <div>Por favor, preencha e confirme a senha corretamente</div>
         </g:if>
+
+        <div>
+            <div>Sua senha deve conter, no mínimo:</div>
+            <ul>
+                <li>8 caracteres</li>
+                <li>1 número</li>
+                <li>1 letra</li>
+            </ul>
+        </div>
 
         <button type="submit">Salvar</button>
     </form>
