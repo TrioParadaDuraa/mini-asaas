@@ -2,8 +2,10 @@ package com.mini.asaas.payer
 
 import com.mini.asaas.customer.Customer
 
+import grails.compiler.GrailsCompileStatic
 import grails.validation.ValidationException
 
+@GrailsCompileStatic
 class PayerController {
 
     def payerService

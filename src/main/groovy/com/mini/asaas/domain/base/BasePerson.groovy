@@ -2,6 +2,9 @@ package com.mini.asaas.domain.base
 
 import com.mini.asaas.utils.base.PersonType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 abstract class BasePerson extends BaseDomain {
 
     String cpfCnpj
