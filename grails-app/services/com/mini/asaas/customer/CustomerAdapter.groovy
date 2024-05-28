@@ -3,6 +3,9 @@ package com.mini.asaas.customer
 import com.mini.asaas.domain.base.BasePersonAdapter
 import com.mini.asaas.utils.base.PersonType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class CustomerAdapter extends BasePersonAdapter {
 
     public CustomerAdapter(Map params){

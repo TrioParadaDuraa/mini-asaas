@@ -1,5 +1,8 @@
 package com.mini.asaas.utils.validators
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class CpfCnpjValidator {
 
     static boolean isValidCpfCnpj(String cpfCnpj) {
