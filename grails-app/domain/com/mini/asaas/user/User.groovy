@@ -48,4 +48,16 @@ class User extends BaseDomain implements Serializable {
     }
 
     static transients = ["passwordConfirm"]
+
+    static namedQueries = {
+        query { Map filterList ->
+            if (filterList.containsKey("customerId")) {
+                eq("customer.id", filterList.customerId)
+            }
+
+            if (filterList.containsKey("id")) {
+                eq("id", filterList.id)
+            }
+        }
+    }
 }

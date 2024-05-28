@@ -32,7 +32,9 @@ class UserController {
 
     def show() {
         try {
-            User user = User.read(params.long("id"))
+            Long customerId = 1
+            Long id = params.long("id")
+            User user = User.query([customerId: customerId, id: id])
 
             if (!user) {
                 throw new Exception("Usuário não encontrado")
