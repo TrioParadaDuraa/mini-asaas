@@ -1,5 +1,8 @@
 package com.mini.asaas.utils.validators
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class PostalCodeValidator {
 
     public static boolean isValidPostalCode(String postalCode) {
