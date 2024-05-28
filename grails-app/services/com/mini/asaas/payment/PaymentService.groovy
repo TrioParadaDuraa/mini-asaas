@@ -10,19 +10,19 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class PaymentService {
 
-    public Payment save(PaymentAdapter adapter, Long payerId, Long customerId) {
+    public Payment save(PaymentAdapter adapter) {
         Payment payment = new Payment()
 
-        paymentBuildProperties(payment, adapter, payerId, customerId)
+        paymentBuildProperties(payment, adapter)
 
         payment.save(failOnError: true)
 
         return payment
     }
 
-    private paymentBuildProperties(Payment payment, PaymentAdapter adapter, Long payerId, Long customerId) {
-        payment.customer = Customer.read(customerId)
-        payment.payer = Payer.read(payerId)
+    private paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
+        payment.customer = Customer.read(adapter.customerId)
+        payment.payer = Payer.read(adapter.payerId)
         payment.paymentType = adapter.paymentType
         payment.value = adapter.value
         payment.status = adapter.status

@@ -5,10 +5,11 @@ import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.enums.PaymentType
 
-import grails.compiler.GrailsCompileStatic
-
-@GrailsCompileStatic
 class PaymentAdapter {
+
+    Long customerId
+
+    Long payerId
 
     PaymentType paymentType
 
@@ -19,6 +20,8 @@ class PaymentAdapter {
     Date dueDate
 
     public PaymentAdapter(Map params) {
+        this.customerId = 1
+        this.payerId = 1
         this.paymentType = PaymentType.convert(params.paymentType.toUpperCase())
         this.value = Utils.toBigDecimal(params.value)
         this.status = PaymentStatus.AWAITING_PAYMENT

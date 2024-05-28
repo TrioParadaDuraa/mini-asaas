@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastrar Pagador</title>
 </head>
 <body>
-    <form method="POST" action="${createLink(controller: 'payer', action: 'save')}">
+    <form action="${createLink(controller: 'payer', action: 'save')}" method="POST">
         <div>
             <label for="name">Nome</label>
             <br>

@@ -15,11 +15,8 @@ class PaymentController {
 
     def save() {
         try {
-            Long customerId = 1
-            Long payerId = 1
-
             PaymentAdapter adapter = new PaymentAdapter(params)
-            Payment payment = paymentService.save(adapter, payerId, customerId)
+            Payment payment = paymentService.save(adapter)
 
             redirect (action: "show", id: payment.id)
         } catch (Exception exception) {

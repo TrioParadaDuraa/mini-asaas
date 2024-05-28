@@ -8,6 +8,14 @@ class Utils {
         return Holders.applicationContext.getBean("messageSource").getMessage(messageCode, arguments as Object[],"", new Locale("pt","BR"))
     }
 
+    public static Map getFilterListFromParams(Map params, List allowedFilters) {
+        Map filterList = params.clone()
+
+        filterList.retainAll{it -> it.key in allowedFilters}
+
+        return filterList
+    }
+
     public static BigDecimal toBigDecimal(String value) {
         if (value == null || value.trim().isEmpty()) {
             return  null
