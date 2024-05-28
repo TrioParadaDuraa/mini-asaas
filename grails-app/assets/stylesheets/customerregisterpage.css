@@ -1,0 +1,18 @@
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.bottom-text {
+    display: flex;
+    justify-content: center;
+}
+
+.password-note {
+    margin-top: -1.5625rem;
+    margin-left: -1.4375rem;
+    font-family: sans-serif;
+    font-size: 0.875rem;
+    color: gray;
+}

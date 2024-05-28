@@ -57,7 +57,7 @@ abstract class BasePerson extends BaseDomain {
         postalCode blank: false, size: 8..8, validator: { String postalCode ->
             return PostalCodeValidator.isValidPostalCode(postalCode)
         }
-        
+
         address blank: false
         addressNumber blank: false
         addressComplement blank: false, nullable: true
