@@ -46,4 +46,8 @@ class PaymentController {
             render "Cobrança não encontrada"
         }
     }
+
+    def update() {
+
+    }
 }
