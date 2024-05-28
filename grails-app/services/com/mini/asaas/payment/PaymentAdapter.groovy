@@ -25,9 +25,9 @@ class PaymentAdapter {
     public PaymentAdapter(Map params) {
         this.customerId = 1
         this.payerId = 1
-        this.paymentType = PaymentType.convert(params.paymentType.toUpperCase())
-        this.value = Utils.toBigDecimal(params.value)
+        this.paymentType = PaymentType.convert(params.paymentType.toString().toUpperCase())
+        this.value = Utils.toBigDecimal(params.value.toString())
         this.status = PaymentStatus.AWAITING_PAYMENT
-        this.dueDate = FormatUtils.toDate(params.dueDate, "yyyy-MM-dd")
+        this.dueDate = FormatUtils.toDate(params.dueDate.toString(), "yyyy-MM-dd")
     }
 }
