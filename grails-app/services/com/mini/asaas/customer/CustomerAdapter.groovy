@@ -1,6 +1,7 @@
 package com.mini.asaas.customer
 
 import com.mini.asaas.domain.base.BasePersonAdapter
+import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.base.PersonType
 
 import grails.compiler.GrailsCompileStatic
@@ -12,10 +13,10 @@ class CustomerAdapter extends BasePersonAdapter {
         this.cpfCnpj = params.cpfCnpj
         this.name = params.name
         this.email = params.email
-        this.phone = params.phone
-        this.mobilePhone = params.mobilePhone
-        this.personType = PersonType.convert(params.personType.toUpperCase())
-        this.postalCode = params.postalCode
+        this.phone = Utils.removeNoNumeric(params.phone.toString())
+        this.mobilePhone = Utils.removeNoNumeric(params.mobilePhone.toString())
+        this.personType = PersonType.convert(params.personType.toString().toUpperCase())
+        this.postalCode = Utils.removeNoNumeric(params.postalCode.toString())
         this.address = params.address
         this.addressNumber = params.addressNumber
         this.addressComplement = (params.addressComplement.toString().trim()) ? params.addressComplement : null

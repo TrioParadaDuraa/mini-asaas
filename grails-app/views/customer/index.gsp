@@ -31,7 +31,7 @@
                     </atlas-col>
                 </atlas-row>
             </atlas-grid>
-            <div class="radio-container-horizontal">
+            <div>
                 <p>Tipo de pessoa:</p>
                 <atlas-toggle name="personType">
                     <atlas-toggle-item value="${PersonType.NATURAL}" label="Pessoa física"></atlas-toggle-item>
