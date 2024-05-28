@@ -3,6 +3,9 @@ package com.mini.asaas.payer
 import com.mini.asaas.domain.base.BasePersonAdapter
 import com.mini.asaas.utils.base.PersonType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class PayerAdapter extends BasePersonAdapter {
 
     public PayerAdapter(Map params) {

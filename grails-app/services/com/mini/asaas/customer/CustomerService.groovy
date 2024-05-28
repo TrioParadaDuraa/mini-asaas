@@ -1,7 +1,9 @@
 package com.mini.asaas.customer
 
+import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 
+@GrailsCompileStatic
 @Transactional
 class CustomerService {
 
