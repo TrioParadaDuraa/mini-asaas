@@ -3,7 +3,7 @@ package com.mini.asaas.payment
 import com.mini.asaas.utils.FormatUtils
 import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.enums.PaymentStatus
-import com.mini.asaas.utils.enums.PaymentType
+import com.mini.asaas.utils.enums.BillingType
 
 import grails.compiler.GrailsCompileStatic
 
@@ -14,7 +14,7 @@ class PaymentAdapter {
 
     Long payerId
 
-    PaymentType paymentType
+    BillingType billingType
 
     BigDecimal value
 
@@ -25,7 +25,7 @@ class PaymentAdapter {
     public PaymentAdapter(Map params) {
         this.customerId = 1
         this.payerId = 1
-        this.paymentType = PaymentType.convert(params.paymentType.toString().toUpperCase())
+        this.billingType = BillingType.convert(params.paymentType.toString().toUpperCase())
         this.value = Utils.toBigDecimal(params.value.toString())
         this.status = PaymentStatus.AWAITING_PAYMENT
         this.dueDate = FormatUtils.toDate(params.dueDate.toString(), "yyyy-MM-dd")

@@ -8,11 +8,11 @@ enum PaymentStatus {
     RECEIVED,
     OVERDUE,
     CANCELED,
-    MONEY
+    RECEIVED_IN_CASH
 
-    public static PaymentType convert(paymentType) {
+    public static PaymentStatus convert(paymentStatus) {
         try {
-            return paymentType as PaymentType
+            return paymentStatus as PaymentStatus
         } catch (Exception exception) {
             return null
         }

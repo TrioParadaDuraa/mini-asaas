@@ -23,7 +23,7 @@ class PaymentService {
     private paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
         payment.customer = Customer.read(adapter.customerId)
         payment.payer = Payer.read(adapter.payerId)
-        payment.paymentType = adapter.paymentType
+        payment.billingType = adapter.billingType
         payment.value = adapter.value
         payment.status = adapter.status
         payment.dueDate = adapter.dueDate

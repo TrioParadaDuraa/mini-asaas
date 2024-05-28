@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.PaymentType" %>
+<%@ page import="com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -12,7 +12,7 @@
                 <label>Tipo de pagamento</label>
                 <br>
                 <select name="paymentType" id="paymentType">
-                    <g:each var="value" in="${PaymentType.values()}">
+                    <g:each var="value" in="${BillingType.values()}">
                         <option value="${value}">${value.getLabel()}</option>
                     </g:each>
                 </select>

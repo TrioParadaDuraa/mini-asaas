@@ -2,15 +2,15 @@ package com.mini.asaas.utils.enums
 
 import com.mini.asaas.utils.Utils
 
-enum PaymentType {
+enum BillingType {
 
     BANK_SLIP,
     CREDIT_CARD,
     PIX
 
-    public static PaymentType convert(paymentType) {
+    public static BillingType convert(billingType) {
         try {
-            return paymentType as PaymentType
+            return billingType as BillingType
         } catch (Exception exception) {
             return null
         }

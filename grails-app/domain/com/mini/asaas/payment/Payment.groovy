@@ -4,7 +4,7 @@ import com.mini.asaas.customer.Customer
 import com.mini.asaas.domain.base.BaseDomain
 import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
-import com.mini.asaas.utils.enums.PaymentType
+import com.mini.asaas.utils.enums.BillingType
 
 import grails.compiler.GrailsCompileStatic
 
@@ -15,7 +15,7 @@ class Payment extends BaseDomain {
 
     Payer payer
 
-    PaymentType paymentType
+    BillingType billingType
 
     BigDecimal value
 
