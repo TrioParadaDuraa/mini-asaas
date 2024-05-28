@@ -37,10 +37,10 @@ abstract class BasePerson extends BaseDomain {
     String state
 
     static constraints = {
-        cpfCnpj size: 11..14, blank: false, validator: { String cpfCnpj, def person ->
-            if (person.PersonType == PersonType.NATURAL) {
+        cpfCnpj size: 11..14, blank: false, validator: { String cpfCnpj, BasePerson person ->
+            if (person.personType == PersonType.NATURAL) {
                 return CpfCnpjValidator.isValidCpf(cpfCnpj)
-            } else if (person.PersonType == PersonType.LEGAL) {
+            } else if (person.personType == PersonType.LEGAL) {
                 return CpfCnpjValidator.isValidCnpj(cpfCnpj)
             }
 
