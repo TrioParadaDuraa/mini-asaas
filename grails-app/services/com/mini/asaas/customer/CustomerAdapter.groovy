@@ -18,7 +18,7 @@ class CustomerAdapter extends BasePersonAdapter {
         this.postalCode = params.postalCode
         this.address = params.address
         this.addressNumber = params.addressNumber
-        this.addressComplement = (params.addressComplement.trim()) ? params.addressComplement : null
+        this.addressComplement = (((String) params.addressComplement).trim()) ? params.addressComplement : null
         this.district = params.district
         this.city = params.city
         this.state = params.state

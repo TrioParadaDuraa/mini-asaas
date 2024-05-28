@@ -14,11 +14,11 @@ class PayerAdapter extends BasePersonAdapter {
         this.email = params.email
         this.phone = params.phone
         this.mobilePhone = params.mobilePhone
-        this.personType = PersonType.convert(params.personType.toUpperCase())
+        this.personType = PersonType.convert(((String) params.personType).toUpperCase())
         this.postalCode = params.postalCode
         this.address = params.address
         this.addressNumber = params.addressNumber
-        this.addressComplement = (params.addressComplement.trim()) ? params.addressComplement : null
+        this.addressComplement = (((String) params.addressComplement).trim()) ? params.addressComplement : null
         this.district = params.district
         this.city = params.city
         this.state = params.state
