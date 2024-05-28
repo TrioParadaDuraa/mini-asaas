@@ -9,8 +9,6 @@ class CustomerController {
     
     CustomerService customerService
 
-    def index() {}
-
     def show() {
         try {
             Customer customer = Customer.read(params.long('id'))
