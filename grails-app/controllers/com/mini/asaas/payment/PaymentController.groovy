@@ -30,7 +30,11 @@ class PaymentController {
 
     def show() {
         try {
-            Payment payment = Payment.read(params.long('id'))
+            Long customerId = 1
+            Long payerId = 1
+            Long id = params.long('id')
+
+            Payment payment = Payment.query([customerId: customerId, payerId: payerId, id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")

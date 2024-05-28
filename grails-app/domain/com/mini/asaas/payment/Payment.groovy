@@ -6,6 +6,9 @@ import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.enums.PaymentType
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class Payment extends BaseDomain {
 
     Customer customer
@@ -23,5 +26,21 @@ class Payment extends BaseDomain {
     static constraints = {
         value blank: false, nullable: false, scale: 2
         dueDate blank: false, date: true
+    }
+
+    static namedQueries = {
+        query { Map filterList ->
+            if (filterList.containsKey("customerId")) {
+                eq("customer.id", filterList.customerId)
+            }
+
+            if (filterList.containsKey("payerId")) {
+                eq("payer.id", filterList.payerId)
+            }
+
+            if (filterList.containsKey("id")) {
+                eq("id", filterList.id)
+            }
+        }
     }
 }
