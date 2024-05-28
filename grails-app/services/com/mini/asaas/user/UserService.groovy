@@ -9,7 +9,7 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class UserService {
 
-    public User save(UserAdapter adapter, Long customerId) {
+    public User saveCustomerUser(UserAdapter adapter, Long customerId) {
         User user = new User()
 
         user.customer = Customer.read(customerId)

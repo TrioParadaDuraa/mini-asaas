@@ -17,7 +17,7 @@ class UserController {
             
             UserAdapter adapter = new UserAdapter(params)
             
-            User user = userService.save(adapter, customerId)
+            User user = userService.saveCustomerUser(adapter, customerId)
 
             redirect(action: "show", id: user.id)
         } catch (ValidationException validationException) {
