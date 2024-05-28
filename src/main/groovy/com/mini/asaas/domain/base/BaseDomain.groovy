@@ -10,8 +10,4 @@ abstract class BaseDomain {
     Date lastUpdated
 
     Boolean deleted = false
-
-    static mapping = {
-        tablePerHierarchy false
-    }
 }
