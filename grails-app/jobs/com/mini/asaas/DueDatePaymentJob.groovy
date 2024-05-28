@@ -1,16 +1,20 @@
 package com.mini.asaas.jobs
 
 import com.mini.asaas.payment.Payment
+import com.mini.asaas.utils.enums.PaymentStatus
 import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
-
 class DueDatePaymentJob {
     static triggers = {
-      simple repeatInterval: 5000l // execute job once in 5 seconds
+        cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * *?'
     }
 
     def execute() {
-        // execute job
+        List<Payment> overduePayments = Payment.findAllByDueDateLessThanOrEqualTo(new Date())
+
+        overduePayments.each { payment ->
+            payment.status = PaymentStatus.OVERDUE
+            payment.save(flush: true)
     }
 }
