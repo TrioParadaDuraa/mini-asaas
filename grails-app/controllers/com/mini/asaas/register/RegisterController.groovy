@@ -12,6 +12,7 @@ import grails.compiler.GrailsCompileStatic
 class RegisterController {
 
     CustomerService customerService
+    
     UserService userService
 
     def index() {}
