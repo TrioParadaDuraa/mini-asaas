@@ -3,12 +3,7 @@ package com.mini.asaas.user
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.DetachedCriteria
 
-import groovy.transform.ToString
-
-import org.codehaus.groovy.util.HashCodeHelper
-
 @GrailsCompileStatic
-@ToString(cache=true, includeNames=true, includePackage=false)
 class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1
@@ -16,28 +11,6 @@ class UserRole implements Serializable {
     User user
 
     Role role
-
-    @Override
-    boolean equals(other) {
-        if (other instanceof UserRole) {
-            other.userId == user?.id && other.roleId == role?.id
-        }
-    }
-
-    @Override
-    int hashCode() {
-        int hashCode = HashCodeHelper.initHash()
-
-        if (user) {
-            hashCode = HashCodeHelper.updateHash(hashCode, user.id)
-        }
-
-        if (role) {
-            hashCode = HashCodeHelper.updateHash(hashCode, role.id)
-        }
-
-        hashCode
-    }
 
     static UserRole get(long userId, long roleId) {
         criteriaFor(userId, roleId).get()

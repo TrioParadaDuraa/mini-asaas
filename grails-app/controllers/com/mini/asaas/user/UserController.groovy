@@ -34,7 +34,7 @@ class UserController {
         try {
             Long customerId = 1
             Long id = params.long("id")
-            User user = User.query([customerId: customerId, id: id])
+            User user = (User) User.query([customerId: customerId, id: id]).get()
 
             if (!user) {
                 throw new Exception("Usuário não encontrado")
