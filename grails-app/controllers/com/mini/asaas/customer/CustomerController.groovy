@@ -45,10 +45,12 @@ class CustomerController {
 
     def update() {
         try {
-            CustomerAdapter adapter = new CustomerAdapter(params)
-            customerService.update(params.long('id'), adapter)
+            Long customerId = params.long('id')
 
-            redirect(action: "show", id: params.long('id'))
+            CustomerAdapter adapter = new CustomerAdapter(params)
+            customerService.update(customerId, adapter)
+
+            redirect(action: "show", id: customerId)
         } catch (Exception exception) {
             log.error("CustomerController.update >> Não foi possivel salvar as atualizações", exception)
             render "Não foi possível atualizar os dados"
