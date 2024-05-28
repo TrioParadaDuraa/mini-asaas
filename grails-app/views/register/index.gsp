@@ -9,7 +9,7 @@
 </head>
 <body title="Cadastro de cliente">
     <atlas-panel>
-        <atlas-form action="${createLink(controller: 'customer', action: 'save')}">
+        <atlas-form action="${createLink(controller: 'register', action: 'save')}">
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="5" md="2" sm="1">
