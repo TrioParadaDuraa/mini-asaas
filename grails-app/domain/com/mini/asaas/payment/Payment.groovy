@@ -30,6 +30,14 @@ class Payment extends BaseDomain {
 
     static namedQueries = {
         query { Map filterList ->
+            if (filterList.containsKey("deleted")) {
+                if (Boolean.valueOf(filterList.deleted)) {
+                    eq("deleted", true)
+                } else {
+                    eq("deleted", false)
+                }
+            }
+
             if (filterList.containsKey("customerId")) {
                 eq("customer.id", filterList.customerId)
             }

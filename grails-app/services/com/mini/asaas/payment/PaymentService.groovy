@@ -20,6 +20,24 @@ class PaymentService {
         return payment
     }
 
+    public update(Payment payment, PaymentAdapter adapter) {
+        paymentBuildProperties(payment, adapter)
+
+        payment.save(failOnError: true)
+    }
+
+    public delete(Payment payment) {
+        payment.deleted = true
+
+        payment.save(failOnError: true)
+    }
+
+    public restore(Payment payment) {
+        payment.deleted = false
+
+        payment.save(failOnError: true)
+    }
+
     private paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
         payment.customer = Customer.read(adapter.customerId)
         payment.payer = Payer.read(adapter.payerId)
