@@ -16,21 +16,28 @@ class DueDatePaymentJob {
     @Transactional
     def execute() {
         Date currentDate = new Date()
-        List<Payment> overduePayments = Payment.findAllByDueDateLessThan(currentDate).findAll { payment ->
+        List<Long> overduePaymentsIds = Payment.findAllByDueDateLessThan(currentDate).findAll { payment ->
             !(payment.status in [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH])
-        }
+        }*.id
 
-        if (overduePayments.isEmpty()) {
+        if (overduePaymentsIds.isEmpty()) {
             log.info("Não foram encontradas cobranças vencidas")
             return
         }
 
-        overduePayments.each { payment ->
-            try {
-                payment.status = PaymentStatus.OVERDUE
-                payment.save(flush: true)
-            } catch (Exception exception) {
-                log.error("Erro ao atualizar o status do pagamento ${payment.id}: ${exception.message}")
+        overduePaymentsIds.each { paymentId ->
+            Payment.withNewTransaction { ->
+                try {
+                    Payment payment = Payment.get(paymentId)
+                    if (payment) {
+                        payment.status = PaymentStatus.OVERDUE
+                        payment.save(flush: true)
+                    } else {
+                        log.error("Payment with ID $paymentId not found")
+                    }
+                } catch (Exception exception) {
+                    log.error("Erro ao atualizar o status do pagamento $paymentId: ${exception.message}")
+                }
             }
         }
     }
