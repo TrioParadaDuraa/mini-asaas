@@ -2,7 +2,9 @@ package com.mini.asaas
 
 import com.mini.asaas.payment.Payment
 import com.mini.asaas.utils.enums.PaymentStatus
+
 import grails.compiler.GrailsCompileStatic
+
 import org.springframework.transaction.annotation.Transactional
 
 @GrailsCompileStatic
@@ -13,7 +15,7 @@ class DueDatePaymentJob {
 
     @Transactional
     def execute() {
-        List<Payment> overduePayments = Payment.findAllByDueDateLessThanOrEqualTo(new Date())
+        List<Payment> overduePayments = Payment.findAllByDueDateLessThan(new Date())
 
         if (overduePayments.isEmpty()) {
             log.info("Não foram encontradas cobranças vencidas")
