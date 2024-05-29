@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Informações do customer</title>
     </head>
-    <body>
-        <form method="POST" action="${createLink(controller: 'customer', action: 'update')}">
+    <body title="Meus dados">
+    <atlas-panel>
+        <atlas-form method="POST" action="${createLink(controller: 'customer', action: 'update')}">
             <input type="hidden" name="id" value="${customer.id}">
             <div>
                 <label>Nome</label>
@@ -88,6 +89,7 @@
             </div>
             <br>
             <button type="submit">Salvar</button>
-        </form>
+        </atlas-form>
+    </atlas-panel>
     </body>
 </html>

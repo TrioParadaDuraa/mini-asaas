@@ -15,12 +15,14 @@
 </head>
 <body>
     <atlas-screen>
-        <atlas-sidebar>
+        <atlas-sidebar slot="sidebar">
             <atlas-sidebar-menu slot="body">
                 <atlas-sidebar-menu-item icon="users" value="" text="Meus dados"></atlas-sidebar-menu-item>
             </atlas-sidebar-menu>
         </atlas-sidebar>
         <atlas-page>
+            <atlas-page-header slot="header" page-name="${pageProperty(name: 'body.title')}">
+            </atlas-page-header>
             <atlas-page-content slot="content" class="js-atlas-content">
               <g:layoutBody/>
             </atlas-page-content>
