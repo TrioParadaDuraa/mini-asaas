@@ -1,4 +1,4 @@
-package com.mini.asaas.jobs
+package com.mini.asaas
 
 import com.mini.asaas.payment.Payment
 import com.mini.asaas.utils.enums.PaymentStatus
@@ -16,5 +16,6 @@ class DueDatePaymentJob {
         overduePayments.each { payment ->
             payment.status = PaymentStatus.OVERDUE
             payment.save(flush: true)
+        }
     }
 }
