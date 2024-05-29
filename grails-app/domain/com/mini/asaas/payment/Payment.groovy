@@ -42,10 +42,6 @@ class Payment extends BaseDomain {
                 eq("customer.id", filterList.customerId)
             }
 
-            if (filterList.containsKey("payerId")) {
-                eq("payer.id", filterList.payerId)
-            }
-
             if (filterList.containsKey("id")) {
                 eq("id", filterList.id)
             }

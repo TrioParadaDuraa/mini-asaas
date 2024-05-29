@@ -31,10 +31,9 @@ class PaymentController {
     def show() {
         try {
             Long customerId = 1
-            Long payerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, payerId: payerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -50,10 +49,9 @@ class PaymentController {
     def update() {
         try {
             Long customerId = 1
-            Long payerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, payerId: payerId, id: id, deleted: false]).get()
+            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -67,20 +65,16 @@ class PaymentController {
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
             log.error("PaymentController.update >> Erro ao atualizar dados da cobrança", exception)
-            flash.type = MessageType.ERROR
-            flash.message = 'Erro ao atualizar dados, verifique os dados e tente novamente'
-
-            redirect(action: 'show')
+            render "Não foi possivel fazer a atualização dos dados de cobrança"
         }
     }
 
     def delete() {
         try {
             Long customerId = 1
-            Long payerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, payerId: payerId, id: id, deleted: false]).get()
+            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -100,10 +94,9 @@ class PaymentController {
     def restore() {
         try {
             Long customerId = 1
-            Long payerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, payerId: payerId, id: id, deleted: true]).get()
+            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
