@@ -77,7 +77,7 @@ class PayerController {
             Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id, deleted: false]).get()
+            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -104,7 +104,7 @@ class PayerController {
             Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id, deleted: false]).get()
+            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
             
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -126,7 +126,7 @@ class PayerController {
             Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id, deleted: true]).get()
+            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
