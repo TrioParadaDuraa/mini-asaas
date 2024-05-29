@@ -4,7 +4,6 @@ import com.mini.asaas.customer.Customer
 import com.mini.asaas.customer.CustomerAdapter
 import com.mini.asaas.customer.CustomerService
 import com.mini.asaas.user.UserAdapter
-import com.mini.asaas.user.UserService
 
 import grails.compiler.GrailsCompileStatic
 
@@ -12,8 +11,6 @@ import grails.compiler.GrailsCompileStatic
 class RegisterController {
 
     CustomerService customerService
-    
-    UserService userService
 
     def index() {}
 
@@ -22,8 +19,7 @@ class RegisterController {
             CustomerAdapter customerAdapter = new CustomerAdapter(params)
             UserAdapter userAdapter = new UserAdapter(params)
 
-            Customer customer = customerService.save(customerAdapter)
-            userService.saveCustomerUser(userAdapter, customer.id)
+            Customer customer = customerService.save(customerAdapter, userAdapter)
 
             redirect(controller:"customer", action: "show", id: customer.id)
         } catch (Exception exception) {
