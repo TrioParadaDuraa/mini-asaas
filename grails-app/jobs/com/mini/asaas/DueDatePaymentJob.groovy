@@ -4,18 +4,21 @@ import com.mini.asaas.payment.Payment
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
-
-import org.springframework.transaction.annotation.Transactional
+import grails.gorm.transactions.Transactional
 
 @GrailsCompileStatic
 class DueDatePaymentJob {
+
     static triggers = {
         cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * *?'
     }
 
     @Transactional
     def execute() {
-        List<Payment> overduePayments = Payment.findAllByDueDateLessThan(new Date())
+        Date currentDate = new Date()
+        List<Payment> overduePayments = Payment.findAllByDueDateLessThan(currentDate).findAll { payment ->
+            !(payment.status in [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH])
+        }
 
         if (overduePayments.isEmpty()) {
             log.info("Não foram encontradas cobranças vencidas")
