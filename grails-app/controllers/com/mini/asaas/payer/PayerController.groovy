@@ -57,12 +57,13 @@ class PayerController {
             Long customerId = 1
 
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
+            filterList.put("cutomerId", customerId)
 
             if (!filterList.containsKey("deleted")) {
                 filterList.deleted = false
             }
 
-            List<Payer> payerList = payerService.list(customerId, filterList)
+            List<Payer> payerList = (List<Payer>) Payer.query(filterList).list()
 
             return [payerList: payerList]
         } catch (Exception exception) {

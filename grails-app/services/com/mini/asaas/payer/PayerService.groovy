@@ -32,12 +32,6 @@ class PayerService {
         return payer
     }
 
-    public List<Payer> list(Long customerId, Map filterList) {
-        filterList.customerId = customerId
-
-        return Payer.query(filterList).list()
-    }
-
     public Payer update(Payer payer, PayerAdapter adapter) {
         payer.cpfCnpj = adapter.cpfCnpj
         payer.name = adapter.name
