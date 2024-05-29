@@ -10,7 +10,7 @@ class CpfCnpjValidator {
     }
 
     public static boolean isValidCpf(String cpf) {
-        if (!cpf.matches("\\d{11}") || cpf.matches("(\\d)\\1{10}")) {
+        if (!cpf.matches(/\d{11}/) || cpf.matches(/(\d)\1{10}/)) {
             return false
         }
 
@@ -38,7 +38,7 @@ class CpfCnpjValidator {
     }
 
     public static boolean isValidCnpj(String cnpj) {
-        if (!cnpj.matches("\\d{14}") || cnpj.matches("(\\d)\\1{13}")) {
+        if (!cnpj.matches(/\d{14}/) || cnpj.matches(/(\d)\1{13}/)) {
             return false
         }
 
