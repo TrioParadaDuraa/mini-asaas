@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils ;com.mini.asaas.utils.enums.PaymentStatus; com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
+<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.enums.PaymentStatus; com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
