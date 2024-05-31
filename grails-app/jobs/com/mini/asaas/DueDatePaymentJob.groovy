@@ -1,7 +1,6 @@
 package com.mini.asaas
 
-import com.mini.asaas.payment.Payment
-import com.mini.asaas.utils.enums.PaymentStatus
+import com.mini.asaas.payment.PaymentService
 
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
@@ -13,29 +12,14 @@ class DueDatePaymentJob {
         cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * *?'
     }
 
+    PaymentService paymentService
+
     @Transactional
     def execute() {
-        List<Long> overduePaymentsIds = Payment.overduePayments().list().collect { it.id }
-
-        if (overduePaymentsIds.isEmpty()) {
-            log.info("Não foram encontradas cobranças vencidas")
-            return
-        }
-
-        overduePaymentsIds.each { paymentId ->
-            Payment.withNewTransaction { ->
-                try {
-                    Payment payment = Payment.get(paymentId)
-                    if (payment) {
-                        payment.status = PaymentStatus.OVERDUE
-                        payment.save(flush: true)
-                    } else {
-                        log.error("Pagamento de ID $paymentId não encontrado")
-                    }
-                } catch (Exception exception) {
-                    log.error("Erro ao atualizar o status do pagamento $paymentId: ${exception.message}")
-                }
-            }
+        try {
+            paymentService.processOverduePayments()
+        } catch (Exception exception) {
+            log.error("Erro ao processar as cobranças vencidas: ${exception.message}")
         }
     }
 }
