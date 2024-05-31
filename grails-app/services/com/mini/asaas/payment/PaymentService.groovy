@@ -21,6 +21,7 @@ class PaymentService {
         return payment
     }
 
+    @Transactional
     public void processOverduePayments() {
         List<Long> overduePaymentsIds = Payment.overduePayments().list().collect { it.id }
 
@@ -32,12 +33,14 @@ class PaymentService {
 
         overduePaymentsIds.each { paymentId ->
             try {
-                Payment payment = Payment.get(paymentId)
-                if (payment) {
-                    payment.status = PaymentStatus.OVERDUE
-                    payment.save(flush: true)
-                } else {
-                    log.error("Pagamento de ID $paymentId não encontrado")
+                Payment.withNewTransaction { status ->
+                    Payment payment = Payment.get(paymentId)
+                    if (payment) {
+                        payment.status = PaymentStatus.OVERDUE
+                        payment.save(failOnError: true)
+                    } else {
+                        log.error("Pagamento de ID $paymentId não encontrado")
+                    }
                 }
             } catch (Exception exception) {
                 log.error("Erro ao atualizar o status do pagamento $paymentId: ${exception.message}")
@@ -45,6 +48,7 @@ class PaymentService {
         }
     }
 
+    @Transactional
     public void updateIncomingChargeStatus(Long paymentId, PaymentStatus status) {
         Payment payment = Payment.get(paymentId)
         if (payment) {
@@ -55,7 +59,7 @@ class PaymentService {
         }
     }
 
-    private paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
+    private static paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
         payment.customer = Customer.read(adapter.customerId)
         payment.payer = Payer.read(adapter.payerId)
         payment.billingType = adapter.billingType

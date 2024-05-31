@@ -44,9 +44,12 @@ class Payment extends BaseDomain {
         }
 
         overduePayments {
+            projections {
+                property('id')
+            }
             lt('dueDate', new Date())
             not {
-                inList('status', [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH])
+                inList('status', [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH, PaymentStatus.OVERDUE])
             }
         }
     }
