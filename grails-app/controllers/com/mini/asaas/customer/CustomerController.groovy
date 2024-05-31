@@ -1,9 +1,11 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.user.User
 import com.mini.asaas.user.UserAdapter
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
@@ -11,6 +13,8 @@ import grails.plugin.springsecurity.annotation.Secured
 class CustomerController {
     
     CustomerService customerService
+
+    SpringSecurityService springSecurityService
 
     @Secured("permitAll")
     def index() {}
@@ -23,7 +27,7 @@ class CustomerController {
 
             Customer customer = customerService.save(customerAdapter, userAdapter)
 
-            redirect(action: "show", id: customer.id)
+            redirect(action: "show")
         } catch (Exception exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
             flash.type = MessageType.ERROR
@@ -35,7 +39,9 @@ class CustomerController {
 
     def show() {
         try {
-            Customer customer = Customer.read(params.long('id'))
+            User user = (User) springSecurityService.currentUser
+
+            Customer customer = Customer.read(user.customer.id)
 
             if (!customer) {
                 throw new Exception("Cliente não encontrado")
@@ -51,14 +57,15 @@ class CustomerController {
     @Secured("isFullyAuthenticated()")
     def update() {
         try {
-            Long customerId = params.long('id')
+            User user = (User) springSecurityService.currentUser
+            Long customerId = user.customer.id
 
             CustomerAdapter adapter = new CustomerAdapter(params)
             customerService.update(customerId, adapter)
 
             redirect(action: "show", id: customerId)
         } catch (Exception exception) {
-            log.error("CustomerController.update >> Não foi possivel salvar as atualizações", exception)
+            log.error("CustomerController.update >> Não foi possível salvar as atualizações", exception)
             render "Não foi possível atualizar os dados"
         }
     }

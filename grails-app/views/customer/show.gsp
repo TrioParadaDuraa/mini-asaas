@@ -7,7 +7,6 @@
     </head>
     <body>
         <form method="POST" action="${createLink(controller: 'customer', action: 'update')}">
-            <input type="hidden" name="id" value="${customer.id}">
             <div>
                 <label>Nome</label>
                 <br>
