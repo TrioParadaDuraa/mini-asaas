@@ -37,6 +37,13 @@
                             href="${createLink(controller: 'customer', action: 'show', id: 1)}"
                         ></atlas-sidebar-menu-item>
 
+                        <atlas-sidebar-menu-item
+                                icon="spanner"
+                                value=""
+                                text="Redefinir senha"
+                                href=""
+                        ></atlas-sidebar-menu-item>
+
                 </atlas-sidebar-menu-item>
             </atlas-sidebar-menu>
         </atlas-sidebar>
