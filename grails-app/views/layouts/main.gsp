@@ -26,7 +26,7 @@
                                     icon="user"
                                     value=""
                                     text="Meus dados"
-                                    href=""
+                                    href="${createLink(controller: 'customer', action: 'data', id: 1)}"
                             ></atlas-sidebar-menu-item>
 
                             <atlas-sidebar-menu-item
