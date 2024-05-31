@@ -1,5 +1,6 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.user.UserAdapter
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
@@ -12,15 +13,15 @@ class CustomerController {
     CustomerService customerService
 
     @Secured("permitAll")
-    def index() {
-
-    }
+    def index() {}
 
     @Secured("permitAll")
     def save() {
         try {
-            CustomerAdapter adapter = new CustomerAdapter(params)
-            Customer customer = customerService.save(adapter)
+            CustomerAdapter customerAdapter = new CustomerAdapter(params)
+            UserAdapter userAdapter = new UserAdapter(params)
+
+            Customer customer = customerService.save(customerAdapter, userAdapter)
 
             redirect(action: "show", id: customer.id)
         } catch (Exception exception) {
