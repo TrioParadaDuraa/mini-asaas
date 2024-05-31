@@ -1,5 +1,6 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.domain.base.BasePersonAdapter
 import com.mini.asaas.utils.base.PersonType
 import com.mini.asaas.utils.validators.CpfCnpjValidator
 import com.mini.asaas.utils.validators.EmailValidator
@@ -15,35 +16,39 @@ import grails.validation.ValidationException
 @Transactional
 class CustomerService {
 
-    public Customer save(CustomerAdapter adapter) {
+    public Customer save(CreateCustomerAdapter adapter) {
         Customer customer = validateSave(adapter)
 
         if (customer.hasErrors()) {
             throw new ValidationException("Erro ao salvar conta", customer.errors)
         }
 
-        buildCustomerProperties(customer, adapter)
+        buildCustomerPropertiesForSave(customer, adapter)
 
         customer.save(failOnError: true)
 
         return customer
     }
 
-    public update(Long customerId, CustomerAdapter adapter) {
-        Customer customer = Customer.get(customerId)
+    public update(Long customerId, UpdateCustomerAdapter adapter) {
+        Customer customer = validate(adapter)
+
+        if (customer.hasErrors()) {
+            throw new ValidationException("Erro ao atualizar conta", customer.errors)
+        }
+
+        customer = Customer.get(customerId)
 
         buildCustomerProperties(customer, adapter)
 
         customer.save(failOnError: true)
     }
 
-    private buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
-        customer.cpfCnpj = adapter.cpfCnpj
+    private buildCustomerProperties(Customer customer, BasePersonAdapter adapter) {
         customer.name = adapter.name
         customer.email = adapter.email
         customer.phone = adapter.phone
         customer.mobilePhone = adapter.mobilePhone
-        customer.personType = adapter.personType
         customer.postalCode = adapter.postalCode
         customer.address = adapter.address
         customer.addressNumber = adapter.addressNumber
@@ -53,12 +58,14 @@ class CustomerService {
         customer.state = adapter.state
     }
 
-    private Customer validateSave(CustomerAdapter adapter) {
-        Customer customer = new Customer()
+    private buildCustomerPropertiesForSave(Customer customer, CreateCustomerAdapter adapter) {
+        buildCustomerProperties(customer, adapter)
+        customer.cpfCnpj = adapter.cpfCnpj
+        customer.personType = adapter.personType
+    }
 
-        if (!CpfCnpjValidator.isValidCpfCnpj(adapter.cpfCnpj)) {
-            customer.errors.reject("cpfCnpj", null, "CPF/CNPJ inválido")
-        }
+    private Customer validate(BasePersonAdapter adapter) {
+        Customer customer = new Customer()
 
         if (!adapter.name) {
             customer.errors.reject("name", null, "Nome inválido")
@@ -74,13 +81,6 @@ class CustomerService {
 
         if (!MobilePhoneValidator.isValidMobilePhone(adapter.mobilePhone)) {
             customer.errors.reject("mobilePhone", null, "Número de celular inválido")
-        }
-
-        if (
-            CpfCnpjValidator.isValidCpf(adapter.cpfCnpj) && adapter.personType != PersonType.NATURAL ||
-            CpfCnpjValidator.isValidCnpj(adapter.cpfCnpj) && adapter.personType != PersonType.LEGAL
-        ) {
-            customer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
         }
 
         if (!PostalCodeValidator.isValidPostalCode(adapter.postalCode)) {
@@ -105,6 +105,23 @@ class CustomerService {
 
         if (!adapter.state) {
             customer.errors.reject("state", null, "UF inválida")
+        }
+
+        return customer
+    }
+
+    private Customer validateSave(CreateCustomerAdapter adapter) {
+        Customer customer = validate(adapter)
+
+        if (!CpfCnpjValidator.isValidCpfCnpj(adapter.cpfCnpj)) {
+            customer.errors.reject("cpfCnpj", null, "CPF/CNPJ inválido")
+        }
+
+        if (
+            CpfCnpjValidator.isValidCpf(adapter.cpfCnpj) && adapter.personType != PersonType.NATURAL ||
+            CpfCnpjValidator.isValidCnpj(adapter.cpfCnpj) && adapter.personType != PersonType.LEGAL
+        ) {
+            customer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
         }
 
         return customer

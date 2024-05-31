@@ -15,7 +15,7 @@ class CustomerController {
 
     def save() {
         try {
-            CustomerAdapter adapter = new CustomerAdapter(params)
+            CreateCustomerAdapter adapter = new CreateCustomerAdapter(params)
             Customer customer = customerService.save(adapter)
 
             redirect(action: "show", id: customer.id)
@@ -47,7 +47,7 @@ class CustomerController {
         try {
             Long customerId = params.long('id')
 
-            CustomerAdapter adapter = new CustomerAdapter(params)
+            UpdateCustomerAdapter adapter = new UpdateCustomerAdapter(params)
             customerService.update(customerId, adapter)
 
             redirect(action: "show", id: customerId)
