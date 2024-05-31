@@ -18,13 +18,13 @@
         <atlas-sidebar slot="sidebar">
             <atlas-sidebar-menu slot="body">
                 <atlas-sidebar-menu-item
-                        icon="users"
+                        icon="cog"
                         value=""
                         text="Minha conta"
                         href="">
 
                         <atlas-sidebar-menu-item
-                                icon="users"
+                                icon="user"
                                 value=""
                                 text="Meus dados"
                                 href=""
@@ -34,7 +34,7 @@
                             icon="pencil"
                             value=""
                             text="Atualizar dados"
-                            href=""
+                            href="${createLink(controller: 'customer', action: 'show', id: 1)}"
                         ></atlas-sidebar-menu-item>
 
                 </atlas-sidebar-menu-item>
