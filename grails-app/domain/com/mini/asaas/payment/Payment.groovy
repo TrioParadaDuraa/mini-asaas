@@ -42,5 +42,12 @@ class Payment extends BaseDomain {
                 eq("id", filterList.id)
             }
         }
+
+        overduePayments {
+            lt('dueDate', new Date())
+            not {
+                inList('status', [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH])
+            }
+        }
     }
 }
