@@ -1,5 +1,8 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.user.UserAdapter
+import com.mini.asaas.user.UserService
+
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 
@@ -7,15 +10,18 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class CustomerService {
 
-    public Customer save(CustomerAdapter adapter) {
+    UserService userService
+
+    public Customer save(CustomerAdapter customerAdapter, UserAdapter userAdapter) {
         Customer customer = new Customer()
 
-        customer.cpfCnpj = adapter.cpfCnpj
-        customer.name = adapter.name
-        customer.personType = adapter.personType
-        buildCustomerProperties(customer, adapter)
+        customer.cpfCnpj = customerAdapter.cpfCnpj
+        customer.name = customerAdapter.name
+        customer.personType = customerAdapter.personType
+        buildCustomerProperties(customer, customerAdapter)
 
         customer.save(failOnError: true)
+        userService.saveCustomerUser(userAdapter, customer.id)
 
         return customer
     }
