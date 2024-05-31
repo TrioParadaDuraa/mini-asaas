@@ -5,13 +5,20 @@ import com.mini.asaas.payer.Payer
 
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
+import grails.validation.ValidationException
+
+import org.apache.commons.lang.time.DateUtils
 
 @GrailsCompileStatic
 @Transactional
 class PaymentService {
 
     public Payment save(PaymentAdapter adapter) {
-        Payment payment = new Payment()
+        Payment payment = validate(adapter)
+
+        if (payment.hasErrors()) {
+            throw new ValidationException("Erro ao criar cobrança", payment.errors)
+        }
 
         paymentBuildProperties(payment, adapter)
 
@@ -45,5 +52,21 @@ class PaymentService {
         payment.value = adapter.value
         payment.status = adapter.status
         payment.dueDate = adapter.dueDate
+    }
+
+    private Payment validate(PaymentAdapter adapter) {
+        Payment payment = new Payment()
+        
+        if (adapter.value <= 0) {
+            payment.errors.reject("value", null, "Valor inválido")
+        }
+
+        Date currentDate = DateUtils.truncate(new Date(), Calendar.DAY_OF_MONTH)
+
+        if (adapter.dueDate.getTime() - currentDate.getTime() < 0) {
+            payment.errors.reject("dueDate", null, "Data de vencimento inválida")
+        }
+
+        return payment
     }
 }
