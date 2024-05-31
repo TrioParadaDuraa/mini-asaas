@@ -16,10 +16,9 @@ class PayerController {
     def save() {
         try {
             Long customerId = 1
-            Customer customer = Customer.read(customerId)
 
             PayerAdapter adapter = new PayerAdapter(params)
-            Payer payer = payerService.save(adapter, customer)
+            Payer payer = payerService.save(adapter, customerId)
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
