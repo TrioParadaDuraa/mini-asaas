@@ -18,7 +18,7 @@ import grails.validation.ValidationException
 class PayerService {
 
     public Payer save(PayerAdapter adapter, Long customerId) {
-        Payer payer = validateSave(adapter)
+        Payer payer = validate(adapter)
 
         if (payer.hasErrors()) {
             throw new ValidationException("Erro ao salvar payer", payer.errors)
@@ -33,7 +33,7 @@ class PayerService {
     }
 
     public Payer update(Long payerId, PayerAdapter adapter) {
-        Payer payer = validateSave(adapter)
+        Payer payer = validate(adapter)
 
         if (payer.hasErrors()) {
             throw new ValidationException("Erro ao salvar payer", payer.errors)
@@ -80,7 +80,7 @@ class PayerService {
         payer.state = adapter.state
     }
 
-    private Payer validateSave(PayerAdapter adapter) {
+    private Payer validate(PayerAdapter adapter) {
         Payer payer = new Payer()
 
         if (!CpfCnpjValidator.isValidCpfCnpj(adapter.cpfCnpj)) {
