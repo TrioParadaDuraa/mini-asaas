@@ -1,5 +1,6 @@
 package com.mini.asaas.payer
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.utils.Utils
 
@@ -9,7 +10,7 @@ import grails.validation.ValidationException
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class PayerController {
+class PayerController extends BaseController {
 
     PayerService payerService
 
@@ -17,7 +18,8 @@ class PayerController {
 
     def save() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
+
             Customer customer = Customer.read(customerId)
 
             PayerAdapter adapter = new PayerAdapter(params)
@@ -36,7 +38,7 @@ class PayerController {
 
     def show() {
         try{
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -56,7 +58,7 @@ class PayerController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
 
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
             filterList.put("cutomerId", customerId)
@@ -76,7 +78,7 @@ class PayerController {
 
     def update() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -103,7 +105,7 @@ class PayerController {
 
     def delete() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -125,7 +127,7 @@ class PayerController {
 
     def restore() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()

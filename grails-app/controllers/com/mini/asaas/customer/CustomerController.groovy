@@ -1,20 +1,18 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.user.User
 import com.mini.asaas.user.UserAdapter
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
-import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class CustomerController {
+class CustomerController extends BaseController {
     
     CustomerService customerService
-
-    SpringSecurityService springSecurityService
 
     @Secured("permitAll")
     def index() {}
@@ -27,7 +25,7 @@ class CustomerController {
 
             Customer customer = customerService.save(customerAdapter, userAdapter)
 
-            redirect(action: "show")
+            redirect(controller: "login", action: "auth")
         } catch (Exception exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
             flash.type = MessageType.ERROR
@@ -39,9 +37,8 @@ class CustomerController {
 
     def show() {
         try {
-            User user = (User) springSecurityService.currentUser
-
-            Customer customer = Customer.read(user.customer.id)
+            Long customerId = getCurrentUser().customer.id
+            Customer customer = Customer.read(customerId)
 
             if (!customer) {
                 throw new Exception("Cliente não encontrado")
@@ -57,8 +54,7 @@ class CustomerController {
     @Secured("isFullyAuthenticated()")
     def update() {
         try {
-            User user = (User) springSecurityService.currentUser
-            Long customerId = user.customer.id
+            Long customerId = getCurrentUser().customer.id
 
             CustomerAdapter adapter = new CustomerAdapter(params)
             customerService.update(customerId, adapter)
