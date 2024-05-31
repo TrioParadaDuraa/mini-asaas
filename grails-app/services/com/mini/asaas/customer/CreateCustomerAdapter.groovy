@@ -7,13 +7,13 @@ import com.mini.asaas.utils.base.PersonType
 import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
-class CustomerAdapter extends BasePersonAdapter {
+class CreateCustomerAdapter extends BasePersonAdapter {
 
     String cpfCnpj
 
     PersonType personType
 
-    public CustomerAdapter(Map params){
+    public CreateCustomerAdapter(Map params){
         this.cpfCnpj = Utils.removeNoNumeric(params.cpfCnpj.toString())
         this.name = params.name
         this.email = params.email
