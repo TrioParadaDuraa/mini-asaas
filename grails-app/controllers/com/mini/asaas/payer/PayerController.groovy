@@ -85,7 +85,7 @@ class PayerController {
             }
 
             PayerAdapter adapter = new PayerAdapter(params)
-            payer = payerService.update(payer, adapter)
+            payer = payerService.update(payer.id, adapter)
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
@@ -111,7 +111,7 @@ class PayerController {
                 throw new Exception("Pagador já está inativo")
             }
 
-            payerService.delete(payer)
+            payerService.delete(payer.id)
 
             redirect(action: "list")
         } catch (Exception exception) {
@@ -133,7 +133,7 @@ class PayerController {
                 throw new Exception("Pagador não está inativo")
             }
 
-            payerService.restore(payer)
+            payerService.restore(payer.id)
 
             redirect(action: "list")
         } catch (Exception exception) {

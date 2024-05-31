@@ -1,6 +1,7 @@
 package com.mini.asaas.payer
 
 import com.mini.asaas.customer.Customer
+
 import com.mini.asaas.utils.base.PersonType
 import com.mini.asaas.utils.validators.CpfCnpjValidator
 import com.mini.asaas.utils.validators.EmailValidator
@@ -17,16 +18,13 @@ import grails.validation.ValidationException
 class PayerService {
 
     public Payer save(PayerAdapter adapter, Long customerId) {
-        Payer payer = new Payer()
-
-        validateSave(payer, adapter)
+        Payer payer = validateSave(adapter)
 
         if (payer.hasErrors()) {
             throw new ValidationException("Erro ao salvar payer", payer.errors)
         }
 
         buildPayerProperties(payer, adapter)
-
         payer.customer = Customer.read(customerId)
 
         payer.save(failOnError: true)
@@ -34,7 +32,15 @@ class PayerService {
         return payer
     }
 
-    public Payer update(Payer payer, PayerAdapter adapter) {
+    public Payer update(Long payerId, PayerAdapter adapter) {
+        Payer payer = validateSave(adapter)
+
+        if (payer.hasErrors()) {
+            throw new ValidationException("Erro ao salvar payer", payer.errors)
+        }
+
+        payer = Payer.get(payerId)
+
         buildPayerProperties(payer, adapter)
 
         payer.save(failOnError: true)
@@ -42,13 +48,17 @@ class PayerService {
         return payer
     }
 
-    public void delete(Payer payer) {
+    public void delete(Long payerId) {
+        Payer payer = Payer.get(payerId)
+
         payer.deleted = true
 
         payer.save(failOnError: true)
     }
 
-    public void restore(Payer payer) {
+    public void restore(Long payerId) {
+        Payer payer = Payer.get(payerId)
+        
         payer.deleted = false
 
         payer.save(failOnError: true)
@@ -70,7 +80,9 @@ class PayerService {
         payer.state = adapter.state
     }
 
-    private Payer validateSave(Payer payer, PayerAdapter adapter) {
+    private Payer validateSave(PayerAdapter adapter) {
+        Payer payer = new Payer()
+
         if (!CpfCnpjValidator.isValidCpfCnpj(adapter.cpfCnpj)) {
             payer.errors.reject("cpfCnpj", null, "CPF/CNPJ inválido")
         }
@@ -121,5 +133,7 @@ class PayerService {
         if (!adapter.state) {
             payer.errors.reject("state", null, "UF inválida")
         }
+
+        return payer
     }
 }
