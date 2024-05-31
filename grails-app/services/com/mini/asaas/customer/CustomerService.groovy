@@ -10,6 +10,9 @@ class CustomerService {
     public Customer save(CustomerAdapter adapter) {
         Customer customer = new Customer()
 
+        customer.cpfCnpj = adapter.cpfCnpj
+        customer.name = adapter.name
+        customer.personType = adapter.personType
         buildCustomerProperties(customer, adapter)
 
         customer.save(failOnError: true)
@@ -26,12 +29,9 @@ class CustomerService {
     }
 
     private buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
-        customer.cpfCnpj = adapter.cpfCnpj
-        customer.name = adapter.name
         customer.email = adapter.email
         customer.phone = adapter.phone
         customer.mobilePhone = adapter.mobilePhone
-        customer.personType = adapter.personType
         customer.postalCode = adapter.postalCode
         customer.address = adapter.address
         customer.addressNumber = adapter.addressNumber

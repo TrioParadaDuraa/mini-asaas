@@ -17,7 +17,27 @@
     <atlas-screen>
         <atlas-sidebar slot="sidebar">
             <atlas-sidebar-menu slot="body">
-                <atlas-sidebar-menu-item icon="users" value="" text="Meus dados"></atlas-sidebar-menu-item>
+                <atlas-sidebar-menu-item
+                        icon="users"
+                        value=""
+                        text="Minha conta"
+                        href="">
+
+                        <atlas-sidebar-menu-item
+                                icon="users"
+                                value=""
+                                text="Meus dados"
+                                href=""
+                        ></atlas-sidebar-menu-item>
+
+                        <atlas-sidebar-menu-item
+                            icon="pencil"
+                            value=""
+                            text="Atualizar dados"
+                            href=""
+                        ></atlas-sidebar-menu-item>
+
+                </atlas-sidebar-menu-item>
             </atlas-sidebar-menu>
         </atlas-sidebar>
         <atlas-page>
