@@ -1,5 +1,6 @@
 package com.mini.asaas.payment
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
@@ -7,13 +8,11 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class PaymentController {
+class PaymentController extends BaseController {
 
     PaymentService paymentService
 
-    def index() {
-
-    }
+    def index() {}
 
     def save() {
         try {
@@ -32,7 +31,7 @@ class PaymentController {
 
     def show() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -50,7 +49,7 @@ class PaymentController {
 
     def update() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -73,7 +72,7 @@ class PaymentController {
 
     def delete() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -95,7 +94,7 @@ class PaymentController {
 
     def restore() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
