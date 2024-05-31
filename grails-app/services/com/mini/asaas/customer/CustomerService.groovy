@@ -16,7 +16,6 @@ class CustomerService {
         Customer customer = new Customer()
 
         customer.cpfCnpj = customerAdapter.cpfCnpj
-        customer.name = customerAdapter.name
         customer.personType = customerAdapter.personType
         buildCustomerProperties(customer, customerAdapter)
 
@@ -35,6 +34,7 @@ class CustomerService {
     }
 
     private buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
+        customer.name = adapter.name
         customer.email = adapter.email
         customer.phone = adapter.phone
         customer.mobilePhone = adapter.mobilePhone

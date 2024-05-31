@@ -10,6 +10,11 @@
         <atlas-form-panel header="Atualize seus dados cadastrais" class="js-person-form" method="POST" action="${createLink(controller: 'customer', action: 'update', id: customer.id)}">
             <atlas-grid>
                 <atlas-row>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-input label="Nome" required="" name="name" size="md" value="${customer.name}"></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+                <atlas-row>
                     <atlas-col lg="3" md="2" sm="1">
                         <atlas-masked-input mask-alias="email" label="Email" required="" name="email" size="md" value="${customer.email}"></atlas-masked-input>
                     </atlas-col>
