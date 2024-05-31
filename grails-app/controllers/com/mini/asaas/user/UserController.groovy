@@ -1,13 +1,14 @@
 package com.mini.asaas.user
 
-import grails.validation.ValidationException
+import com.mini.asaas.BaseController
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class UserController {
+class UserController extends BaseController {
 
     UserService userService
 
@@ -16,7 +17,7 @@ class UserController {
     @Secured("isFullyAuthenticated()")
     def save() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             
             UserAdapter adapter = new UserAdapter(params)
             
@@ -35,7 +36,7 @@ class UserController {
 
     def show() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
             Long id = params.long("id")
             User user = (User) User.query([customerId: customerId, id: id]).get()
 
