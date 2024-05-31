@@ -4,9 +4,11 @@ import com.mini.asaas.customer.Customer
 import com.mini.asaas.utils.Utils
 
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
 @GrailsCompileStatic
+@Secured("isAuthenticated()")
 class PayerController {
 
     PayerService payerService

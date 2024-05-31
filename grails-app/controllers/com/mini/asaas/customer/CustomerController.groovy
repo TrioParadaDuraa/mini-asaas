@@ -3,16 +3,20 @@ package com.mini.asaas.customer
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
+@Secured("isAuthenticated()")
 class CustomerController {
     
     CustomerService customerService
 
+    @Secured("permitAll")
     def index() {
 
     }
 
+    @Secured("permitAll")
     def save() {
         try {
             CustomerAdapter adapter = new CustomerAdapter(params)
@@ -43,6 +47,7 @@ class CustomerController {
         }
     }
 
+    @Secured("isFullyAuthenticated()")
     def update() {
         try {
             Long customerId = params.long('id')
