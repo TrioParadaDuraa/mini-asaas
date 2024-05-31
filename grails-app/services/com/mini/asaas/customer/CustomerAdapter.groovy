@@ -9,6 +9,10 @@ import grails.compiler.GrailsCompileStatic
 @GrailsCompileStatic
 class CustomerAdapter extends BasePersonAdapter {
 
+    String cpfCnpj
+
+    PersonType personType
+
     public CustomerAdapter(Map params){
         this.cpfCnpj = Utils.removeNoNumeric(params.cpfCnpj.toString())
         this.name = params.name
