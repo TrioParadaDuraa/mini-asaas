@@ -20,10 +20,8 @@ class PayerController extends BaseController {
         try {
             Long customerId = getCurrentUser().customer.id
 
-            Customer customer = Customer.read(customerId)
-
             PayerAdapter adapter = new PayerAdapter(params)
-            Payer payer = payerService.save(adapter, customer)
+            Payer payer = payerService.save(adapter, customerId)
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
@@ -90,7 +88,7 @@ class PayerController extends BaseController {
             }
 
             PayerAdapter adapter = new PayerAdapter(params)
-            payer = payerService.update(payer, adapter)
+            payer = payerService.update(payer.id, adapter)
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
@@ -116,7 +114,7 @@ class PayerController extends BaseController {
                 throw new Exception("Pagador já está inativo")
             }
 
-            payerService.delete(payer)
+            payerService.delete(payer.id)
 
             redirect(action: "list")
         } catch (Exception exception) {
@@ -138,7 +136,7 @@ class PayerController extends BaseController {
                 throw new Exception("Pagador não está inativo")
             }
 
-            payerService.restore(payer)
+            payerService.restore(payer.id)
 
             redirect(action: "list")
         } catch (Exception exception) {

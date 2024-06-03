@@ -9,19 +9,20 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class PayerService {
 
-    public Payer save(PayerAdapter adapter, Customer customer) {
+    public Payer save(PayerAdapter adapter, Long customerId) {
         Payer payer = new Payer()
 
         buildPayerProperties(payer, adapter)
-
-        payer.customer = customer
+        payer.customer = Customer.read(customerId)
 
         payer.save(failOnError: true)
         
         return payer
     }
 
-    public Payer update(Payer payer, PayerAdapter adapter) {
+    public Payer update(Long payerId, PayerAdapter adapter) {
+        Payer payer = Payer.get(payerId)
+
         buildPayerProperties(payer, adapter)
 
         payer.save(failOnError: true)
@@ -29,13 +30,17 @@ class PayerService {
         return payer
     }
 
-    public void delete(Payer payer) {
+    public void delete(Long payerId) {
+        Payer payer = Payer.get(payerId)
+
         payer.deleted = true
 
         payer.save(failOnError: true)
     }
 
-    public void restore(Payer payer) {
+    public void restore(Long payerId) {
+        Payer payer = Payer.get(payerId)
+
         payer.deleted = false
 
         payer.save(failOnError: true)
