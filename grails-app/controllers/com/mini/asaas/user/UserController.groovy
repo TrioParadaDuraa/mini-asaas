@@ -20,7 +20,6 @@ class UserController extends BaseController {
             Long customerId = getCurrentUser().customer.id
             
             UserAdapter adapter = new UserAdapter(params)
-            
             User user = userService.saveCustomerUser(adapter, customerId)
 
             redirect(action: "show", id: user.id)
@@ -38,6 +37,7 @@ class UserController extends BaseController {
         try {
             Long customerId = getCurrentUser().customer.id
             Long id = params.long("id")
+
             User user = (User) User.query([customerId: customerId, id: id]).get()
 
             if (!user) {
