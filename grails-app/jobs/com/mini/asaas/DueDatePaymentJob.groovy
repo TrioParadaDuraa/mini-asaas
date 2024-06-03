@@ -14,7 +14,6 @@ class DueDatePaymentJob {
 
     PaymentService paymentService
 
-    @Transactional
     def execute() {
         try {
             paymentService.processOverduePayments()
