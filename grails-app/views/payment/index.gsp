@@ -8,12 +8,12 @@
         <title>Criar cobrança</title>
     </head>
     <body>
-        <atlas-panel>
+        <atlas-panel header="Cadastro de cobrança">
             <atlas-form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
                         <atlas-col lg="3" md="2" sm="1">
-                            <atlas-select label="Selecione um pagador:" required="" name="payerId" placeholder="">
+                            <atlas-select label="Selecione um pagador:" id="js-payer-select" required="" name="payerId" placeholder="Selecione um pagador">
                                 <g:each var="payer" in="${payerList}">
                                     <atlas-option
                                         label="${payer.name}"
@@ -26,13 +26,13 @@
                             </atlas-select>
                         </atlas-col>
                         <atlas-col lg="3" md="2" sm="1">
-                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ" size="md" name="payerCpfCnpj" value=""></atlas-masked-input>
+                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ" size="md" name="payerCpfCnpj" id="js-payer-cpf-cnpj" value="" required="" disabled=""></atlas-masked-input>
                         </atlas-col>
                         <atlas-col lg="3" md="1" sm="1">
-                            <atlas-masked-input mask-alias="email" label="Email" size="md" name="email" value=""></atlas-masked-input>
+                            <atlas-masked-input mask-alias="email" label="Email" size="md" name="email" id="js-payer-email" value="" required="" disabled=""></atlas-masked-input>
                         </atlas-col>
                         <atlas-col lg="3" md="1" sm="1">
-                            <atlas-masked-input mask-alias="cell-phone" label="Celular" size="md" name="mobilePhone" value=""></atlas-masked-input>
+                            <atlas-masked-input mask-alias="cell-phone" label="Celular" size="md" name="mobilePhone" id="js-payer-mobile-phone" value="" required="" disabled=""></atlas-masked-input>
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
