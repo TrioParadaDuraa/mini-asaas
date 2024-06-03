@@ -21,9 +21,8 @@ class PaymentService {
         return payment
     }
 
-    @Transactional
     public void processOverduePayments() {
-        List<Long> overduePaymentsIds = Payment.overduePayments().list().collect { it.id }
+        List<Long> overduePaymentsIds = Payment.outstandingOverduePayments().list().collect { it.id }
 
 
         if (overduePaymentsIds.isEmpty()) {
@@ -48,8 +47,7 @@ class PaymentService {
         }
     }
 
-    @Transactional
-    public void updateIncomingChargeStatus(Long paymentId, PaymentStatus status) {
+    public void updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = Payment.get(paymentId)
         if (payment) {
             payment.status = status

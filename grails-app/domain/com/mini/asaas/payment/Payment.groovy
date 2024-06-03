@@ -43,7 +43,7 @@ class Payment extends BaseDomain {
             }
         }
 
-        overduePayments {
+        outstandingOverduePayments {
             projections {
                 property('id')
             }
