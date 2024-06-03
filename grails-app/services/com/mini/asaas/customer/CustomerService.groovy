@@ -1,5 +1,8 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.user.UserAdapter
+import com.mini.asaas.user.UserService
+
 import com.mini.asaas.domain.base.BasePersonAdapter
 import com.mini.asaas.utils.base.PersonType
 import com.mini.asaas.utils.validators.CpfCnpjValidator
@@ -16,16 +19,19 @@ import grails.validation.ValidationException
 @Transactional
 class CustomerService {
 
-    public Customer save(CreateCustomerAdapter adapter) {
-        Customer customer = validateSave(adapter)
+    UserService userService
+
+    public Customer save(CreateCustomerAdapter customerAdapter, UserAdapter userAdapter) {
+        Customer customer = validateSave(customerAdapter)
 
         if (customer.hasErrors()) {
             throw new ValidationException("Erro ao salvar conta", customer.errors)
         }
 
-        buildCustomerPropertiesForSave(customer, adapter)
+        buildCustomerPropertiesForSave(customer, customerAdapter)
 
         customer.save(failOnError: true)
+        userService.saveCustomerUser(userAdapter, customer.id)
 
         return customer
     }

@@ -1,92 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <meta name="layout" content="main">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Informações do customer</title>
     </head>
     <body>
-        <form method="POST" action="${createLink(controller: 'customer', action: 'update')}">
-            <input type="hidden" name="id" value="${customer.id}">
-            <div>
-                <label>Nome</label>
-                <br>
-                <input type="text" name="name" value="${customer.name}">
+        <atlas-form-panel header="Atualize seus dados cadastrais" class="js-person-form" method="POST" action="${createLink(controller: 'customer', action: 'update', id: customer.id)}">
+            <atlas-grid>
+                <atlas-row>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-input label="Nome" required="" name="name" size="md" value="${customer.name}"></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+                <atlas-row>
+                    <atlas-col lg="3" md="2" sm="1">
+                        <atlas-masked-input mask-alias="email" label="Email" required="" name="email" size="md" value="${customer.email}"></atlas-masked-input>
+                    </atlas-col>
+                    <atlas-col lg="2" md="2" sm="1">
+                        <atlas-masked-input mask-alias="cell-phone" label="Celular" required="" name="mobilePhone" size="md" value="${customer.mobilePhone}"></atlas-masked-input>
+                    </atlas-col>
+                    <atlas-col lg="2" md="2" sm="1">
+                        <atlas-masked-input mask-alias="landline" label="Telefone" required="" name="phone" size="md" value="${customer.phone}"></atlas-masked-input>
+                    </atlas-col>
+                    <atlas-col lg="5" md="2" sm="1">
+                        <atlas-postal-code label="CEP" required="" name="postalCode" size="md" value="${customer.postalCode}"></atlas-postal-code>
+                    </atlas-col>
+                </atlas-row>
+                <atlas-row>
+                    <atlas-col lg="4" md="2" sm="1">
+                        <atlas-input label="Rua/Avenida/Alameda" required="" name="address" size="md" value="${customer.address}"></atlas-input>
+                    </atlas-col>
+                    <atlas-col lg="4" md="2" sm="1">
+                        <atlas-input label="Número" required="" name="addressNumber" size="md" value="${customer.addressNumber}"></atlas-input>
+                    </atlas-col>
+                    <atlas-col lg="4" md="2" sm="1">
+                        <atlas-input label="Complemento" required="" name="addressComplement" size="md" value="${customer.addressComplement}"></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+                <atlas-row>
+                    <atlas-col lg="4" md="2" sm="1">
+                        <atlas-input label="Bairro" required="" name="district" size="md" value="${customer.district}"></atlas-input>
+                    </atlas-col>
+                    <atlas-col lg="4" md="2" sm="1">
+                        <atlas-input label="Cidade" required="" name="city" size="md" value="${customer.city}"></atlas-input>
+                    </atlas-col>
+                    <atlas-col lg="1" md="1" sm="1">
+                        <atlas-input label="UF" required="" name="state" size="md" value="${customer.state}"></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+            </atlas-grid>
+            <div class="bottom-buttons">
+                <atlas-button description="Editar" data-panel-start-editing icon="pencil" slot="actions" theme="primary"></atlas-button>
             </div>
-            <br>
-            <div>
-                <label>Email</label>
-                <br>
-                <input type="email" name="email" value="${customer.email}">
-            </div>
-            <br>
-            <div>
-                <label>CPF/CNPJ</label>
-                <br>
-                <input type="text" name="cpfCnpj" value="${customer.cpfCnpj}">
-            </div>
-            <br>
-            <div>
-                <label>Telefone</label>
-                <br>
-                <input type="text" name="phone" value="${customer.phone}">
-            </div>
-            <br>
-            <div>
-                <label>Celular</label>
-                <br>
-                <input type="text" name="mobilePhone" value="${customer.mobilePhone}">
-            </div>
-            <br>
-            <div>
-                <label>Tipo de pessoa</label>
-                <br>
-                <input type="text" name="personType" value="${customer.personType.getLabel()}">
-            </div>
-            <br>
-            <div>
-                <label>CEP</label>
-                <br>
-                <input type="text" name="postalCode" value="${customer.postalCode}">
-            </div>
-            <br>
-            <div>
-                <label>Endereço</label>
-                <br>
-                <input type="text" name="address" value="${customer.address}">
-            </div>
-            <br>
-            <div>
-                <label>Número</label>
-                <br>
-                <input type="text" name="addressNumber" value="${customer.addressNumber}">
-            </div>
-            <br>
-            <div>
-                <label>Complemento</label>
-                <br>
-                <input type="text" name="addressComplement" value="${customer.addressComplement}">
-            </div>
-            <br>
-            <div>
-                <label>Bairro</label>
-                <br>
-                <input type="text" name="district" value="${customer.district}">
-            </div>
-            <br>
-            <div>
-                <label>Cidade</label>
-                <br>
-                <input type="text" name="city" value="${customer.city}">
-            </div>
-            <br>
-            <div>
-                <label>Estado</label>
-                <br>
-                <input type="text" name="state" value="${customer.state}">
-            </div>
-            <br>
-            <button type="submit">Salvar</button>
-        </form>
+        </atlas-form-panel>
     </body>
 </html>
