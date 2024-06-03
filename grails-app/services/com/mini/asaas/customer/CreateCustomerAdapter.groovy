@@ -16,7 +16,7 @@ class CreateCustomerAdapter extends BasePersonAdapter {
     public CreateCustomerAdapter(Map params){
         this.cpfCnpj = Utils.removeNoNumeric(params.cpfCnpj.toString())
         this.name = params.name.toString().trim()
-        this.email = params.email.toString().trim()
+        this.email = params.email
         this.phone = Utils.removeNoNumeric(params.phone.toString()) ?: null
         this.mobilePhone = Utils.removeNoNumeric(params.mobilePhone.toString())
         this.personType = PersonType.convert(params.personType.toString().toUpperCase())
