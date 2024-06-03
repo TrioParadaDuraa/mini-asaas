@@ -22,7 +22,7 @@ class PaymentService {
     }
 
     public void processOverduePayments() {
-        List<Long> overduePaymentsIds = Payment.outstandingOverdueIds().list()*.id
+        List<Long> overduePaymentsIds = Payment.outstandingOverdueIds*.id
 
 
         if (overduePaymentsIds.isEmpty()) {
