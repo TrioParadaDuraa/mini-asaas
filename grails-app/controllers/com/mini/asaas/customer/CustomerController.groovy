@@ -1,7 +1,6 @@
 package com.mini.asaas.customer
 
 import com.mini.asaas.BaseController
-import com.mini.asaas.user.User
 import com.mini.asaas.user.UserAdapter
 import com.mini.asaas.utils.message.MessageType
 
