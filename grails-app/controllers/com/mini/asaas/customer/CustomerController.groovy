@@ -19,28 +19,13 @@ class CustomerController {
 
             Customer customer = customerService.save(customerAdapter, userAdapter)
 
-            redirect(action: "data", id: customer.id)
+            redirect(action: "show", id: customer.id)
         } catch (Exception exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
             flash.type = MessageType.ERROR
             flash.message = 'Erro ao salvar os dados, verifique todos os campos e tente novamente.'
 
             redirect(action: "index")
-        }
-    }
-
-    def data() {
-        try {
-            Customer customer = Customer.read(params.long('id'))
-
-            if (!customer) {
-                throw new Exception("Cliente não encontrado")
-            }
-
-            return [customer: customer]
-        } catch (Exception exception) {
-            log.error("CustomerController.data >> Cliente não encontrado", exception)
-            render "Cliente não encontrado"
         }
     }
 
@@ -56,6 +41,21 @@ class CustomerController {
         } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
             render "Cliente não encontrado"
+        }
+    }
+
+    def edit() {
+        try {
+            Customer customer = Customer.read(params.long('id'))
+
+            if (!customer) {
+                throw new Exception("Cliente não encontrado para edição")
+            }
+
+            return [customer: customer]
+        } catch (Exception exception) {
+            log.error("CustomerController.edit >> Cliente não encontrado para edição", exception)
+            render "Cliente não encontrado para edição"
         }
     }
 

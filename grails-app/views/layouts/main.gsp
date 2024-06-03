@@ -18,30 +18,30 @@
             <atlas-sidebar slot="sidebar">
                 <atlas-sidebar-menu slot="body">
                     <atlas-sidebar-menu-item
-                            icon="cog"
+                        icon="cog"
+                        value=""
+                        text="Minha conta"
+                        href="">
+                        <atlas-sidebar-menu-item
+                            icon="user"
                             value=""
-                            text="Minha conta"
-                            href="">
-                            <atlas-sidebar-menu-item
-                                    icon="user"
-                                    value=""
-                                    text="Meus dados"
-                                    href="${createLink(controller: 'customer', action: 'data', id: 1)}"
-                            ></atlas-sidebar-menu-item>
+                            text="Meus dados"
+                            href="${createLink(controller: 'customer', action: 'show', id: 1)}"
+                        ></atlas-sidebar-menu-item>
 
-                            <atlas-sidebar-menu-item
-                                    icon="pencil"
-                                    value=""
-                                    text="Atualizar dados"
-                                    href="${createLink(controller: 'customer', action: 'show', id: 1)}"
-                            ></atlas-sidebar-menu-item>
+                        <atlas-sidebar-menu-item
+                            icon="pencil"
+                            value=""
+                            text="Atualizar dados"
+                            href="${createLink(controller: 'customer', action: 'edit', id: 1)}"
+                        ></atlas-sidebar-menu-item>
 
-                            <atlas-sidebar-menu-item
-                                    icon="spanner"
-                                    value=""
-                                    text="Redefinir senha"
-                                    href=""
-                            ></atlas-sidebar-menu-item>
+                        <atlas-sidebar-menu-item
+                            icon="spanner"
+                            value=""
+                            text="Redefinir senha"
+                            href=""
+                        ></atlas-sidebar-menu-item>
                     </atlas-sidebar-menu-item>
                 </atlas-sidebar-menu>
             </atlas-sidebar>
