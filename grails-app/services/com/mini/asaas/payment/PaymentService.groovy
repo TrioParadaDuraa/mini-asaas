@@ -22,11 +22,9 @@ class PaymentService {
     }
 
     public void processOverduePayments() {
-        List<Long> overduePaymentsIds = Payment.outstandingOverdueIds*.id
-
+        List<Long> overduePaymentsIds = Payment.overdueIds()
 
         if (overduePaymentsIds.isEmpty()) {
-            log.info("Não foram encontradas cobranças vencidas")
             return
         }
 
@@ -51,7 +49,7 @@ class PaymentService {
         Payment payment = Payment.get(paymentId)
         if (payment) {
             payment.status = status
-            payment.save(flush: true)
+            payment.save()
         } else {
             log.error("Pagamento de ID $paymentId não encontrado")
         }
