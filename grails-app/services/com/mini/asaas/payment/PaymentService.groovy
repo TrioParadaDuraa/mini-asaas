@@ -13,7 +13,7 @@ import org.apache.commons.lang.time.DateUtils
 @Transactional
 class PaymentService {
 
-    public Payment save(PaymentAdapter adapter) {
+    public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
 
         if (payment.hasErrors()) {
@@ -21,6 +21,7 @@ class PaymentService {
         }
 
         paymentBuildProperties(payment, adapter)
+        payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
 
@@ -46,7 +47,6 @@ class PaymentService {
     }
 
     private paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
-        payment.customer = Customer.read(adapter.customerId)
         payment.payer = Payer.read(adapter.payerId)
         payment.billingType = adapter.billingType
         payment.value = adapter.value
