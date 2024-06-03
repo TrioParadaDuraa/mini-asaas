@@ -21,6 +21,18 @@
         </atlas-panel>
         <form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
             <div>
+                <label>Selecione um pagador</label>
+                <br>
+                <g:select
+                        name="payerId"
+                        from="${payerList}"
+                        optionKey="id"
+                        optionValue="name"
+                        noSelection="['':'Selecione um pagador']"
+                />
+            </div>
+            <br>
+            <div>
                 <label>Tipo de pagamento</label>
                 <br>
                 <select name="billingType" id="billingType">
