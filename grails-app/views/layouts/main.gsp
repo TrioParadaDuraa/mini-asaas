@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://atlas.asaas.com/v17.6.2/atlas.min.css" crossorigin="anonymous">
         <script defer src="https://atlas.asaas.com/v17.6.2/atlas.min.js" crossorigin="anonymous"></script>
         <asset:stylesheet src="application.css"/>
+        <asset:javascript src="application.js"/>
         <asset:link rel="icon" href="asaas-icon.png" type="image/x-icon"/>
         <g:layoutHead/>
 </head>
@@ -44,19 +45,19 @@
                         ></atlas-sidebar-menu-item>
                     </atlas-sidebar-menu-item>
                     <atlas-sidebar-menu-item
-                            icon="cog"
+                            icon="money"
                             value=""
                             text="Cobranças"
                             href="">
                         <atlas-sidebar-menu-item
-                                icon="user"
+                                icon="dollar-sign"
                                 value=""
                                 text="Minhas cobranças"
                                 href="${createLink(controller: 'customer', action: 'show', id: 1)}"
                         ></atlas-sidebar-menu-item>
 
                         <atlas-sidebar-menu-item
-                                icon="pencil"
+                                icon="plus"
                                 value=""
                                 text="Criar cobrança"
                                 href="${createLink(controller: 'payment', action: 'index', id: 1)}"

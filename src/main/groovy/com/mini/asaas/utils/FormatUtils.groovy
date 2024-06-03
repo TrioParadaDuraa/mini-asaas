@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 
 class FormatUtils {
 
-    public static Date toDate(String date, String inputFormat = "yyyy-MM-dd") {
+    public static Date toDate(String date, String inputFormat = "dd/MM/yyyy") {
         if (date == null || date.trim().isEmpty()) {
             return null
         }
