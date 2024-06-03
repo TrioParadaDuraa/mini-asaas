@@ -16,7 +16,7 @@ class PaymentController extends BaseController {
 
     def save() {
         try {
-            Long customerId = 1
+            Long customerId = getCurrentUser().customer.id
 
             PaymentAdapter adapter = new PaymentAdapter(params)
             Payment payment = paymentService.save(adapter, customerId)
@@ -63,7 +63,7 @@ class PaymentController extends BaseController {
             }
 
             PaymentAdapter adapter = new PaymentAdapter(params)
-            paymentService.update(payment, adapter)
+            paymentService.update(payment.id, adapter)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
@@ -85,7 +85,7 @@ class PaymentController extends BaseController {
                 throw new Exception("Cobrança já inativa")
             }
 
-            paymentService.delete(payment)
+            paymentService.delete(payment.id)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
@@ -107,7 +107,7 @@ class PaymentController extends BaseController {
                 throw new Exception("Cobrança não inativa")
             }
 
-            paymentService.restore(payment)
+            paymentService.restore(payment.id)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {

@@ -21,19 +21,25 @@ class PaymentService {
         return payment
     }
 
-    public update(Payment payment, PaymentAdapter adapter) {
+    public update(Long paymentId, PaymentAdapter adapter) {
+        Payment payment = Payment.get(paymentId)
+
         paymentBuildProperties(payment, adapter)
 
         payment.save(failOnError: true)
     }
 
-    public delete(Payment payment) {
+    public delete(Long paymentId) {
+        Payment payment = Payment.get(paymentId)
+
         payment.deleted = true
 
         payment.save(failOnError: true)
     }
 
-    public restore(Payment payment) {
+    public restore(Long paymentId) {
+        Payment payment = Payment.get(paymentId)
+        
         payment.deleted = false
 
         payment.save(failOnError: true)
