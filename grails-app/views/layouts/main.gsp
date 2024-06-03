@@ -43,6 +43,25 @@
                             href=""
                         ></atlas-sidebar-menu-item>
                     </atlas-sidebar-menu-item>
+                    <atlas-sidebar-menu-item
+                            icon="cog"
+                            value=""
+                            text="Cobranças"
+                            href="">
+                        <atlas-sidebar-menu-item
+                                icon="user"
+                                value=""
+                                text="Minhas cobranças"
+                                href="${createLink(controller: 'customer', action: 'show', id: 1)}"
+                        ></atlas-sidebar-menu-item>
+
+                        <atlas-sidebar-menu-item
+                                icon="pencil"
+                                value=""
+                                text="Criar cobrança"
+                                href="${createLink(controller: 'payment', action: 'index', id: 1)}"
+                        ></atlas-sidebar-menu-item>
+                    </atlas-sidebar-menu-item>
                 </atlas-sidebar-menu>
             </atlas-sidebar>
             <atlas-page>

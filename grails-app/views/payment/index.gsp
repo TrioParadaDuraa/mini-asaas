@@ -1,13 +1,25 @@
 <%@ page import="com.mini.asaas.utils.enums.PaymentStatus; com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Register</title>
-  </head>
-  <body>
-      <form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
+    <head>
+        <meta name="layout" content="main">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Payment Register</title>
+    </head>
+    <body>
+        <atlas-panel>
+            <atlas-form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
+                <atlas-grid>
+                    <atlas-row>
+                        <atlas-col lg="12" md="6" sm="2">
+
+                        </atlas-col>
+                    </atlas-row>
+                </atlas-grid>
+            </atlas-form>
+        </atlas-panel>
+        <form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
             <div>
                 <label>Tipo de pagamento</label>
                 <br>
@@ -41,13 +53,13 @@
             </div>
             <br>
             <button type="submit">Salvar</button>
-      </form>
-      <g:if test="${flash.message}">
-          <section>
-              <div>
-                  <p>${flash.message}</p>
-              </div>
-          </section>
-      </g:if>
-  </body>
+        </form>
+        <g:if test="${flash.message}">
+            <section>
+                <div>
+                    <p>${flash.message}</p>
+                </div>
+            </section>
+        </g:if>
+    </body>
 </html>
