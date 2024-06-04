@@ -1,48 +1,74 @@
 <%@ page import="com.mini.asaas.utils.FormatUtils" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Cobranças</title>
-</head>
-<body>
-<main>
-  <h1>Lista de cobranças</h1>
-  <div>
-    <form action="${createLink(controller: 'payment', action: 'list')}" method="GET">
-      <div>Filtros</div>
-      <div>
-        <input type="checkbox" name="deleted" value="true" id="deleted" ${Boolean.valueOf(params.deleted) == true ? raw("checked") : null}>
-        <label for="deleted">Excluídos</label>
-      </div>
-      <button type="submit">Aplicar</button>
-    </form>
+    <head>
+        <meta name="layout" content="main">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Cobranças</title>
+    </head>
+    <body>
+        <atlas-panel>
+            <g:if test="${ paymentList }">
+                <atlas-toolbar>
+                    <atlas-button
+                        icon="plus"
+                        description="Adicionar cobrança"
+                        href="${createLink(controller: 'payment', action: 'index')}"
+                        slot="actions"
+                    ></atlas-button>
+                </atlas-toolbar>
+                <atlas-table has-actions>
+                    <atlas-table-header slot="header">
+                        <atlas-table-col>
+                            Pagador
+                        </atlas-table-col>
+                        <atlas-table-col>
+                            Valor
+                        </atlas-table-col>
+                        <atlas-table-col>
+                            Status
+                        </atlas-table-col>
+                    </atlas-table-header>
+                    <atlas-table-body slot="body">
+                        <g:each var="payment" in="${ paymentList }">
+                            <atlas-table-row href="${createLink(controller: 'payment', action: 'show', id: payment.id)}">
+                                <atlas-table-col>
+                                    ${payment.payer.name}
+                                </atlas-table-col>
+                                <atlas-table-col>
+                                    ${payment.value}
+                                </atlas-table-col>
+                                <atlas-table-col>
+                                    ${payment.status.getLabel()}
+                                </atlas-table-col>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Pagador</th>
-        <th>Valor</th>
-        <th>Tipo de pagamento</th>
-        <th>Status</th>
-        <th>Data de vencimento</th>
-      </tr>
-      </thead>
-      <tbody>
-      <g:each var="payment" in="${paymentList}">
-        <tr>
-          <td>${payment.payer.name}</td>
-          <td>${payment.value}</td>
-          <td>${payment.billingType.getLabel()}</td>
-          <td>${payment.status.getLabel()}</td>
-          <td>${FormatUtils.formatDateToString(payment.dueDate)}</td>
-          <td><a href="${createLink(controller: 'payment', action: 'show', id: payment.id)}">Visualizar</a></td>
-        </tr>
-      </g:each>
-      </tbody>
-    </table>
-  </div>
-</main>
-</body>
+                                <atlas-button-group slot="actions" group-all>
+                                    <atlas-icon-button
+                                        icon="eye"
+                                        theme="primary"
+                                        description="Visualizar cobrança"
+                                    ></atlas-icon-button>
+                                </atlas-button-group>
+                            </atlas-table-row>
+                        </g:each>
+                    </atlas-table-body>
+                </atlas-table>
+            </g:if>
+            <g:else>
+                <atlas-empty-state
+                    illustration="flow-money-coins"
+                    header="Sem cobranças cadastradas"
+                >
+                    Aqui você pode cadastrar uma cobrança
+                    <atlas-button
+                        icon="plus"
+                        description="Adicionar cobrança"
+                        href="${createLink(controller: 'payment', action: 'index')}"
+                        slot="button"
+                    ></atlas-button>
+                </atlas-empty-state>
+            </g:else>
+        </atlas-panel>
+    </body>
 </html>
