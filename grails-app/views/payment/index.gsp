@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
+<%@ page import="com.mini.asaas.utils.enums.PaymentStatus; com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -7,11 +7,11 @@
     <title>Payment Register</title>
   </head>
   <body>
-      <form method="POST" action="${createLink(controller: "payment", action: "save")}">
+      <form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
             <div>
                 <label>Tipo de pagamento</label>
                 <br>
-                <select name="paymentType" id="paymentType">
+                <select name="billingType" id="billingType">
                     <g:each var="value" in="${BillingType.values()}">
                         <option value="${value}">${value.getLabel()}</option>
                     </g:each>
@@ -28,6 +28,16 @@
                 <label>Data de vencimento: </label>
                 <br>
                 <input type="date" name="dueDate" value="${params.dueDate}">
+            </div>
+            <br>
+            <div>
+                <label>Status da cobrança:</label>
+                <br>
+                <select name="status" id="status">
+                    <g:each var="value" in="${PaymentStatus.values()}">
+                        <option value="${value}">${value.getLabel()}</option>
+                    </g:each>
+                </select>
             </div>
             <br>
             <button type="submit">Salvar</button>

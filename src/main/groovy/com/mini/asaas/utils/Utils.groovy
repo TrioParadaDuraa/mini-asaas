@@ -33,4 +33,12 @@ class Utils {
             throw new IllegalArgumentException("O valor fornecido não é um número válido: ${value}", exception)
         }
     }
+
+    public static String removeNoNumeric(String value) {
+        if (value == null) {
+            return null
+        }
+
+        return value.replaceAll("[^0-9]", "")
+    }
 }

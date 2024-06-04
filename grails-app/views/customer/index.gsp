@@ -1,80 +1,95 @@
+<%@ page import="com.mini.asaas.utils.base.PersonType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST" action="${createLink(controller: 'customer', action: 'save')}">
-        <div>
-            <label>Nome</label>
-            <br>
-            <input type="text" name="name" value="${params.name}">
-        </div>
-        <div>
-            <label>Email</label>
-            <br>
-            <input type="text" name="email" placeholder="email@email.com" value="${params.email}">
-        </div>
-        <div>
-            <label>Telefone</label>
-            <br>
-            <input type="text" name="phone" placeholder="(00) 1234-5678" maxlength="10" value="${params.phone}">
-        </div>
-        <div>
-            <label>Celular</label>
-            <br>
-            <input type="text" name="mobilePhone" placeholder="(00) 9 1234-5678" maxlength="11" value="${params.mobilePhone}">
-        </div>
-        <div>
-            <label>CPF/CNPJ</label>
-            <br>
-            <input type="text" name="cpfCnpj" placeholder="12345678900 ou 12345678900000" maxlength="14" value="${params.cpfCnpj}">
-        </div>
-        <div>
-            <label>CEP</label>
-            <br>
-            <input type="text" name="postalCode" placeholder="12345678" maxlength="8" value="${params.postalCode}">
-        </div>
-        <div>
-            <label>Endereço</label>
-            <br>
-            <input type="text" name="address" value="${params.address}">
-        </div>
-        <div>
-            <label>Número</label>
-            <br>
-            <input type="text" name="addressNumber" value="${params.addressNumber}">
-        </div>
-        <div>
-            <label>Complemento</label>
-            <br>
-            <input type="text" name="addressComplement" value="${params.addressComplement}">
-        </div>
-        <div>
-            <label>Bairro</label>
-            <br>
-            <input type="text" name="district" value="${params.district}">
-        </div>
-        <div>
-            <label>Cidade</label>
-            <br>
-            <input type="text" name="city" value="${params.city}">
-        </div>
-        <div>
-            <label>Estado</label>
-            <br>
-            <input type="text" name="state" placeholder="MG" maxlength="2" id="state" value="${params.state}">
-        </div>
-        <button type="submit">Salvar</button>
-        <g:if test="${flash.message}">
-            <section>
+    <head>
+        <meta name="layout" content="external">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de cliente</title>
+    </head>
+    <body title="Cadastro de cliente">
+        <atlas-panel>
+            <atlas-form action="${createLink(controller: 'customer', action: 'save')}">
+                <atlas-grid>
+                    <atlas-row>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ" required="" size="md" name="cpfCnpj" value="${params.cpfCnpj}"></atlas-masked-input>
+                        </atlas-col>
+                        <atlas-col lg="7" md="4" sm="1">
+                            <atlas-input label="Nome Completo" required="" placeholder="Insira seu nome completo" size="md" name="name" value="${params.name}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="4" md="2" sm="1">
+                            <atlas-masked-input mask-alias="email" label="Email" required="" size="md" placeholder="email@dominio.com" name="email" value="${params.email}"></atlas-masked-input>
+                        </atlas-col>
+                        <atlas-col lg="4" md="2" sm="1">
+                            <atlas-masked-input mask-alias="cell-phone" label="Celular" required="" size="md" name="mobilePhone" value="${params.mobilePhone}"></atlas-masked-input>
+                        </atlas-col>
+                        <atlas-col lg="4" md="2" sm="1">
+                            <atlas-masked-input mask-alias="landline" label="Telefone" size="md" name="phone" value="${params.phone}"></atlas-masked-input>
+                        </atlas-col>
+                    </atlas-row>
+                </atlas-grid>
                 <div>
-                    <p>${flash.message}</p>
+                    <p>Tipo de pessoa:</p>
+                    <atlas-toggle name="personType">
+                        <atlas-toggle-item value="${PersonType.NATURAL}" label="Pessoa física"></atlas-toggle-item>
+                        <atlas-toggle-item value="${PersonType.LEGAL}" label="Pessoa juridica"></atlas-toggle-item>
+                    </atlas-toggle>
                 </div>
-            </section>
-        </g:if>
-    </form>
-</body>
+                <atlas-grid>
+                    <atlas-row>
+                        <atlas-col lg="5" md="3" sm="1">
+                            <atlas-postal-code label="CEP" required="" name="postalCode" size="md" value="${params.postalCode}"></atlas-postal-code>
+                        </atlas-col>
+                        <atlas-col lg="7" md="3" sm="1">
+                            <atlas-input label="Rua/Avenida/Alameda" required="" placeholder="Insira o endereço" name="address" size="md" value="${params.address}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="5" md="3" sm="1">
+                            <atlas-input label="Número" required="" placeholder="Insira o número" name="addressNumber" size="md" value="${params.addressNumber}"></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="7" md="3" sm="1">
+                            <atlas-input label="Complemento" placeholder="Insira o complemento" name="addressComplement" size="md" value="${params.addressComplement}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-input label="Bairro" required="" placeholder="Insira o bairro" name="district" size="md" value="${params.district}"></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-input label="Cidade" required="" placeholder="Insira a cidade" name="city" size="md" value="${params.city}"></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="2" md="2" sm="1">
+                            <atlas-input label="UF" required="" placeholder="" name="state" size="md" value="${params.state}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="6" md="3" sm="1">
+                            <atlas-password-input label="Senha" required="" name="password" size="md"></atlas-password-input>
+                        </atlas-col>
+                        <atlas-col lg="6" md="3" sm="1">
+                            <atlas-password-input label="Confirme sua senha" required="" name="passwordConfirm" size="md"></atlas-password-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <div class="password-note">
+                        <ul>
+                            <li>Sua senha deve conter no mínimo 8 caracteres.</li>
+                            <li>Sua senha deve conter pelo menos 1 número.</li>
+                            <li>Sua senha deve conter pelo menos 1 letra.</li>
+                        </ul>
+                    </div>
+                </atlas-grid>
+                <div class="bottom-buttons">
+                        <atlas-button description="Cancelar" slot="actions" theme="danger"></atlas-button>
+                        <atlas-button submit description="Criar conta" slot="actions" theme="success"></atlas-button>
+                </div>
+                <div class="bottom-text">
+                    <a href="/">Já tem uma conta ?</a>
+                </div>
+            </atlas-form>
+        </atlas-panel>
+    </body>
 </html>

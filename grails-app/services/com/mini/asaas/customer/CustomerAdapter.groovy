@@ -1,6 +1,7 @@
 package com.mini.asaas.customer
 
 import com.mini.asaas.domain.base.BasePersonAdapter
+import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.base.PersonType
 
 import grails.compiler.GrailsCompileStatic
@@ -9,18 +10,18 @@ import grails.compiler.GrailsCompileStatic
 class CustomerAdapter extends BasePersonAdapter {
 
     public CustomerAdapter(Map params){
-        this.cpfCnpj = params.cpfCnpj
-        this.name = params.name
+        this.cpfCnpj = Utils.removeNoNumeric(params.cpfCnpj.toString())
+        this.name = params.name.toString().trim()
         this.email = params.email
-        this.phone = params.phone
-        this.mobilePhone = params.mobilePhone
-        this.personType = PersonType.NATURAL
-        this.postalCode = params.postalCode
-        this.address = params.address
-        this.addressNumber = params.addressNumber
-        this.addressComplement = (params.addressComplement.toString().trim()) ? params.addressComplement : null
-        this.district = params.district
-        this.city = params.city
-        this.state = params.state
+        this.phone = Utils.removeNoNumeric(params.phone.toString()) ?: null
+        this.mobilePhone = Utils.removeNoNumeric(params.mobilePhone.toString())
+        this.personType = PersonType.convert(params.personType.toString().toUpperCase())
+        this.postalCode = Utils.removeNoNumeric(params.postalCode.toString())
+        this.address = params.address.toString().trim()
+        this.addressNumber = params.addressNumber.toString().trim()
+        this.addressComplement = params.addressComplement.toString().trim() ?: null
+        this.district = params.district.toString().trim()
+        this.city = params.city.toString().trim()
+        this.state = params.state.toString().trim()
     }
 }

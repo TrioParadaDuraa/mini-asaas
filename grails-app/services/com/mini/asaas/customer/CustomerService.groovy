@@ -1,5 +1,8 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.user.UserAdapter
+import com.mini.asaas.user.UserService
+
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 
@@ -7,12 +10,17 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class CustomerService {
 
-    public Customer save(CustomerAdapter adapter) {
+    UserService userService
+
+    public Customer save(CustomerAdapter customerAdapter, UserAdapter userAdapter) {
         Customer customer = new Customer()
 
-        buildCustomerProperties(customer, adapter)
+        customer.cpfCnpj = customerAdapter.cpfCnpj
+        customer.personType = customerAdapter.personType
+        buildCustomerProperties(customer, customerAdapter)
 
         customer.save(failOnError: true)
+        userService.saveCustomerUser(userAdapter, customer.id)
 
         return customer
     }
@@ -26,12 +34,10 @@ class CustomerService {
     }
 
     private buildCustomerProperties(Customer customer, CustomerAdapter adapter) {
-        customer.cpfCnpj = adapter.cpfCnpj
         customer.name = adapter.name
         customer.email = adapter.email
         customer.phone = adapter.phone
         customer.mobilePhone = adapter.mobilePhone
-        customer.personType = adapter.personType
         customer.postalCode = adapter.postalCode
         customer.address = adapter.address
         customer.addressNumber = adapter.addressNumber
