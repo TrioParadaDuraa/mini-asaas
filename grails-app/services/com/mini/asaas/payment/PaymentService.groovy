@@ -16,7 +16,7 @@ import org.apache.commons.lang.time.DateUtils
 class PaymentService {
 
     public Payment save(PaymentAdapter adapter, Long customerId) {
-        Payment payment = new Payment()
+        Payment payment = validate(adapter)
 
         if (payment.hasErrors()) throw new ValidationException("Erro ao criar cobrança", payment.errors)
 
@@ -53,7 +53,7 @@ class PaymentService {
         payment.status = adapter.status
         payment.dueDate = adapter.dueDate
     }
-/*
+
     private Payment validate(PaymentAdapter adapter) {
         Payment payment = new Payment()
         
@@ -101,5 +101,4 @@ class PaymentService {
         payment.status = status
         payment.save()
     }
- */
 }
