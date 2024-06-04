@@ -7,7 +7,6 @@ import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
-@Secured("isAuthenticated()")
 class CustomerController {
     
     CustomerService customerService
@@ -33,6 +32,7 @@ class CustomerController {
          }
     }
 
+    @Secured("isAuthenticated()")
     def show() {
         try {
             Customer customer = Customer.read(params.long('id'))
