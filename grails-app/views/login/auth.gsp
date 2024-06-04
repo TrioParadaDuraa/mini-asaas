@@ -10,7 +10,7 @@
     <body>
         <atlas-page>
             <atlas-page-content slot="content" class="js-atlas-content">
-                <div id="login" class="flex-container">
+                <div class="login">
                     <div class="images">
                         <asset:image src="/loginpage/asaas-text.svg" class="asaas-text"/><br>
                         <asset:image src="/loginpage/girl-laptop.svg" class="girl-laptop"/>

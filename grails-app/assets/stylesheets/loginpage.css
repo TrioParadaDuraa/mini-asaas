@@ -7,37 +7,39 @@ body {
     align-items: center;
 }
 
-#login {
+.login {
     display: flex;
-    flex-wrap: nowrap;
     width: 80%;
     margin: 0 auto;
     text-align: left;
 }
 
-#login .images {
-    width: 70%;
+.login .images {
+    width: 80%;
     height: auto;
     margin-right: 25rem;
 }
 
-#login .images img {
+.login .images .asaas-text {
     height: auto;
-    margin-bottom: 5rem;
 }
 
-#login .inner {
+.login .images .girl-laptop {
+    margin-top: 4rem;
+}
+
+.login .inner {
     width: 60%;
     padding: 5rem;
 }
 
-#login .inner .fheader {
-    font-size: 18px;
+.login .inner .fheader {
+    font-size: 1.3rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 2rem;
 }
 
-#login .inner .button {
+.login .inner .button {
     margin-top: 2rem;
 }
