@@ -99,10 +99,9 @@ class PayerService {
             payer.errors.reject("mobilePhone", null, "Número de celular inválido")
         }
 
-        if (
-            CpfCnpjValidator.isValidCpf(adapter.cpfCnpj) && adapter.personType != PersonType.NATURAL ||
-            CpfCnpjValidator.isValidCnpj(adapter.cpfCnpj) && adapter.personType != PersonType.LEGAL
-        ) {
+        if (CpfCnpjValidator.isValidCpf(adapter.cpfCnpj) && adapter.personType != PersonType.NATURAL) {
+            payer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
+        } else if (CpfCnpjValidator.isValidCnpj(adapter.cpfCnpj) && adapter.personType != PersonType.LEGAL) {
             payer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
         }
 
