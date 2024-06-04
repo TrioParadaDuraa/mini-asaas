@@ -20,9 +20,7 @@ class PayerService {
     public Payer save(PayerAdapter adapter, Long customerId) {
         Payer payer = validate(adapter)
 
-        if (payer.hasErrors()) {
-            throw new ValidationException("Erro ao salvar payer", payer.errors)
-        }
+        if (payer.hasErrors()) throw new ValidationException("Erro ao salvar payer", payer.errors)
 
         buildPayerProperties(payer, adapter)
         payer.customer = Customer.read(customerId)
@@ -35,9 +33,7 @@ class PayerService {
     public Payer update(Long payerId, PayerAdapter adapter) {
         Payer payer = validate(adapter)
 
-        if (payer.hasErrors()) {
-            throw new ValidationException("Erro ao salvar payer", payer.errors)
-        }
+        if (payer.hasErrors()) throw new ValidationException("Erro ao salvar payer", payer.errors)
 
         payer = Payer.get(payerId)
 

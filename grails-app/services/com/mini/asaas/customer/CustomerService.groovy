@@ -24,9 +24,7 @@ class CustomerService {
     public Customer save(CreateCustomerAdapter customerAdapter, UserAdapter userAdapter) {
         Customer customer = validateSave(customerAdapter)
 
-        if (customer.hasErrors()) {
-            throw new ValidationException("Erro ao salvar conta", customer.errors)
-        }
+        if (customer.hasErrors()) throw new ValidationException("Erro ao salvar conta", customer.errors)
 
         buildCustomerPropertiesForSave(customer, customerAdapter)
 
@@ -36,12 +34,10 @@ class CustomerService {
         return customer
     }
 
-    public update(Long customerId, UpdateCustomerAdapter adapter) {
+    public void update(Long customerId, UpdateCustomerAdapter adapter) {
         Customer customer = validate(adapter)
 
-        if (customer.hasErrors()) {
-            throw new ValidationException("Erro ao atualizar conta", customer.errors)
-        }
+        if (customer.hasErrors()) throw new ValidationException("Erro ao atualizar conta", customer.errors)
 
         customer = Customer.get(customerId)
 
@@ -50,7 +46,7 @@ class CustomerService {
         customer.save(failOnError: true)
     }
 
-    private buildCustomerProperties(Customer customer, BasePersonAdapter adapter) {
+    private void buildCustomerProperties(Customer customer, BasePersonAdapter adapter) {
         customer.name = adapter.name
         customer.email = adapter.email
         customer.phone = adapter.phone
@@ -64,7 +60,7 @@ class CustomerService {
         customer.state = adapter.state
     }
 
-    private buildCustomerPropertiesForSave(Customer customer, CreateCustomerAdapter adapter) {
+    private void buildCustomerPropertiesForSave(Customer customer, CreateCustomerAdapter adapter) {
         buildCustomerProperties(customer, adapter)
         customer.cpfCnpj = adapter.cpfCnpj
         customer.personType = adapter.personType

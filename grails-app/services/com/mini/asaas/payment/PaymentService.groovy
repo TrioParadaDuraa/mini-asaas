@@ -16,9 +16,7 @@ class PaymentService {
     public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
 
-        if (payment.hasErrors()) {
-            throw new ValidationException("Erro ao criar cobrança", payment.errors)
-        }
+        if (payment.hasErrors()) throw new ValidationException("Erro ao criar cobrança", payment.errors)
 
         paymentBuildProperties(payment, adapter)
         payment.customer = Customer.read(customerId)
@@ -28,25 +26,25 @@ class PaymentService {
         return payment
     }
 
-    public update(Payment payment, PaymentAdapter adapter) {
+    public void update(Payment payment, PaymentAdapter adapter) {
         paymentBuildProperties(payment, adapter)
 
         payment.save(failOnError: true)
     }
 
-    public delete(Payment payment) {
+    public void delete(Payment payment) {
         payment.deleted = true
 
         payment.save(failOnError: true)
     }
 
-    public restore(Payment payment) {
+    public void restore(Payment payment) {
         payment.deleted = false
 
         payment.save(failOnError: true)
     }
 
-    private paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
+    private void paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
         payment.payer = Payer.read(adapter.payerId)
         payment.billingType = adapter.billingType
         payment.value = adapter.value

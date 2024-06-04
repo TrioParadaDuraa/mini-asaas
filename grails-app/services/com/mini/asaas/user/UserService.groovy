@@ -16,9 +16,7 @@ class UserService {
     public User saveCustomerUser(UserAdapter adapter, Long customerId) {
         User user = validateSave(adapter)
 
-        if (user.hasErrors()) {
-            throw new ValidationException("Erro ao criar usuário", user.errors)
-        }
+        if (user.hasErrors()) throw new ValidationException("Erro ao criar usuário", user.errors)
 
         user.customer = Customer.read(customerId)
         user.username = adapter.username
