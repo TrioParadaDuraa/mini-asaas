@@ -18,7 +18,7 @@ class PayerController extends BaseController {
 
     def save() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
 
             PayerAdapter adapter = new PayerAdapter(params)
             Payer payer = payerService.save(adapter, customerId)
@@ -36,7 +36,7 @@ class PayerController extends BaseController {
 
     def show() {
         try{
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -56,7 +56,7 @@ class PayerController extends BaseController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
 
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
             filterList.put("cutomerId", customerId)
@@ -76,7 +76,7 @@ class PayerController extends BaseController {
 
     def update() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -103,7 +103,7 @@ class PayerController extends BaseController {
 
     def delete() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -125,7 +125,7 @@ class PayerController extends BaseController {
 
     def restore() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()

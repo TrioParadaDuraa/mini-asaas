@@ -17,7 +17,7 @@ class UserController extends BaseController {
     @Secured("isFullyAuthenticated()")
     def save() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             
             UserAdapter adapter = new UserAdapter(params)
             User user = userService.saveCustomerUser(adapter, customerId)
@@ -35,7 +35,7 @@ class UserController extends BaseController {
 
     def show() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
             User user = (User) User.query([customerId: customerId, id: id]).get()

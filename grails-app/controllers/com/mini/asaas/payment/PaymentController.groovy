@@ -16,7 +16,7 @@ class PaymentController extends BaseController {
 
     def save() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
 
             PaymentAdapter adapter = new PaymentAdapter(params)
             Payment payment = paymentService.save(adapter, customerId)
@@ -33,7 +33,7 @@ class PaymentController extends BaseController {
 
     def show() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -51,7 +51,7 @@ class PaymentController extends BaseController {
 
     def update() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -74,7 +74,7 @@ class PaymentController extends BaseController {
 
     def delete() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -96,7 +96,7 @@ class PaymentController extends BaseController {
 
     def restore() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()

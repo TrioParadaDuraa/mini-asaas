@@ -8,7 +8,7 @@ abstract class BaseController {
 
     SpringSecurityService springSecurityService
 
-    protected User getCurrentUser() {
-        return (User) springSecurityService.currentUser
+    protected Long getCurrentCustomerId() {
+        return springSecurityService.currentUser.customer.id
     }
 }

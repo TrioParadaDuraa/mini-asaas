@@ -36,7 +36,7 @@ class CustomerController extends BaseController {
 
     def show() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
             Customer customer = Customer.read(customerId)
 
             if (!customer) {
@@ -53,7 +53,7 @@ class CustomerController extends BaseController {
     @Secured("isFullyAuthenticated()")
     def update() {
         try {
-            Long customerId = getCurrentUser().customer.id
+            Long customerId = getCurrentCustomerId()
 
             CustomerAdapter adapter = new CustomerAdapter(params)
             customerService.update(customerId, adapter)
