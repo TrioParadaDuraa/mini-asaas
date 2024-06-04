@@ -18,10 +18,8 @@ class PayerController extends BaseController {
 
     def save() {
         try {
-            Long customerId = getCurrentCustomerId()
-
             PayerAdapter adapter = new PayerAdapter(params)
-            Payer payer = payerService.save(adapter, customerId)
+            Payer payer = payerService.save(adapter, getCurrentCustomerId())
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
@@ -36,10 +34,9 @@ class PayerController extends BaseController {
 
     def show() {
         try{
-            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -56,10 +53,8 @@ class PayerController extends BaseController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = getCurrentCustomerId()
-
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
-            filterList.put("cutomerId", customerId)
+            filterList.put("cutomerId", getCurrentCustomerId())
 
             if (!filterList.containsKey("deleted")) {
                 filterList.deleted = false
@@ -76,10 +71,9 @@ class PayerController extends BaseController {
 
     def update() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -103,10 +97,9 @@ class PayerController extends BaseController {
 
     def delete() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
             
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -125,10 +118,9 @@ class PayerController extends BaseController {
 
     def restore() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")

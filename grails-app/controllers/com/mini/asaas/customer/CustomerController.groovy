@@ -36,8 +36,7 @@ class CustomerController extends BaseController {
 
     def show() {
         try {
-            Long customerId = getCurrentCustomerId()
-            Customer customer = Customer.read(customerId)
+            Customer customer = Customer.read(getCurrentCustomerId())
 
             if (!customer) {
                 throw new Exception("Cliente não encontrado")
@@ -53,12 +52,10 @@ class CustomerController extends BaseController {
     @Secured("isFullyAuthenticated()")
     def update() {
         try {
-            Long customerId = getCurrentCustomerId()
-
             CustomerAdapter adapter = new CustomerAdapter(params)
-            customerService.update(customerId, adapter)
+            Customer customer = customerService.update(getCurrentCustomerId(), adapter)
 
-            redirect(action: "show", id: customerId)
+            redirect(action: "show", id: customer.id)
         } catch (Exception exception) {
             log.error("CustomerController.update >> Não foi possível salvar as atualizações", exception)
             render "Não foi possível atualizar os dados"

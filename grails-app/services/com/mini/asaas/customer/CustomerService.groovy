@@ -25,12 +25,14 @@ class CustomerService {
         return customer
     }
 
-    public update(Long customerId, CustomerAdapter adapter) {
+    public Customer update(Long customerId, CustomerAdapter adapter) {
         Customer customer = Customer.get(customerId)
 
         buildCustomerProperties(customer, adapter)
 
         customer.save(failOnError: true)
+
+        return customer
     }
 
     private buildCustomerProperties(Customer customer, CustomerAdapter adapter) {

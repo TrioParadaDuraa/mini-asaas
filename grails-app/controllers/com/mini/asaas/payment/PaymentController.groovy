@@ -16,10 +16,8 @@ class PaymentController extends BaseController {
 
     def save() {
         try {
-            Long customerId = getCurrentCustomerId()
-
             PaymentAdapter adapter = new PaymentAdapter(params)
-            Payment payment = paymentService.save(adapter, customerId)
+            Payment payment = paymentService.save(adapter, getCurrentCustomerId())
 
             redirect (action: "show", id: payment.id)
         } catch (Exception exception) {
@@ -33,10 +31,9 @@ class PaymentController extends BaseController {
 
     def show() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -51,10 +48,9 @@ class PaymentController extends BaseController {
 
     def update() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -74,10 +70,9 @@ class PaymentController extends BaseController {
 
     def delete() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -96,10 +91,9 @@ class PaymentController extends BaseController {
 
     def restore() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")

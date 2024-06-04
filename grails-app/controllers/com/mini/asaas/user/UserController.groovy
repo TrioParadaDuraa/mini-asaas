@@ -17,10 +17,8 @@ class UserController extends BaseController {
     @Secured("isFullyAuthenticated()")
     def save() {
         try {
-            Long customerId = getCurrentCustomerId()
-            
             UserAdapter adapter = new UserAdapter(params)
-            User user = userService.saveCustomerUser(adapter, customerId)
+            User user = userService.saveCustomerUser(adapter, getCurrentCustomerId())
 
             redirect(action: "show", id: user.id)
         } catch (ValidationException validationException) {
@@ -35,10 +33,9 @@ class UserController extends BaseController {
 
     def show() {
         try {
-            Long customerId = getCurrentCustomerId()
             Long id = params.long("id")
 
-            User user = (User) User.query([customerId: customerId, id: id]).get()
+            User user = (User) User.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!user) {
                 throw new Exception("Usuário não encontrado")
