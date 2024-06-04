@@ -15,15 +15,15 @@ class PasswordValidator {
         }
     }
 
-    public static boolean matches(String password, String passwordConfirm) {
+    public static Boolean matches(String password, String passwordConfirm) {
         return password == passwordConfirm
     }
 
-    public static boolean isStrong(String password) {
+    public static Boolean isStrong(String password) {
         return (password.size() >= MIN_PASSWORD_SIZE) && hasCharsAndDigits(password)
     }
 
-    private static boolean hasCharsAndDigits(String password) {
+    private static Boolean hasCharsAndDigits(String password) {
         return password.find(/[a-zA-Z]/) && password.find(/[0-9]/)
     } 
 }

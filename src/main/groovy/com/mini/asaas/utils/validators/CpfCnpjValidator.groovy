@@ -5,11 +5,11 @@ import grails.compiler.GrailsCompileStatic
 @GrailsCompileStatic
 class CpfCnpjValidator {
 
-    static boolean isValidCpfCnpj(String cpfCnpj) {
+    static Boolean isValidCpfCnpj(String cpfCnpj) {
         return isValidCpf(cpfCnpj) || isValidCnpj(cpfCnpj)
     }
 
-    public static boolean isValidCpf(String cpf) {
+    public static Boolean isValidCpf(String cpf) {
         if (!cpf.matches(/\d{11}/) || cpf.matches(/(\d)\1{10}/)) {
             return false
         }
@@ -37,7 +37,7 @@ class CpfCnpjValidator {
         return digit1 == digits[9] && digit2 == digits[10]
     }
 
-    public static boolean isValidCnpj(String cnpj) {
+    public static Boolean isValidCnpj(String cnpj) {
         if (!cnpj.matches(/\d{14}/) || cnpj.matches(/(\d)\1{13}/)) {
             return false
         }

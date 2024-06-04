@@ -5,7 +5,7 @@ import grails.compiler.GrailsCompileStatic
 @GrailsCompileStatic
 class EmailValidator {
 
-    public static boolean isValidEmail(String email) {
+    public static Boolean isValidEmail(String email) {
         if (email.matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
             return true
         }
