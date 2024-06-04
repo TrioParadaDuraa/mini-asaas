@@ -21,23 +21,25 @@ class PaymentService {
         return payment
     }
 
+    private static Payment findPayment(Long paymentId) {
+        Payment payment = Payment.get(paymentId)
+        if (!payment) {
+            throw new RuntimeException("Pagamento de ID $paymentId não encontrado")
+        }
+        return payment
+    }
+
     public void processOverduePayments() {
         List<Long> overduePaymentsIds = Payment.overdueIds()
 
-        if (overduePaymentsIds.isEmpty()) {
-            return
-        }
+        if (overduePaymentsIds.isEmpty()) return
 
         overduePaymentsIds.each { paymentId ->
             try {
                 Payment.withNewTransaction { status ->
-                    Payment payment = Payment.get(paymentId)
-                    if (payment) {
-                        payment.status = PaymentStatus.OVERDUE
-                        payment.save(failOnError: true)
-                    } else {
-                        log.error("Pagamento de ID $paymentId não encontrado")
-                    }
+                    Payment payment = findPayment(paymentId)
+                    payment.status = PaymentStatus.OVERDUE
+                    payment.save(failOnError: true)
                 }
             } catch (Exception exception) {
                 log.error("Erro ao atualizar o status do pagamento $paymentId: ${exception.message}")
@@ -46,13 +48,9 @@ class PaymentService {
     }
 
     public void updateStatus(Long paymentId, PaymentStatus status) {
-        Payment payment = Payment.get(paymentId)
-        if (payment) {
-            payment.status = status
-            payment.save()
-        } else {
-            log.error("Pagamento de ID $paymentId não encontrado")
-        }
+        Payment payment = findPayment(paymentId)
+        payment.status = status
+        payment.save()
     }
 
     private static paymentBuildProperties(Payment payment, PaymentAdapter adapter) {
