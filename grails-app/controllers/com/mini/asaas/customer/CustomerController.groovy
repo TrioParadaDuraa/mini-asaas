@@ -33,9 +33,7 @@ class CustomerController {
         try {
             Customer customer = Customer.read(params.long('id'))
 
-            if (!customer) {
-                throw new Exception("Cliente não encontrado")
-            }
+            if (!customer) throw new Exception("Cliente não encontrado")
 
             return [customer: customer]
         } catch (Exception exception) {
@@ -48,9 +46,7 @@ class CustomerController {
         try {
             Customer customer = Customer.read(params.long('id'))
 
-            if (!customer) {
-                throw new Exception("Cliente não encontrado para edição")
-            }
+            if (!customer) throw new Exception("Cliente não encontrado para edição")
 
             return [customer: customer]
         } catch (Exception exception) {
