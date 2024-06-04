@@ -130,7 +130,7 @@ class PaymentController {
                 filterList.deleted = false
             }
 
-            List<Payment> paymentList = (List<Payment>) Payment.query(filterList).list()
+            List<Payment> paymentList = Payment.query(filterList).list() as List<Payment>
 
             return [paymentList: paymentList]
         } catch (Exception exception) {
