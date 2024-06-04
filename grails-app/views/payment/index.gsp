@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Criar cobrança</title>
+        <asset:javascript src="paymentInputUpdate.js"/>
     </head>
     <body>
         <atlas-panel header="Cadastro de cobrança">

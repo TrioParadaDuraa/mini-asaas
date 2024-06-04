@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="https://atlas.asaas.com/v17.6.2/atlas.min.css" crossorigin="anonymous">
         <script defer src="https://atlas.asaas.com/v17.6.2/atlas.min.js" crossorigin="anonymous"></script>
         <asset:stylesheet src="application.css"/>
-        <asset:javascript src="application.js"/>
         <asset:link rel="icon" href="asaas-icon.png" type="image/x-icon"/>
         <g:layoutHead/>
 </head>
