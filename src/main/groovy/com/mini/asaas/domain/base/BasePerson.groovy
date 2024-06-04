@@ -37,14 +37,8 @@ abstract class BasePerson extends BaseDomain {
     String state
 
     static constraints = {
-        cpfCnpj size: 11..14, blank: false, validator: { String cpfCnpj, BasePerson person ->
-            if (person.personType == PersonType.NATURAL) {
-                return CpfCnpjValidator.isValidCpf(cpfCnpj)
-            } else if (person.personType == PersonType.LEGAL) {
-                return CpfCnpjValidator.isValidCnpj(cpfCnpj)
-            }
-
-            return false
+        cpfCnpj size: 11..14, blank: false, validator: { String cpfCnpj ->
+            return CpfCnpjValidator.isValidCpfCnpj(cpfCnpj)
         }
 
         name blank: false
@@ -52,6 +46,16 @@ abstract class BasePerson extends BaseDomain {
         phone blank: false, nullable: true, size: 10..10
         mobilePhone blank: false, size: 11..11, validator: { String mobilePhone ->
             return MobilePhoneValidator.isValidMobilePhone(mobilePhone)
+        }
+
+        personType blank: false, validator: { PersonType personType, BasePerson person ->
+            if (personType == PersonType.NATURAL) {
+                return CpfCnpjValidator.isValidCpf(person.cpfCnpj)
+            } else if (personType == PersonType.LEGAL) {
+                return CpfCnpjValidator.isValidCnpj(person.cpfCnpj)
+            }
+
+            return false
         }
 
         postalCode blank: false, size: 8..8, validator: { String postalCode ->
