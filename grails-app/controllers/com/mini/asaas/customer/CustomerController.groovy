@@ -29,7 +29,7 @@ class CustomerController {
             flash.message = 'Erro ao salvar os dados, verifique todos os campos e tente novamente.'
 
             redirect(action: "index")
-         }
+        }
     }
 
     @Secured("isAuthenticated()")
@@ -37,14 +37,25 @@ class CustomerController {
         try {
             Customer customer = Customer.read(params.long('id'))
 
-            if (!customer) {
-                throw new Exception("Cliente não encontrado")
-            }
+            if (!customer) throw new Exception("Cliente não encontrado")
 
             return [customer: customer]
-       } catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
             render "Cliente não encontrado"
+        }
+    }
+
+    def edit() {
+        try {
+            Customer customer = Customer.read(params.long('id'))
+
+            if (!customer) throw new Exception("Cliente não encontrado para edição")
+
+            return [customer: customer]
+        } catch (Exception exception) {
+            log.error("CustomerController.edit >> Cliente não encontrado para edição", exception)
+            render "Cliente não encontrado para edição"
         }
     }
 
