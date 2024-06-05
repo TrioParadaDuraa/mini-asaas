@@ -26,14 +26,14 @@
                             icon="user"
                             value=""
                             text="Meus dados"
-                            href="${createLink(controller: 'customer', action: 'show', id: 1)}"
+                            href="${createLink(controller: 'customer', action: 'show')}"
                         ></atlas-sidebar-menu-item>
 
                         <atlas-sidebar-menu-item
                             icon="pencil"
                             value=""
                             text="Atualizar dados"
-                            href="${createLink(controller: 'customer', action: 'edit', id: 1)}"
+                            href="${createLink(controller: 'customer', action: 'edit')}"
                         ></atlas-sidebar-menu-item>
 
                         <atlas-sidebar-menu-item
@@ -52,7 +52,7 @@
                                 icon="dollar-sign"
                                 value=""
                                 text="Minhas cobranças"
-                                href="${createLink(controller: 'payment', action: 'list', id: 2)}"
+                                href="${createLink(controller: 'payment', action: 'list')}"
                         ></atlas-sidebar-menu-item>
 
                         <atlas-sidebar-menu-item
