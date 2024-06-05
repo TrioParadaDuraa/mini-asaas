@@ -7,7 +7,7 @@ import grails.gorm.transactions.Transactional
 class DueDatePaymentJob {
 
     static triggers = {
-        cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * *?'
+        cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * * ?'
     }
 
     PaymentService paymentService

@@ -121,10 +121,8 @@ class PaymentController extends BaseController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = 2
-
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
-            filterList.put("cutomerId", customerId)
+            filterList.put("cutomerId", getCurrentCustomerId())
 
             if (!filterList.containsKey("deleted")) {
                 filterList.deleted = false

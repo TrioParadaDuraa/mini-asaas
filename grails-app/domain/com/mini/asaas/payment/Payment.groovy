@@ -6,9 +6,6 @@ import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.enums.BillingType
 
-import grails.compiler.GrailsCompileStatic
-
-@GrailsCompileStatic
 class Payment extends BaseDomain {
 
     Customer customer
