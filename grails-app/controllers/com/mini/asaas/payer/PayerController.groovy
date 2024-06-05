@@ -17,7 +17,7 @@ class PayerController {
 
     def save() {
         try {
-            Long customerId = 1
+            Long customerId = 2
 
             PayerAdapter adapter = new PayerAdapter(params)
             Payer payer = payerService.save(adapter, customerId)
@@ -35,7 +35,7 @@ class PayerController {
 
     def show() {
         try{
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -55,7 +55,7 @@ class PayerController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = 1
+            Long customerId = 2
 
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
             filterList.put("cutomerId", customerId)
@@ -75,7 +75,7 @@ class PayerController {
 
     def update() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -102,7 +102,7 @@ class PayerController {
 
     def delete() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
@@ -124,7 +124,7 @@ class PayerController {
 
     def restore() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long("id")
 
             Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()

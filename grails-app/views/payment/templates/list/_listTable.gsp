@@ -1,4 +1,5 @@
-<atlas-table has-actions id="js-payment-table">
+<%@ page import="com.mini.asaas.utils.FormatUtils" %>
+<atlas-table has-actions>
     <atlas-table-header slot="header">
         <atlas-table-col>
             Pagador
@@ -8,6 +9,9 @@
         </atlas-table-col>
         <atlas-table-col>
             Status
+        </atlas-table-col>
+        <atlas-table-col>
+            Data de vencimento
         </atlas-table-col>
     </atlas-table-header>
     <atlas-table-body slot="body">
@@ -21,6 +25,9 @@
                 </atlas-table-col>
                 <atlas-table-col>
                     ${payment.status.getLabel()}
+                </atlas-table-col>
+                <atlas-table-col>
+                    ${FormatUtils.formatDateToString(payment.dueDate)}
                 </atlas-table-col>
 
                 <atlas-button-group slot="actions" group-all>

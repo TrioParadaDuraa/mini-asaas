@@ -1,13 +1,12 @@
-<atlas-filter id="js-payment-filter">
-    <atlas-filter-form slot="simple-filter" method="GET" action="${createLink(controller: 'payment', action: 'list')}">
-        <atlas-filter-group header="Deletados" name="deleted">
-            <atlas-checkbox value="true">Sim</atlas-checkbox>
-        </atlas-filter-group>
-        <atlas-filter-group header="Status" name="status">
-            <atlas-checkbox value="">Aguardando pagamento</atlas-checkbox>
-            <atlas-checkbox value="">Vencida</atlas-checkbox>
-            <atlas-checkbox value="">Cancelada</atlas-checkbox>
-            <atlas-checkbox value="">Recebida em dinheiro</atlas-checkbox>
-        </atlas-filter-group>
-    </atlas-filter-form>
-</atlas-filter>
+<div class="dropdown-filter">
+    <button class="filter-button">Filtros</button>
+    <div class="dropdown-filter-content">
+        <form action="${createLink(controller: 'payment', action: 'list')}" method="GET" class="filter-form">
+            <div>
+                <input type="checkbox" name="deleted" value="true" id="deleted" ${Boolean.valueOf(params.deleted) == true ? raw("checked") : null}>
+                <label for="deleted">Excluidos</label>
+            </div>
+            <button type="submit" class="filter-button">Aplicar</button>
+        </form>
+    </div>
+</div>

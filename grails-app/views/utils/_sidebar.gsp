@@ -10,7 +10,7 @@
                     icon="user"
                     value=""
                     text="Meus dados"
-                    href="${createLink(controller: 'customer', action: 'show', id: 1)}"
+                    href="${createLink(controller: 'customer', action: 'show', id: 2)}"
                     ${ controllerName == 'customer' && actionName == 'show' ? 'active' : '' }
             ></atlas-sidebar-menu-item>
 
@@ -18,7 +18,7 @@
                     icon="pencil"
                     value=""
                     text="Atualizar dados"
-                    href="${createLink(controller: 'customer', action: 'edit', id: 1)}"
+                    href="${createLink(controller: 'customer', action: 'edit', id: 2)}"
                     ${ controllerName == 'customer' && actionName == 'edit' ? 'active' : '' }
             ></atlas-sidebar-menu-item>
 
@@ -47,7 +47,7 @@
                     icon="plus"
                     value=""
                     text="Criar cobrança"
-                    href="${createLink(controller: 'payment', action: 'index', id: 1)}"
+                    href="${createLink(controller: 'payment', action: 'index', id: 2)}"
                     ${ controllerName == 'payment' && actionName == 'index' ? 'active' : '' }
             ></atlas-sidebar-menu-item>
         </atlas-sidebar-menu-item>

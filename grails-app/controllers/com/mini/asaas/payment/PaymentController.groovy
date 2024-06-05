@@ -21,7 +21,7 @@ class PaymentController {
 
     def save() {
         try {
-            Long customerId = 1
+            Long customerId = 2
 
             PaymentAdapter adapter = new PaymentAdapter(params)
             Payment payment = paymentService.save(adapter, customerId)
@@ -38,7 +38,7 @@ class PaymentController {
 
     def show() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -56,7 +56,7 @@ class PaymentController {
 
     def update() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -79,7 +79,7 @@ class PaymentController {
 
     def delete() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -101,7 +101,7 @@ class PaymentController {
 
     def restore() {
         try {
-            Long customerId = 1
+            Long customerId = 2
             Long id = params.long('id')
 
             Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
@@ -125,7 +125,7 @@ class PaymentController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = 1
+            Long customerId = 2
 
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
             filterList.put("cutomerId", customerId)
