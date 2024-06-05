@@ -15,9 +15,11 @@ body {
 }
 
 .login .images {
-    width: 80%;
+    width: 90%;
+    max-width: 25rem;
     height: auto;
     margin-right: 25rem;
+    position: relative;
 }
 
 .login .images .asaas-text {
@@ -25,12 +27,15 @@ body {
 }
 
 .login .images .girl-laptop {
-    margin-top: 4rem;
+    width: 40rem;
+    margin-top: 2.2rem;
+    position: absolute;
+    right: 0.5rem;
 }
 
 .login .inner {
-    width: 60%;
-    padding: 5rem;
+    width: 90%;
+    padding: 7.2rem 0 0 11rem;
 }
 
 .login .inner .fheader {
@@ -40,6 +45,10 @@ body {
     margin-bottom: 2rem;
 }
 
-.login .inner .button {
-    margin-top: 2rem;
+.login .inner .email-label {
+    margin-bottom: 1.5rem;
+}
+
+.login .inner .password-label {
+    margin-bottom: 2.5rem;
 }
