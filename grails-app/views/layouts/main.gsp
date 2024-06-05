@@ -52,14 +52,14 @@
                                 icon="dollar-sign"
                                 value=""
                                 text="Minhas cobranças"
-                                href="${createLink(controller: 'customer', action: 'show', id: 1)}"
+                                href="${createLink(controller: 'payment', action: 'list', id: 2)}"
                         ></atlas-sidebar-menu-item>
 
                         <atlas-sidebar-menu-item
                                 icon="plus"
                                 value=""
                                 text="Criar cobrança"
-                                href="${createLink(controller: 'payment', action: 'index', id: 1)}"
+                                href="${createLink(controller: 'payment', action: 'index')}"
                         ></atlas-sidebar-menu-item>
                     </atlas-sidebar-menu-item>
                 </atlas-sidebar-menu>
