@@ -12,7 +12,7 @@
             <atlas-page-content slot="content" class="js-atlas-content">
                 <div class="login">
                     <div class="images">
-                        <asset:image src="/loginpage/asaas-text.svg" class="asaas-text"/><br>
+                        <asset:image src="/loginpage/asaas-text.svg" class="asaas-text"/>
                         <asset:image src="/loginpage/girl-laptop.svg" class="girl-laptop"/>
                     </div>
                     <div class="inner">
@@ -25,7 +25,7 @@
                                 <atlas-password-input class="password-label" label="Senha" required="" name="password" size="md"></atlas-password-input>
                             </atlas-col>
                             <div class="button">
-                                <atlas-button submit description="Entrar" slot="actions" theme="success"></atlas-button><br>
+                                <atlas-button submit description="Entrar" slot="actions" theme="success"></atlas-button>
                             </div>
                         </atlas-form>
                         <div class="bottom-text">

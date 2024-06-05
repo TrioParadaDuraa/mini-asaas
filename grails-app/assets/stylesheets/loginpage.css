@@ -52,3 +52,7 @@ body {
 .login .inner .password-label {
     margin-bottom: 2.5rem;
 }
+
+.login .inner .bottom-text {
+    margin-top: 1.8rem;
+}
