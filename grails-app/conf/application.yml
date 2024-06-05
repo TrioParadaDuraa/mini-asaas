@@ -137,3 +137,13 @@ environments:
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
+quartz:
+    autoStartup: true
+    jdbcStore: true
+    waitForJobsToCompleteOnShutdown: true
+    job:
+        store:
+            class: org.springframework.scheduling.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.springframework.scheduling.quartz.impl.jdbcjobstore.StdJDBCDelegate
+        factory:
+            beanName: quartzScheduler
