@@ -1,6 +1,8 @@
 package com.mini.asaas.payment
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.payer.Payer
+
 import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.message.MessageType
 
@@ -9,7 +11,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class PaymentController {
+class PaymentController extends BaseController {
 
     PaymentService paymentService
 
@@ -21,10 +23,8 @@ class PaymentController {
 
     def save() {
         try {
-            Long customerId = 1
-
             PaymentAdapter adapter = new PaymentAdapter(params)
-            Payment payment = paymentService.save(adapter, customerId)
+            Payment payment = paymentService.save(adapter, getCurrentCustomerId())
 
             redirect (action: "show", id: payment.id)
         } catch (Exception exception) {
@@ -38,10 +38,9 @@ class PaymentController {
 
     def show() {
         try {
-            Long customerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -56,10 +55,9 @@ class PaymentController {
 
     def update() {
         try {
-            Long customerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -68,7 +66,7 @@ class PaymentController {
             }
 
             PaymentAdapter adapter = new PaymentAdapter(params)
-            paymentService.update(payment, adapter)
+            paymentService.update(payment.id, adapter)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
@@ -79,10 +77,9 @@ class PaymentController {
 
     def delete() {
         try {
-            Long customerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -90,7 +87,7 @@ class PaymentController {
                 throw new Exception("Cobrança já inativa")
             }
 
-            paymentService.delete(payment)
+            paymentService.delete(payment.id)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
@@ -101,10 +98,9 @@ class PaymentController {
 
     def restore() {
         try {
-            Long customerId = 1
             Long id = params.long('id')
 
-            Payment payment = (Payment) Payment.query([customerId: customerId, id: id]).get()
+            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
                 throw new Exception("Cobrança não encontrada")
@@ -112,7 +108,7 @@ class PaymentController {
                 throw new Exception("Cobrança não inativa")
             }
 
-            paymentService.restore(payment)
+            paymentService.restore(payment.id)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
