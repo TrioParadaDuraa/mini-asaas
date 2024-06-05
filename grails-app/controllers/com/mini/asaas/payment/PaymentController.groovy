@@ -5,8 +5,10 @@ import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
+@Secured("isAuthenticated()")
 class PaymentController {
 
     PaymentService paymentService

@@ -2,10 +2,8 @@ package com.mini.asaas
 
 import com.mini.asaas.payment.PaymentService
 
-import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 
-@GrailsCompileStatic
 class DueDatePaymentJob {
 
     static triggers = {
