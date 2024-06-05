@@ -1,5 +1,6 @@
 package com.mini.asaas.payer
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.utils.Utils
 
@@ -9,7 +10,7 @@ import grails.validation.ValidationException
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class PayerController {
+class PayerController extends BaseController {
 
     PayerService payerService
 
@@ -17,10 +18,8 @@ class PayerController {
 
     def save() {
         try {
-            Long customerId = 1
-
             PayerAdapter adapter = new PayerAdapter(params)
-            Payer payer = payerService.save(adapter, customerId)
+            Payer payer = payerService.save(adapter, getCurrentCustomerId())
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
@@ -35,10 +34,9 @@ class PayerController {
 
     def show() {
         try{
-            Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -55,10 +53,8 @@ class PayerController {
         List allowedFilters = ["deleted"]
 
         try {
-            Long customerId = 1
-
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
-            filterList.put("cutomerId", customerId)
+            filterList.put("cutomerId", getCurrentCustomerId())
 
             if (!filterList.containsKey("deleted")) {
                 filterList.deleted = false
@@ -75,10 +71,9 @@ class PayerController {
 
     def update() {
         try {
-            Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -102,10 +97,9 @@ class PayerController {
 
     def delete() {
         try {
-            Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
             
             if (!payer) {
                 throw new Exception("Pagador não encontrado")
@@ -124,10 +118,9 @@ class PayerController {
 
     def restore() {
         try {
-            Long customerId = 1
             Long id = params.long("id")
 
-            Payer payer = (Payer) Payer.query([customerId: customerId, id: id]).get()
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payer) {
                 throw new Exception("Pagador não encontrado")

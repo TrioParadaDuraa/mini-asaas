@@ -1,5 +1,6 @@
 package com.mini.asaas.customer
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.user.UserAdapter
 import com.mini.asaas.utils.message.MessageType
 
@@ -7,7 +8,7 @@ import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
-class CustomerController {
+class CustomerController extends BaseController {
     
     CustomerService customerService
 
@@ -22,7 +23,7 @@ class CustomerController {
 
             Customer customer = customerService.save(customerAdapter, userAdapter)
 
-            redirect(action: "show", id: customer.id)
+            redirect(controller: "login", action: "auth")
         } catch (Exception exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
             flash.type = MessageType.ERROR
@@ -35,7 +36,7 @@ class CustomerController {
     @Secured("isAuthenticated()")
     def show() {
         try {
-            Customer customer = Customer.read(params.long('id'))
+            Customer customer = Customer.read(getCurrentCustomerId())
 
             if (!customer) throw new Exception("Cliente não encontrado")
 
@@ -62,14 +63,12 @@ class CustomerController {
     @Secured("isFullyAuthenticated()")
     def update() {
         try {
-            Long customerId = params.long('id')
-
             UpdateCustomerAdapter adapter = new UpdateCustomerAdapter(params)
-            customerService.update(customerId, adapter)
+            Customer customer = customerService.update(getCurrentCustomerId(), adapter)
 
-            redirect(action: "show", id: customerId)
+            redirect(action: "show", id: customer.id)
         } catch (Exception exception) {
-            log.error("CustomerController.update >> Não foi possivel salvar as atualizações", exception)
+            log.error("CustomerController.update >> Não foi possível salvar as atualizações", exception)
             render "Não foi possível atualizar os dados"
         }
     }
