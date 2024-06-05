@@ -4,14 +4,17 @@ import com.mini.asaas.user.UserAdapter
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
 class CustomerController {
     
     CustomerService customerService
 
+    @Secured("permitAll")
     def index() {}
 
+    @Secured("permitAll")
     def save() {
         try {
             CreateCustomerAdapter customerAdapter = new CreateCustomerAdapter(params)
@@ -29,13 +32,12 @@ class CustomerController {
         }
     }
 
+    @Secured("isAuthenticated()")
     def show() {
         try {
             Customer customer = Customer.read(params.long('id'))
 
-            if (!customer) {
-                throw new Exception("Cliente não encontrado")
-            }
+            if (!customer) throw new Exception("Cliente não encontrado")
 
             return [customer: customer]
         } catch (Exception exception) {
@@ -48,9 +50,7 @@ class CustomerController {
         try {
             Customer customer = Customer.read(params.long('id'))
 
-            if (!customer) {
-                throw new Exception("Cliente não encontrado para edição")
-            }
+            if (!customer) throw new Exception("Cliente não encontrado para edição")
 
             return [customer: customer]
         } catch (Exception exception) {
@@ -59,6 +59,7 @@ class CustomerController {
         }
     }
 
+    @Secured("isFullyAuthenticated()")
     def update() {
         try {
             Long customerId = params.long('id')

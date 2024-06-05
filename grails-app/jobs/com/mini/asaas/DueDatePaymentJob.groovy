@@ -2,9 +2,12 @@ package com.mini.asaas
 
 import com.mini.asaas.payment.PaymentService
 
+import grails.gorm.transactions.Transactional
+
 class DueDatePaymentJob {
 
     static triggers = {
+        cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * *?'
     }
 
     PaymentService paymentService

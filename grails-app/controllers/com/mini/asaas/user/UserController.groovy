@@ -3,14 +3,17 @@ package com.mini.asaas.user
 import grails.validation.ValidationException
 
 import grails.compiler.GrailsCompileStatic
+import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
+@Secured("isAuthenticated()")
 class UserController {
 
     UserService userService
 
     def index() {}
 
+    @Secured("isFullyAuthenticated()")
     def save() {
         try {
             Long customerId = 1
