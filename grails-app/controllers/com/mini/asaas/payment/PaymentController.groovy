@@ -1,6 +1,9 @@
 package com.mini.asaas.payment
 
 import com.mini.asaas.BaseController
+import com.mini.asaas.payer.Payer
+
+import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
@@ -12,7 +15,11 @@ class PaymentController extends BaseController {
 
     PaymentService paymentService
 
-    def index() {}
+    def index() {
+        List<Payer> payerList = Payer.list()
+
+        return [payerList: payerList]
+    }
 
     def save() {
         try {
@@ -107,6 +114,28 @@ class PaymentController extends BaseController {
         } catch (Exception exception) {
             log.error("PaymentController.restore >> Erro ao restaurar cobrança", exception)
             render "Não foi possivel restaurar a cobrança"
+        }
+    }
+
+    def list() {
+        List allowedFilters = ["deleted"]
+
+        try {
+            Long customerId = 1
+
+            Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
+            filterList.put("cutomerId", customerId)
+
+            if (!filterList.containsKey("deleted")) {
+                filterList.deleted = false
+            }
+
+            List<Payment> paymentList = Payment.query(filterList).list() as List<Payment>
+
+            return [paymentList: paymentList]
+        } catch (Exception exception) {
+            log.error("PaymentController.list >> Erro ao listar cobranças", exception)
+            render "Não foi possível carregar cobranças"
         }
     }
 }

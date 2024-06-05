@@ -4,4 +4,7 @@ import com.mini.asaas.domain.base.BasePerson
 
 class Customer extends BasePerson {
 
+    static mapping = {
+        cpfCnpj unique: true
+    }
 }

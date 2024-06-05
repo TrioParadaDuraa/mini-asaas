@@ -18,7 +18,7 @@ class CustomerController extends BaseController {
     @Secured("permitAll")
     def save() {
         try {
-            CustomerAdapter customerAdapter = new CustomerAdapter(params)
+            CreateCustomerAdapter customerAdapter = new CreateCustomerAdapter(params)
             UserAdapter userAdapter = new UserAdapter(params)
 
             Customer customer = customerService.save(customerAdapter, userAdapter)
@@ -30,7 +30,7 @@ class CustomerController extends BaseController {
             flash.message = 'Erro ao salvar os dados, verifique todos os campos e tente novamente.'
 
             redirect(action: "index")
-         }
+        }
     }
 
     @Secured("isAuthenticated()")
@@ -38,21 +38,32 @@ class CustomerController extends BaseController {
         try {
             Customer customer = Customer.read(getCurrentCustomerId())
 
-            if (!customer) {
-                throw new Exception("Cliente não encontrado")
-            }
+            if (!customer) throw new Exception("Cliente não encontrado")
 
             return [customer: customer]
-       } catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
             render "Cliente não encontrado"
+        }
+    }
+
+    def edit() {
+        try {
+            Customer customer = Customer.read(params.long('id'))
+
+            if (!customer) throw new Exception("Cliente não encontrado para edição")
+
+            return [customer: customer]
+        } catch (Exception exception) {
+            log.error("CustomerController.edit >> Cliente não encontrado para edição", exception)
+            render "Cliente não encontrado para edição"
         }
     }
 
     @Secured("isFullyAuthenticated()")
     def update() {
         try {
-            CustomerAdapter adapter = new CustomerAdapter(params)
+            UpdateCustomerAdapter adapter = new UpdateCustomerAdapter(params)
             Customer customer = customerService.update(getCurrentCustomerId(), adapter)
 
             redirect(action: "show", id: customer.id)
