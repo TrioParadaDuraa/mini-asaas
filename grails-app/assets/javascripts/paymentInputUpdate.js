@@ -24,4 +24,4 @@ function PaymentInputUpdateController() {
 document.addEventListener("DOMContentLoaded", function () {
     var paymentInputUpdateController = new PaymentInputUpdateController();
     paymentInputUpdateController.init();
-})
+});

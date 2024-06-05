@@ -1,4 +1,4 @@
-<atlas-table has-actions>
+<atlas-table has-actions id="js-payment-table">
     <atlas-table-header slot="header">
         <atlas-table-col>
             Pagador

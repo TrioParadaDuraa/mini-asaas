@@ -1,4 +1,4 @@
-<atlas-filter>
+<atlas-filter id="js-payment-filter">
     <atlas-filter-form slot="simple-filter" method="GET" action="${createLink(controller: 'payment', action: 'list')}">
         <atlas-filter-group header="Deletados" name="deleted">
             <atlas-checkbox value="true">Sim</atlas-checkbox>
