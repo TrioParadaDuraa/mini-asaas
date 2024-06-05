@@ -34,7 +34,7 @@ class CustomerService {
         return customer
     }
 
-    public void update(Long customerId, UpdateCustomerAdapter adapter) {
+    public Customer update(Long customerId, UpdateCustomerAdapter adapter) {
         Customer customer = validate(adapter)
 
         if (customer.hasErrors()) throw new ValidationException("Erro ao atualizar conta", customer.errors)
@@ -44,6 +44,8 @@ class CustomerService {
         buildCustomerProperties(customer, adapter)
 
         customer.save(failOnError: true)
+
+        return customer
     }
 
     private void buildCustomerProperties(Customer customer, BasePersonAdapter adapter) {
