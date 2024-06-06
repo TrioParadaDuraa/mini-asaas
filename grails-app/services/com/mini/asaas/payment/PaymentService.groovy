@@ -1,11 +1,13 @@
 package com.mini.asaas.payment
 
+import com.mini.asaas.EmailService
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.payer.Payer
 
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
+import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -15,6 +17,9 @@ import org.apache.commons.lang.time.DateUtils
 @Transactional
 class PaymentService {
 
+    EmailService emailService
+
+    @Publisher
     public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
 
@@ -24,6 +29,8 @@ class PaymentService {
         payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
+
+        // emailService.sendPaymentMail(payment.payer.email, "Cobrança criada", "created", payment.id)
 
         return payment
     }
@@ -36,12 +43,17 @@ class PaymentService {
         payment.save(failOnError: true)
     }
 
-    public void delete(Long paymentId) {
+    @Publisher
+    public Payment delete(Long paymentId) {
         Payment payment = Payment.get(paymentId)
 
         payment.deleted = true
 
         payment.save(failOnError: true)
+
+        payment.attach()
+
+        return payment
     }
 
     public void restore(Long paymentId) {
