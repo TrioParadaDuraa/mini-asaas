@@ -29,7 +29,7 @@ class PaymentService {
         payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
-        
+
         return payment
     }
 
@@ -48,8 +48,6 @@ class PaymentService {
         payment.deleted = true
 
         payment.save(failOnError: true)
-
-        payment.attach()
 
         return payment
     }
