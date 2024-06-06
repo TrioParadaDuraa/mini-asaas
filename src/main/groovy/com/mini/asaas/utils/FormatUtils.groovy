@@ -5,12 +5,14 @@ import java.text.SimpleDateFormat
 
 class FormatUtils {
 
-    public static Date toDate(String date, String inputFormat = "dd/MM/yyyy") {
+    public static final DATE_FORMAT = "dd/MM/yyyy"
+
+    public static Date toDate(String date) {
         if (date == null || date.trim().isEmpty()) {
             return null
         }
 
-        SimpleDateFormat inputSdf = new SimpleDateFormat(inputFormat)
+        SimpleDateFormat inputSdf = new SimpleDateFormat(DATE_FORMAT)
 
         try {
             return inputSdf.parse(date)
@@ -19,12 +21,12 @@ class FormatUtils {
         }
     }
 
-    public static String formatDateToString(Date date, String outputFormat = "dd/MM/yyyy") {
+    public static String formatDateToString(Date date) {
         if (date == null) {
             return null
         }
 
-        SimpleDateFormat outputSdf = new SimpleDateFormat(outputFormat)
+        SimpleDateFormat outputSdf = new SimpleDateFormat(DATE_FORMAT)
 
         return outputSdf.format(date)
     }
