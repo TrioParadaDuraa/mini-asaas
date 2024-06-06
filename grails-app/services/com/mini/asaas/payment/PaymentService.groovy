@@ -28,14 +28,6 @@ class PaymentService {
         return payment
     }
 
-    public void update(Long paymentId, PaymentAdapter adapter) {
-        Payment payment = Payment.get(paymentId)
-
-        paymentBuildProperties(payment, adapter)
-
-        payment.save(failOnError: true)
-    }
-
     public void delete(Long paymentId) {
         Payment payment = Payment.get(paymentId)
 
