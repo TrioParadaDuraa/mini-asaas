@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.enums.PaymentStatus; com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType" %>
+<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.enums.PaymentStatus; com.mini.asaas.payment.Payment; com.mini.asaas.utils.enums.BillingType; com.mini.asaas.utils.Utils" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -8,7 +8,7 @@
         <title>Visualização de cobrança</title>
     </head>
     <body>
-        <atlas-panel>
+        <atlas-panel header="Dados da cobrança">
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
@@ -20,7 +20,7 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
-                        <atlas-money label="Valor da cobrança:" required="" name="value" value="${payment.value}" disabled=""></atlas-money>
+                        <atlas-input label="Valor da cobrança:" required="" name="value" value="R$ ${Utils.formatBigDecimal(payment.value)}" disabled=""></atlas-input>
                     </atlas-col>
                     <atlas-col lg="6" md="3" sm="1">
                         <atlas-input label="Status da cobrança:" required="" name="status" value="${payment.status.getLabel()}" disabled=""></atlas-input>

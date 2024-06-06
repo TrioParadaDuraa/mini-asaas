@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils" %>
+<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.Utils" %>
 <atlas-table has-actions>
     <atlas-table-header slot="header">
         <atlas-table-col>
@@ -21,7 +21,7 @@
                     ${payment.payer.name}
                 </atlas-table-col>
                 <atlas-table-col>
-                    ${payment.value}
+                    ${Utils.formatBigDecimal(payment.value)}
                 </atlas-table-col>
                 <atlas-table-col>
                     ${payment.status.getLabel()}
