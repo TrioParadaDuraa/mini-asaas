@@ -58,6 +58,7 @@ dependencies {
     implementation "org.hibernate:hibernate-core:5.5.7.Final"
     implementation "org.grails.plugins:events"
     implementation "org.grails.plugins:gsp"
+    implementation "org.grails.plugins:mail:4.0.0"
     implementation 'org.grails.plugins:quartz:2.0.13'
     implementation "org.quartz-scheduler:quartz:2.2.1"
     profile "org.grails.profiles:web"
