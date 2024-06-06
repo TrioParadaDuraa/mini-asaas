@@ -87,7 +87,7 @@
                         <atlas-button submit description="Criar conta" slot="actions" theme="success"></atlas-button>
                 </div>
                 <div class="bottom-text">
-                    <a href="/">Já tem uma conta ?</a>
+                    <a href="${createLink(controller: 'login', action: 'auth')}">Já tem uma conta?</a>
                 </div>
             </atlas-form>
         </atlas-panel>
