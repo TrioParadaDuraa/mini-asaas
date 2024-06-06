@@ -25,6 +25,6 @@ class PaymentAdapter {
         this.billingType = BillingType.convert(params.billingType.toString().toUpperCase())
         this.value = Utils.toBigDecimal(params.value.toString())
         this.status = PaymentStatus.convert(params.status.toString().toUpperCase())
-        this.dueDate = FormatUtils.toDate(params.dueDate.toString(), "dd/MM/yyyy")
+        this.dueDate = FormatUtils.toDate(params.dueDate.toString())
     }
 }
