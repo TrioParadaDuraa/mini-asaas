@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.Utils" %>
+<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.Utils; com.mini.asaas.utils.enums.PaymentStatus" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -50,7 +50,7 @@
             <div class="bottom-buttons">
                 <atlas-button description="Alterar status: Aguardando pagamento" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.AWAITING_PAYMENT)}"></atlas-button>
                 <atlas-button description="Alterar status: Recebida" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.RECEIVED)}"></atlas-button>
-                <atlas-button description="Alterar status: Recebido em dinheiro" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.RECEIVED_IN_CASH)}"></atlas-button>
+                <atlas-button description="Alterar status: Recebida em dinheiro" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.RECEIVED_IN_CASH)}"></atlas-button>
             </div>
         </atlas-panel>
     </body>
