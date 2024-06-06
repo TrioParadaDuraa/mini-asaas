@@ -35,6 +35,30 @@ cd [your-path]-mini-asaas
 
 grails run-app
 ```
+
+<details>
+<summary>Configuração para envio de email</summary>
+
+1. Navegue para o gerenciamento de conta do Google
+2. Na aba "Segurança", na seção "Como você faz login no Google", clique em "Verificação em duas etapas" e realize a autenticação solicitada
+    - Se a verificação em duas etapas ainda não estiver ativada, você deve ativá-la para prosseguir
+3. Em "Senhas de app", digite um nome para identificar o MiniAsaas e guarde a senha que será gerada
+4. No arquivo application.groovy, adicione o código a seguir, substituindo os valores de username pelo seu email e password pela senha gerada no passo 3
+
+```
+grails.mail.host = "smtp.gmail.com"
+grails.mail.port = 587
+grails.mail.username = "seuemail@asaas.com.br"
+grails.mail.password = "senha_gerada_etapa_6"
+grails.mail.props = ["mail.smtp.ssl.trust": "smtp.gmail.com",
+                    "mail.smtp.starttls.enable": "true",
+                    "mail.smtp.ssl.protocols": "TLSv1.2",
+                    "mail.smtp.protocol": "smtps",
+                    "mail.smtp.channel": "plain",
+                    "mail.smtp.auth": "true"]
+```
+</details><br>
+
 Prontinho!<br>
 Agora é possível acessar a aplicação através da rota http://localhost:8080/
 
