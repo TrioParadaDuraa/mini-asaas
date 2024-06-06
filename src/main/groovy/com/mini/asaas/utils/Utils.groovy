@@ -6,7 +6,6 @@ import grails.util.Holders
 import org.springframework.context.MessageSource
 
 import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
 
 @GrailsCompileStatic
 class Utils {
@@ -42,11 +41,7 @@ class Utils {
     public static String formatBigDecimal(BigDecimal value) {
         if (value == null) return null
 
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault())
-        symbols.setDecimalSeparator(',' as char)
-        symbols.setGroupingSeparator('.' as char)
-
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", symbols)
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00")
         return decimalFormat.format(value)
     }
 

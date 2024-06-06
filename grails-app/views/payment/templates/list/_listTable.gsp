@@ -21,7 +21,7 @@
                     ${payment.payer.name}
                 </atlas-table-col>
                 <atlas-table-col>
-                    ${Utils.formatBigDecimal(payment.value)}
+                    R$ ${Utils.formatBigDecimal(payment.value)}
                 </atlas-table-col>
                 <atlas-table-col>
                     ${payment.status.getLabel()}
