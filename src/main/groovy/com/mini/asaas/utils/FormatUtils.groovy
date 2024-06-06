@@ -12,7 +12,7 @@ class FormatUtils {
             return null
         }
 
-        SimpleDateFormat inputSdf = new SimpleDateFormat(DATE_FORMAT)
+        SimpleDateFormat inputSdf = new SimpleDateFormat(FormatUtils.DATE_FORMAT)
 
         try {
             return inputSdf.parse(date)
@@ -26,7 +26,7 @@ class FormatUtils {
             return null
         }
 
-        SimpleDateFormat outputSdf = new SimpleDateFormat(DATE_FORMAT)
+        SimpleDateFormat outputSdf = new SimpleDateFormat(FormatUtils.DATE_FORMAT)
 
         return outputSdf.format(date)
     }
