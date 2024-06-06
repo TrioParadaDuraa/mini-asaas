@@ -8,8 +8,7 @@
         <title>Visualização de cobrança</title>
     </head>
     <body>
-        <atlas-form-panel header="Dados da cobrança" method="POST" action="${createLink(controller: 'payment', action: 'update')}">
-            <input type="hidden" name="id" value="${payment.id}">
+        <atlas-panel header="Dados da cobrança">
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
@@ -49,8 +48,10 @@
                 <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payment', action: 'delete', id: payment.id)}"></atlas-button>
             </g:else>
             <div class="bottom-buttons">
-                <atlas-button description="Alterar status" data-panel-start-editing icon="pencil" class="js-payment-edit-button"></atlas-button>
+                <atlas-button description="Alterar status: Aguardando pagamento" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.AWAITING_PAYMENT)}"></atlas-button>
+                <atlas-button description="Alterar status: Recebida" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.RECEIVED)}"></atlas-button>
+                <atlas-button description="Alterar status: Recebido em dinheiro" icon="pencil" href="${createLink(controller: 'payment', action: 'update', id: payment.id, status: PaymentStatus.RECEIVED_IN_CASH)}"></atlas-button>
             </div>
-        </atlas-form-panel>
+        </atlas-panel>
     </body>
 </html>
