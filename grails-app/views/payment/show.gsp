@@ -5,73 +5,39 @@
         <meta name="layout" content="main">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Payment Show</title>
+        <title>Visualização de cobrança</title>
     </head>
     <body>
-        <form method="POST" action="${createLink(controller: 'payment', action: 'update')}">
-            <input type="hidden" name="id" value="${payment.id}">
-            <div>
-                <label for="payerName">Pagador</label>
-                <br>
-                <input name="payerName" value="${payment.payer.name}" id="payerName" type="text" readonly>
-            </div>
-            <br>
-            <div>
-                <label for="billingType">Tipo de pagamento</label>
-                <br>
-                <input type="text" value="${payment.billingType.getLabel()}" readonly>
-                <select name="billingType" id="billingType">
-                    <g:each var="value" in="${BillingType.values()}">
-                        <option value="${value}">${value.getLabel()}</option>
-                    </g:each>
-                </select>
-            </div>
-            <br>
-            <div>
-                <label for="value">Valor</label>
-                <br>
-                <input name="value" value="${payment.value}" id="value">
-            </div>
-            <br>
-            <div>
-                <label for="status">Status</label>
-                <br>
-                <input type="text" value="${payment.status.getLabel()}" readonly>
-                <select name="status" id="status">
-                    <g:each var="value" in="${PaymentStatus.values()}">
-                        <option value="${value}">${value.getLabel()}</option>
-                    </g:each>
-                </select>
-            </div>
-            <br>
-            <div>
-                <label for="dueDate">Data de vencimento</label>
-                <br>
-                <input value="${FormatUtils.formatDateToString(payment.dueDate)}" id="dueDate" readonly>
-                <input type="date" name="dueDate" value="${payment.dueDate}">
-            </div>
-            <br>
-            <g:if test="${!payment.deleted}">
-                <button type="submit">Salvar</button>
+        <atlas-panel>
+            <atlas-grid>
+                <atlas-row>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-input label="Nome do pagador:" required="" name="payerName" size="md" value="${payment.payer.name}" disabled=""></atlas-input>
+                    </atlas-col>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-input label="Tipo de pagamento:" required="" name="billingType" size="md" value="${payment.billingType.getLabel()}" disabled=""></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+                <atlas-row>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-money label="Valor da cobrança:" required="" name="value" value="${payment.value}" disabled=""></atlas-money>
+                    </atlas-col>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-input label="Status da cobrança:" required="" name="status" value="${payment.status.getLabel()}" disabled=""></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+                <atlas-row>
+                    <atlas-col lg="6" md="3" sm="1">
+                        <atlas-input label="Data de vencimento:" required="" name="dueDate" value="${FormatUtils.formatDateToString(payment.dueDate)}" disabled=""></atlas-input>
+                    </atlas-col>
+                </atlas-row>
+            </atlas-grid>
+            <g:if test="${payment.deleted}">
+                <atlas-button description="Restaurar" slot="actions" href="${createLink(controller: 'payment', action: 'restore', id: payment.id)}"></atlas-button>
             </g:if>
-        </form>
-        <br>
-        <g:if test="${payment.deleted}">
-            <form method="POST" action="${createLink(controller: 'payment', action: 'restore', id: payment.id)}">
-                <button type="submit">Restaurar</button>
-            </form>
-        </g:if>
-        <g:else>
-            <form method="POST" action="${createLink(controller: 'payment', action: 'delete', id: payment.id)}">
-                <button type="submit">Excluir</button>
-            </form>
-        </g:else>
-        <g:if test="${flash.message}">
-            <section>
-                <div>
-                    <p>${flash.message}</p>
-                </div>
-            </section>
-        </g:if>
+            <g:else>
+                <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payment', action: 'delete', id: payment.id)}"></atlas-button>
+            </g:else>
+        </atlas-panel>
     </body>
 </html>
