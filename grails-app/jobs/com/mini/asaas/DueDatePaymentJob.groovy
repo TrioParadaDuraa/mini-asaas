@@ -5,7 +5,7 @@ import com.mini.asaas.payment.PaymentService
 class DueDatePaymentJob {
 
     static triggers = {
-        cron name: 'dueDatePaymentJob', cronExpression: '0 0 0 * * ?'
+        cron name: 'dueDatePaymentJob', cronExpression: '0 0-30/5 0 * * ?'
     }
 
     PaymentService paymentService
