@@ -17,7 +17,7 @@
                 <h1>Pensou em controle de recebíveis?<br>Pensou em mini-Asaas! 🪽</h1>
             </div>
             <div class="card-buttons">
-                <a class="button-homepage">Acessar conta</a>
+                <a class="button-homepage" href="${createLink(controller: 'login', action: 'auth')}">Acessar conta</a>
                 <br>
                 <a class="button-homepage" href="${createLink(controller: 'customer', action: 'index')}">Criar conta</a>
             </div>
