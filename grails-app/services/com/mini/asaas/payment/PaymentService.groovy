@@ -29,9 +29,7 @@ class PaymentService {
         payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
-
-        // emailService.sendPaymentMail(payment.payer.email, "Cobrança criada", "created", payment.id)
-
+        
         return payment
     }
 

@@ -28,6 +28,4 @@ class EmailService {
             html(view: "/emailTemplates/payment/deleted", model: [payment: payment])
         }
     }
-
-    
 }
