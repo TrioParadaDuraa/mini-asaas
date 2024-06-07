@@ -65,20 +65,10 @@ class PayerController extends BaseController {
 
     def update() {
         try {
-            Long id = params.long("id")
-
-            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payer) {
-                throw new Exception("Pagador não encontrado")
-            } else if (payer.deleted) {
-                throw new Exception("Pagador está inativo")
-            }
-
             PayerAdapter adapter = new PayerAdapter(params)
-            payer = payerService.update(payer.id, adapter)
+            payerService.update(params.long("id"), getCurrentCustomerId(), adapter)
 
-            redirect(action: "show", id: payer.id)
+            redirect(action: "show", id: params.id)
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
         
@@ -91,17 +81,7 @@ class PayerController extends BaseController {
 
     def delete() {
         try {
-            Long id = params.long("id")
-
-            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
-            
-            if (!payer) {
-                throw new Exception("Pagador não encontrado")
-            } else if (payer.deleted) {
-                throw new Exception("Pagador já está inativo")
-            }
-
-            payerService.delete(payer.id)
+            payerService.delete(params.long("id"), getCurrentCustomerId())
 
             redirect(action: "list")
         } catch (Exception exception) {
@@ -112,17 +92,7 @@ class PayerController extends BaseController {
 
     def restore() {
         try {
-            Long id = params.long("id")
-
-            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payer) {
-                throw new Exception("Pagador não encontrado")
-            } else if (!payer.deleted) {
-                throw new Exception("Pagador não está inativo")
-            }
-
-            payerService.restore(payer.id)
+            payerService.restore(params.long("id"), getCurrentCustomerId())
 
             redirect(action: "list")
         } catch (Exception exception) {

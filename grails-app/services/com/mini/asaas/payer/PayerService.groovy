@@ -40,30 +40,40 @@ class PayerService {
         return payer
     }
 
-    public Payer update(Long payerId, PayerAdapter adapter) {
-        Payer payer = validate(adapter)
+    public void update(Long payerId, Long customerId, PayerAdapter adapter) {
+        Payer payer = find(payerId, customerId)
 
-        if (payer.hasErrors()) throw new ValidationException("Erro ao salvar payer", payer.errors)
+        if (payer.deleted) {
+            throw new RuntimeException("Pagador está inativo")
+        }
 
-        payer = Payer.get(payerId)
+        Payer validPayer = validate(adapter)
+
+        if (validPayer.hasErrors()) throw new ValidationException("Erro ao salvar payer", validPayer.errors)
 
         buildPayerProperties(payer, adapter)
 
         payer.save(failOnError: true)
-        
-        return payer
     }
 
-    public void delete(Long payerId) {
-        Payer payer = Payer.get(payerId)
+    public void delete(Long payerId, Long customerId) {
+        Payer payer = find(payerId, customerId)
+
+        if (payer.deleted) {
+            throw new RuntimeException("Pagador já está inativo")
+        }
 
         payer.deleted = true
 
         payer.save(failOnError: true)
     }
 
-    public void restore(Long payerId) {
-        Payer payer = Payer.get(payerId)
+    public void restore(Long payerId, Long customerId) {
+        Payer payer = find(payerId, customerId)
+
+        if (!payer.deleted) {
+            throw new RuntimeException("Pagador não está inativo")
+        }
         
         payer.deleted = false
 
