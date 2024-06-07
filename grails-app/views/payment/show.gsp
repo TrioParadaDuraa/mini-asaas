@@ -42,7 +42,7 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="12" md="6" sm="1">
-                        <div class="edit-payment-card">
+                        <div class="edit-payment-card-header">
                             <atlas-icon name="pencil" size="3x"></atlas-icon>
                             <h4>Atualizar status da cobrança:</h4>
                         </div>
@@ -55,12 +55,27 @@
             <g:else>
                 <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payment', action: 'delete', id: payment.id)}"></atlas-button>
             </g:else>
-            <div class="edit-payment-card-buttons">
-                <atlas-button description="Aguardando pagamento" href="${createLink(controller: 'payment', action: 'updateToAwaitingPayment', id: payment.id)}"></atlas-button>
-                <atlas-button description="Recebida" href="${createLink(controller: 'payment', action: 'updateToReceived', id: payment.id)}"></atlas-button>
-                <atlas-button description="Recebido em dinheiro" theme="success" href="${createLink(controller: 'payment', action: 'updateToReceivedInCash', id: payment.id)}"></atlas-button>
-                <atlas-button description="Cancelada" theme="danger" href="${createLink(controller: 'payment', action: 'updateToCanceled', id: payment.id)}"></atlas-button>
-            </div>
+            <form method="POST" action="${createLink(controller: 'payment', action: 'update', id: payment.id)}">
+                <div class="edit-payment-card">
+                    <div class="edit-payment-card-item">
+                        <label for="awaiting_payment">Aguardando pagamento</label>
+                        <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                    </div>
+                    <div class="edit-payment-card-item">
+                        <label for="received">Recebida</label>
+                        <input type="radio" id="received" name="status" value="${PaymentStatus.RECEIVED}">
+                    </div>
+                    <div class="edit-payment-card-item">
+                        <label for="received_in_cash">Recebida em dinheiro</label>
+                        <input type="radio" id="received_in_cash" name="status" value="${PaymentStatus.RECEIVED_IN_CASH}">
+                    </div>
+                    <div class="edit-payment-card-item-canceled">
+                        <label for="canceled">Cancelada</label>
+                        <input type="radio" id="canceled" name="status" value="${PaymentStatus.CANCELED}">
+                    </div>
+                </div>
+                <button class="edit-payment-form-button" type="submit">Salvar</button>
+            </form>
             <g:if test="${flash.message}">
                 <section>
                     <div>
