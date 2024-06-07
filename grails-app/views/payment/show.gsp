@@ -57,18 +57,22 @@
             </g:else>
             <form method="POST" action="${createLink(controller: 'payment', action: 'update', id: payment.id)}">
                 <div class="edit-payment-card">
-                    <div class="edit-payment-card-item">
-                        <label for="awaiting_payment">Aguardando pagamento</label>
-                        <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
-                    </div>
-                    <div class="edit-payment-card-item">
-                        <label for="received">Recebida</label>
-                        <input type="radio" id="received" name="status" value="${PaymentStatus.RECEIVED}">
-                    </div>
-                    <div class="edit-payment-card-item">
-                        <label for="received_in_cash">Recebida em dinheiro</label>
-                        <input type="radio" id="received_in_cash" name="status" value="${PaymentStatus.RECEIVED_IN_CASH}">
-                    </div>
+                    <g:if test="${payment.status == PaymentStatus.AWAITING_PAYMENT}">
+                        <div class="edit-payment-card-item">
+                            <label for="received">Recebida</label>
+                            <input type="radio" id="received" name="status" value="${PaymentStatus.RECEIVED}">
+                        </div>
+                        <div class="edit-payment-card-item">
+                            <label for="received_in_cash">Recebida em dinheiro</label>
+                            <input type="radio" id="received_in_cash" name="status" value="${PaymentStatus.RECEIVED_IN_CASH}">
+                        </div>
+                    </g:if>
+                    <g:else>
+                        <div class="edit-payment-card-item">
+                            <label for="awaiting_payment">Aguardando pagamento</label>
+                            <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                        </div>
+                    </g:else>
                 </div>
                 <button class="edit-payment-form-button" type="submit">Salvar</button>
             </form>

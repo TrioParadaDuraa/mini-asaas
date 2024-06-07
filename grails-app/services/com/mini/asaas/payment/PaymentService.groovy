@@ -31,7 +31,6 @@ class PaymentService {
         Payment payment = Payment.get(paymentId)
 
         payment.deleted = true
-        payment.status = PaymentStatus.CANCELED
 
         payment.save(failOnError: true)
     }
@@ -40,7 +39,6 @@ class PaymentService {
         Payment payment = Payment.get(paymentId)
         
         payment.deleted = false
-        payment.status = PaymentStatus.AWAITING_PAYMENT
 
         payment.save(failOnError: true)
     }
