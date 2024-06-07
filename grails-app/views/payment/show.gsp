@@ -69,10 +69,6 @@
                         <label for="received_in_cash">Recebida em dinheiro</label>
                         <input type="radio" id="received_in_cash" name="status" value="${PaymentStatus.RECEIVED_IN_CASH}">
                     </div>
-                    <div class="edit-payment-card-item-canceled">
-                        <label for="canceled">Cancelada</label>
-                        <input type="radio" id="canceled" name="status" value="${PaymentStatus.CANCELED}">
-                    </div>
                 </div>
                 <button class="edit-payment-form-button" type="submit">Salvar</button>
             </form>

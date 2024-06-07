@@ -28,20 +28,6 @@
     margin-left: 0.3125rem;
 }
 
-.edit-payment-card-item-canceled {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #DC3545;
-    border-radius: 0.9375rem;
-    padding: 0.5rem;
-    width: 14.375rem;
-}
-
-.edit-payment-card-item-canceled label {
-    margin-left: 0.3125rem;
-}
-
 .edit-payment-form-button {
     border: none;
     width: 5.625rem;

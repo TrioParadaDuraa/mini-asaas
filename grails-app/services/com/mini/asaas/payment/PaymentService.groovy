@@ -2,7 +2,6 @@ package com.mini.asaas.payment
 
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.payer.Payer
-
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
@@ -32,6 +31,7 @@ class PaymentService {
         Payment payment = Payment.get(paymentId)
 
         payment.deleted = true
+        payment.status = PaymentStatus.CANCELED
 
         payment.save(failOnError: true)
     }
@@ -40,6 +40,7 @@ class PaymentService {
         Payment payment = Payment.get(paymentId)
         
         payment.deleted = false
+        payment.status = PaymentStatus.AWAITING_PAYMENT
 
         payment.save(failOnError: true)
     }
