@@ -42,7 +42,7 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="12" md="6" sm="1">
-                        <div style="display: flex; align-items: center; gap: 10px">
+                        <div class="edit-payment-card">
                             <atlas-icon name="pencil" size="3x"></atlas-icon>
                             <h4>Atualizar status da cobrança:</h4>
                         </div>
@@ -55,7 +55,7 @@
             <g:else>
                 <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payment', action: 'delete', id: payment.id)}"></atlas-button>
             </g:else>
-            <div style="display: flex; justify-content: start; gap: 1.875rem">
+            <div class="edit-payment-card-buttons">
                 <atlas-button description="Aguardando pagamento" href="${createLink(controller: 'payment', action: 'updateToAwaitingPayment', id: payment.id)}"></atlas-button>
                 <atlas-button description="Recebida" href="${createLink(controller: 'payment', action: 'updateToReceived', id: payment.id)}"></atlas-button>
                 <atlas-button description="Recebido em dinheiro" theme="success" href="${createLink(controller: 'payment', action: 'updateToReceivedInCash', id: payment.id)}"></atlas-button>

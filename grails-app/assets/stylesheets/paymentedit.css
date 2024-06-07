@@ -1,0 +1,11 @@
+.edit-payment-card {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.edit-payment-card-buttons {
+    display: flex;
+    justify-content: start;
+    gap: 1.875rem;
+}
