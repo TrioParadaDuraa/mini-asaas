@@ -62,6 +62,26 @@
                                 href="${createLink(controller: 'payment', action: 'index')}"
                         ></atlas-sidebar-menu-item>
                     </atlas-sidebar-menu-item>
+
+                    <atlas-sidebar-menu-item
+                            icon="address-book"
+                            value=""
+                            text="Pagadores"
+                            href="">
+                        <atlas-sidebar-menu-item
+                                icon="hand-shake"
+                                value=""
+                                text="Meus pagadores"
+                                href="${createLink(controller: 'payer', action: 'list')}"
+                        ></atlas-sidebar-menu-item>
+
+                        <atlas-sidebar-menu-item
+                                icon="plus"
+                                value=""
+                                text="Cadastrar pagador"
+                                href="${createLink(controller: 'payer', action: 'index')}"
+                        ></atlas-sidebar-menu-item>
+                    </atlas-sidebar-menu-item>
                 </atlas-sidebar-menu>
             </atlas-sidebar>
             <atlas-page>

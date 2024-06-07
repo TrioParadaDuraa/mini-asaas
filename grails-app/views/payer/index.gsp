@@ -5,8 +5,7 @@
         <meta name="layout" content="main">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Criar Pagador</title>
-        <asset:javascript src="payerInputUpdate.js"/>
+        <title>Criar pagador</title>
     </head>
     <body>
         <atlas-panel header="Cadastro de pagador">
