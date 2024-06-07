@@ -31,13 +31,19 @@ class PayerService {
     }
 
     public Payer find(Long payerId, Long customerId) {
-        Payer payer = (Payer) Payer.query([customerId: customerId, id: payerId]).get()
+        Payer payer = Payer.query([customerId: customerId, id: payerId]).get() as Payer
 
         if (!payer) {
             throw new RuntimeException("Pagador não encontrado")
         }
 
         return payer
+    }
+
+    public List<Payer> list(Map filterList, Long customerId) {
+        filterList.put("cutomerId", customerId)
+
+        List<Payer> payerList = Payer.query(filterList).list() as List<Payer>
     }
 
     public void update(Long payerId, Long customerId, PayerAdapter adapter) {
