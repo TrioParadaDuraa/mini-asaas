@@ -4,6 +4,7 @@ import com.mini.asaas.BaseController
 import com.mini.asaas.payer.Payer
 
 import com.mini.asaas.utils.Utils
+import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
@@ -57,6 +58,8 @@ class PaymentController extends BaseController {
         try {
             Long id = params.long('id')
 
+            PaymentStatus status = PaymentStatus.convert(params.status)
+
             Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
@@ -65,13 +68,13 @@ class PaymentController extends BaseController {
                 throw new Exception("Cobrança inativa")
             }
 
-            PaymentAdapter adapter = new PaymentAdapter(params)
-            paymentService.update(payment.id, adapter)
+            paymentService.updateStatus(payment.id, status)
 
             redirect(action: "show", id: payment.id)
         } catch (Exception exception) {
-            log.error("PaymentController.update >> Erro ao atualizar dados da cobrança", exception)
-            render "Não foi possivel fazer a atualização dos dados de cobrança"
+            log.error("PaymentController.update >> Erro ao atualizar status", exception)
+            flash.type = MessageType.ERROR
+            flash.message = 'Erro ao atualizar status, tente novamente.'
         }
     }
 

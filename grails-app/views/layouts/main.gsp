@@ -15,75 +15,7 @@
 </head>
     <body>
         <atlas-screen>
-            <atlas-sidebar slot="sidebar">
-                <atlas-sidebar-menu slot="body">
-                    <atlas-sidebar-menu-item
-                        icon="cog"
-                        value=""
-                        text="Minha conta"
-                        href="">
-                        <atlas-sidebar-menu-item
-                            icon="user"
-                            value=""
-                            text="Meus dados"
-                            href="${createLink(controller: 'customer', action: 'show')}"
-                        ></atlas-sidebar-menu-item>
-
-                        <atlas-sidebar-menu-item
-                            icon="pencil"
-                            value=""
-                            text="Atualizar dados"
-                            href="${createLink(controller: 'customer', action: 'edit')}"
-                        ></atlas-sidebar-menu-item>
-
-                        <atlas-sidebar-menu-item
-                            icon="spanner"
-                            value=""
-                            text="Redefinir senha"
-                            href=""
-                        ></atlas-sidebar-menu-item>
-                    </atlas-sidebar-menu-item>
-                    <atlas-sidebar-menu-item
-                            icon="money"
-                            value=""
-                            text="Cobranças"
-                            href="">
-                        <atlas-sidebar-menu-item
-                                icon="dollar-sign"
-                                value=""
-                                text="Minhas cobranças"
-                                href="${createLink(controller: 'payment', action: 'list')}"
-                        ></atlas-sidebar-menu-item>
-
-                        <atlas-sidebar-menu-item
-                                icon="plus"
-                                value=""
-                                text="Criar cobrança"
-                                href="${createLink(controller: 'payment', action: 'index')}"
-                        ></atlas-sidebar-menu-item>
-                    </atlas-sidebar-menu-item>
-
-                    <atlas-sidebar-menu-item
-                            icon="address-book"
-                            value=""
-                            text="Pagadores"
-                            href="">
-                        <atlas-sidebar-menu-item
-                                icon="hand-shake"
-                                value=""
-                                text="Meus pagadores"
-                                href="${createLink(controller: 'payer', action: 'list')}"
-                        ></atlas-sidebar-menu-item>
-
-                        <atlas-sidebar-menu-item
-                                icon="plus"
-                                value=""
-                                text="Cadastrar pagador"
-                                href="${createLink(controller: 'payer', action: 'index')}"
-                        ></atlas-sidebar-menu-item>
-                    </atlas-sidebar-menu-item>
-                </atlas-sidebar-menu>
-            </atlas-sidebar>
+            <g:render template="/utils/sidebar"/>
             <atlas-page>
                 <atlas-page-header slot="header" page-name="${pageProperty(name: 'body.title')}">
                 </atlas-page-header>
