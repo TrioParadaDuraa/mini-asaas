@@ -13,8 +13,6 @@
             <h2>Cobrança criada! 🏦</h2>
             <p>Olá, 👋</p>
             <p>Uma nova cobrança foi atribuída a você.</p>
-            <p>Por favor, verifique os detalhes em sua conta antes de realizar o pagamento.</p>
         </div>
-            <a class="button-homepage" href="${createLink(controller: 'payment', action: 'list')}">Acessar cobranças</a>
     </body>
 </html>

@@ -13,8 +13,6 @@
             <h2>Cobrança recebida! 💳</h2>
             <p>Olá, 👋</p>
             <p>Você realizou o pagamento de uma cobrança.</p>
-            <p>Por favor, verifique os detalhes em sua conta.</p>
         </div>
-            <a class="button-homepage" href="${createLink(controller: 'payment', action: 'list')}">Acessar cobranças</a>
     </body>
 </html>
