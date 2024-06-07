@@ -28,6 +28,16 @@ class PaymentService {
         return payment
     }
 
+    public Payment find(Long paymentId, Long customerId) {
+        Payment payment = Payment.query([customerId: customerId, id: paymentId]).get() as Payment
+
+        if (!payment) {
+            throw new Exception("Cobrança não encontrada")
+        }
+
+        return payment
+    }
+
     public void update(Long paymentId, PaymentAdapter adapter) {
         Payment payment = Payment.get(paymentId)
 

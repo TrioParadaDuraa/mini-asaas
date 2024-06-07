@@ -2,6 +2,7 @@ package com.mini.asaas.payment
 
 import com.mini.asaas.BaseController
 import com.mini.asaas.payer.Payer
+import com.mini.asaas.payer.PayerService
 
 import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.message.MessageType
@@ -15,8 +16,10 @@ class PaymentController extends BaseController {
 
     PaymentService paymentService
 
+    PayerService payerService
+
     def index() {
-        List<Payer> payerList = Payer.list()
+        List<Payer> payerList = payerService.list([:], getCurrentCustomerId())
 
         return [payerList: payerList]
     }
@@ -38,13 +41,7 @@ class PaymentController extends BaseController {
 
     def show() {
         try {
-            Long id = params.long('id')
-
-            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payment) {
-                throw new Exception("Cobrança não encontrada")
-            }
+            Payment payment = paymentService.find(params.long('id'), getCurrentCustomerId())
 
             return [payment: payment]
         } catch (Exception exception) {
