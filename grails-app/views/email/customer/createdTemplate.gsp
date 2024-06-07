@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="images">
-            <asset:image src="/loginpage/asaas-text.svg"/>
+            <asset:image src="/assets/images/loginpage/asaas-text.svg"/>
         </div>
         <div class="message">
             <h2>Cobrança criada! 💲</h2>
@@ -15,6 +15,6 @@
             <p>Uma nova cobrança foi criada.</p>
             <p>Por favor, verifique os detalhes em sua conta.</p>
         </div>
-            <a class="button-homepage" href="${createLink(controller: 'login', action: 'auth')}">Acessar minha conta</a>
+            <a class="button-homepage" href="${createLink(controller: 'payment', action: 'list')}">Acessar minhas cobranças</a>
     </body>
 </html>
