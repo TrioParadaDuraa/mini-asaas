@@ -30,6 +30,16 @@ class PayerService {
         return payer
     }
 
+    public Payer find(Long payerId, Long customerId) {
+        Payer payer = (Payer) Payer.query([customerId: customerId, id: payerId]).get()
+
+        if (!payer) {
+            throw new RuntimeException("Pagador não encontrado")
+        }
+
+        return payer
+    }
+
     public Payer update(Long payerId, PayerAdapter adapter) {
         Payer payer = validate(adapter)
 
