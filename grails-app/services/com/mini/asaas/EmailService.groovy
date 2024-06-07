@@ -22,6 +22,8 @@ class EmailService {
 
     @Subscriber
     void delete(Payment payment) {
+        payment.attach()
+        
         mailService.sendMail {
             to(payment.payer.email)
             subject("Cobrança removida")
