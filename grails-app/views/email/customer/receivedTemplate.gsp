@@ -22,6 +22,11 @@
                 <td align="center" style="padding: 1.25rem;">
                     <table class="content" width="600" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: 0.06rem solid #cccccc;">
                         <tr>
+                            <td>
+                                <img src="assets/images/loginpage/asaas-text.svg" alt="Asaas Logo" style="display: block; margin: 0 auto; max-width: 100%;">
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="header" style="background-color: #0030B9; padding: 2.5rem; text-align: center; color: white; font-size: 1.5rem;">Cobrança recebida! 💰</td>
                         </tr>
                         <tr>
@@ -36,7 +41,7 @@
                                 <table cellspacing="0" cellpadding="0" style="margin: auto;">
                                     <tr>
                                         <td align="center" style="background-color: #0030B9; padding: 0.625rem 1.25rem; border-radius: 0.31rem;">
-                                            <a href="${createLink(controller: 'payment', action: 'list')} target="_blank" style="color: #ffffff; text-decoration: none; font-weight: bold;">Acessar minhas cobranças</a>
+                                            <a href="${createLink(controller: 'payment', action: 'list')}" target="_blank" style="color: #ffffff; text-decoration: none; font-weight: bold;">Acessar minhas cobranças</a>
                                         </td>
                                     </tr>
                                 </table>
