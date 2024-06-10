@@ -24,8 +24,6 @@ class NotificationService {
 
     @Subscriber
     void delete(Payment payment) {
-        payment.attach()
-
         Notification notification = new Notification()
 
         notification.customer = payment.customer
@@ -38,8 +36,6 @@ class NotificationService {
 
     @Subscriber
     void updateStatus(Payment payment) {
-        payment.attach()
-
         if (payment.status == PaymentStatus.OVERDUE) {
             Notification notification = new Notification()
 

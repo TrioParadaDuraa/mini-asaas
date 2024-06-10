@@ -6,6 +6,7 @@ import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
+import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -15,6 +16,7 @@ import org.apache.commons.lang.time.DateUtils
 @Transactional
 class PaymentService {
 
+    @Publisher
     public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
 
@@ -36,12 +38,15 @@ class PaymentService {
         payment.save(failOnError: true)
     }
 
-    public void delete(Long paymentId) {
+    @Publisher
+    public Payment delete(Long paymentId) {
         Payment payment = Payment.get(paymentId)
 
         payment.deleted = true
 
         payment.save(failOnError: true)
+
+        return payment
     }
 
     public void restore(Long paymentId) {
@@ -102,9 +107,14 @@ class PaymentService {
         }
     }
 
-    public void updateStatus(Long paymentId, PaymentStatus status) {
+    @Publisher
+    public Payment updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = findPayment(paymentId)
+
         payment.status = status
+
         payment.save()
+
+        return payment
     }
 }
