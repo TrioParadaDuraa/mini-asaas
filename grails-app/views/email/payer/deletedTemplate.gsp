@@ -23,7 +23,7 @@
                     <table class="content" width="600" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: 0.06rem solid #cccccc;">
                         <tr>
                             <td>
-                                <img src="assets/images/loginpage/asaas-text.svg" alt="Asaas Logo" style="display: block; margin: 0 auto; max-width: 100%;">
+                                <img src="https://s3-sa-east-1.amazonaws.com/cms.aprendaerp.com.br/customizacao/68935229-7452-44d4-8992-b4504b8c47a8/images/348d2c8e-6db8-4acd-a9f9-3605f987e5a2.png?t=1715693590" alt="Asaas Logo" style="display: block; margin: 0 auto; max-width: 100%;">
                             </td>
                         </tr>
                         <tr>
