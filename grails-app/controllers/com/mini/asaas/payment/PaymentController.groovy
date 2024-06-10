@@ -99,13 +99,8 @@ class PaymentController extends BaseController {
 
         try {
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
-            filterList.put("cutomerId", getCurrentCustomerId())
-
-            if (!filterList.containsKey("deleted")) {
-                filterList.deleted = false
-            }
-
-            List<Payment> paymentList = Payment.query(filterList).list() as List<Payment>
+            
+            List<Payment> paymentList = paymentService.list(filterList, getCurrentCustomerId())
 
             return [paymentList: paymentList]
         } catch (Exception exception) {

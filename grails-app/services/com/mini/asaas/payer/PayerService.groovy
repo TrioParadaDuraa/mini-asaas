@@ -42,9 +42,9 @@ class PayerService {
         if (!filterList.containsKey("deleted")) {
             filterList.deleted = false
         }
-        filterList.put("customerId", customerId)
+        filterList.customerId = customerId
 
-        List<Payer> payerList = Payer.query(filterList).list() as List<Payer>
+        return Payer.query(filterList).list() as List<Payer>
     }
 
     public void update(Long payerId, Long customerId, PayerAdapter adapter) {
