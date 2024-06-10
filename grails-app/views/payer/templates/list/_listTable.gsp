@@ -1,4 +1,3 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils" %>
 <atlas-table has-actions>
     <atlas-table-header slot="header">
         <atlas-table-col>

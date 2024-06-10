@@ -1,5 +1,5 @@
 <atlas-empty-state
-        illustration="flow-money-coins"
+        illustration="credit-card-search"
         header="Sem clientes cadastrados"
 >
     Aqui você pode cadastrar um novo pagador
