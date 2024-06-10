@@ -14,15 +14,6 @@
                     <atlas-col lg="6" md="3" sm="1">
                         <atlas-input label="Nome do pagador:" required="" size="md" value="${payer.name}" disabled=""></atlas-input>
                     </atlas-col>
-                    <div>
-                        <label for="personType">Tipo de pessoa</label>
-                        <br>
-                        <input type="text" value="${payer.personType.getLabel()}" readonly>
-                        <select name="personType" id="personType">
-                            <g:each var="value" in="${PersonType.values()}">
-                                <option value="${value}">${value.getLabel()}</option>
-                            </g:each>
-                        </select>
                         <atlas-col lg="6" md="3" sm="1">
                             <atlas-input label="Tipo de pessoa:" required="" size="md" value="${payer.personType.getLabel()}" disabled=""></atlas-input>
                         </atlas-col>
@@ -44,29 +35,29 @@
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="5" md="3" sm="1">
-                        <atlas-postal-code label="CEP" required="" name="postalCode" size="md" value="${params.postalCode}"></atlas-postal-code>
+                        <atlas-postal-code label="CEP" required="" name="postalCode" size="md" value="${payer.postalCode}"></atlas-postal-code>
                     </atlas-col>
                     <atlas-col lg="7" md="3" sm="1">
-                        <atlas-input label="Rua/Avenida/Alameda" required="" placeholder="Insira o endereço" name="address" size="md" value="${params.address}"></atlas-input>
+                        <atlas-input label="Rua/Avenida/Alameda" required="" placeholder="Insira o endereço" name="address" size="md" value="${payer.address}"></atlas-input>
                     </atlas-col>
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="5" md="3" sm="1">
-                        <atlas-input label="Número" required="" placeholder="Insira o número" name="addressNumber" size="md" value="${params.addressNumber}"></atlas-input>
+                        <atlas-input label="Número" required="" placeholder="Insira o número" name="addressNumber" size="md" value="${payer.addressNumber}"></atlas-input>
                     </atlas-col>
                     <atlas-col lg="7" md="3" sm="1">
-                        <atlas-input label="Complemento" placeholder="Insira o complemento" name="addressComplement" size="md" value="${params.addressComplement}"></atlas-input>
+                        <atlas-input label="Complemento" placeholder="Insira o complemento" name="addressComplement" size="md" value="${payer.addressComplement}"></atlas-input>
                     </atlas-col>
                 </atlas-row>
                 <atlas-row>
                     <atlas-col lg="5" md="2" sm="1">
-                        <atlas-input label="Bairro" required="" placeholder="Insira o bairro" name="district" size="md" value="${params.district}"></atlas-input>
+                        <atlas-input label="Bairro" required="" placeholder="Insira o bairro" name="district" size="md" value="${payer.district}"></atlas-input>
                     </atlas-col>
                     <atlas-col lg="5" md="2" sm="1">
-                        <atlas-input label="Cidade" required="" placeholder="Insira a cidade" name="city" size="md" value="${params.city}"></atlas-input>
+                        <atlas-input label="Cidade" required="" placeholder="Insira a cidade" name="city" size="md" value="${payer.city}"></atlas-input>
                     </atlas-col>
                     <atlas-col lg="2" md="2" sm="1">
-                        <atlas-input label="UF" required="" placeholder="" name="state" size="md" value="${params.state}"></atlas-input>
+                        <atlas-input label="UF" required="" placeholder="" name="state" size="md" value="${payer.state}"></atlas-input>
                     </atlas-col>
                 </atlas-row>
             </atlas-grid>
