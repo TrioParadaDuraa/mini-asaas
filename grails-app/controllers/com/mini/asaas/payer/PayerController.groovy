@@ -34,7 +34,7 @@ class PayerController extends BaseController {
 
     def show() {
         try{
-            Payer payer = payerService.find(params.long("id"), getCurrentCustomerId())
+            Payer payer = payerService.find([id: params.long("id"), customerId: getCurrentCustomerId()])
 
             return [payer: payer]
         } catch (Exception exception) {
