@@ -33,9 +33,7 @@ class PayerService {
     public Payer find(Long payerId, Long customerId) {
         Payer payer = Payer.query([customerId: customerId, id: payerId]).get() as Payer
 
-        if (!payer) {
-            throw new RuntimeException("Pagador não encontrado")
-        }
+        if (!payer) throw new RuntimeException("Pagador não encontrado")
 
         return payer
     }
@@ -52,9 +50,7 @@ class PayerService {
     public void update(Long payerId, Long customerId, PayerAdapter adapter) {
         Payer payer = find(payerId, customerId)
 
-        if (payer.deleted) {
-            throw new RuntimeException("Pagador está inativo")
-        }
+        if (payer.deleted) throw new RuntimeException("Pagador está inativo")
 
         Payer validPayer = validate(adapter)
 
@@ -68,9 +64,7 @@ class PayerService {
     public void delete(Long payerId, Long customerId) {
         Payer payer = find(payerId, customerId)
 
-        if (payer.deleted) {
-            throw new RuntimeException("Pagador já está inativo")
-        }
+        if (payer.deleted) throw new RuntimeException("Pagador já está inativo")
 
         payer.deleted = true
 
@@ -80,9 +74,7 @@ class PayerService {
     public void restore(Long payerId, Long customerId) {
         Payer payer = find(payerId, customerId)
 
-        if (!payer.deleted) {
-            throw new RuntimeException("Pagador não está inativo")
-        }
+        if (!payer.deleted) throw new RuntimeException("Pagador não está inativo")
         
         payer.deleted = false
 

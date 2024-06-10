@@ -74,19 +74,9 @@ class PaymentController extends BaseController {
 
     def delete() {
         try {
-            Long id = params.long('id')
+            paymentService.delete(params.long('id'), getCurrentCustomerId())
 
-            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payment) {
-                throw new Exception("Cobrança não encontrada")
-            } else if (payment.deleted) {
-                throw new Exception("Cobrança já inativa")
-            }
-
-            paymentService.delete(payment.id)
-
-            redirect(action: "show", id: payment.id)
+            redirect(action: "show", id: params.id)
         } catch (Exception exception) {
             log.error("PaymentController.delete >> Erro ao excluir cobrança", exception)
             render "Não foi possível excluir a cobrança"
@@ -95,19 +85,9 @@ class PaymentController extends BaseController {
 
     def restore() {
         try {
-            Long id = params.long('id')
+            paymentService.restore(params.long('id'), getCurrentCustomerId())
 
-            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payment) {
-                throw new Exception("Cobrança não encontrada")
-            } else if (!payment.deleted) {
-                throw new Exception("Cobrança não inativa")
-            }
-
-            paymentService.restore(payment.id)
-
-            redirect(action: "show", id: payment.id)
+            redirect(action: "show", id: params.id)
         } catch (Exception exception) {
             log.error("PaymentController.restore >> Erro ao restaurar cobrança", exception)
             render "Não foi possivel restaurar a cobrança"

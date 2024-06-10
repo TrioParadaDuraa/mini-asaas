@@ -31,9 +31,7 @@ class PaymentService {
     public Payment find(Long paymentId, Long customerId) {
         Payment payment = Payment.query([customerId: customerId, id: paymentId]).get() as Payment
 
-        if (!payment) {
-            throw new Exception("Cobrança não encontrada")
-        }
+        if (!payment) throw new Exception("Cobrança não encontrada")
 
         return payment
     }
@@ -46,16 +44,20 @@ class PaymentService {
         payment.save(failOnError: true)
     }
 
-    public void delete(Long paymentId) {
-        Payment payment = Payment.get(paymentId)
+    public void delete(Long paymentId, Long customerId) {
+        Payment payment = find(paymentId, customerId)
+
+        if (payment.deleted) throw new Exception("Cobrança já inativa")
 
         payment.deleted = true
 
         payment.save(failOnError: true)
     }
 
-    public void restore(Long paymentId) {
-        Payment payment = Payment.get(paymentId)
+    public void restore(Long paymentId, Long customerId) {
+        Payment payment = find(paymentId, customerId)
+
+        if (!payment.deleted) throw new Exception("Cobrança não inativa")
         
         payment.deleted = false
 
