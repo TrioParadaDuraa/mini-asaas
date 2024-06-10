@@ -110,9 +110,14 @@ class PaymentService {
         }
     }
 
-    public void updateStatus(Long paymentId, PaymentStatus status) {
+    @Publisher
+    public Payment updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = findPayment(paymentId)
+
         payment.status = status
+
         payment.save()
+
+        return payment
     }
 }
