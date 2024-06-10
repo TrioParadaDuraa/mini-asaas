@@ -1,15 +1,15 @@
-<atlas-navbar>
+<atlas-navbar slot="navbar">
     <div class="navbar-user">
-        <div>
-            <atlas-icon name="bell" size="3x" data-atlas-dropdown="test-dropdwon"></atlas-icon>
-            <atlas-dropdown id="test-dropdown">
-                <atlas-dropdown-item>item 1</atlas-dropdown-item>
-                <atlas-dropdown-item>item 2</atlas-dropdown-item>
-            </atlas-dropdown>
-        </div>
+        <atlas-icon-button icon="bell" class="js-notification-bell-button" size="3x" data-atlas-dropdown="test-dropdown" hoverable="" badge-number="0" tooltip-placement="bottom" tooltip-trigger="hover focus" aria-expanded="false">
+        </atlas-icon-button>
+        <atlas-dropdown id="test-dropdown" placement="bottom-end" class="js-notification-dropdown" loading-text="Estamos carregando as notificações" header="Notificações" no-gap="" auto-close="" auto-close-trigger="outside" tabindex="-1">
+            <atlas-dropdown-item>item 1</atlas-dropdown-item>
+            <atlas-dropdown-item>item 2</atlas-dropdown-item>
+        </atlas-dropdown>
+
         <atlas-avatar data-atlas-dropdown="user-options" image="" user-name="Atlas user" show-icon-mobile="" show-carret="" hoverable=""></atlas-avatar>
-        <atlas-dropdown id="user-options">
-            <atlas-dropdown-item icon="cog" theme="secondary">Minha conta</atlas-dropdown-item>
+        <atlas-dropdown id="user-options" class="js-atlas-user-menu" header="Email do usuario :)" auto-close="" auto-close-triger="outside" tabindex="-1">
+            <atlas-dropdown-item icon="cog" theme="secondary" href="/customer/show/">Minha conta</atlas-dropdown-item>
         </atlas-dropdown>
     </div>
 </atlas-navbar>
