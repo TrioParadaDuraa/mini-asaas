@@ -41,7 +41,7 @@ class PaymentController extends BaseController {
 
     def show() {
         try {
-            Payment payment = paymentService.find(params.long('id'), getCurrentCustomerId())
+            Payment payment = paymentService.find([id: params.long('id'), customerId: getCurrentCustomerId()])
 
             return [payment: payment]
         } catch (Exception exception) {
