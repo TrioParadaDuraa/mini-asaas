@@ -17,4 +17,10 @@ class Notification extends BaseDomain {
     static constraints = {
         title blank: false
     }
+
+    static namedQueries = {
+        query { Map filterList ->
+            eq("customer.id", filterList.customerId)
+        }
+    }
 }

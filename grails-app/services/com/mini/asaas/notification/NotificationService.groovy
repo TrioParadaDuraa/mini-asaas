@@ -60,4 +60,8 @@ class NotificationService {
             notification.save(failOnError: true)
         }        
     }
+
+    public List<Notification> list(Long customerId) {
+        return Notification.query(["customerId": customerId]).list() as List<Notification>
+    }
 }
