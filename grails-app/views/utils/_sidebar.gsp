@@ -56,8 +56,8 @@
                 icon="address-book"
                 value=""
                 text="Pagadores"
-                href="">
-                ${ controllerName == 'payer' ? 'active' : '' }
+            ${ controllerName == 'payer' ? 'active' : '' }
+        >
             <atlas-sidebar-menu-item
                     icon="hand-shake"
                     value=""
