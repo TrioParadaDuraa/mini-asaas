@@ -115,6 +115,13 @@ class PaymentService {
 
     public void updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = find([id: paymentId])
+
+        if (status in [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH]) {
+            if (payment.status != PaymentStatus.AWAITING_PAYMENT) {
+                throw new RuntimeException("Cobranças com status $payment.status não podem ser recebidas")
+            }
+        }
+        
         payment.status = status
         payment.save(failOnError: true)
     }
