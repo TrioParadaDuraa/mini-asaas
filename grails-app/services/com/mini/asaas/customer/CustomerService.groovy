@@ -117,6 +117,10 @@ class CustomerService {
     private Customer validateSave(CreateCustomerAdapter adapter) {
         Customer customer = validate(adapter)
 
+        if (Customer.findByCpfCnpj(adapter.cpfCnpj)) {
+            customer.errors.reject("cpfCnpj", null, "CPF/CNPJ já cadastrado")
+        }
+
         if (!CpfCnpjValidator.isValidCpfCnpj(adapter.cpfCnpj)) {
             customer.errors.reject("cpfCnpj", null, "CPF/CNPJ inválido")
         }
