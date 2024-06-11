@@ -1,12 +1,13 @@
 .dashboard-title {
     width: 518px;
     height: 121px;
-    margin-left: 100px;
+    padding: 0 0 35px 75px;
 }
 
 .dashboard-title h1 {
+    margin: 0;
     color: #0030B9;
-    font-size: 48px;
+    font-size: 60px;
 }
 
 .dashboard-cards-box {
