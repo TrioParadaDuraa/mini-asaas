@@ -19,6 +19,8 @@ class User extends BaseDomain implements Serializable {
 
     Customer customer
 
+    String name
+
     boolean enabled = true
 
     boolean accountExpired
@@ -34,6 +36,7 @@ class User extends BaseDomain implements Serializable {
     static constraints = {
         username nullable: false, blank: false, email: true
         password nullable: false, blank: false, password: true, validator: PasswordValidator.validate()
+        name blank: false
     }
 
     static mapping = {

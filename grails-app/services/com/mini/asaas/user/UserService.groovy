@@ -13,15 +13,17 @@ import grails.validation.ValidationException
 @Transactional
 class UserService {
 
-    public User saveCustomerUser(UserAdapter adapter, Long customerId) {
-        User user = validateSave(adapter)
+    public User saveCustomerUser(CreateUserAdapter adapter, Long customerId) {
+        User validUser = validateSave(adapter)
 
-        if (user.hasErrors()) throw new ValidationException("Erro ao criar usuário", user.errors)
+        if (validUser.hasErrors()) throw new ValidationException("Erro nos campos de usuário", validUser.errors)
 
+        User user = new User()
         user.customer = Customer.read(customerId)
         user.username = adapter.username
         user.password = adapter.password
         user.passwordConfirm = adapter.passwordConfirm
+        user.name = adapter.name
 
         user.save(failOnError: true)
 
@@ -35,12 +37,35 @@ class UserService {
         return User.query([customerId: customerId]).list() as List<User>
     }
 
-    private User validateSave(UserAdapter adapter) {
-        User user = new User()
+    public void updatePassword(Long userId, UpdateUserPasswordAdapter adapter) {
+        User validUser = validatePassword(adapter)
+
+        if (validUser.hasErrors()) throw new ValidationException("Erro nos campos de usuário", validUser.errors)
+
+        User user = User.get(userId)
+
+        user.password = adapter.password
+        user.passwordConfirm = adapter.passwordConfirm
+
+        user.save(failOnError: true)
+    }
+
+    private User validateSave(CreateUserAdapter adapter) {
+        User user = validatePassword(adapter)
 
         if (!EmailValidator.isValidEmail(adapter.username)) {
             user.errors.reject("username", null, "Email inválido")
         }
+
+        if (!adapter.name) {
+            user.errors.reject("name", null, "Nome inválido")
+        }
+
+        return user
+    }
+
+    private User validatePassword(BaseUserAdapter adapter) {
+        User user = new User()
 
         if (!PasswordValidator.matches(adapter.password, adapter.passwordConfirm)) {
             user.errors.reject("password", null, "Confirmação de senha incorreta")

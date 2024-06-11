@@ -7,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
 @GrailsCompileStatic
+
 @Secured("isAuthenticated()")
 class UserController extends BaseController {
 
@@ -17,10 +18,10 @@ class UserController extends BaseController {
     @Secured("isFullyAuthenticated()")
     def save() {
         try {
-            UserAdapter adapter = new UserAdapter(params)
+            CreateUserAdapter adapter = new CreateUserAdapter(params)
             User user = userService.saveCustomerUser(adapter, getCurrentCustomerId())
 
-            redirect(action: "show", id: user.id)
+            redirect(uri: "/")
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
 
@@ -42,20 +43,31 @@ class UserController extends BaseController {
         }
     }
 
-    def show() {
+    def edit() {
         try {
-            Long id = params.long("id")
-
-            User user = (User) User.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!user) {
-                throw new Exception("Usuário não encontrado")
-            }
+            User user = springSecurityService.currentUser as User
 
             return [user: user]
         } catch (Exception exception) {
             log.error("UserController.show >> Erro ao tentar apresentar dados de usuário", exception)
             render "Usuário não encontrado"
+        }
+    }
+
+    @Secured("isFullyAuthenticated()")
+    def updatePassword() {
+        try {
+            UpdateUserPasswordAdapter adapter = new UpdateUserPasswordAdapter(params)
+            userService.updatePassword((springSecurityService.currentUser as User).id, adapter)
+
+            redirect(uri: "/")
+        } catch (ValidationException validationException) {
+            flash.errors = validationException.errors
+
+            redirect(action: "edit")
+        } catch (Exception exception) {
+            log.error("UserController.updatePassword >> Erro ao atualizar senha de usuário", exception)
+            render "Não foi possível atualizar senha de usuário"
         }
     }
 }
