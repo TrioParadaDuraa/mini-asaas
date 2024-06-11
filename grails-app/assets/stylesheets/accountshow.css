@@ -1,0 +1,9 @@
+.box-header {
+    margin-bottom: -20px;
+    margin-left: -42px;
+    background-color: blue;
+}
+
+.nav-tabs li {
+    display: inline;
+}

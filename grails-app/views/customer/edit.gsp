@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Atualizar dados</title>
     </head>
-    <body>
-        <atlas-form-panel header="Atualize seus dados cadastrais" class="js-person-form" method="POST" action="${createLink(controller: 'customer', action: 'update', id: customer.id)}">
+    <body title="Atualize seus dados cadastrais">
+        <atlas-form-panel class="js-person-form" method="POST" action="${createLink(controller: 'customer', action: 'update', id: customer.id)}">
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
