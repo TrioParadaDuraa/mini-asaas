@@ -19,16 +19,14 @@
                 </div>
                 <div class="dashboard-card-content">
                     <div class="dashboard-card-content-card">
-                        <p>EM DIA</p>
-                        <g:if test="">
-
-                        </g:if>
-                    </div>
-                    <div class="dashboard-card-content-card">
-                        <p>INADIMPLENTES</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <div>CADASTRADOS</div>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-info">
+                                <p>500</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,22 +39,34 @@
                 </div>
                 <div class="dashboard-card-content">
                     <div class="dashboard-card-content-card">
-                        <p>PREVISTAS</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <p>PREVISTAS</p>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-alert">
+                                <p>20</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-card-content-card">
-                        <p>VENCIDAS</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <p>VENCIDAS</p>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-danger">
+                                <p>15</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-card-content-card">
-                        <p>RECEBIDAS</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <p>RECEBIDAS</p>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-success">
+                                <p>20</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,22 +79,37 @@
                 </div>
                 <div class="dashboard-card-content">
                     <div class="dashboard-card-content-card">
-                        <p>PREVISTO</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <p>PREVISTO</p>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-alert">
+                                <span>R$</span>
+                                <p>100,00</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-card-content-card">
-                        <p>CONFIRMADO</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <p>CONFIRMADO</p>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-info">
+                                <span>R$</span>
+                                <p>200,00</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-card-content-card">
-                        <p>RECEBIDO</p>
-                        <g:if test="">
-
-                        </g:if>
+                        <div class="dashboard-card-content-card-header">
+                            <p>RECEBIDO</p>
+                        </div>
+                        <div class="dashboard-card-content-card-value">
+                            <div class="display-value-success">
+                                <span>R$</span>
+                                <p>500,00</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
