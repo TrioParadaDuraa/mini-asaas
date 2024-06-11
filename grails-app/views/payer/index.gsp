@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.base.PersonType; com.mini.asaas.utils.enums.BrazilianState; com.mini.asaas.payer.Payer" %>
+<%@ page import="com.mini.asaas.utils.base.PersonType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

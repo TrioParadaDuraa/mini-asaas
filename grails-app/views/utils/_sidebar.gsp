@@ -51,5 +51,28 @@
                     ${ controllerName == 'payment' && actionName == 'index' ? 'active' : '' }
             ></atlas-sidebar-menu-item>
         </atlas-sidebar-menu-item>
+
+        <atlas-sidebar-menu-item
+                icon="address-book"
+                value=""
+                text="Pagadores"
+                href="">
+                ${ controllerName == 'payer' ? 'active' : '' }
+            <atlas-sidebar-menu-item
+                    icon="hand-shake"
+                    value=""
+                    text="Meus pagadores"
+                    href="${createLink(controller: 'payer', action: 'list')}"
+                    ${ controllerName == 'payer' && actionName == 'list' ? 'active' : '' }
+            ></atlas-sidebar-menu-item>
+
+            <atlas-sidebar-menu-item
+                    icon="plus"
+                    value=""
+                    text="Cadastrar pagador"
+                    href="${createLink(controller: 'payer', action: 'index')}"
+                    ${ controllerName == 'payer' && actionName == 'index' ? 'active' : '' }
+            ></atlas-sidebar-menu-item>
+        </atlas-sidebar-menu-item>
     </atlas-sidebar-menu>
 </atlas-sidebar>
