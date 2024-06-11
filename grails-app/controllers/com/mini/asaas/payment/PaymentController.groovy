@@ -54,7 +54,7 @@ class PaymentController extends BaseController {
         }
     }
 
-    def update() {
+    def updateStatus() {
         try {
             Long id = params.long('id')
 

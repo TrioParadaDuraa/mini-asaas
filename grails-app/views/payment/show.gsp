@@ -55,7 +55,7 @@
             <g:else>
                 <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payment', action: 'delete', id: payment.id)}"></atlas-button>
             </g:else>
-            <form method="POST" action="${createLink(controller: 'payment', action: 'update', id: payment.id)}">
+            <form method="POST" action="${createLink(controller: 'payment', action: 'updateStatus', id: payment.id)}">
                 <div class="edit-payment-card">
                     <g:if test="${payment.status == PaymentStatus.AWAITING_PAYMENT}">
                         <div class="edit-payment-card-item">
