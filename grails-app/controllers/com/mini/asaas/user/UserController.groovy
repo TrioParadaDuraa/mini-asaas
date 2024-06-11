@@ -42,4 +42,21 @@ class UserController extends BaseController {
             render "Usuário não encontrado"
         }
     }
+
+    @Secured("isFullyAuthenticated()")
+    def updatePassword() {
+        try {
+            UpdateUserPasswordAdapter adapter = new UpdateUserPasswordAdapter(params)
+            userService.updatePassword((springSecurityService.currentUser as User).id, adapter)
+
+            redirect(uri: "/")
+        } catch (ValidationException validationException) {
+            flash.errors = validationException.errors
+
+            redirect(action: "edit")
+        } catch (Exception exception) {
+            log.error("UserController.updatePassword >> Erro ao atualizar senha de usuário", exception)
+            render "Não foi possível atualizar senha de usuário"
+        }
+    }
 }
