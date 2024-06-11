@@ -1,4 +1,4 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils" %>
+<%@ page import="com.mini.asaas.utils.FormatUtils; com.mini.asaas.utils.enums.PaymentStatus" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -40,6 +40,14 @@
                         <atlas-input label="Data de vencimento:" required="" value="${FormatUtils.formatDateToString(payment.dueDate)}" disabled=""></atlas-input>
                     </atlas-col>
                 </atlas-row>
+                <atlas-row>
+                    <atlas-col lg="12" md="6" sm="1">
+                        <div class="edit-payment-card-header">
+                            <atlas-icon name="pencil" size="3x"></atlas-icon>
+                            <h4>Atualizar status da cobrança:</h4>
+                        </div>
+                    </atlas-col>
+                </atlas-row>
             </atlas-grid>
             <g:if test="${payment.deleted}">
                 <atlas-button description="Restaurar" slot="actions" href="${createLink(controller: 'payment', action: 'restore', id: payment.id)}"></atlas-button>
@@ -47,6 +55,34 @@
             <g:else>
                 <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payment', action: 'delete', id: payment.id)}"></atlas-button>
             </g:else>
+            <form method="POST" action="${createLink(controller: 'payment', action: 'updateStatus', id: payment.id)}">
+                <div class="edit-payment-card">
+                    <g:if test="${payment.status == PaymentStatus.AWAITING_PAYMENT}">
+                        <div class="edit-payment-card-item">
+                            <label for="received">Recebida</label>
+                            <input type="radio" id="received" name="status" value="${PaymentStatus.RECEIVED}">
+                        </div>
+                        <div class="edit-payment-card-item">
+                            <label for="received_in_cash">Recebida em dinheiro</label>
+                            <input type="radio" id="received_in_cash" name="status" value="${PaymentStatus.RECEIVED_IN_CASH}">
+                        </div>
+                    </g:if>
+                    <g:else>
+                        <div class="edit-payment-card-item">
+                            <label for="awaiting_payment">Aguardando pagamento</label>
+                            <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                        </div>
+                    </g:else>
+                </div>
+                <button class="edit-payment-form-button" type="submit">Salvar</button>
+            </form>
+            <g:if test="${flash.message}">
+                <section>
+                    <div>
+                        <p>${flash.message}</p>
+                    </div>
+                </section>
+            </g:if>
         </atlas-panel>
     </body>
 </html>

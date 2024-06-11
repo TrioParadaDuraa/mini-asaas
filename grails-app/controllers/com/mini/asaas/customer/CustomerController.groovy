@@ -47,9 +47,10 @@ class CustomerController extends BaseController {
         }
     }
 
+    @Secured("isAuthenticated()")
     def edit() {
         try {
-            Customer customer = Customer.read(params.long('id'))
+            Customer customer = Customer.read(getCurrentCustomerId())
 
             if (!customer) throw new Exception("Cliente não encontrado para edição")
 
@@ -60,7 +61,7 @@ class CustomerController extends BaseController {
         }
     }
 
-    @Secured("isFullyAuthenticated()")
+    @Secured("isAuthenticated()")
     def update() {
         try {
             UpdateCustomerAdapter adapter = new UpdateCustomerAdapter(params)
