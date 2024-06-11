@@ -7,7 +7,6 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
 @GrailsCompileStatic
-
 @Secured("isAuthenticated()")
 class UserController extends BaseController {
 
@@ -34,7 +33,7 @@ class UserController extends BaseController {
 
     def edit() {
         try {
-            User user = springSecurityService.currentUser as User
+            User user = getCurrentUser()
 
             return [user: user]
         } catch (Exception exception) {
@@ -47,7 +46,7 @@ class UserController extends BaseController {
     def updatePassword() {
         try {
             UpdateUserPasswordAdapter adapter = new UpdateUserPasswordAdapter(params)
-            userService.updatePassword((springSecurityService.currentUser as User).id, adapter)
+            userService.updatePassword(getCurrentUser().id, adapter)
 
             redirect(uri: "/")
         } catch (ValidationException validationException) {
