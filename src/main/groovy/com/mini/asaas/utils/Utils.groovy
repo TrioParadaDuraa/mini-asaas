@@ -5,6 +5,8 @@ import grails.util.Holders
 
 import org.springframework.context.MessageSource
 
+import java.text.DecimalFormat
+
 @GrailsCompileStatic
 class Utils {
 
@@ -28,7 +30,9 @@ class Utils {
         }
 
         try {
-            return new BigDecimal(value.replace(',', '.'))
+            value = value.replace(".", "")
+            value = value.replace(',', '.')
+            return new BigDecimal(value)
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("O valor fornecido não é um número válido: ${value}", exception)
         }
