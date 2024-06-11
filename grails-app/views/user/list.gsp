@@ -9,10 +9,12 @@
     <h1>Usuários</h1>
     <table>
         <tr>
+            <th>Nome</th>
             <th>Email de acesso</th>
         </tr>
         <g:each var="user" in="${userList}">
             <tr>
+                <td>${user.name}</td>
                 <td>${user.username}</td>
             </tr>
         </g:each>
