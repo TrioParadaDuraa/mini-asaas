@@ -7,7 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
 @GrailsCompileStatic
-@Secured("isAuthenticated()")
+
 class UserController extends BaseController {
 
     UserService userService
@@ -31,15 +31,10 @@ class UserController extends BaseController {
         }
     }
 
-    def show() {
+    @Secured("isAuthenticated()")
+    def edit() {
         try {
-            Long id = params.long("id")
-
-            User user = (User) User.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!user) {
-                throw new Exception("Usuário não encontrado")
-            }
+            User user = springSecurityService.currentUser as User
 
             return [user: user]
         } catch (Exception exception) {
