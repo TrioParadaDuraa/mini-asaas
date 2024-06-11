@@ -53,21 +53,10 @@ class PaymentController extends BaseController {
 
     def updateStatus() {
         try {
-            Long id = params.long('id')
-
-            Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payment) {
-                throw new Exception("Cobrança não encontrada")
-            } else if (payment.deleted) {
-                throw new Exception("Cobrança inativa")
-            }
-
             PaymentStatus status = PaymentStatus.convert(params.status)
+            paymentService.updateStatus(params.long('id'), status)
 
-            paymentService.updateStatus(payment.id, status)
-
-            redirect(action: "show", id: payment.id)
+            redirect(action: "show", id: params.id)
         } catch (Exception exception) {
             log.error("PaymentController.update >> Erro ao atualizar status", exception)
             flash.type = MessageType.ERROR

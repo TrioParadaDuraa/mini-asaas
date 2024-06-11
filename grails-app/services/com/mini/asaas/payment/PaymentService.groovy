@@ -106,7 +106,11 @@ class PaymentService {
 
     public void updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = find([id: paymentId])
+
+        if (payment.deleted && status != PaymentStatus.OVERDUE) throw new Exception("Cobrança inativa")
+
         payment.status = status
+
         payment.save(failOnError: true)
     }
 }
