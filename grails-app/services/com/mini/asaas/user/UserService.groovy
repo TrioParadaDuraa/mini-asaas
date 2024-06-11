@@ -31,6 +31,10 @@ class UserService {
         return user
     }
 
+    public List<User> list(Long customerId) {
+        return User.query([customerId: customerId]).list() as List<User>
+    }
+
     private User validateSave(UserAdapter adapter) {
         User user = new User()
 
