@@ -2,7 +2,6 @@ package com.mini.asaas.payment
 
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.payer.Payer
-
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
@@ -28,14 +27,6 @@ class PaymentService {
         payment.save(failOnError: true)
 
         return payment
-    }
-
-    public void update(Long paymentId, PaymentAdapter adapter) {
-        Payment payment = Payment.get(paymentId)
-
-        paymentBuildProperties(payment, adapter)
-
-        payment.save(failOnError: true)
     }
 
     @Publisher

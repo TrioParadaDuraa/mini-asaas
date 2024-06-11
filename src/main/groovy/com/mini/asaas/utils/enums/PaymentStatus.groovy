@@ -7,7 +7,6 @@ enum PaymentStatus {
     AWAITING_PAYMENT,
     RECEIVED,
     OVERDUE,
-    CANCELED,
     RECEIVED_IN_CASH
 
     public static PaymentStatus convert(paymentStatus) {
