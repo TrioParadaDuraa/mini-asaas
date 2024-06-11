@@ -2,7 +2,6 @@ package com.mini.asaas.payment
 
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.payer.Payer
-
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
@@ -43,14 +42,6 @@ class PaymentService {
         filterList.customerId = customerId
 
         return Payment.query(filterList).list() as List<Payment>
-    }
-
-    public void update(Long paymentId, PaymentAdapter adapter) {
-        Payment payment = Payment.get(paymentId)
-
-        paymentBuildProperties(payment, adapter)
-
-        payment.save(failOnError: true)
     }
 
     public void delete(Long paymentId, Long customerId) {
@@ -116,15 +107,16 @@ class PaymentService {
     public void updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = find([id: paymentId])
 
-        if (payment.deleted && status != PaymentStatus.OVERDUE) throw new RuntimeException("Cobrança inativa")
+        if (payment.deleted && status != PaymentStatus.OVERDUE) throw new Exception("Cobrança inativa")
 
         if (status in [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH]) {
             if (payment.status != PaymentStatus.AWAITING_PAYMENT) {
-                throw new RuntimeException("Cobranças com status $payment.status não podem ser recebidas")
+                throw new Exception("Cobranças com status $payment.status não podem ser recebidas")
             }
         }
-        
+
         payment.status = status
+
         payment.save(failOnError: true)
     }
 }

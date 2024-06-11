@@ -1,0 +1,47 @@
+.edit-payment-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: -1.0625rem;
+}
+
+.edit-payment-card {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: auto;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.edit-payment-card-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0030B9;
+    border-radius: 0.9375rem;
+    padding: 0.5rem;
+    width: 14.375rem;
+}
+
+.edit-payment-card-item label {
+    margin-left: 0.3125rem;
+}
+
+.edit-payment-form-button {
+    border: none;
+    width: 5.625rem;
+    font-size: 0.875rem;
+    border-radius: 0.3125rem;
+    margin-top: 0.9375rem;
+    padding: 0.9375rem;
+    background-color: #91C651;
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.edit-payment-form-button:hover {
+    cursor: pointer;
+    background-color: #73a938;
+}
