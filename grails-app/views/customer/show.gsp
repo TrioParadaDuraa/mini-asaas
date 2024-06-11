@@ -4,22 +4,10 @@
         <meta name="layout" content="main">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Minha conta</title>
+        <title>Meus dados</title>
     </head>
-    <body title="Minha conta">
-        <div class="box-header">
-            <ul class="nav-tabs js-nav-tabs">
-                <li>
-                    <a href="/customer/show"><atlas-icon name="user" size="3x"></atlas-icon>Meus dados</a>
-                </li>
-                <li>
-                    <a href="/customer/edit"><atlas-icon name="pencil" size="3x"></atlas-icon>Atualizar dados</a>
-                </li>
-                <li>
-                    <a href="/customer/show"><atlas-icon name="spanner" size="3x"></atlas-icon>Redefinir senha</a>
-                </li>
-            </ul>
-        </div>
+    <body title="Meus dados">
+        <g:render template="templates/headerNavBar"/>
         <atlas-panel>
             <atlas-form class="js-person-form">
                 <atlas-grid>

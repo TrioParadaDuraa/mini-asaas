@@ -3,8 +3,8 @@
         <atlas-icon-button icon="bell" class="js-notification-bell-button" size="3x" data-atlas-dropdown="test-dropdown" hoverable="" badge-number="0" tooltip-placement="bottom" tooltip-trigger="hover focus" aria-expanded="false">
         </atlas-icon-button>
         <atlas-dropdown id="test-dropdown" placement="bottom-end" class="js-notification-dropdown" loading-text="Estamos carregando as notificações" header="Notificações" no-gap="" auto-close="" auto-close-trigger="outside" tabindex="-1">
-            <atlas-dropdown-item>item 1</atlas-dropdown-item>
-            <atlas-dropdown-item>item 2</atlas-dropdown-item>
+            <atlas-notification-card></atlas-notification-card>
+            <atlas-notification-card></atlas-notification-card>
         </atlas-dropdown>
 
         <atlas-avatar data-atlas-dropdown="user-options" image="" user-name="Atlas user" show-icon-mobile="" show-carret="" hoverable=""></atlas-avatar>
