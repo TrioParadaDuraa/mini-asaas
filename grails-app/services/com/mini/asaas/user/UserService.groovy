@@ -23,6 +23,7 @@ class UserService {
         user.username = adapter.username
         user.password = adapter.password
         user.passwordConfirm = adapter.passwordConfirm
+        user.name = adapter.name
 
         user.save(failOnError: true)
 
@@ -50,6 +51,10 @@ class UserService {
 
         if (!EmailValidator.isValidEmail(adapter.username)) {
             user.errors.reject("username", null, "Email inválido")
+        }
+
+        if (!adapter.name) {
+            user.errors.reject("name", null, "Nome inválido")
         }
 
         return user

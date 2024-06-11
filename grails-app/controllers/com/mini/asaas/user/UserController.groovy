@@ -21,7 +21,7 @@ class UserController extends BaseController {
             CreateUserAdapter adapter = new CreateUserAdapter(params)
             User user = userService.saveCustomerUser(adapter, getCurrentCustomerId())
 
-            redirect(action: "show", id: user.id)
+            redirect(uri: "/")
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
 
