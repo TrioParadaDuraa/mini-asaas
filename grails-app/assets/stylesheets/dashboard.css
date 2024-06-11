@@ -1,105 +1,105 @@
 .dashboard-title {
-    width: 518px;
-    height: 121px;
-    padding: 0 0 35px 75px;
+    width: 32.375rem;
+    height: 7.5625rem;
+    padding: 0 0 2.1875rem 4.6875rem;
 }
 
 .dashboard-title h1 {
     margin: 0;
     color: #0030B9;
-    font-size: 60px;
+    font-size: 3.75rem;
 }
 
 .dashboard-cards-box {
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .dashboard-card {
-    width: 525px;
-    height: 405px;
+    width: 32.8125rem;
+    height: 25.3125rem;
     background-color: #FFFFFF;
-    border: 1px solid #CDCDCD;
-    border-radius: 5px;
+    border: 0.0625rem solid #CDCDCD;
+    border-radius: 0.3125rem;
 }
 
 .dashboard-card-header {
-    height: 50px;
-    border-radius: 5px 5px 0 0;
+    height: 3.125rem;
+    border-radius: 0.3125rem 0.3125rem 0 0;
     background-color: #F5F5F5;
-    border-bottom: 1px solid #CDCDCD;
+    border-bottom: 0.0625rem solid #CDCDCD;
 }
 
 .dashboard-card-header-text {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-left: 15px;
+    gap: 0.625rem;
+    margin-left: 0.9375rem;
 }
 
 .dashboard-card-content {
     display: grid;
     grid-auto-flow: row;
-    row-gap: 8px;
-    padding: 24px 24px 32px 24px;
+    row-gap: 0.5rem;
+    padding: 1.5rem 1.5rem 2rem 1.5rem;
 }
 
 .dashboard-card-content-card {
-    height: 90px;
-    border: 1px solid #CDCDCD;
+    height: 5.625rem;
+    border: 0.0625rem solid #CDCDCD;
 }
 
 .dashboard-card-content-card-header {
     display: flex;
     align-items: center;
-    height: 20px;
-    padding: 2px 0 0 6px;
-    font-size: 11px;
+    height: 1.25rem;
+    padding: 0.125rem 0 0 0.375rem;
+    font-size: 0.6875rem;
     color: #8F959E;
 }
 
 .dashboard-card-content-card-value {
     display: flex;
     justify-content: center;
-    height: 70px;
+    height: 4.375rem;
 }
 
 .display-value-alert {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.375rem;
     color: #FF9A0A;
 }
 
 .display-value-danger {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.375rem;
     color: #C5381A;
 }
 
 .display-value-info {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.375rem;
     color: #001074;
 }
 
 .display-value-success {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.375rem;
     color: #00D071;
 }
 
 .dashboard-card-content-card-value span {
     margin: 0;
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 600;
     line-height: normal;
 }
 
 .dashboard-card-content-card-value p {
     margin: 0;
-    font-size: 50px;
+    font-size: 3.125rem;
 }
