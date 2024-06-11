@@ -7,7 +7,7 @@
         <title>Visualizar pagador</title>
     </head>
     <body>
-        <atlas-panel header="Dados do pagador">
+        <atlas-panel header="Dados do pagador" class="js-person-form" method="POST" action="${createLink(controller: 'payer', action: 'update', id: payer.id)}">
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="2" sm="1">
@@ -59,6 +59,9 @@
                     </atlas-col>
                 </atlas-row>
             </atlas-grid>
+            <div class="bottom-buttons">
+                <atlas-button description="Editar" data-panel-start-editing icon="pencil" slot="actions" theme="primary"></atlas-button>
+            </div>
             <g:if test="${payer.deleted}">
                 <atlas-button description="Restaurar" slot="actions" href="${createLink(controller: 'payer', action: 'restore', id: payer.id)}"></atlas-button>
             </g:if>
