@@ -38,13 +38,6 @@ class Utils {
         }
     }
 
-    public static String formatBigDecimal(BigDecimal value) {
-        if (value == null) return null
-
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00")
-        return decimalFormat.format(value)
-    }
-
     public static String removeNoNumeric(String value) {
         if (value == null) {
             return null
