@@ -58,8 +58,6 @@ class PaymentController extends BaseController {
         try {
             Long id = params.long('id')
 
-            PaymentStatus status = PaymentStatus.convert(params.status)
-
             Payment payment = (Payment) Payment.query([customerId: getCurrentCustomerId(), id: id]).get()
 
             if (!payment) {
@@ -67,6 +65,8 @@ class PaymentController extends BaseController {
             } else if (payment.deleted) {
                 throw new Exception("Cobrança inativa")
             }
+
+            PaymentStatus status = PaymentStatus.convert(params.status)
 
             paymentService.updateStatus(payment.id, status)
 
