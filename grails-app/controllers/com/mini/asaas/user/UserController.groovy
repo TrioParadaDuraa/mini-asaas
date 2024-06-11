@@ -17,7 +17,7 @@ class UserController extends BaseController {
     @Secured("isFullyAuthenticated()")
     def save() {
         try {
-            UserAdapter adapter = new UserAdapter(params)
+            CreateUserAdapter adapter = new CreateUserAdapter(params)
             User user = userService.saveCustomerUser(adapter, getCurrentCustomerId())
 
             redirect(action: "show", id: user.id)

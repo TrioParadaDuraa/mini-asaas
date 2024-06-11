@@ -13,11 +13,12 @@ import grails.validation.ValidationException
 @Transactional
 class UserService {
 
-    public User saveCustomerUser(UserAdapter adapter, Long customerId) {
-        User user = validateSave(adapter)
+    public User saveCustomerUser(CreateUserAdapter adapter, Long customerId) {
+        User validUser = validateSave(adapter)
 
-        if (user.hasErrors()) throw new ValidationException("Erro ao criar usuário", user.errors)
+        if (validUser.hasErrors()) throw new ValidationException("Erro nos campos de usuário", validUser.errors)
 
+        User user = new User()
         user.customer = Customer.read(customerId)
         user.username = adapter.username
         user.password = adapter.password
@@ -31,7 +32,7 @@ class UserService {
         return user
     }
 
-    private User validateSave(UserAdapter adapter) {
+    private User validateSave(CreateUserAdapter adapter) {
         User user = new User()
 
         if (!EmailValidator.isValidEmail(adapter.username)) {

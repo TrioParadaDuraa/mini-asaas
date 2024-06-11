@@ -3,16 +3,13 @@ package com.mini.asaas.user
 import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
-class UserAdapter {
-
-    String username
+class BaseUserAdapter {
 
     String password
     
     String passwordConfirm
 
-    public UserAdapter(Map params) {
-        this.username = params.email
+    public BaseUserAdapter(Map params) {
         this.password = params.password
         this.passwordConfirm = params.passwordConfirm
     }

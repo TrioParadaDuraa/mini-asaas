@@ -1,7 +1,7 @@
 package com.mini.asaas.customer
 
 import com.mini.asaas.BaseController
-import com.mini.asaas.user.UserAdapter
+import com.mini.asaas.user.CreateUserAdapter
 import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
@@ -19,7 +19,7 @@ class CustomerController extends BaseController {
     def save() {
         try {
             CreateCustomerAdapter customerAdapter = new CreateCustomerAdapter(params)
-            UserAdapter userAdapter = new UserAdapter(params)
+            CreateUserAdapter userAdapter = new CreateUserAdapter(params)
 
             Customer customer = customerService.save(customerAdapter, userAdapter)
 

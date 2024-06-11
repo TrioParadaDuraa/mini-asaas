@@ -1,6 +1,6 @@
 package com.mini.asaas.customer
 
-import com.mini.asaas.user.UserAdapter
+import com.mini.asaas.user.CreateUserAdapter
 import com.mini.asaas.user.UserService
 
 import com.mini.asaas.domain.base.BasePersonAdapter
@@ -21,7 +21,7 @@ class CustomerService {
 
     UserService userService
 
-    public Customer save(CreateCustomerAdapter customerAdapter, UserAdapter userAdapter) {
+    public Customer save(CreateCustomerAdapter customerAdapter, CreateUserAdapter userAdapter) {
         Customer customer = validateSave(customerAdapter)
 
         if (customer.hasErrors()) throw new ValidationException("Erro ao salvar conta", customer.errors)
