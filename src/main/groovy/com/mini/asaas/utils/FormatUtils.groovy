@@ -1,5 +1,6 @@
 package com.mini.asaas.utils
 
+import java.text.DecimalFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
@@ -29,5 +30,12 @@ class FormatUtils {
         SimpleDateFormat outputSdf = new SimpleDateFormat(FormatUtils.DATE_FORMAT)
 
         return outputSdf.format(date)
+    }
+
+    public static String formatBigDecimal(BigDecimal value) {
+        if (value == null) return null
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00")
+        return decimalFormat.format(value)
     }
 }

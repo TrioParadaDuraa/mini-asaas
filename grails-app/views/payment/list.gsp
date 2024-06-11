@@ -1,4 +1,3 @@
-<%@ page import="com.mini.asaas.utils.FormatUtils" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
