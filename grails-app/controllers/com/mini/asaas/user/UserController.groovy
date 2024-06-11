@@ -8,6 +8,7 @@ import grails.validation.ValidationException
 
 @GrailsCompileStatic
 
+@Secured("isAuthenticated()")
 class UserController extends BaseController {
 
     UserService userService
@@ -31,7 +32,6 @@ class UserController extends BaseController {
         }
     }
 
-    @Secured("isAuthenticated()")
     def edit() {
         try {
             User user = springSecurityService.currentUser as User
