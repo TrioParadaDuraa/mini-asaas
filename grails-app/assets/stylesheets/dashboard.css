@@ -15,7 +15,7 @@
     gap: 0.625rem;
 }
 
-.dashboard-card {
+.card {
     width: 32.8125rem;
     height: 25.3125rem;
     background-color: #FFFFFF;
@@ -23,33 +23,33 @@
     border-radius: 0.3125rem;
 }
 
-.dashboard-card-header {
+.card-header {
     height: 3.125rem;
     border-radius: 0.3125rem 0.3125rem 0 0;
     background-color: #F5F5F5;
     border-bottom: 0.0625rem solid #CDCDCD;
 }
 
-.dashboard-card-header-text {
+.header-text {
     display: flex;
     align-items: center;
     gap: 0.625rem;
     margin-left: 0.9375rem;
 }
 
-.dashboard-card-content {
+.card-content {
     display: grid;
     grid-auto-flow: row;
     row-gap: 0.5rem;
     padding: 1.5rem 1.5rem 2rem 1.5rem;
 }
 
-.dashboard-card-content-card {
+.content-section {
     height: 5.625rem;
     border: 0.0625rem solid #CDCDCD;
 }
 
-.dashboard-card-content-card-header {
+.section-header {
     display: flex;
     align-items: center;
     height: 1.25rem;
@@ -58,48 +58,42 @@
     color: #8F959E;
 }
 
-.dashboard-card-content-card-value {
+.section-value {
     display: flex;
     justify-content: center;
     height: 4.375rem;
 }
 
-.display-value-alert {
+.display-value {
     display: flex;
     align-items: center;
     gap: 0.375rem;
+}
+
+.display-value.alert {
     color: #FF9A0A;
 }
 
-.display-value-danger {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
+.display-value.danger {
     color: #C5381A;
 }
 
-.display-value-info {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
+.display-value.info {
     color: #001074;
 }
 
-.display-value-success {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
+.display-value.success {
     color: #00D071;
 }
 
-.dashboard-card-content-card-value span {
+.section-value span {
     margin: 0;
     font-size: 0.9375rem;
     font-weight: 600;
     line-height: normal;
 }
 
-.dashboard-card-content-card-value p {
+.section-value p {
     margin: 0;
     font-size: 3.125rem;
 }

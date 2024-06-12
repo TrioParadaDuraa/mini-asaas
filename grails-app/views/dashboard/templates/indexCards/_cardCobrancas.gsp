@@ -1,37 +1,37 @@
-<div class="dashboard-card">
-    <div class="dashboard-card-header">
-        <div class="dashboard-card-header-text">
+<div class="card">
+    <div class="card-header">
+        <div class="header-text">
             <atlas-icon name="money" size="2x" theme="secondary"></atlas-icon>
             <p>Cobranças</p>
         </div>
     </div>
-    <div class="dashboard-card-content">
-        <div class="dashboard-card-content-card">
-            <div class="dashboard-card-content-card-header">
+    <div class="card-content">
+        <div class="content-section">
+            <div class="section-header">
                 <p>PREVISTAS</p>
             </div>
-            <div class="dashboard-card-content-card-value">
-                <div class="display-value-alert">
+            <div class="section-value">
+                <div class="display-value alert">
                     <p>20</p>
                 </div>
             </div>
         </div>
-        <div class="dashboard-card-content-card">
-            <div class="dashboard-card-content-card-header">
+        <div class="content-section">
+            <div class="section-header">
                 <p>VENCIDAS</p>
             </div>
-            <div class="dashboard-card-content-card-value">
-                <div class="display-value-danger">
+            <div class="section-value">
+                <div class="display-value danger">
                     <p>15</p>
                 </div>
             </div>
         </div>
-        <div class="dashboard-card-content-card">
-            <div class="dashboard-card-content-card-header">
+        <div class="content-section">
+            <div class="section-header">
                 <p>RECEBIDAS</p>
             </div>
-            <div class="dashboard-card-content-card-value">
-                <div class="display-value-success">
+            <div class="section-value">
+                <div class="display-value success">
                     <p>20</p>
                 </div>
             </div>
