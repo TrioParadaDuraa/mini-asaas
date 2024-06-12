@@ -35,11 +35,10 @@ class PaymentService {
         return payment
     }
 
-    public List<Payment> list(Map filterList, Long customerId) {
+    public List<Payment> list(Map filterList) {
         if (!filterList.containsKey("deleted")) {
             filterList.deleted = false
         }
-        filterList.customerId = customerId
 
         return Payment.query(filterList).list() as List<Payment>
     }
