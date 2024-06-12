@@ -88,7 +88,7 @@ class PaymentService {
     }
 
     public void processOverduePayments() {
-        List<Long> overduePaymentsIds = Payment.overdueIds().list() as List<Long>
+        List <Long> overduePaymentsIds = Payment.overdueIds([params: [:]]).list() as List <Long>
 
         if (overduePaymentsIds.isEmpty()) return
 
