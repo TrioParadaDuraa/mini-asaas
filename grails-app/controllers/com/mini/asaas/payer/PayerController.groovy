@@ -69,6 +69,23 @@ class PayerController extends BaseController {
         }
     }
 
+    def edit() {
+        try {
+            Long id = params.long("id")
+
+            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
+
+            if (!payer) {
+                throw new Exception("Pagador não encontrado")
+            }
+
+            return [payer: payer]
+        } catch (Exception exception) {
+            log.error("PayerController.edit >> Erro ao tentar editar pagador", exception)
+            render "Não foi possível editar pagador"
+        }
+    }
+
     def update() {
         try {
             Long id = params.long("id")
