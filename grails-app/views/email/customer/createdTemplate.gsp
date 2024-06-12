@@ -34,21 +34,6 @@
                                 <p>Olá, 👋</p>
                                 <p>Uma nova cobrança foi criada.</p>
                                 <p>Por favor, verifique os detalhes em sua conta.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0 2.5rem 0 2.5rem; text-align: center;">
-                                <table cellspacing="0" cellpadding="0" style="margin: auto;">
-                                    <tr>
-                                        <td align="center" style="background-color: #0030B9; padding: 0.625rem 1.25rem; border-radius: 0.31rem;">
-                                            <a href="${createLink(controller: 'payment', action: 'list')}" target="_blank" style="color: #ffffff; text-decoration: none; font-weight: bold;">Acessar minhas cobranças</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="body" style="padding: 2.5rem; text-align: left; font-size: 1rem; line-height: 1.6;">
                                 <p>Agradecemos por utilizar nossa plataforma, conte conosco!</p>
                             </td>
                         </tr>
