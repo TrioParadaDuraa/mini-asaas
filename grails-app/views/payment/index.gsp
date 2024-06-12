@@ -8,8 +8,8 @@
         <title>Criar cobrança</title>
         <asset:javascript src="paymentInputUpdate.js"/>
     </head>
-    <body>
-        <atlas-panel header="Cadastro de cobrança">
+    <body title="Cadastro de cobrança">
+        <atlas-panel>
             <atlas-form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
