@@ -38,11 +38,10 @@ class PayerService {
         return payer
     }
 
-    public List<Payer> list(Map filterList, Long customerId) {
+    public List<Payer> list(Map filterList) {
         if (!filterList.containsKey("deleted")) {
             filterList.deleted = false
         }
-        filterList.customerId = customerId
 
         return Payer.query(filterList).list() as List<Payer>
     }

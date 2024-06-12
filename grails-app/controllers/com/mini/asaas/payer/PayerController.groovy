@@ -48,8 +48,9 @@ class PayerController extends BaseController {
 
         try {
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
+            filterList.customerId = getCurrentCustomerId()
 
-            List<Payer> payerList = payerService.list(filterList, getCurrentCustomerId())
+            List<Payer> payerList = payerService.list(filterList)
 
             return [payerList: payerList]
         } catch (Exception exception) {

@@ -20,7 +20,7 @@ class PaymentController extends BaseController {
     PayerService payerService
 
     def index() {
-        List<Payer> payerList = payerService.list([:], getCurrentCustomerId())
+        List<Payer> payerList = payerService.list([customerId: getCurrentCustomerId()])
 
         return [payerList: payerList]
     }
@@ -91,8 +91,9 @@ class PaymentController extends BaseController {
 
         try {
             Map filterList = Utils.getFilterListFromParams(params, allowedFilters)
+            filterList.customerId = getCurrentCustomerId()
             
-            List<Payment> paymentList = paymentService.list(filterList, getCurrentCustomerId())
+            List<Payment> paymentList = paymentService.list(filterList)
 
             return [paymentList: paymentList]
         } catch (Exception exception) {
