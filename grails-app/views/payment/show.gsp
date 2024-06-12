@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Visualização de cobrança</title>
     </head>
-    <body>
-        <atlas-panel header="Dados da cobrança">
+    <body title="Dados da cobrança">
+        <atlas-panel>
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
