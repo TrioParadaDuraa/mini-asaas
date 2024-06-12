@@ -10,7 +10,7 @@
 
         <atlas-avatar data-atlas-dropdown="user-options" image="" user-name="Atlas user" show-icon-mobile="" show-carret="" hoverable=""></atlas-avatar>
         <atlas-dropdown id="user-options" class="js-atlas-user-menu" header="Email do usuario :)" auto-close="" auto-close-triger="outside" tabindex="-1">
-            <atlas-dropdown-item icon="cog" theme="secondary" href="/customer/show/">Minha conta</atlas-dropdown-item>
+            <atlas-dropdown-item icon="cog" theme="secondary" href="${createLink(controller: 'customer', action: 'show')}">Minha conta</atlas-dropdown-item>
         </atlas-dropdown>
     </div>
 </atlas-navbar>
