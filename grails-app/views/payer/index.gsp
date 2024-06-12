@@ -1,129 +1,79 @@
 <%@ page import="com.mini.asaas.utils.base.PersonType" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Pagador</title>
-</head>
-<body>
-    <form action="${createLink(controller: 'payer', action: 'save')}" method="POST">
-        <div>
-            <label for="name">Nome</label>
-            <br>
-            <input name="name" value="${params.name}" id="name" type="text">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('name')}">
-            <div>Nome inválido</div>
-        </g:if>
+    <head>
+        <meta name="layout" content="main">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Criar pagador</title>
+    </head>
+    <body>
+        <atlas-panel header="Cadastro de pagador">
+            <atlas-form method="POST" action="${createLink(controller: 'payer', action: 'save')}">
+                <atlas-grid>
+                    <div>
+                        <p>Tipo de pessoa:</p>
+                        <atlas-toggle name="personType">
+                            <atlas-toggle-item value="${PersonType.NATURAL}" label="Pessoa física"></atlas-toggle-item>
+                            <atlas-toggle-item value="${PersonType.LEGAL}" label="Pessoa juridica"></atlas-toggle-item>
+                        </atlas-toggle>
+                    </div>
+                    <atlas-row>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ" required="" size="md" name="cpfCnpj" value="${params.cpfCnpj}"></atlas-masked-input>
+                        </atlas-col>
+                        <atlas-col lg="7" md="4" sm="1">
+                            <atlas-input label="Nome Completo" required="" placeholder="Insira seu nome completo" size="md" name="name" value="${params.name}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="4" md="2" sm="1">
+                            <atlas-masked-input mask-alias="email" label="Email" required="" size="md" placeholder="email@dominio.com" name="email" value="${params.email}"></atlas-masked-input>
+                        </atlas-col>
+                        <atlas-col lg="4" md="2" sm="1">
+                            <atlas-masked-input mask-alias="cell-phone" label="Celular" required="" size="md" name="mobilePhone" value="${params.mobilePhone}"></atlas-masked-input>
+                        </atlas-col>
+                        <atlas-col lg="4" md="2" sm="1">
+                            <atlas-masked-input mask-alias="landline" label="Telefone" size="md" name="phone" value="${params.phone}"></atlas-masked-input>
+                        </atlas-col>
+                    </atlas-row>
+                </atlas-grid>
 
-        <div>
-            <label for="personType">Tipo de pessoa</label>
-            <br>
-            <select name="personType" id="personType">
-                <g:each var="value" in="${PersonType.values()}">
-                    <option value="${value}">${value.getLabel()}</option>
-                </g:each>
-            </select>
-        </div>
-        
-        <div>
-            <label for="cpfCnpj">CPF/CNPJ</label>
-            <br>
-            <input name="cpfCnpj" value="${params.cpfCnpj}" id="cpfCnpj" type="text" maxlength="14">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('cpfCnpj')}">
-            <div>CPF/CNPJ inválido</div>
-        </g:if>
+                <atlas-grid>
+                    <atlas-row>
+                        <atlas-col lg="5" md="3" sm="1">
+                            <atlas-postal-code label="CEP" required="" name="postalCode" size="md" value="${params.postalCode}"></atlas-postal-code>
+                        </atlas-col>
+                        <atlas-col lg="7" md="3" sm="1">
+                            <atlas-input label="Rua/Avenida/Alameda" required="" placeholder="Insira o endereço" name="address" size="md" value="${params.address}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="5" md="3" sm="1">
+                            <atlas-input label="Número" required="" placeholder="Insira o número" name="addressNumber" size="md" value="${params.addressNumber}"></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="7" md="3" sm="1">
+                            <atlas-input label="Complemento" placeholder="Insira o complemento" name="addressComplement" size="md" value="${params.addressComplement}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                    <atlas-row>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-input label="Bairro" required="" placeholder="Insira o bairro" name="district" size="md" value="${params.district}"></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-input label="Cidade" required="" placeholder="Insira a cidade" name="city" size="md" value="${params.city}"></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="2" md="2" sm="1">
+                            <atlas-input label="UF" required="" placeholder="" name="state" size="md" value="${params.state}"></atlas-input>
+                        </atlas-col>
+                    </atlas-row>
+                </atlas-grid>
 
-        <div>
-            <label for="email">Email</label>
-            <br>
-            <input name="email" value="${params.email}" id="email" type="email">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('email')}">
-            <div>Email inválido</div>
-        </g:if>
-
-        <div>
-            <label for="phone">Telefone</label>
-            <br>
-            <input name="phone" value="${params.phone}" id="phone" type="tel" maxlength="10">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('phone')}">
-            <div>Telefone inválido</div>
-        </g:if>
-
-        <div>
-            <label for="mobilePhone">Celular</label>
-            <br>
-            <input name="mobilePhone" value="${params.mobilePhone}" id="mobilePhone" type="tel" maxlength="11">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('mobilePhone')}">
-            <div>Celular inválido</div>
-        </g:if>
-
-        <div>
-            <label for="postalCode">CEP</label>
-            <br>
-            <input name="postalCode" value="${params.postalCode}" id="postalCode" type="text" maxlength="8">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('postalCode')}">
-            <div>CEP inválido</div>
-        </g:if>
-
-        <div>
-            <label for="address">Endereço</label>
-            <br>
-            <input name="address" value="${params.address}" id="address" type="text">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('address')}">
-            <div>Endereço inválido</div>
-        </g:if>
-
-        <div>
-            <label for="addressNumber">Número</label>
-            <br>
-            <input name="addressNumber" value="${params.addressNumber}" id="addressNumber" type="text">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('addressNumber')}">
-            <div>Número inválido</div>
-        </g:if>
-
-        <div>
-            <label for="addressComplement">Complemento</label>
-            <br>
-            <input name="addressComplement" value="${params.addressComplement}" id="addressComplement" type="text">
-        </div>
-
-        <div>
-            <label for="district">Bairro</label>
-            <br>
-            <input name="district" value="${params.district}" id="district" type="text">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('district')}">
-            <div>Bairro inválido</div>
-        </g:if>
-
-        <div>
-            <label for="city">Cidade</label>
-            <br>
-            <input name="city" value="${params.city}" id="city" type="text">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('city')}">
-            <div>Cidade inválida</div>
-        </g:if>
-
-        <div>
-            <label for="state">Estado</label>
-            <br>
-            <input name="state" value="${params.state}" id="state" type="text">
-        </div>
-        <g:if test="${flash.errors?.hasFieldErrors('state')}">
-            <div>Estado inválido</div>
-        </g:if>
-
-        <button type="submit">Salvar</button>
-    </form>
-</body>
+                <div class="bottom-buttons">
+                    <atlas-button description="Cancelar" slot="actions" theme="danger"></atlas-button>
+                    <atlas-button submit description="Salvar" slot="actions" theme="success"></atlas-button>
+                </div>
+            </atlas-form>
+        </atlas-panel>
+    </body>
 </html>

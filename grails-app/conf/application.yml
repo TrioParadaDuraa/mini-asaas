@@ -147,3 +147,5 @@ quartz:
             driverDelegateClass: org.springframework.scheduling.quartz.impl.jdbcjobstore.StdJDBCDelegate
         factory:
             beanName: quartzScheduler
+
+server.servlet.session.timeout: 0
