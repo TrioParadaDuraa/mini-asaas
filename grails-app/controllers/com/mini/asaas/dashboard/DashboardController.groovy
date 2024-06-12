@@ -1,7 +1,10 @@
 package com.mini.asaas.dashboard
 
+import com.mini.asaas.BaseController
 import com.mini.asaas.payer.Payer
+import com.mini.asaas.payer.PayerService
 import com.mini.asaas.payment.Payment
+import com.mini.asaas.payment.PaymentService
 
 import com.mini.asaas.utils.enums.PaymentStatus
 
@@ -9,22 +12,26 @@ import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
-class DashboardController {
+@Secured("isAuthenticated()")
+class DashboardController extends BaseController{
 
-    @Secured("isAuthenticated()")
+    PaymentService paymentService
+
+    PayerService payerService
+
     def index() {
-        List <Payer> payerList = Payer.list()
+        List <Payer> payerList = payerService.list([customerId: getCurrentCustomerId()]) as List <Payer>
 
-        List <Payment> paymentList = Payment.list()
+        List <Payment> paymentList = paymentService.list([customerId: getCurrentCustomerId()]) as List <Payment>
 
-        List <Payment> overduePayments = paymentList.findAll {it.status == PaymentStatus.OVERDUE}
+        List <Payment> overduePayments = Payment.overdueIds([customerId: getCurrentCustomerId()]).list() as List <Payment>
 
-        List <Payment> receivedPayments = paymentList.findAll {it.status == PaymentStatus.RECEIVED || it.status == PaymentStatus.RECEIVED_IN_CASH}
+        List <Payment> paymentsReceived = Payment.receivedPayments([customerId: getCurrentCustomerId()]).list() as List <Payment>
 
         def valuesToReceive = paymentList.sum {it.value ?: 0}
 
-        def valuesReceived = receivedPayments.sum {it.value ?: 0}
+        def valuesReceived = paymentsReceived.sum {it.value ?: 0}
 
-        return [payerList: payerList, paymentList: paymentList, overduePayments: overduePayments, receivedPayments: receivedPayments, valuesToReceive: valuesToReceive, valuesReceived: valuesReceived]
+        return [payerList: payerList, paymentList: paymentList, overduePayments: overduePayments, paymentsReceived: paymentsReceived, valuesToReceive: valuesToReceive, valuesReceived: valuesReceived]
     }
 }

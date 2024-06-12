@@ -32,7 +32,7 @@
             </div>
             <div class="section-value">
                 <div class="display-value success">
-                    <p>${receivedPayments.size()}</p>
+                    <p>${paymentsReceived.size()}</p>
                 </div>
             </div>
         </div>

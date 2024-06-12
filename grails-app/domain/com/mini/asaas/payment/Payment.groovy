@@ -46,7 +46,7 @@ class Payment extends BaseDomain {
             }
         }
 
-        overdueIds {
+        overdueIds { Map params ->
             projections {
                 property('id')
             }
@@ -54,6 +54,17 @@ class Payment extends BaseDomain {
             not {
                 inList('status', [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH, PaymentStatus.OVERDUE])
             }
+            if (params.containsKey("customerId")) {
+                eq("customer.id", params.customerId)
+            }
+        }
+
+        receivedPayments { params ->
+            or {
+                eq("status", PaymentStatus.RECEIVED)
+                eq("status", PaymentStatus.RECEIVED_IN_CASH)
+            }
+            eq("customer.id", params.customerId)
         }
     }
 }
