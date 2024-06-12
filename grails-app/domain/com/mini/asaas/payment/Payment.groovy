@@ -6,6 +6,8 @@ import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.enums.BillingType
 
+import org.apache.commons.lang.time.DateUtils
+
 class Payment extends BaseDomain {
 
     Customer customer
@@ -48,7 +50,7 @@ class Payment extends BaseDomain {
             projections {
                 property('id')
             }
-            lt('dueDate', new Date())
+            lt('dueDate', DateUtils.truncate(new Date(), Calendar.DAY_OF_MONTH))
             not {
                 inList('status', [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH, PaymentStatus.OVERDUE])
             }
