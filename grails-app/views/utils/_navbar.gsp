@@ -1,4 +1,5 @@
 <atlas-navbar slot="navbar">
+    <a href="${createLink(controller: 'dashboard', action: 'index')}"><atlas-icon name="home" size="3x"></atlas-icon></a>
     <div class="navbar-user">
         <atlas-icon-button icon="bell" class="js-notification-bell-button" size="3x" data-atlas-dropdown="test-dropdown" hoverable="" badge-number="0" tooltip-placement="bottom" tooltip-trigger="hover focus" aria-expanded="false">
         </atlas-icon-button>
