@@ -11,4 +11,8 @@ abstract class BaseController {
     protected Long getCurrentCustomerId() {
         return springSecurityService.currentUser.customer.id
     }
+
+    protected User getCurrentUser() {
+        return springSecurityService.currentUser
+    }
 }
