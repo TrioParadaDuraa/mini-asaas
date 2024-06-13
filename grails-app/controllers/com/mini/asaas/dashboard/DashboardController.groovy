@@ -28,7 +28,7 @@ class DashboardController extends BaseController {
 
         List<Payment> paymentsReceived = paymentList.findAll {it.status == PaymentStatus.RECEIVED || it.status == PaymentStatus.RECEIVED_IN_CASH} as List<Payment>
 
-        List<Payment> overduePayments = Payment.overdueIds([customerId: getCurrentCustomerId()]).list() as List<Payment>
+        List<Payment> overduePayments = Payment.overdueIds([customerId: getCurrentCustomerId(), deleted: false]).list() as List<Payment>
 
         def valuesToReceive = openPayments.sum {it.value ?: 0 }
 
