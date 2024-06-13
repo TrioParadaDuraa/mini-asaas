@@ -61,13 +61,7 @@ class PayerController extends BaseController {
 
     def edit() {
         try {
-            Long id = params.long("id")
-
-            Payer payer = (Payer) Payer.query([customerId: getCurrentCustomerId(), id: id]).get()
-
-            if (!payer) {
-                throw new Exception("Pagador não encontrado")
-            }
+            Payer payer = payerService.find([id: params.long("id"), customerId: getCurrentCustomerId()])
 
             return [payer: payer]
         } catch (Exception exception) {
