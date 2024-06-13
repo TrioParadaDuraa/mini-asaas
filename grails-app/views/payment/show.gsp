@@ -68,9 +68,12 @@
                         </div>
                     </g:if>
                     <g:else>
-                        <div class="edit-payment-card-item">
-                            <label for="awaiting_payment">Aguardando pagamento</label>
-                            <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                        <div class="bottom-payment-card">
+                            <div class="edit-payment-card-item">
+                                <label for="awaiting_payment">Aguardando pagamento</label>
+                                <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                            </div>
+                            <atlas-button description="Gerar comprovante" theme="primary"></atlas-button>
                         </div>
                     </g:else>
                 </div>
