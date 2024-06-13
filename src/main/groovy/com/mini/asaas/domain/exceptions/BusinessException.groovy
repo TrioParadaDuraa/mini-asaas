@@ -1,6 +1,6 @@
-package com.mini.asaas.utils.exceptions
+package com.mini.asaas.domain.exceptions
 
-class BusinessException extends RuntimeException{
+class BusinessException extends RuntimeException {
 
     BusinessException(String message) {
         super(message)
