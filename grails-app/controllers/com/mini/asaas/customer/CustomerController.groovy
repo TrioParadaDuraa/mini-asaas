@@ -13,10 +13,18 @@ class CustomerController extends BaseController {
     CustomerService customerService
 
     @Secured("permitAll")
-    def index() {}
+    def index() {
+        if (isLoggedIn()) {
+            redirect(controller: "dashboard", action: "index")
+        }
+    }
 
     @Secured("permitAll")
     def save() {
+        if (isLoggedIn()) {
+            return redirect(controller: "dashboard", action: "index")
+        }
+
         try {
             CreateCustomerAdapter customerAdapter = new CreateCustomerAdapter(params)
             CreateUserAdapter userAdapter = new CreateUserAdapter(params)
