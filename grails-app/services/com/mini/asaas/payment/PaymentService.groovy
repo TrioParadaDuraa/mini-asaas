@@ -29,9 +29,26 @@ class PaymentService {
         return payment
     }
 
-    @Publisher
-    public Payment delete(Long paymentId) {
-        Payment payment = Payment.get(paymentId)
+    public Payment find(Map filterList) {
+        Payment payment = Payment.query(filterList).get() as Payment
+
+        if (!payment) throw new Exception("Cobrança não encontrada")
+
+        return payment
+    }
+
+    public List<Payment> list(Map filterList) {
+        if (!filterList.containsKey("deleted")) {
+            filterList.deleted = false
+        }
+
+        return Payment.query(filterList).list() as List<Payment>
+    }
+
+    public void delete(Long paymentId, Long customerId) {
+        Payment payment = find([id: paymentId, customerId: customerId])
+
+        if (payment.deleted) throw new Exception("Cobrança já inativa")
 
         payment.deleted = true
 
@@ -40,8 +57,10 @@ class PaymentService {
         return payment
     }
 
-    public void restore(Long paymentId) {
-        Payment payment = Payment.get(paymentId)
+    public void restore(Long paymentId, Long customerId) {
+        Payment payment = find([id: paymentId, customerId: customerId])
+
+        if (!payment.deleted) throw new Exception("Cobrança não inativa")
         
         payment.deleted = false
 
@@ -72,14 +91,6 @@ class PaymentService {
         return payment
     }
 
-    private static Payment findPayment(Long paymentId) {
-        Payment payment = Payment.get(paymentId)
-
-        if (!payment) throw new RuntimeException("Pagamento de ID $paymentId não encontrado")
-
-        return payment
-    }
-
     public void processOverduePayments() {
         List<Long> overduePaymentsIds = Payment.overdueIds().list() as List<Long>
 
@@ -87,10 +98,8 @@ class PaymentService {
 
         overduePaymentsIds.each { paymentId ->
             try {
-                Payment.withNewTransaction { status ->
-                    Payment payment = findPayment(paymentId)
-                    payment.status = PaymentStatus.OVERDUE
-                    payment.save(failOnError: true)
+                Payment.withNewTransaction {
+                    updateStatus(paymentId, PaymentStatus.OVERDUE)
                 }
             } catch (Exception exception) {
                 log.error("Erro ao atualizar o status do pagamento $paymentId: ${exception.message}")
@@ -98,14 +107,19 @@ class PaymentService {
         }
     }
 
-    @Publisher
-    public Payment updateStatus(Long paymentId, PaymentStatus status) {
-        Payment payment = findPayment(paymentId)
+    public void updateStatus(Long paymentId, PaymentStatus status) {
+        Payment payment = find([id: paymentId])
+
+        if (payment.deleted && status != PaymentStatus.OVERDUE) throw new Exception("Cobrança inativa")
+
+        if ([PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH].contains(status)) {
+            if (payment.status != PaymentStatus.AWAITING_PAYMENT) {
+                throw new Exception("Cobranças com status $payment.status não podem ser recebidas")
+            }
+        }
 
         payment.status = status
 
-        payment.save()
-
-        return payment
+        payment.save(failOnError: true)
     }
 }

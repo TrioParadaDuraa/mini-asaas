@@ -16,6 +16,7 @@
     <body>
         <atlas-screen>
             <g:render template="/utils/sidebar"/>
+            <g:render template="/utils/navbar"/>
             <atlas-page>
                 <atlas-page-header slot="header" page-name="${pageProperty(name: 'body.title')}">
                 </atlas-page-header>
