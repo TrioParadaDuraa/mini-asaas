@@ -117,6 +117,12 @@ class PaymentService {
 
         if (payment.deleted && status != PaymentStatus.OVERDUE) throw new Exception("Cobrança inativa")
 
+        if ([PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH].contains(status)) {
+            if (payment.status != PaymentStatus.AWAITING_PAYMENT) {
+                throw new Exception("Cobranças com status $payment.status não podem ser recebidas")
+            }
+        }
+
         payment.status = status
 
 
