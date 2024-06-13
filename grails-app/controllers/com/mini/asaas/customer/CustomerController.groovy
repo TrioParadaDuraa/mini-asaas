@@ -43,7 +43,7 @@ class CustomerController extends BaseController {
             return [customer: customer]
         } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
-            render "Cliente não encontrado"
+            render view: /error/
         }
     }
 
