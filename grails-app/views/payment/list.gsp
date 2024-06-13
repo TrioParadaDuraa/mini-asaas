@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lista de Cobranças</title>
     </head>
-    <body>
+    <body title="Minhas cobranças">
         <atlas-panel>
             <g:if test="${ paymentList }">
                 <g:render template="templates/list/listFilter"/>

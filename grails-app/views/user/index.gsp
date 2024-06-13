@@ -8,6 +8,15 @@
 <body>
     <form action="${createLink(controller: 'user', action: 'save')}" method="POST">
         <div>
+            <label for="name">Nome do usuário</label>
+            <br>
+            <input name="name" value="${params.name}" id="name" type="text">
+        </div>
+        <g:if test="${flash.errors?.hasFieldErrors('name')}">
+            <div>Nome inválido</div>
+        </g:if>
+
+        <div>
             <label for="email">Email</label>
             <br>
             <input name="email" value="${params.email}" id="email" type="email">
