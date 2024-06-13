@@ -3,10 +3,10 @@ package com.mini.asaas.payment
 import com.mini.asaas.EmailService
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.payer.Payer
+
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
-import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -18,7 +18,6 @@ class PaymentService {
 
     EmailService emailService
 
-    @Publisher
     public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
 
@@ -28,6 +27,12 @@ class PaymentService {
         payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
+
+        String emailSubject = "Cobrança criada"
+        String emailTemplate = "createdTemplate"
+
+        emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+        emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
 
         return payment
     }
@@ -48,7 +53,6 @@ class PaymentService {
         return Payment.query(filterList).list() as List<Payment>
     }
 
-    @Publisher
     public Payment delete(Long paymentId, Long customerId) {
         Payment payment = find([id: paymentId, customerId: customerId])
 
@@ -57,6 +61,12 @@ class PaymentService {
         payment.deleted = true
 
         payment.save(failOnError: true)
+
+        String emailSubject = "Cobrança excluída"
+        String emailTemplate = "deletedTemplate"
+
+        emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+        emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
 
         return payment
     }
@@ -111,7 +121,6 @@ class PaymentService {
         }
     }
 
-    @Publisher
     public Payment updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = find([id: paymentId])
 
@@ -121,10 +130,23 @@ class PaymentService {
             if (payment.status != PaymentStatus.AWAITING_PAYMENT) {
                 throw new Exception("Cobranças com status $payment.status não podem ser recebidas")
             }
+
+            String emailSubject = "Pagamento recebido"
+            String emailTemplate = "receivedTemplate"
+
+            emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+            emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
+        }
+
+        if (status == PaymentStatus.OVERDUE) {
+            String emailSubject = "Cobrança vencida"
+            String emailTemplate = "overdueTemplate"
+
+            emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+            emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
         }
 
         payment.status = status
-
 
         payment.save(failOnError: true)
 
