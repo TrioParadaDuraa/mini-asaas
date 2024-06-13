@@ -8,7 +8,7 @@
     </head>
     <body>
         <atlas-panel>
-            <g:if test="${ payerList }">
+            <g:if test="${payerList}">
                 <g:render template="templates/list/listFilter"/>
                 <g:render template="templates/list/listToolbar"/>
                 <g:render template="templates/list/listTable"/>
