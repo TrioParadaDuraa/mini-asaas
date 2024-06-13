@@ -58,13 +58,5 @@ class Payment extends BaseDomain {
                 eq("customer.id", params.customerId)
             }
         }
-
-        receivedPayments { params ->
-            or {
-                eq("status", PaymentStatus.RECEIVED)
-                eq("status", PaymentStatus.RECEIVED_IN_CASH)
-            }
-            eq("customer.id", params.customerId)
-        }
     }
 }

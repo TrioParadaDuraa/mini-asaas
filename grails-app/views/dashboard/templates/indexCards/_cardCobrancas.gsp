@@ -12,7 +12,7 @@
             </div>
             <div class="section-value">
                 <div class="display-value alert">
-                    <p>${paymentList.size()}</p>
+                    <p>${openPayments.size()}</p>
                 </div>
             </div>
         </div>

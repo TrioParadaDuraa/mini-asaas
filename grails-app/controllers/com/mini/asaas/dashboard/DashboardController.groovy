@@ -13,25 +13,27 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
-class DashboardController extends BaseController{
+class DashboardController extends BaseController {
 
     PaymentService paymentService
 
     PayerService payerService
 
     def index() {
-        List <Payer> payerList = payerService.list([customerId: getCurrentCustomerId()]) as List <Payer>
+        List<Payer> payerList = payerService.list([customerId: getCurrentCustomerId(), deleted: false]) as List<Payer>
 
-        List <Payment> paymentList = paymentService.list([customerId: getCurrentCustomerId()]) as List <Payment>
+        List<Payment> paymentList = paymentService.list([customerId: getCurrentCustomerId(), deleted: false]) as List<Payment>
 
-        List <Payment> overduePayments = Payment.overdueIds([customerId: getCurrentCustomerId()]).list() as List <Payment>
+        List<Payment> openPayments = paymentList.findAll {it.status == PaymentStatus.AWAITING_PAYMENT} as List<Payment>
 
-        List <Payment> paymentsReceived = Payment.receivedPayments([customerId: getCurrentCustomerId()]).list() as List <Payment>
+        List<Payment> paymentsReceived = paymentList.findAll {it.status == PaymentStatus.RECEIVED || it.status == PaymentStatus.RECEIVED_IN_CASH} as List<Payment>
 
-        def valuesToReceive = paymentList.sum {it.value ?: 0}
+        List<Payment> overduePayments = Payment.overdueIds([customerId: getCurrentCustomerId()]).list() as List<Payment>
+
+        def valuesToReceive = openPayments.sum {it.value ?: 0 }
 
         def valuesReceived = paymentsReceived.sum {it.value ?: 0}
 
-        return [payerList: payerList, paymentList: paymentList, overduePayments: overduePayments, paymentsReceived: paymentsReceived, valuesToReceive: valuesToReceive, valuesReceived: valuesReceived]
+        return [payerList: payerList, openPayments: openPayments, overduePayments: overduePayments, paymentsReceived: paymentsReceived, valuesToReceive: valuesToReceive, valuesReceived: valuesReceived]
     }
 }
