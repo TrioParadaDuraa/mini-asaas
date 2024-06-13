@@ -59,14 +59,12 @@
                     </atlas-col>
                 </atlas-row>
             </atlas-grid>
-            <div class="bottom-buttons">
-                <atlas-button description="Editar" href="${createLink(controller: 'payer', action: 'edit', id: payer.id)}" icon="pencil" slot="actions" theme="primary"></atlas-button>
-            </div>
             <g:if test="${payer.deleted}">
                 <atlas-button description="Restaurar" slot="actions" href="${createLink(controller: 'payer', action: 'restore', id: payer.id)}"></atlas-button>
             </g:if>
             <g:else>
                 <atlas-button description="Excluir" slot="actions" theme="danger" href="${createLink(controller: 'payer', action: 'delete', id: payer.id)}"></atlas-button>
+                <atlas-button description="Editar" href="${createLink(controller: 'payer', action: 'edit', id: payer.id)}" icon="pencil" slot="actions" theme="primary"></atlas-button>
             </g:else>
         </atlas-panel>
     </body>

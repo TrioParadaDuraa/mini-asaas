@@ -14,6 +14,12 @@
                         <atlas-col lg="6" md="2" sm="1">
                             <atlas-input label="Nome do pagador:" required="" size="md" value="${payer.name}"></atlas-input>
                         </atlas-col>
+                        <atlas-col lg="3" md="2" sm="1">
+                            <atlas-input label="Tipo de pessoa:" required="" size="md" value="${payer.personType.getLabel()}" disabled=""></atlas-input>
+                        </atlas-col>
+                        <atlas-col lg="3" md="2" sm="1">
+                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ:" required="" size="md" value="${payer.cpfCnpj}" disabled=""></atlas-masked-input>
+                        </atlas-col>
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="6" md="2" sm="1">
@@ -35,17 +41,17 @@
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
-                        <atlas-col lg="3" md="2" sm="1">
+                        <atlas-col lg="5" md="3" sm="1">
                             <atlas-input label="Número" required="" size="md" value="${payer.addressNumber}"></atlas-input>
                         </atlas-col>
-                        <atlas-col lg="4" md="3" sm="1">
+                        <atlas-col lg="7" md="3" sm="1">
                             <atlas-input label="Complemento" size="md" value="${payer.addressComplement}"></atlas-input>
-                        </atlas-col>
-                        <atlas-col lg="5" md="2" sm="1">
-                            <atlas-input label="Bairro" required="" size="md" value="${payer.district}"></atlas-input>
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
+                        <atlas-col lg="5" md="2" sm="1">
+                            <atlas-input label="Bairro" required="" size="md" value="${payer.district}"></atlas-input>
+                        </atlas-col>
                         <atlas-col lg="5" md="2" sm="1">
                             <atlas-input label="Cidade" required="" size="md" value="${payer.city}"></atlas-input>
                         </atlas-col>
