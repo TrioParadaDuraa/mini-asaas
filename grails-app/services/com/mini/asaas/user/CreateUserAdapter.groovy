@@ -7,8 +7,11 @@ class CreateUserAdapter extends BaseUserAdapter {
 
     String username
 
+    String name
+
     public CreateUserAdapter(Map params) {
         super(params)
         this.username = params.email
+        this.name = params.name
     }
 }
