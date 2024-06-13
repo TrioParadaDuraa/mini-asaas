@@ -5,3 +5,18 @@
     gap: 0.3125rem;
     width: 100%;
 }
+
+.logout-button {
+    margin-bottom: 0.5rem;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    background: none;
+    font-size: 1rem;
+    color: #DC3545;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.logout-button:hover {
+    color: #B02A37;
+}
