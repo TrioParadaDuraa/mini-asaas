@@ -20,7 +20,7 @@ class UserController extends BaseController {
             CreateUserAdapter adapter = new CreateUserAdapter(params)
             User user = userService.saveCustomerUser(adapter, getCurrentCustomerId())
 
-            redirect(uri: "/")
+            redirect(action: "list")
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
 
@@ -59,7 +59,7 @@ class UserController extends BaseController {
             UpdateUserPasswordAdapter adapter = new UpdateUserPasswordAdapter(params)
             userService.updatePassword(getCurrentUser().id, adapter)
 
-            redirect(uri: "/")
+            redirect(controller: "customer", action: "show")
         } catch (ValidationException validationException) {
             flash.errors = validationException.errors
 
