@@ -47,7 +47,7 @@ class PaymentController extends BaseController {
             return [payment: payment]
         } catch (Exception exception) {
             log.error("PaymentController.show >> Erro ao exibir cobrança", exception)
-            render "Cobrança não encontrada"
+            render view: /error/
         }
     }
 
