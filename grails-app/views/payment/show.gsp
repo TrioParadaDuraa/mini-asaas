@@ -73,7 +73,7 @@
                                 <label for="awaiting_payment">Aguardando pagamento</label>
                                 <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
                             </div>
-                            <atlas-button description="Gerar comprovante" theme="primary"></atlas-button>
+                            <atlas-button description="Gerar comprovante" theme="primary" href="${createLink(controller: 'payment', action: 'proof', id: payment.id)}"></atlas-button>
                         </div>
                     </g:else>
                 </div>
