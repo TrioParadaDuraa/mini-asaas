@@ -6,9 +6,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastro de cliente</title>
+        <asset:stylesheet src="errornotify.css"/>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Cadastro de cliente">
         <atlas-panel>
+            <div class="error-message hide">
+                <g:if test="${flash.message}">
+                    <div class="alert alert-danger">
+                        ${flash.message}
+                    </div>
+                </g:if>
+            </div>
             <atlas-form method="POST" action="${createLink(controller: 'customer', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
