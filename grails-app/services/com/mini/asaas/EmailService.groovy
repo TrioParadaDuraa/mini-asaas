@@ -9,8 +9,6 @@ class EmailService {
     MailService MailService
 
     public void sendEmail(String toAddress, String emailSubject, String template) {
-        String mailSubject = "Cobrança criada"
-
         mailService.sendMail {
             to(toAddress)
             subject(emailSubject)
