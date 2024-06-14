@@ -31,6 +31,17 @@ class UserController extends BaseController {
         }
     }
 
+    def list() {
+        try {
+            List<User> userList = userService.list(getCurrentCustomerId())
+            
+            return [userList: userList]
+        } catch (Exception exception) {
+            log.error("UserController.list >> Erro ao listar usuários", exception)
+            render "Não foi possível carregar usuários"
+        }
+    }
+
     def edit() {
         try {
             User user = getCurrentUser()
