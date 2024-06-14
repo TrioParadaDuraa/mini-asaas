@@ -131,6 +131,10 @@ class CustomerService {
             customer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
         }
 
+        if (Customer.findByEmail(adapter.email)) {
+            customer.errors.reject("email", null, "Email já cadastrado")
+        }
+
         return customer
     }
 }
