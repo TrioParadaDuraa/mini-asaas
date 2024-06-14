@@ -25,9 +25,9 @@ class CustomerController extends BaseController {
             Customer customer = customerService.save(customerAdapter, userAdapter)
 
             redirect(controller: "login", action: "auth")
+        } catch (Exception exception) {
+            log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
         } catch (ValidationException validationException) {
-            log.error("CustomerController.save >> Erro ao cadastrar cliente", validationException)
-
             def errorMessage = "Erro ao salvar os dados, verifique todos os campos e tente novamente."
             if (validationException.errors) {
                 errorMessage = validationException.errors.allErrors.collect { it.defaultMessage }.join(', ')
