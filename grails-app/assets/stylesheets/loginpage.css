@@ -9,33 +9,39 @@ body {
 
 .login {
     display: flex;
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
     text-align: left;
 }
 
+.login .images > * {
+    flex: 1;
+}
+
 .login .images {
-    width: 90%;
-    max-width: 25rem;
+    display: flex;
+    width: 100%;
     height: auto;
-    margin-right: 25rem;
-    position: relative;
 }
 
 .login .images .asaas-text {
+    max-width: 500px;
     height: auto;
+    margin: -200px auto 0;
 }
 
 .login .images .girl-laptop {
     width: 40rem;
     margin-top: 2.2rem;
     position: absolute;
-    right: 0.5rem;
+    left: 0;
+    bottom: 0;
 }
 
 .login .inner {
-    width: 90%;
-    padding: 7.2rem 0 0 11rem;
+    width: 100%;
+    max-width: 520px;
+    padding-top: 7.2rem;
+    padding-right: 80px;
 }
 
 .login .inner .fheader {
@@ -55,4 +61,15 @@ body {
 
 .login .inner .bottom-text {
     margin-top: 1.8rem;
+}
+
+@media (max-width: 1200px) {
+    .login .images {
+        display: none;
+    }
+
+    .login .inner {
+        margin: 0 auto;
+        padding-right: 0;
+    }
 }
