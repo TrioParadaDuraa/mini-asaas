@@ -79,6 +79,10 @@ class CustomerService {
             customer.errors.reject("email", null, "Email inválido")
         }
 
+        if (Customer.findByEmail(adapter.email)) {
+            customer.errors.reject("email", null, "Email já cadastrado")
+        }
+
         if (adapter.phone && !PhoneValidator.isValidPhone(adapter.phone)) {
             customer.errors.reject("phone", null, "Telefone inválido")
         }
@@ -129,10 +133,6 @@ class CustomerService {
             customer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
         } else if (CpfCnpjValidator.isValidCnpj(adapter.cpfCnpj) && adapter.personType != PersonType.LEGAL) {
             customer.errors.reject("personType", null, "Tipo de pessoa não condiz com campo CPF/CNPJ")
-        }
-
-        if (Customer.findByEmail(adapter.email)) {
-            customer.errors.reject("email", null, "Email já cadastrado")
         }
 
         return customer
