@@ -83,7 +83,7 @@
                     </div>
                 </atlas-grid>
                 <div class="bottom-buttons">
-                        <atlas-button description="Cancelar" slot="actions" theme="danger"></atlas-button>
+                        <atlas-button description="Cancelar" slot="actions" theme="danger" href="/"></atlas-button>
                         <atlas-button submit description="Criar conta" slot="actions" theme="success"></atlas-button>
                 </div>
                 <div class="bottom-text">
