@@ -2,11 +2,13 @@ package com.mini.asaas.payment
 
 import com.mini.asaas.EmailService
 import com.mini.asaas.customer.Customer
+import com.mini.asaas.notification.NotificationService
 import com.mini.asaas.payer.Payer
 
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
+import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -18,6 +20,8 @@ class PaymentService {
 
     EmailService emailService
 
+    NotificationService notificationService
+
     public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
 
@@ -27,6 +31,8 @@ class PaymentService {
         payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
+
+        notificationService.notify(payment, "Cobrança criada", "Uma nova cobrança foi criada.")
 
         String emailSubject = "Cobrança criada"
         String emailTemplate = "createdTemplate"
@@ -61,6 +67,8 @@ class PaymentService {
         payment.deleted = true
 
         payment.save(failOnError: true)
+
+        notificationService.notify(payment, "Cobrança excluída", "Uma cobrança foi excluída.")
 
         String emailSubject = "Cobrança excluída"
         String emailTemplate = "deletedTemplate"
@@ -131,6 +139,8 @@ class PaymentService {
                 throw new Exception("Cobranças com status $payment.status não podem ser recebidas")
             }
 
+            notificationService.notify(payment, "Pagamento recebido", "O pagamento de uma cobrança foi recebido.")
+
             String emailSubject = "Pagamento recebido"
             String emailTemplate = "receivedTemplate"
 
@@ -139,6 +149,8 @@ class PaymentService {
         }
 
         if (status == PaymentStatus.OVERDUE) {
+            notificationService.notify(payment, "Cobrança vencida", "Uma cobrança passou da data de vencimento.")
+
             String emailSubject = "Cobrança vencida"
             String emailTemplate = "overdueTemplate"
 
