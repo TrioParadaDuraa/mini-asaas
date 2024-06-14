@@ -1,10 +1,12 @@
 package com.mini.asaas.payment
 
 import com.mini.asaas.customer.Customer
+import com.mini.asaas.notification.NotificationService
 import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
+import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -13,6 +15,8 @@ import org.apache.commons.lang.time.DateUtils
 @GrailsCompileStatic
 @Transactional
 class PaymentService {
+
+    NotificationService notificationService
 
     public Payment save(PaymentAdapter adapter, Long customerId) {
         Payment payment = validate(adapter)
@@ -23,6 +27,8 @@ class PaymentService {
         payment.customer = Customer.read(customerId)
 
         payment.save(failOnError: true)
+
+        notificationService.notify(payment, "Cobrança criada", "Uma nova cobrança foi criada.")
 
         return payment
     }
@@ -51,6 +57,8 @@ class PaymentService {
         payment.deleted = true
 
         payment.save(failOnError: true)
+
+        notificationService.notify(payment, "Cobrança excluída", "Uma cobrança foi excluída.")
     }
 
     public void restore(Long paymentId, Long customerId) {
@@ -107,6 +115,18 @@ class PaymentService {
         Payment payment = find([id: paymentId])
 
         if (payment.deleted && status != PaymentStatus.OVERDUE) throw new Exception("Cobrança inativa")
+
+        if ([PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH].contains(status)) {
+            if (payment.status != PaymentStatus.AWAITING_PAYMENT) {
+                throw new Exception("Cobranças com status $payment.status não podem ser recebidas")
+            }
+
+            notificationService.notify(payment, "Pagamento recebido", "O pagamento de uma cobrança foi recebido.")
+        }
+
+        if (status == PaymentStatus.OVERDUE) {
+            notificationService.notify(payment, "Cobrança vencida", "Uma cobrança passou da data de vencimento.")
+        }
 
         payment.status = status
 
