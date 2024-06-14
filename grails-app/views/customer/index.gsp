@@ -11,13 +11,7 @@
     </head>
     <body title="Cadastro de cliente">
         <atlas-panel>
-            <div class="error-message hide">
-                <g:if test="${flash.message}">
-                    <div class="alert alert-danger">
-                        ${flash.message}
-                    </div>
-                </g:if>
-            </div>
+            <g:render template="templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'customer', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
