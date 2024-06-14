@@ -30,7 +30,7 @@ class CustomerController extends BaseController {
 
             def errorMessage = "Erro ao salvar os dados, verifique todos os campos e tente novamente."
             if (validationException.errors) {
-                errorMessage = validationException.errors.allErrors.collect { it.defaultMessage }.join(', ')
+                errorMessage = validationException.errors.allErrors.collect { it.defaultMessage }.join("\n")
             }
 
             flash.type = MessageType.ERROR
