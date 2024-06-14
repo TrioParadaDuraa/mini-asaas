@@ -1,12 +1,13 @@
 package com.mini.asaas.payment
 
+import com.mini.asaas.EmailService
 import com.mini.asaas.customer.Customer
 import com.mini.asaas.notification.NotificationService
 import com.mini.asaas.payer.Payer
+
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
-import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -15,6 +16,8 @@ import org.apache.commons.lang.time.DateUtils
 @GrailsCompileStatic
 @Transactional
 class PaymentService {
+
+    EmailService emailService
 
     NotificationService notificationService
 
@@ -29,6 +32,12 @@ class PaymentService {
         payment.save(failOnError: true)
 
         notificationService.notify(payment, "Cobrança criada", "Uma nova cobrança foi criada.")
+
+        String emailSubject = "Cobrança criada"
+        String emailTemplate = "createdTemplate"
+
+        emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+        emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
 
         return payment
     }
@@ -59,6 +68,12 @@ class PaymentService {
         payment.save(failOnError: true)
 
         notificationService.notify(payment, "Cobrança excluída", "Uma cobrança foi excluída.")
+
+        String emailSubject = "Cobrança excluída"
+        String emailTemplate = "deletedTemplate"
+
+        emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+        emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
     }
 
     public void restore(Long paymentId, Long customerId) {
@@ -122,10 +137,22 @@ class PaymentService {
             }
 
             notificationService.notify(payment, "Pagamento recebido", "O pagamento de uma cobrança foi recebido.")
+
+            String emailSubject = "Pagamento recebido"
+            String emailTemplate = "receivedTemplate"
+
+            emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+            emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
         }
 
         if (status == PaymentStatus.OVERDUE) {
             notificationService.notify(payment, "Cobrança vencida", "Uma cobrança passou da data de vencimento.")
+
+            String emailSubject = "Cobrança vencida"
+            String emailTemplate = "overdueTemplate"
+
+            emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
+            emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
         }
 
         payment.status = status
