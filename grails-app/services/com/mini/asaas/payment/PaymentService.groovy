@@ -8,7 +8,6 @@ import com.mini.asaas.payer.Payer
 import com.mini.asaas.utils.enums.PaymentStatus
 
 import grails.compiler.GrailsCompileStatic
-import grails.events.annotation.Publisher
 import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 
@@ -59,7 +58,7 @@ class PaymentService {
         return Payment.query(filterList).list() as List<Payment>
     }
 
-    public Payment delete(Long paymentId, Long customerId) {
+    public void delete(Long paymentId, Long customerId) {
         Payment payment = find([id: paymentId, customerId: customerId])
 
         if (payment.deleted) throw new Exception("Cobrança já inativa")
@@ -75,8 +74,6 @@ class PaymentService {
 
         emailService.sendEmail(payment.payer.email, emailSubject, "payer/$emailTemplate")
         emailService.sendEmail(payment.customer.email, emailSubject, "customer/$emailTemplate")
-
-        return payment
     }
 
     public void restore(Long paymentId, Long customerId) {
@@ -129,7 +126,7 @@ class PaymentService {
         }
     }
 
-    public Payment updateStatus(Long paymentId, PaymentStatus status) {
+    public void updateStatus(Long paymentId, PaymentStatus status) {
         Payment payment = find([id: paymentId])
 
         if (payment.deleted && status != PaymentStatus.OVERDUE) throw new Exception("Cobrança inativa")
@@ -161,7 +158,5 @@ class PaymentService {
         payment.status = status
 
         payment.save(failOnError: true)
-
-        return payment
     }
 }
