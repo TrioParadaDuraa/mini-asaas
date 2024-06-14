@@ -2,7 +2,6 @@ package com.mini.asaas.notification
 
 import com.mini.asaas.BaseController
 
-import grails.rest.RestfulController
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured("isAuthenticated()")
