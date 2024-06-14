@@ -59,6 +59,17 @@ class PayerController extends BaseController {
         }
     }
 
+    def edit() {
+        try {
+            Payer payer = payerService.find([id: params.long("id"), customerId: getCurrentCustomerId()])
+
+            return [payer: payer]
+        } catch (Exception exception) {
+            log.error("PayerController.edit >> Erro ao tentar editar pagador", exception)
+            render "Não foi possível editar pagador"
+        }
+    }
+
     def update() {
         try {
             PayerAdapter adapter = new PayerAdapter(params)
