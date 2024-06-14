@@ -1,7 +1,10 @@
-setTimeout(function() {
-    var errorMessage = document.getElementById('error-message');
-    errorMessage.classList.add('hide');
+document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
-        errorMessage.remove();
-    }, 500);
-}, 5000);
+        var errorMessage = document.querySelector('.error-message');
+        errorMessage.classList.remove('hide');
+
+        setTimeout(function() {
+            errorMessage.classList.add('hide');
+        }, 7000);
+    }, 300);
+});
