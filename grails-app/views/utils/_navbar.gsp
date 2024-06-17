@@ -1,4 +1,5 @@
 <atlas-navbar slot="navbar">
+    <a href="${createLink(controller: 'dashboard', action: 'index')}"><atlas-icon name="home" size="3x"></atlas-icon></a>
     <atlas-layout slot="actions">
         <atlas-icon-button  icon="bell" class="js-notification-bell-button" size="3x" data-atlas-dropdown="test-dropdown" hoverable="" badge-number="0" tooltip-placement="bottom" tooltip-trigger="hover focus" aria-expanded="false">
         </atlas-icon-button>
@@ -9,8 +10,11 @@
     </atlas-layout>
     <atlas-layout slot="actions">
         <atlas-avatar data-atlas-dropdown="user-options" image="" user-name="Atlas user" show-icon-mobile="" show-carret="" hoverable=""></atlas-avatar>
-        <atlas-dropdown id="user-options" class="js-atlas-user-menu" header="Email do usuario :)" auto-close="" auto-close-trigger="outside" action="user-menu" tabindex="-1">
+        <atlas-dropdown id="user-options" class="js-atlas-user-menu" header="<sec:ifLoggedIn><sec:username/></sec:ifLoggedIn>" auto-close="" auto-close-trigger="outside" action="user-menu" tabindex="-1">
             <atlas-dropdown-item icon="cog" theme="secondary" href="${createLink(controller: 'customer', action: 'show')}">Minha conta</atlas-dropdown-item>
+            <form action="${createLink(controller: 'logout', action: 'index')}" method="POST">
+                <button type="submit" class="logout-button">Sair</button>
+            </form>
         </atlas-dropdown>
     </atlas-layout>
 </atlas-navbar>

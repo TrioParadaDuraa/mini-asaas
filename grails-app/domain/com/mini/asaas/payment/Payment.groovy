@@ -46,13 +46,23 @@ class Payment extends BaseDomain {
             }
         }
 
-        overdueIds {
+        overdueIds { Map params ->
             projections {
                 property('id')
             }
             lt('dueDate', DateUtils.truncate(new Date(), Calendar.DAY_OF_MONTH))
             not {
                 inList('status', [PaymentStatus.RECEIVED, PaymentStatus.RECEIVED_IN_CASH, PaymentStatus.OVERDUE])
+            }
+            if (params.containsKey("deleted")) {
+                if (Boolean.valueOf(params.deleted)) {
+                    eq("deleted", true)
+                } else {
+                    eq("deleted", false)
+                }
+            }
+            if (params.containsKey("customerId")) {
+                eq("customer.id", params.customerId)
             }
         }
     }

@@ -20,7 +20,7 @@
         <li>
             <atlas-button
                 description="Redefinir senha"
-                href=""
+                href="${createLink(controller: 'user', action: 'edit')}"
                 icon="spanner"
                 type="${ controllerName == 'user' && actionName == 'edit' ? 'filled' : 'ghost' }"
             ></atlas-button>

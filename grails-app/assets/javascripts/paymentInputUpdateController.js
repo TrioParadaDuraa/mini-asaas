@@ -1,9 +1,9 @@
-function PaymentInputUpdateController() {
-    var payerCpfCnpj = document.getElementById('js-payer-cpf-cnpj');
-    var payerEmail = document.getElementById('js-payer-email');
-    var payerMobilePhone = document.getElementById('js-payer-mobile-phone');
-    var payerSelect = document.getElementById('js-payer-select');
-    var selectReference = document.querySelector("atlas-select");
+function PaymentInputUpdateController(reference) {
+    var payerCpfCnpj = reference.querySelector('.js-payer-cpf-cnpj');
+    var payerEmail = reference.querySelector('.js-payer-email');
+    var payerMobilePhone = reference.querySelector('.js-payer-mobile-phone');
+    var payerSelect = reference.querySelector('.js-payer-select');
+    var selectReference = reference.querySelector("atlas-select");
     var selectedOptions;
 
     this.init = function() {
@@ -22,6 +22,7 @@ function PaymentInputUpdateController() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    var paymentInputUpdateController = new PaymentInputUpdateController();
+    var reference = document.querySelector('.js-payment-panel')
+    var paymentInputUpdateController = new PaymentInputUpdateController(reference);
     paymentInputUpdateController.init();
 });
