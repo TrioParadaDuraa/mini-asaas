@@ -45,3 +45,9 @@
     cursor: pointer;
     background-color: #73a938;
 }
+
+.bottom-payment-card {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

@@ -6,15 +6,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Criar cobrança</title>
-        <asset:javascript src="paymentInputUpdate.js"/>
+        <asset:javascript src="PaymentInputUpdateController.js"/>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Cadastro de cobrança">
-        <atlas-panel>
+        <atlas-panel class="js-payment-panel">
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
                         <atlas-col lg="3" md="2" sm="1">
-                            <atlas-select label="Selecione um pagador:" id="js-payer-select" required="" name="payerId" placeholder="Selecione um pagador">
+                            <atlas-select label="Selecione um pagador:" class="js-payer-select" required="" name="payerId" placeholder="Selecione um pagador">
                                 <g:each var="payer" in="${payerList}">
                                     <atlas-option
                                         label="${payer.name}"
@@ -27,13 +29,13 @@
                             </atlas-select>
                         </atlas-col>
                         <atlas-col lg="3" md="2" sm="1">
-                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ" size="md" name="payerCpfCnpj" id="js-payer-cpf-cnpj" value="" required="" disabled=""></atlas-masked-input>
+                            <atlas-masked-input mask-alias="cpf-cnpj" label="CPF/CNPJ" size="md" name="payerCpfCnpj" class="js-payer-cpf-cnpj" value="" required="" disabled=""></atlas-masked-input>
                         </atlas-col>
                         <atlas-col lg="3" md="1" sm="1">
-                            <atlas-masked-input mask-alias="email" label="Email" size="md" name="email" id="js-payer-email" value="" required="" disabled=""></atlas-masked-input>
+                            <atlas-masked-input mask-alias="email" label="Email" size="md" name="email" class="js-payer-email" value="" required="" disabled=""></atlas-masked-input>
                         </atlas-col>
                         <atlas-col lg="3" md="1" sm="1">
-                            <atlas-masked-input mask-alias="cell-phone" label="Celular" size="md" name="mobilePhone" id="js-payer-mobile-phone" value="" required="" disabled=""></atlas-masked-input>
+                            <atlas-masked-input mask-alias="cell-phone" label="Celular" size="md" name="mobilePhone" class="js-payer-mobile-phone" value="" required="" disabled=""></atlas-masked-input>
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
@@ -65,13 +67,6 @@
                     <atlas-button submit description="Criar cobrança" slot="actions" theme="success"></atlas-button>
                 </div>
             </atlas-form>
-            <g:if test="${flash.message}">
-                <section>
-                    <div>
-                        <p>${flash.message}</p>
-                    </div>
-                </section>
-            </g:if>
         </atlas-panel>
     </body>
 </html>

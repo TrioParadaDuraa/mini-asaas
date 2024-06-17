@@ -14,10 +14,18 @@ class CustomerController extends BaseController {
     CustomerService customerService
 
     @Secured("permitAll")
-    def index() {}
+    def index() {
+        if (isLoggedIn()) {
+            redirect(controller: "dashboard", action: "index")
+        }
+    }
 
     @Secured("permitAll")
     def save() {
+        if (isLoggedIn()) {
+            return redirect(controller: "dashboard", action: "index")
+        }
+
         try {
             CreateCustomerAdapter customerAdapter = new CreateCustomerAdapter(params)
             CreateUserAdapter userAdapter = new CreateUserAdapter(params)
@@ -49,7 +57,7 @@ class CustomerController extends BaseController {
             return [customer: customer]
         } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
-            render "Cliente não encontrado"
+            render view: /error/
         }
     }
 
@@ -74,9 +82,17 @@ class CustomerController extends BaseController {
             Customer customer = customerService.update(getCurrentCustomerId(), adapter)
 
             redirect(action: "show", id: customer.id)
+        } catch (ValidationException validationException) {
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
+            
+            redirect(action: "edit")
         } catch (Exception exception) {
             log.error("CustomerController.update >> Não foi possível salvar as atualizações", exception)
-            render "Não foi possível atualizar os dados"
+
+            flash.type = MessageType.ERROR
+            flash.message = "Não foi possível atualizar os dados"
+            redirect(action: "edit")
         }
     }
 }
