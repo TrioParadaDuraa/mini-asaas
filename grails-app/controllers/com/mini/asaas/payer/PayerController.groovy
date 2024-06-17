@@ -2,7 +2,9 @@ package com.mini.asaas.payer
 
 import com.mini.asaas.BaseController
 import com.mini.asaas.customer.Customer
+
 import com.mini.asaas.utils.Utils
+import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
@@ -23,6 +25,7 @@ class PayerController extends BaseController {
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
+            flash.type = MessageType.ERROR
             flash.errors = validationException.errors.allErrors
 
             redirect(action: "index")
@@ -77,6 +80,7 @@ class PayerController extends BaseController {
 
             redirect(action: "show", id: params.id)
         } catch (ValidationException validationException) {
+            flash.type = MessageType.ERROR
             flash.errors = validationException.errors.allErrors
         
             redirect(action: "edit", id: params.id)
