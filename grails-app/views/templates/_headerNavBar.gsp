@@ -7,7 +7,10 @@
             <a href="${createLink(controller: 'customer', action: 'edit')}"><atlas-icon name="pencil" size="2x"></atlas-icon> Atualizar dados</a>
         </li>
         <li>
-            <a href=""><atlas-icon name="spanner" size="2x"></atlas-icon> Redefinir senha</a>
+            <a href="${createLink(controller: 'user', action: 'edit')}"><atlas-icon name="spanner" size="2x"></atlas-icon> Redefinir senha</a>
+        </li>
+        <li>
+            <a href="${createLink(controller: 'user', action: 'list')}"><atlas-icon name="users" size="2x"></atlas-icon> Usuários</a>
         </li>
     </ul>
 </div>

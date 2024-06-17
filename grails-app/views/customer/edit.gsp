@@ -7,7 +7,7 @@
         <title>Atualizar dados</title>
     </head>
     <body title="Atualize seus dados cadastrais">
-        <g:render template="templates/headerNavBar"/>
+        <g:render template="/templates/headerNavBar"/>
         <atlas-form-panel class="js-person-form" method="POST" action="${createLink(controller: 'customer', action: 'update')}">
             <atlas-grid>
                 <atlas-row>

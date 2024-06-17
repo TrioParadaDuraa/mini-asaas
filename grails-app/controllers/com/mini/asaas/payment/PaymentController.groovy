@@ -101,4 +101,15 @@ class PaymentController extends BaseController {
             render "Não foi possível carregar cobranças"
         }
     }
+
+    def proof() {
+        try {
+            Payment payment = paymentService.find([id: params.long('id'), customerId: getCurrentCustomerId()])
+
+            return [payment: payment]
+        } catch (Exception exception) {
+            log.error("PaymentController.proof >> Erro ao gerar comprovante de cobrança", exception)
+            render "Não foi possível gerar seu comprovante de cobrança"
+        }
+    }
 }

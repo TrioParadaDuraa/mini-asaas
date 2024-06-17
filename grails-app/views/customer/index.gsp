@@ -6,9 +6,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastro de cliente</title>
+        <asset:stylesheet src="errornotify.css"/>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Cadastro de cliente">
         <atlas-panel>
+            <g:render template="templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'customer', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
@@ -83,7 +86,7 @@
                     </div>
                 </atlas-grid>
                 <div class="bottom-buttons">
-                        <atlas-button description="Cancelar" slot="actions" theme="danger"></atlas-button>
+                        <atlas-button description="Cancelar" slot="actions" theme="danger" href="/"></atlas-button>
                         <atlas-button submit description="Criar conta" slot="actions" theme="success"></atlas-button>
                 </div>
                 <div class="bottom-text">
