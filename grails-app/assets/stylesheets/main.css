@@ -5,3 +5,8 @@
     gap: 0.3125rem;
     width: 100%;
 }
+
+atlas-navbar a {
+    color: inherit;
+    text-decoration: none;
+}
