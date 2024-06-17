@@ -12,7 +12,7 @@
             </div>
             <div class="section-value">
                 <div class="display-value info">
-                    <p>500</p>
+                    <p>${payerList.size()}</p>
                 </div>
             </div>
         </div>

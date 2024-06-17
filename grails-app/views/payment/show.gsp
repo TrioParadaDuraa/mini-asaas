@@ -6,9 +6,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Visualização de cobrança</title>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Dados da cobrança">
         <atlas-panel>
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
@@ -68,21 +70,17 @@
                         </div>
                     </g:if>
                     <g:else>
-                        <div class="edit-payment-card-item">
-                            <label for="awaiting_payment">Aguardando pagamento</label>
-                            <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                        <div class="bottom-payment-card">
+                            <div class="edit-payment-card-item">
+                                <label for="awaiting_payment">Aguardando pagamento</label>
+                                <input type="radio" id="awaiting_payment" name="status" value="${PaymentStatus.AWAITING_PAYMENT}">
+                            </div>
+                            <atlas-button description="Gerar comprovante" theme="primary" href="${createLink(controller: 'payment', action: 'proof', id: payment.id)}"></atlas-button>
                         </div>
                     </g:else>
                 </div>
                 <button class="edit-payment-form-button" type="submit">Salvar</button>
             </form>
-            <g:if test="${flash.message}">
-                <section>
-                    <div>
-                        <p>${flash.message}</p>
-                    </div>
-                </section>
-            </g:if>
         </atlas-panel>
     </body>
 </html>

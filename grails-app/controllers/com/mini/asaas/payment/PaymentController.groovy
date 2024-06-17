@@ -10,6 +10,7 @@ import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
@@ -31,6 +32,11 @@ class PaymentController extends BaseController {
             Payment payment = paymentService.save(adapter, getCurrentCustomerId())
 
             redirect (action: "show", id: payment.id)
+        } catch (ValidationException validationException) {
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
+            
+            redirect(action: "index")
         } catch (Exception exception) {
             log.error("PaymentController.save >> Erro ao cadastrar cobrança", exception)
             flash.type = MessageType.ERROR
@@ -47,7 +53,7 @@ class PaymentController extends BaseController {
             return [payment: payment]
         } catch (Exception exception) {
             log.error("PaymentController.show >> Erro ao exibir cobrança", exception)
-            render "Cobrança não encontrada"
+            render view: /error/
         }
     }
 
@@ -61,6 +67,7 @@ class PaymentController extends BaseController {
             log.error("PaymentController.update >> Erro ao atualizar status", exception)
             flash.type = MessageType.ERROR
             flash.message = 'Erro ao atualizar status, tente novamente.'
+            redirect(action: "show", id: params.id)
         }
     }
 
@@ -99,6 +106,17 @@ class PaymentController extends BaseController {
         } catch (Exception exception) {
             log.error("PaymentController.list >> Erro ao listar cobranças", exception)
             render "Não foi possível carregar cobranças"
+        }
+    }
+
+    def proof() {
+        try {
+            Payment payment = paymentService.find([id: params.long('id'), customerId: getCurrentCustomerId()])
+
+            return [payment: payment]
+        } catch (Exception exception) {
+            log.error("PaymentController.proof >> Erro ao gerar comprovante de cobrança", exception)
+            render "Não foi possível gerar seu comprovante de cobrança"
         }
     }
 }

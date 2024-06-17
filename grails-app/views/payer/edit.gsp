@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Editar pagador</title>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body>
         <atlas-panel header="Atualize os dados do pagador">
