@@ -22,7 +22,7 @@ class PayerAdapter extends BasePersonAdapter {
         this.personType = PersonType.convert(params.personType.toString().toUpperCase())
         this.postalCode = Utils.removeNoNumeric(params.postalCode.toString())
         this.address = params.address.toString().trim()
-        this.addressNumber = params.addressNumber.toString().trim()
+        this.addressNumber = params.addressNumber.toString().trim() ?: "S/N"
         this.addressComplement = params.addressComplement.toString().trim() ?: null
         this.district = params.district.toString().trim()
         this.city = params.city.toString().trim()
