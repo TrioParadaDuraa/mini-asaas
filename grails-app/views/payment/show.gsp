@@ -6,9 +6,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Visualização de cobrança</title>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Dados da cobrança">
         <atlas-panel>
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-grid>
                 <atlas-row>
                     <atlas-col lg="6" md="3" sm="1">
@@ -76,13 +78,6 @@
                 </div>
                 <button class="edit-payment-form-button" type="submit">Salvar</button>
             </form>
-            <g:if test="${flash.message}">
-                <section>
-                    <div>
-                        <p>${flash.message}</p>
-                    </div>
-                </section>
-            </g:if>
         </atlas-panel>
     </body>
 </html>

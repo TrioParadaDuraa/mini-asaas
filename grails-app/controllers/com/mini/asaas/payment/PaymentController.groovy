@@ -67,6 +67,7 @@ class PaymentController extends BaseController {
             log.error("PaymentController.update >> Erro ao atualizar status", exception)
             flash.type = MessageType.ERROR
             flash.message = 'Erro ao atualizar status, tente novamente.'
+            redirect(action: "show", id: params.id)
         }
     }
 
