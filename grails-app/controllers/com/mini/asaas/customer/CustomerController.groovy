@@ -1,8 +1,12 @@
 package com.mini.asaas.customer
 
 import com.mini.asaas.BaseController
+
 import com.mini.asaas.user.CreateUserAdapter
+
 import com.mini.asaas.utils.message.MessageType
+
+import com.mini.asaas.domain.exceptions.BusinessException
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
@@ -39,7 +43,7 @@ class CustomerController extends BaseController {
             flash.oldFormData = params
             
             redirect(action: "index")
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
             flash.type = MessageType.ERROR
             flash.message = "Ocorreu um erro ao salvar os dados."
@@ -53,10 +57,10 @@ class CustomerController extends BaseController {
         try {
             Customer customer = Customer.read(getCurrentCustomerId())
 
-            if (!customer) throw new Exception("Cliente não encontrado")
+            if (!customer) throw new BusinessException("Cliente não encontrado")
 
             return [customer: customer]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
             render view: /error/
         }
@@ -67,10 +71,10 @@ class CustomerController extends BaseController {
         try {
             Customer customer = Customer.read(getCurrentCustomerId())
 
-            if (!customer) throw new Exception("Cliente não encontrado para edição")
+            if (!customer) throw new BusinessException("Cliente não encontrado para edição")
 
             return [customer: customer]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("CustomerController.edit >> Cliente não encontrado para edição", exception)
             render "Cliente não encontrado para edição"
         }
@@ -88,7 +92,7 @@ class CustomerController extends BaseController {
             flash.errors = validationException.errors.allErrors
             
             redirect(action: "edit")
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("CustomerController.update >> Não foi possível salvar as atualizações", exception)
 
             flash.type = MessageType.ERROR
