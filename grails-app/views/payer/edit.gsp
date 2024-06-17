@@ -13,7 +13,7 @@
                 <atlas-grid>
                     <atlas-row>
                         <atlas-col lg="6" md="2" sm="1">
-                            <atlas-input label="Nome do pagador:" required="" size="md" name="name" value="${payer.name}"></atlas-input>
+                            <atlas-input label="Nome do pagador:" required="" size="md" name="name" value="${flash.oldFormData?.name ?: payer.name}"></atlas-input>
                         </atlas-col>
                         <atlas-col lg="3" md="2" sm="1">
                             <atlas-input label="Tipo de pessoa:" required="" size="md" name="personType" value="${payer.personType.getLabel()}" disabled=""></atlas-input>
@@ -24,40 +24,40 @@
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="6" md="2" sm="1">
-                            <atlas-masked-input mask-alias="email" label="Email:" required="" size="md" name="email" value="${payer.email}"></atlas-masked-input>
+                            <atlas-masked-input mask-alias="email" label="Email:" required="" size="md" name="email" value="${flash.oldFormData?.email ?: payer.email}"></atlas-masked-input>
                         </atlas-col>
                         <atlas-col lg="3" md="2" sm="1">
-                            <atlas-masked-input mask-alias="landline" label="Telefone:" size="md" name="phone" value="${payer.phone}"></atlas-masked-input>
+                            <atlas-masked-input mask-alias="landline" label="Telefone:" size="md" name="phone" value="${flash.oldFormData?.phone ?: payer.phone}"></atlas-masked-input>
                         </atlas-col>
                         <atlas-col lg="3" md="2" sm="1">
-                            <atlas-masked-input mask-alias="cell-phone" label="Celular:" required="" size="md" name="mobilePhone" value="${payer.mobilePhone}"></atlas-masked-input>
+                            <atlas-masked-input mask-alias="cell-phone" label="Celular:" required="" size="md" name="mobilePhone" value="${flash.oldFormData?.mobilePhone ?: payer.mobilePhone}"></atlas-masked-input>
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="5" md="3" sm="1">
-                            <atlas-postal-code label="CEP" required="" size="md" name="postalCode" value="${payer.postalCode}"></atlas-postal-code>
+                            <atlas-postal-code label="CEP" required="" size="md" name="postalCode" value="${flash.oldFormData?.postalCode ?: payer.postalCode}"></atlas-postal-code>
                         </atlas-col>
                         <atlas-col lg="7" md="3" sm="1">
-                            <atlas-input label="Rua/Avenida/Alameda" required="" size="md" name="address" value="${payer.address}"></atlas-input>
+                            <atlas-input label="Rua/Avenida/Alameda" required="" size="md" name="address" value="${flash.oldFormData?.address ?: payer.address}"></atlas-input>
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="5" md="3" sm="1">
-                            <atlas-input label="Número" required="" size="md" name="addressNumber" value="${payer.addressNumber}"></atlas-input>
+                            <atlas-input label="Número" required="" size="md" name="addressNumber" value="${flash.oldFormData?.addressNumber ?: payer.addressNumber}"></atlas-input>
                         </atlas-col>
                         <atlas-col lg="7" md="3" sm="1">
-                            <atlas-input label="Complemento" size="md" name="addressComplement" value="${payer.addressComplement}"></atlas-input>
+                            <atlas-input label="Complemento" size="md" name="addressComplement" value="${flash.oldFormData?.addressComplement ?: payer.addressComplement}"></atlas-input>
                         </atlas-col>
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="5" md="2" sm="1">
-                            <atlas-input label="Bairro" required="" size="md" name="district" value="${payer.district}"></atlas-input>
+                            <atlas-input label="Bairro" required="" size="md" name="district" value="${flash.oldFormData?.district ?: payer.district}"></atlas-input>
                         </atlas-col>
                         <atlas-col lg="5" md="2" sm="1">
-                            <atlas-input label="Cidade" required="" size="md" name="city" value="${payer.city}"></atlas-input>
+                            <atlas-input label="Cidade" required="" size="md" name="city" value="${flash.oldFormData?.city ?: payer.city}"></atlas-input>
                         </atlas-col>
                         <atlas-col lg="2" md="2" sm="1">
-                            <atlas-input label="UF" required="" size="md" name="state" value="${payer.state}"></atlas-input>
+                            <atlas-input label="UF" required="" size="md" name="state" value="${flash.oldFormData?.state ?: payer.state}"></atlas-input>
                         </atlas-col>
                     </atlas-row>
                 </atlas-grid>

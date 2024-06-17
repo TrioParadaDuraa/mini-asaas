@@ -83,6 +83,7 @@ class PayerController extends BaseController {
         } catch (ValidationException validationException) {
             flash.type = MessageType.ERROR
             flash.errors = validationException.errors.allErrors
+            flash.oldFormData = params
         
             redirect(action: "edit", id: params.id)
         } catch (Exception exception) {
