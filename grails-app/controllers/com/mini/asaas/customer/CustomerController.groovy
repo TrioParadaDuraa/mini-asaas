@@ -74,9 +74,17 @@ class CustomerController extends BaseController {
             Customer customer = customerService.update(getCurrentCustomerId(), adapter)
 
             redirect(action: "show", id: customer.id)
+        } catch (ValidationException validationException) {
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
+            
+            redirect(action: "edit")
         } catch (Exception exception) {
             log.error("CustomerController.update >> Não foi possível salvar as atualizações", exception)
-            render "Não foi possível atualizar os dados"
+
+            flash.type = MessageType.ERROR
+            flash.message = "Não foi possível atualizar os dados"
+            redirect(action: "edit")
         }
     }
 }
