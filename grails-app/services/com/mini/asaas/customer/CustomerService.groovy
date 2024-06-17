@@ -79,6 +79,10 @@ class CustomerService {
             customer.errors.reject("email", null, "Email inválido")
         }
 
+        if (Customer.findByEmail(adapter.email)) {
+            customer.errors.reject("email", null, "Email já cadastrado")
+        }
+
         if (adapter.phone && !PhoneValidator.isValidPhone(adapter.phone)) {
             customer.errors.reject("phone", null, "Telefone inválido")
         }
