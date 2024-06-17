@@ -6,9 +6,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Criar pagador</title>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body>
         <atlas-panel header="Cadastro de pagador">
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'payer', action: 'save')}">
                 <atlas-grid>
                     <div>

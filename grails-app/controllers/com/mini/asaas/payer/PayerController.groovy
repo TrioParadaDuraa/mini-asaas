@@ -23,7 +23,7 @@ class PayerController extends BaseController {
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.errors = validationException.errors.allErrors
 
             redirect(action: "index")
         } catch (Exception exception) {
@@ -77,9 +77,9 @@ class PayerController extends BaseController {
 
             redirect(action: "show", id: params.id)
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.errors = validationException.errors.allErrors
         
-            redirect(action: "show", id: params.id)
+            redirect(action: "edit", id: params.id)
         } catch (Exception exception) {
             log.error("PayerController.update >> Erro ao atualizar dados de pagador", exception)
             render "Não foi possível atualizar dados do pagador"

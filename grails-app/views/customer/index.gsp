@@ -11,7 +11,7 @@
     </head>
     <body title="Cadastro de cliente">
         <atlas-panel>
-            <g:render template="templates/message/errorMessage"/>
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'customer', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
