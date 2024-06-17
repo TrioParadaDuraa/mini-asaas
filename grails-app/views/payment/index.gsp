@@ -7,9 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Criar cobrança</title>
         <asset:javascript src="paymentInputUpdate.js"/>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Cadastro de cobrança">
         <atlas-panel>
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'payment', action: 'save')}">
                 <atlas-grid>
                     <atlas-row>
@@ -65,13 +67,6 @@
                     <atlas-button submit description="Criar cobrança" slot="actions" theme="success"></atlas-button>
                 </div>
             </atlas-form>
-            <g:if test="${flash.message}">
-                <section>
-                    <div>
-                        <p>${flash.message}</p>
-                    </div>
-                </section>
-            </g:if>
         </atlas-panel>
     </body>
 </html>

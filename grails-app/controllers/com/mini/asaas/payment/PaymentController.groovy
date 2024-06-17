@@ -10,6 +10,7 @@ import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
 @GrailsCompileStatic
 @Secured("isAuthenticated()")
@@ -31,6 +32,11 @@ class PaymentController extends BaseController {
             Payment payment = paymentService.save(adapter, getCurrentCustomerId())
 
             redirect (action: "show", id: payment.id)
+        } catch (ValidationException validationException) {
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
+            
+            redirect(action: "index")
         } catch (Exception exception) {
             log.error("PaymentController.save >> Erro ao cadastrar cobrança", exception)
             flash.type = MessageType.ERROR
