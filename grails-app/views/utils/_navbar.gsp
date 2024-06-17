@@ -1,11 +1,12 @@
 <atlas-navbar slot="navbar">
     <a href="${createLink(controller: 'dashboard', action: 'index')}"><atlas-icon name="home" size="3x"></atlas-icon></a>
-    <atlas-layout slot="actions">
-        <atlas-icon-button  icon="bell" class="js-notification-bell-button" size="3x" data-atlas-dropdown="test-dropdown" hoverable="" badge-number="0" tooltip-placement="bottom" tooltip-trigger="hover focus" aria-expanded="false">
+    <atlas-layout slot="actions" class="js-navbar-user">
+        <atlas-icon-button icon="bell" class="js-notification-bell-button" size="3x" data-atlas-dropdown="notification-dropdown" hoverable="" badge-number="0" tooltip-placement="bottom" tooltip-trigger="hover focus" aria-expanded="false">
         </atlas-icon-button>
-        <atlas-dropdown id="test-dropdown" placement="bottom-end" class="js-notification-dropdown" loading-text="Estamos carregando as notificações" header="Notificações" no-gap="" auto-close="" auto-close-trigger="outside" tabindex="-1">
-            <atlas-notification-card></atlas-notification-card>
-            <atlas-notification-card></atlas-notification-card>
+        <atlas-dropdown id="notification-dropdown" placement="bottom-end" class="js-notification-dropdown" loading-text="Estamos carregando as notificações" header="Notificações" no-gap="" auto-close="" auto-close-trigger="outside" tabindex="-1">
+            <div class="js-notification-container">
+
+            </div>
         </atlas-dropdown>
     </atlas-layout>
     <atlas-layout slot="actions">
