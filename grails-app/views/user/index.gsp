@@ -6,10 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Usuários</title>
         <asset:stylesheet src="createUserForm.css"/>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Usuários">
         <g:render template="/templates/headerNavBar"/>
         <atlas-panel>
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-form action="${createLink(controller: 'user', action: 'save')}" method="POST">
                 <atlas-input label="Nome" name="name" value="${params.name}" class="form-field" required="" placeholder="Nome do usuário"></atlas-input>
                 
