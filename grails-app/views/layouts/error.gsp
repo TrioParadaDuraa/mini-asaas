@@ -16,6 +16,7 @@
     <body>
         <atlas-screen>
             <div class="navbar-layout">
+                <a class="home-icon" href="${createLink(controller: 'dashboard', action: 'index')}"><atlas-icon name="home" size="3x" theme="white"></atlas-icon></a>
                 <asset:image src="/homepage/asaas-logo.png" class="asaas-logo"/>
             </div>
             <atlas-page>
