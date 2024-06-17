@@ -38,7 +38,7 @@
                     <p>Tipo de pessoa:</p>
                     <atlas-toggle name="personType">
                         <atlas-toggle-item value="${PersonType.NATURAL}" label="Pessoa física" ${flash.oldFormData?.personType == "NATURAL" ? "checked" : null}></atlas-toggle-item>
-                        <atlas-toggle-item value="${PersonType.LEGAL}" label="Pessoa juridica" ${flash.oldFormData?.personType == "LEGAL" ? "checked" : null}></atlas-toggle-item>
+                        <atlas-toggle-item value="${PersonType.LEGAL}" label="Pessoa jurídica" ${flash.oldFormData?.personType == "LEGAL" ? "checked" : null}></atlas-toggle-item>
                     </atlas-toggle>
                 </div>
                 <atlas-grid>
