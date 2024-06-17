@@ -8,6 +8,8 @@ import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.enums.PaymentStatus
 import com.mini.asaas.utils.message.MessageType
 
+import com.mini.asaas.domain.exceptions.BusinessException
+
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
@@ -51,7 +53,7 @@ class PaymentController extends BaseController {
             Payment payment = paymentService.find([id: params.long('id'), customerId: getCurrentCustomerId()])
 
             return [payment: payment]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PaymentController.show >> Erro ao exibir cobrança", exception)
             render view: /error/
         }
@@ -63,7 +65,7 @@ class PaymentController extends BaseController {
             paymentService.updateStatus(params.long('id'), status)
 
             redirect(action: "show", id: params.id)
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PaymentController.update >> Erro ao atualizar status", exception)
             flash.type = MessageType.ERROR
             flash.message = 'Erro ao atualizar status, tente novamente.'
@@ -76,7 +78,7 @@ class PaymentController extends BaseController {
             paymentService.delete(params.long('id'), getCurrentCustomerId())
 
             redirect(action: "show", id: params.id)
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PaymentController.delete >> Erro ao excluir cobrança", exception)
             render "Não foi possível excluir a cobrança"
         }
@@ -87,7 +89,7 @@ class PaymentController extends BaseController {
             paymentService.restore(params.long('id'), getCurrentCustomerId())
 
             redirect(action: "show", id: params.id)
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PaymentController.restore >> Erro ao restaurar cobrança", exception)
             render "Não foi possivel restaurar a cobrança"
         }
@@ -103,7 +105,7 @@ class PaymentController extends BaseController {
             List<Payment> paymentList = paymentService.list(filterList)
 
             return [paymentList: paymentList]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PaymentController.list >> Erro ao listar cobranças", exception)
             render "Não foi possível carregar cobranças"
         }
@@ -114,7 +116,7 @@ class PaymentController extends BaseController {
             Payment payment = paymentService.find([id: params.long('id'), customerId: getCurrentCustomerId()])
 
             return [payment: payment]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PaymentController.proof >> Erro ao gerar comprovante de cobrança", exception)
             render "Não foi possível gerar seu comprovante de cobrança"
         }

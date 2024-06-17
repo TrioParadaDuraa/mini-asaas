@@ -6,6 +6,8 @@ import com.mini.asaas.customer.Customer
 import com.mini.asaas.utils.Utils
 import com.mini.asaas.utils.message.MessageType
 
+import com.mini.asaas.domain.exceptions.BusinessException
+
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
@@ -30,7 +32,7 @@ class PayerController extends BaseController {
             flash.oldFormData = params
 
             redirect(action: "index")
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.save >> Erro ao cadastrar pagador", exception)
             render "Não foi possível salvar"
         }
@@ -41,7 +43,7 @@ class PayerController extends BaseController {
             Payer payer = payerService.find([id: params.long("id"), customerId: getCurrentCustomerId()])
 
             return [payer: payer]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.show >> Erro ao tentar apresentar dados de pagador", exception)
             render "Pagador não encontrado"
         }
@@ -57,7 +59,7 @@ class PayerController extends BaseController {
             List<Payer> payerList = payerService.list(filterList)
 
             return [payerList: payerList]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.list >> Erro ao listar pagadores", exception)
             render "Não foi possível carregar pagadores"
         }
@@ -68,7 +70,7 @@ class PayerController extends BaseController {
             Payer payer = payerService.find([id: params.long("id"), customerId: getCurrentCustomerId()])
 
             return [payer: payer]
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.edit >> Erro ao tentar editar pagador", exception)
             render "Não foi possível editar pagador"
         }
@@ -86,7 +88,7 @@ class PayerController extends BaseController {
             flash.oldFormData = params
         
             redirect(action: "edit", id: params.id)
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.update >> Erro ao atualizar dados de pagador", exception)
             render "Não foi possível atualizar dados do pagador"
         }
@@ -97,7 +99,7 @@ class PayerController extends BaseController {
             payerService.delete(params.long("id"), getCurrentCustomerId())
 
             redirect(action: "list")
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.delete >> Erro ao excluir pagador", exception)
             render "Não foi possível excluir pagador"
         }
@@ -108,7 +110,7 @@ class PayerController extends BaseController {
             payerService.restore(params.long("id"), getCurrentCustomerId())
 
             redirect(action: "list")
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("PayerController.restore >> Erro ao restaurar pagador", exception)
             render "Não foi possível restaurar pagador"
         }

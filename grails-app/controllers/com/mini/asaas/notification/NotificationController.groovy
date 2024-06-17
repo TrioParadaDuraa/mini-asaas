@@ -2,6 +2,8 @@ package com.mini.asaas.notification
 
 import com.mini.asaas.BaseController
 
+import com.mini.asaas.domain.exceptions.BusinessException
+
 import grails.plugin.springsecurity.annotation.Secured
 import grails.converters.JSON
 
@@ -14,10 +16,9 @@ class NotificationController extends BaseController {
         try {
             Long id = getCurrentCustomerId()
             def notifications = notificationService.list(id)
-            throw new Exception("teste")
 
             respond notifications, formats: ['json']
-        } catch (Exception exception) {
+        } catch (BusinessException exception) {
             log.error("NotificationController.list >> Erro tentando retornar notificações", exception)
             render([status: 500, error: "Internal Server Error"] as JSON)
         }
