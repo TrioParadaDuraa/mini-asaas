@@ -6,6 +6,7 @@ import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
 @GrailsCompileStatic
 class CustomerController extends BaseController {
@@ -13,10 +14,18 @@ class CustomerController extends BaseController {
     CustomerService customerService
 
     @Secured("permitAll")
-    def index() {}
+    def index() {
+        if (isLoggedIn()) {
+            redirect(controller: "dashboard", action: "index")
+        }
+    }
 
     @Secured("permitAll")
     def save() {
+        if (isLoggedIn()) {
+            return redirect(controller: "dashboard", action: "index")
+        }
+
         try {
             CreateCustomerAdapter customerAdapter = new CreateCustomerAdapter(params)
             CreateUserAdapter userAdapter = new CreateUserAdapter(params)
@@ -24,10 +33,22 @@ class CustomerController extends BaseController {
             Customer customer = customerService.save(customerAdapter, userAdapter)
 
             redirect(controller: "login", action: "auth")
+        } catch (ValidationException validationException) {
+            log.error("CustomerController.save >> Erro ao cadastrar cliente", validationException)
+
+            def errorMessage = "Erro ao salvar os dados, verifique todos os campos e tente novamente."
+            if (validationException.errors) {
+                errorMessage = validationException.errors.allErrors.collect { it.defaultMessage }.join("\n")
+            }
+
+            flash.type = MessageType.ERROR
+            flash.message = errorMessage
+
+            redirect(action: "index")
         } catch (Exception exception) {
             log.error("CustomerController.save >> Erro ao cadastrar cliente", exception)
             flash.type = MessageType.ERROR
-            flash.message = 'Erro ao salvar os dados, verifique todos os campos e tente novamente.'
+            flash.message = "Ocorreu um erro ao salvar os dados."
 
             redirect(action: "index")
         }
@@ -43,7 +64,7 @@ class CustomerController extends BaseController {
             return [customer: customer]
         } catch (Exception exception) {
             log.error("CustomerController.show >> Cliente não encontrado", exception)
-            render "Cliente não encontrado"
+            render view: /error/
         }
     }
 
