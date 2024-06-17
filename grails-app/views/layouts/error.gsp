@@ -10,14 +10,15 @@
         <link rel="stylesheet" href="https://atlas.asaas.com/v17.6.2/atlas.min.css" crossorigin="anonymous">
         <script defer src="https://atlas.asaas.com/v17.6.2/atlas.min.js" crossorigin="anonymous"></script>
         <asset:stylesheet src="application.css"/>
-        <asset:javascript src="NotificationScriptController.js"/>
         <asset:link rel="icon" href="asaas-icon.png" type="image/x-icon"/>
         <g:layoutHead/>
-</head>
+    </head>
     <body>
         <atlas-screen>
-            <g:render template="/utils/sidebar"/>
-            <g:render template="/utils/navbar"/>
+            <div class="navbar-layout">
+                <a class="home-icon" href="${createLink(controller: 'dashboard', action: 'index')}"><atlas-icon name="home" size="3x" theme="white"></atlas-icon></a>
+                <asset:image src="/homepage/asaas-logo.png" class="asaas-logo"/>
+            </div>
             <atlas-page>
                 <atlas-page-header slot="header" page-name="${pageProperty(name: 'body.title')}">
                 </atlas-page-header>

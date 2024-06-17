@@ -1,3 +1,4 @@
+<%@ page import="com.mini.asaas.utils.FormatUtils" %>
 <div class="card">
     <div class="card-header">
         <div class="header-text">
@@ -13,18 +14,7 @@
             <div class="section-value">
                 <div class="display-value alert">
                     <span>R$</span>
-                    <p>100,00</p>
-                </div>
-            </div>
-        </div>
-        <div class="content-section">
-            <div class="section-header">
-                <p>CONFIRMADO</p>
-            </div>
-            <div class="section-value">
-                <div class="display-value info">
-                    <span>R$</span>
-                    <p>200,00</p>
+                    <p>${FormatUtils.formatBigDecimal(valuesToReceive)}</p>
                 </div>
             </div>
         </div>
@@ -35,7 +25,7 @@
             <div class="section-value">
                 <div class="display-value success">
                     <span>R$</span>
-                    <p>500,00</p>
+                    <p>${FormatUtils.formatBigDecimal(valuesReceived)}</p>
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    width: 33%;
+    width: 30%;
 }
 
 .asaas-logo {
@@ -32,7 +32,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    width: 33%;
+    width: 40%;
 }
 
 .top-text {
@@ -49,10 +49,11 @@ body {
     align-items: center;
     justify-content: center;
     width: 31.25rem;
-    height: 12.5rem;
+    height: 18rem;
     border-radius: 0.3125rem;
     background-color: #FFFFFF;
     box-shadow: 0.625rem -0.625rem 0rem #FFFFFF80;
+    z-index: 999;
 }
 
 .button-homepage {
@@ -90,7 +91,7 @@ a:hover {
     justify-content: space-between;
     align-items: flex-end;
     height: 100vh;
-    width: 33%;
+    width: 30%;
 }
 
 .blue-detail {
@@ -107,3 +108,17 @@ a:hover {
     margin-right: 3.125rem;
 }
 
+@media (max-width: 940px) {
+    .right-bar, .left-bar {
+        display: none;
+    }
+
+    .center {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .card-buttons {
+        width: 100%;
+    }
+}
