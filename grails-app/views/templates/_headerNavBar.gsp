@@ -1,16 +1,37 @@
 <div class="box-header">
     <ul class="nav-tabs">
         <li>
-            <a href="${createLink(controller: 'customer', action: 'show')}"><atlas-icon name="user" size="2x"></atlas-icon> Meus dados</a>
+            <atlas-button
+                description="Meus dados"
+                href="${createLink(controller: 'customer', action: 'show')}"
+                icon="user"
+                type="${ controllerName == 'customer' && actionName == 'show' ? 'filled' : 'ghost' }"
+            >
+            </atlas-button>
         </li>
         <li>
-            <a href="${createLink(controller: 'customer', action: 'edit')}"><atlas-icon name="pencil" size="2x"></atlas-icon> Atualizar dados</a>
+            <atlas-button
+                description="Atualizar dados"
+                href="${createLink(controller: 'customer', action: 'edit')}"
+                icon="pencil"
+                type="${ controllerName == 'customer' && actionName == 'edit' ? 'filled' : 'ghost' }"
+            ></atlas-button>
         </li>
         <li>
-            <a href="${createLink(controller: 'user', action: 'edit')}"><atlas-icon name="spanner" size="2x"></atlas-icon> Redefinir senha</a>
+            <atlas-button
+                description="Redefinir senha"
+                href="${createLink(controller: 'user', action: 'edit')}"
+                icon="spanner"
+                type="${ controllerName == 'user' && actionName == 'edit' ? 'filled' : 'ghost' }"
+            ></atlas-button>
         </li>
         <li>
-            <a href="${createLink(controller: 'user', action: 'list')}"><atlas-icon name="users" size="2x"></atlas-icon> Usuários</a>
+            <atlas-button
+                description="Usuários"
+                href="${createLink(controller: 'user', action: 'list')}"
+                icon="users"
+                type="${ controllerName == 'user' && actionName == 'list' ? 'filled' : 'ghost' }"
+            ></atlas-button>
         </li>
     </ul>
 </div>

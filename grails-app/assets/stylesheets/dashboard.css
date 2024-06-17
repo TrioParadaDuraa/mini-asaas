@@ -1,7 +1,6 @@
 .dashboard-title {
-    width: 32.375rem;
-    height: 7.5625rem;
-    padding: 0 0 2.1875rem 4.6875rem;
+    max-width: 100%;
+    padding: 0 4rem 2.1875rem;
 }
 
 .dashboard-title h1 {
@@ -12,11 +11,14 @@
 
 .dashboard-cards-box {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.625rem;
 }
 
 .card {
-    width: 32.8125rem;
+    flex: 1;
+    flex-basis: 300px;
+    width: 30rem;
     height: 25.3125rem;
     background-color: #FFFFFF;
     border: 0.0625rem solid #CDCDCD;
@@ -96,4 +98,14 @@
 .section-value p {
     margin: 0;
     font-size: 3.125rem;
+}
+
+@media (max-width: 550px) {
+    .dashboard-title h1 {
+        font-size: 3rem;
+    }
+
+    .dashboard-title {
+        padding-inline: 2rem;
+    }
 }

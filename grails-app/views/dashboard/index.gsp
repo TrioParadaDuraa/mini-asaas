@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="dashboard-title">
-            <h1>Boas vindas novamente! 😉 </h1>
+            <h1>Boas vindas novamente! 😉</h1>
         </div>
         <div class="dashboard-cards-box">
             <g:render template="templates/indexCards/cardPagadores"/>
