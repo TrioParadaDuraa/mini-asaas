@@ -5,9 +5,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Atualizar dados</title>
+        <asset:javascript src="errorMessage.js"/>
     </head>
     <body title="Atualize seus dados cadastrais">
         <g:render template="/templates/headerNavBar"/>
+        <g:render template="/templates/message/errorMessage"/>
         <atlas-form-panel class="js-person-form" method="POST" action="${createLink(controller: 'customer', action: 'update')}">
             <atlas-grid>
                 <atlas-row>
