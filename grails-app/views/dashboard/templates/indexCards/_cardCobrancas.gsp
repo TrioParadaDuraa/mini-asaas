@@ -12,7 +12,7 @@
             </div>
             <div class="section-value">
                 <div class="display-value alert">
-                    <p>20</p>
+                    <p>${openPayments.size()}</p>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             </div>
             <div class="section-value">
                 <div class="display-value danger">
-                    <p>15</p>
+                    <p>${overduePayments.size()}</p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="section-value">
                 <div class="display-value success">
-                    <p>20</p>
+                    <p>${paymentsReceived.size()}</p>
                 </div>
             </div>
         </div>

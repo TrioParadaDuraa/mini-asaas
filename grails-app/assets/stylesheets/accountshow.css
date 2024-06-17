@@ -1,13 +1,15 @@
 .box-header {
-    margin-bottom: -1.875rem;
-    left: -2.625rem;
-    background-color: #F8F9F6;
+    height: fit-content;
+    margin-bottom: -1rem;
 }
 
 .nav-tabs {
     display: flex;
-    gap: 0.625rem;
+    flex-wrap: wrap;
+    margin: 0;
     margin-left: -2.5rem;
+    display: flex;
+    gap: 0.625rem;
 }
 
 .nav-tabs li {
