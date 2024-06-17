@@ -63,7 +63,8 @@ class UserController extends BaseController {
 
             redirect(controller: "customer", action: "show")
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
 
             redirect(action: "edit")
         } catch (Exception exception) {
