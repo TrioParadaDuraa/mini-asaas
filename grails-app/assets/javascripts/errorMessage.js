@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
-        var errorMessage = document.querySelector('.error-message');
+        var errorMessage = document.querySelector('.error-message.has-errors');
         errorMessage.classList.remove('hide');
 
         setTimeout(function() {

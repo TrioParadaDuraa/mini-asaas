@@ -2,7 +2,9 @@ package com.mini.asaas.payer
 
 import com.mini.asaas.BaseController
 import com.mini.asaas.customer.Customer
+
 import com.mini.asaas.utils.Utils
+import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
@@ -23,7 +25,8 @@ class PayerController extends BaseController {
 
             redirect(action: "show", id: payer.id)
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
 
             redirect(action: "index")
         } catch (Exception exception) {
@@ -77,9 +80,10 @@ class PayerController extends BaseController {
 
             redirect(action: "show", id: params.id)
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
         
-            redirect(action: "show", id: params.id)
+            redirect(action: "edit", id: params.id)
         } catch (Exception exception) {
             log.error("PayerController.update >> Erro ao atualizar dados de pagador", exception)
             render "Não foi possível atualizar dados do pagador"
