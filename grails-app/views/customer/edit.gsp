@@ -34,7 +34,7 @@
                         <atlas-input label="Rua/Avenida/Alameda" required="" name="address" size="md" value="${customer.address}"></atlas-input>
                     </atlas-col>
                     <atlas-col lg="4" md="2" sm="1">
-                        <atlas-input label="Número" required="" name="addressNumber" size="md" value="${customer.addressNumber}"></atlas-input>
+                        <atlas-input label="Número" name="addressNumber" size="md" value="${customer.addressNumber}"></atlas-input>
                     </atlas-col>
                     <atlas-col lg="4" md="2" sm="1">
                         <atlas-input label="Complemento" required="" name="addressComplement" size="md" value="${customer.addressComplement}"></atlas-input>

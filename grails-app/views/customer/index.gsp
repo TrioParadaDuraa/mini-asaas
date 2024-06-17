@@ -49,7 +49,7 @@
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="5" md="3" sm="1">
-                            <atlas-input label="Número" required="" placeholder="Insira o número" name="addressNumber" size="md" value="${params.addressNumber}"></atlas-input>
+                            <atlas-input label="Número" placeholder="Insira o número" name="addressNumber" size="md" value="${params.addressNumber}"></atlas-input>
                         </atlas-col>
                         <atlas-col lg="7" md="3" sm="1">
                             <atlas-input label="Complemento" placeholder="Insira o complemento" name="addressComplement" size="md" value="${params.addressComplement}"></atlas-input>
