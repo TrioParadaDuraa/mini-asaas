@@ -8,6 +8,7 @@
     </head>
     <body>
         <atlas-panel header="Atualize os dados do pagador">
+            <g:render template="/templates/message/errorMessage"/>
             <atlas-form method="POST" action="${createLink(controller: 'payer', action: 'update', id: payer.id)}">
                 <atlas-grid>
                     <atlas-row>
