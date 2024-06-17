@@ -44,7 +44,7 @@
                     </atlas-row>
                     <atlas-row>
                         <atlas-col lg="5" md="3" sm="1">
-                            <atlas-input label="Número" required="" size="md" name="addressNumber" value="${flash.oldFormData?.addressNumber ?: payer.addressNumber}"></atlas-input>
+                            <atlas-input label="Número" size="md" name="addressNumber" value="${flash.oldFormData?.addressNumber ?: payer.addressNumber}"></atlas-input>
                         </atlas-col>
                         <atlas-col lg="7" md="3" sm="1">
                             <atlas-input label="Complemento" size="md" name="addressComplement" value="${flash.oldFormData?.addressComplement ?: payer.addressComplement}"></atlas-input>
