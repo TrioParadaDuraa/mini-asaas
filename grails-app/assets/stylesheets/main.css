@@ -20,3 +20,8 @@
 .logout-button:hover {
     color: #B02A37;
 }
+
+atlas-navbar a {
+    color: inherit;
+    text-decoration: none;
+}

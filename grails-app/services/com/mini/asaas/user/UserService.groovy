@@ -33,6 +33,10 @@ class UserService {
         return user
     }
 
+    public List<User> list(Long customerId) {
+        return User.query([customerId: customerId]).list() as List<User>
+    }
+
     public void updatePassword(Long userId, UpdateUserPasswordAdapter adapter) {
         User validUser = validatePassword(adapter)
 

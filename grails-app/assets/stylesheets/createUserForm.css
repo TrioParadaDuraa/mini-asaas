@@ -1,0 +1,9 @@
+.form-field, .form-action-buttons {
+    max-width: 600px;
+}
+
+.form-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}

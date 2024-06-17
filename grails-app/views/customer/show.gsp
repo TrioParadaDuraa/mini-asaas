@@ -7,7 +7,7 @@
         <title>Meus dados</title>
     </head>
     <body title="Meus dados">
-        <g:render template="templates/headerNavBar"/>
+        <g:render template="/templates/headerNavBar"/>
         <atlas-panel>
             <atlas-form class="js-person-form">
                 <atlas-grid>
