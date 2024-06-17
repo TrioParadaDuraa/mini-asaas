@@ -57,6 +57,10 @@ class UserService {
             user.errors.reject("username", null, "Email inválido")
         }
 
+        if (User.findByUsername(adapter.username)) {
+            user.errors.reject("username", null, "Email já cadastrado")
+        }
+
         if (!adapter.name) {
             user.errors.reject("name", null, "Nome inválido")
         }

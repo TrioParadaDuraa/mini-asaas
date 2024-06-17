@@ -1,6 +1,7 @@
 package com.mini.asaas.user
 
 import com.mini.asaas.BaseController
+import com.mini.asaas.utils.message.MessageType
 
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.annotation.Secured
@@ -22,7 +23,8 @@ class UserController extends BaseController {
 
             redirect(action: "list")
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
 
             redirect(action: "index")
         } catch (Exception exception) {
@@ -61,7 +63,8 @@ class UserController extends BaseController {
 
             redirect(controller: "customer", action: "show")
         } catch (ValidationException validationException) {
-            flash.errors = validationException.errors
+            flash.type = MessageType.ERROR
+            flash.errors = validationException.errors.allErrors
 
             redirect(action: "edit")
         } catch (Exception exception) {

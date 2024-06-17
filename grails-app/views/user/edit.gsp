@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar senha</title>
+    <asset:javascript src="errorMessage.js"/>
 </head>
 <body title="Atualize sua senha">
     <g:render template="/templates/headerNavBar"/>
     <atlas-panel>
+        <g:render template="/templates/message/errorMessage"/>
         <atlas-form action="${createLink(controller: 'user', action: 'updatePassword')}" method="POST">
             <atlas-grid>
                 <atlas-row>
@@ -27,9 +29,6 @@
                 <atlas-button submit description="Salvar" theme="primary"></atlas-button>
             </atlas-grid>
         </atlas-form>
-        <g:if test="${flash.errors?.hasFieldErrors('password')}">
-            <div>Por favor, preencha e confirme a senha corretamente</div>
-        </g:if>
     </atlas-panel>
 </body>
 </html>
